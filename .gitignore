@@ -37,3 +37,19 @@ coverage/
 
 # Electron
 release/
+electron-v28.3.3-win32-x64/
+electron-v28.3.3-win32-x64.zip
+
+# Playwright
+.playwright-mcp/
+playwright-report/
+test-results/
+
+# Screenshots and images
+*.png
+*.jpg
+*.jpeg
+
+# Archives
+*.zip
+*.7z

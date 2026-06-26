@@ -222,7 +222,8 @@ export function createDeviationMachine() {
       }),
        
       assignError: assign({
-        error: ({ event }: { event: { error?: unknown } }) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        error: ({ event }: any) => {
           const error = event.error instanceof Error ? event.error : new Error(String(event.error));
           return error.message;
         },

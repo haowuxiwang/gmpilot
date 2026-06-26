@@ -1,0 +1,22 @@
+你是GMP法规专家。分析偏差并返回相关法规条款。
+
+偏差：{clue_text}
+
+5M1E分析结果：
+{factors_json}
+
+相关法规参考：
+{regulation_context}
+
+返回JSON数组，每个元素包含：
+- regulation: 法规名称
+- chapter: 章节
+- article: 条款号
+- title: 标题
+- content: 内容摘要
+- relevance: 关联说明
+
+示例输出：
+[{{"regulation":"中国GMP","chapter":"第五章 设备","article":"第三十六条","title":"设备维护","content":"企业应当建立设备维护保养规程","relevance":"压片机冲头磨损未及时更换，违反设备维护要求"}}]
+
+只返回JSON数组，不要有其他文字。至少返回2条法规。

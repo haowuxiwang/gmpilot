@@ -1,0 +1,42 @@
+appId: com.gmpilot.app
+productName: GMPilot
+directories:
+  output: release
+files:
+  - dist/**/*
+  - dist-electron/**/*
+  - core/**/*
+  - "!core/**/__tests__/**"
+  - knowledge/**/*
+  - resources/**/*
+  - package.json
+  - "!**/*.ts"
+  - "!**/*.tsx"
+asar: true
+asarUnpack:
+  - resources/**/*
+win:
+  target:
+    - nsis
+  icon: resources/icons/icon.ico
+  # Completely disable code signing
+  sign: false
+  signingHashAlgorithms: []
+  # Skip signing tool
+  signDlls: false
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+mac:
+  target:
+    - dmg
+  icon: resources/icons/icon.icns
+  # Code signing configuration for macOS
+  # Set CSC_LINK and CSC_KEY_PASSWORD environment variables
+  identity: null  # Will use environment variables if available
+linux:
+  target:
+    - AppImage
+  icon: resources/icons
+  category: Office

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Background -->
+  <rect width="512" height="512" rx="64" fill="#1a1a2e"/>
+
+  <!-- Document body -->
+  <rect x="128" y="64" width="256" height="384" rx="16" fill="#ffffff" opacity="0.95"/>
+
+  <!-- Header line -->
+  <rect x="160" y="100" width="192" height="8" rx="4" fill="#1677ff"/>
+
+  <!-- Title lines -->
+  <rect x="160" y="132" width="160" height="6" rx="3" fill="#333"/>
+  <rect x="160" y="152" width="120" height="6" rx="3" fill="#666"/>
+
+  <!-- Divider -->
+  <line x1="160" y1="180" x2="352" y2="180" stroke="#e0e0e0" stroke-width="2"/>
+
+  <!-- Content lines -->
+  <rect x="160" y="200" width="192" height="5" rx="2.5" fill="#999"/>
+  <rect x="160" y="218" width="170" height="5" rx="2.5" fill="#999"/>
+  <rect x="160" y="236" width="180" height="5" rx="2.5" fill="#999"/>
+  <rect x="160" y="254" width="140" height="5" rx="2.5" fill="#999"/>
+
+  <!-- 5M1E indicator -->
+  <circle cx="180" cy="300" r="12" fill="#52c41a"/>
+  <circle cx="220" cy="300" r="12" fill="#1677ff"/>
+  <circle cx="260" cy="300" r="12" fill="#faad14"/>
+  <circle cx="300" cy="300" r="12" fill="#ff4d4f"/>
+  <circle cx="340" cy="300" r="12" fill="#722ed1"/>
+
+  <!-- 5M1E labels -->
+  <text x="180" y="305" text-anchor="middle" font-size="10" font-weight="bold" fill="white">人</text>
+  <text x="220" y="305" text-anchor="middle" font-size="10" font-weight="bold" fill="white">机</text>
+  <text x="260" y="305" text-anchor="middle" font-size="10" font-weight="bold" fill="white">料</text>
+  <text x="300" y="305" text-anchor="middle" font-size="10" font-weight="bold" fill="white">法</text>
+  <text x="340" y="305" text-anchor="middle" font-size="10" font-weight="bold" fill="white">环</text>
+
+  <!-- Bottom accent -->
+  <rect x="128" y="416" width="256" height="32" rx="0 0 16 16" fill="#1677ff"/>
+
+  <!-- GMPilot text -->
+  <text x="256" y="440" text-anchor="middle" font-size="16" font-weight="bold" fill="white" font-family="Arial, sans-serif">GMPilot</text>
+</svg>

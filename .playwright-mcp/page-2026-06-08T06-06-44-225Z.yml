@@ -1,0 +1,35 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e6]:
+      - img [ref=e8]
+      - generic [ref=e10]:
+        - heading "GMPilot" [level=1] [ref=e11]
+        - paragraph [ref=e12]: AI 偏差分析助手
+    - navigation [ref=e13]:
+      - button "智能助手" [ref=e14]:
+        - img [ref=e15]
+        - generic [ref=e17]: 智能助手
+      - button "偏差报告" [ref=e18]:
+        - img [ref=e19]
+        - generic [ref=e22]: 偏差报告
+      - button "知识库" [ref=e23]:
+        - img [ref=e24]
+        - generic [ref=e26]: 知识库
+      - button "系统设置" [ref=e27]:
+        - img [ref=e28]
+        - generic [ref=e31]: 系统设置
+    - generic [ref=e32]:
+      - button "跟随系统" [ref=e33]:
+        - generic [ref=e35]: 跟随系统
+      - generic [ref=e36]:
+        - img [ref=e38]
+        - generic [ref=e40]:
+          - paragraph [ref=e41]: GMPilot
+          - paragraph [ref=e42]: v0.1.0
+  - main [ref=e43]:
+    - generic [ref=e44]:
+      - img [ref=e46]
+      - heading "404" [level=1] [ref=e49]
+      - paragraph [ref=e50]: 页面未找到
+      - paragraph [ref=e51]: 您访问的页面不存在或已被移除
+      - button "返回首页" [ref=e52] [cursor=pointer]

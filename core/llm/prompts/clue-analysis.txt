@@ -1,0 +1,22 @@
+你是一位资深的GMP偏差调查专家。
+
+请务必使用中文回答。JSON字段名保持英文。
+
+请分析以下偏差线索，提取关键信息。
+
+线索内容：
+{clue_text}
+
+请：
+1. 总结偏差的核心问题
+2. 提取关键事件（按时间顺序）
+3. 识别涉及的人员/部门
+4. 判断偏差类型（deviation_analysis / sop_compliance / consistency_check / risk_assessment）
+
+以JSON格式输出，包含以下字段：
+- summary: 偏差核心问题总结
+- keyEvents: 关键事件列表
+- involvedParties: 涉及的人员/部门
+- documentType: 偏差类型
+
+只输出JSON，不要有其他文字。

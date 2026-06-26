@@ -1,0 +1,64 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e5]:
+      - heading "GMPilot" [level=1] [ref=e6]
+      - paragraph [ref=e7]: AI · GMP 偏差分析
+    - navigation [ref=e8]:
+      - button "智能助手" [ref=e9]:
+        - img [ref=e11]
+        - generic [ref=e13]: 智能助手
+      - button "偏差报告" [ref=e14]:
+        - img [ref=e15]
+        - generic [ref=e18]: 偏差报告
+      - button "知识库" [ref=e19]:
+        - img [ref=e20]
+        - generic [ref=e22]: 知识库
+      - button "系统设置" [ref=e23]:
+        - img [ref=e24]
+        - generic [ref=e27]: 系统设置
+    - generic [ref=e28]:
+      - paragraph [ref=e33]: 未配置 LLM
+      - button "跟随系统" [ref=e34]:
+        - img [ref=e35]
+        - generic [ref=e37]: 跟随系统
+  - main [ref=e38]:
+    - generic [ref=e128]:
+      - generic [ref=e129]:
+        - heading "系统设置" [level=1] [ref=e130]
+        - paragraph [ref=e131]: 配置 LLM 提供商和系统参数
+      - generic [ref=e133]:
+        - generic [ref=e134]:
+          - generic [ref=e135]:
+            - generic [ref=e136]:
+              - heading "LLM 配置" [level=2] [ref=e137]
+              - paragraph [ref=e138]: 支持 OpenAI 兼容 API（DeepSeek、通义千问、智谱、OpenAI 等）
+            - generic [ref=e139]:
+              - generic [ref=e140]:
+                - generic [ref=e141]: API 地址
+                - textbox "API 地址" [active] [ref=e143]:
+                  - /placeholder: https://api.openai.com/v1
+                - paragraph [ref=e144]: 例如：https://api.deepseek.com/v1、https://api.openai.com/v1
+              - generic [ref=e145]:
+                - generic [ref=e146]: 模型名称
+                - textbox "模型名称" [ref=e148]:
+                  - /placeholder: gpt-4o
+                - paragraph [ref=e149]: 例如：deepseek-chat、qwen-plus、gpt-4o、claude-sonnet-4-20250514
+              - generic [ref=e150]:
+                - generic [ref=e151]: API 密钥
+                - textbox "API 密钥" [ref=e153]:
+                  - /placeholder: sk-...
+          - button "保存设置" [ref=e155] [cursor=pointer]
+        - generic [ref=e157]:
+          - heading "AuditBee 配置" [level=2] [ref=e158]
+          - paragraph [ref=e159]: 配置 AuditBee 合规性审计服务连接
+          - generic [ref=e160]:
+            - generic [ref=e161]:
+              - generic [ref=e162]:
+                - img [ref=e163]
+                - generic [ref=e170]:
+                  - paragraph [ref=e171]: AuditBee 连接状态
+                  - paragraph [ref=e172]: 服务未启动，请先启动 AuditBee
+              - button "测试连接" [ref=e173] [cursor=pointer]:
+                - img [ref=e174]
+                - text: 测试连接
+            - generic [ref=e181]: 未连接 - 请确保 AuditBee 正在运行 (localhost:8000)

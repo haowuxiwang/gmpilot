@@ -1,0 +1,44 @@
+- generic [ref=e3]:
+  - complementary [ref=e4]:
+    - generic [ref=e6]:
+      - img [ref=e8]
+      - generic [ref=e10]:
+        - heading "GMPilot" [level=1] [ref=e11]
+        - paragraph [ref=e12]: AI 偏差分析助手
+    - navigation [ref=e13]:
+      - button "智能助手" [ref=e14]:
+        - img [ref=e15]
+        - generic [ref=e17]: 智能助手
+      - button "偏差报告" [ref=e18]:
+        - img [ref=e19]
+        - generic [ref=e22]: 偏差报告
+      - button "知识库" [active] [ref=e23]:
+        - img [ref=e24]
+        - generic [ref=e26]: 知识库
+      - button "系统设置" [ref=e27]:
+        - img [ref=e28]
+        - generic [ref=e31]: 系统设置
+    - generic [ref=e32]:
+      - button "跟随系统" [ref=e33]:
+        - generic [ref=e35]: 跟随系统
+      - generic [ref=e36]:
+        - img [ref=e38]
+        - generic [ref=e40]:
+          - paragraph [ref=e41]: GMPilot
+          - paragraph [ref=e42]: v0.1.0
+  - main [ref=e43]:
+    - generic [ref=e152]:
+      - generic [ref=e153]:
+        - generic [ref=e154]:
+          - heading "知识库" [level=1] [ref=e155]
+          - paragraph [ref=e156]: 管理法规文档和内部文档
+        - button "上传文档" [ref=e157] [cursor=pointer]:
+          - img [ref=e158]
+          - text: 上传文档
+      - generic [ref=e162]:
+        - img [ref=e163]
+        - textbox "搜索法规知识库..." [ref=e166]
+      - generic [ref=e169]:
+        - img [ref=e170]
+        - paragraph [ref=e172]: 暂无文档
+        - paragraph [ref=e173]: 上传法规文档以构建知识库

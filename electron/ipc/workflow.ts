@@ -13,7 +13,6 @@ import { getDatabase, initSchema } from '../../core/db/connection';
 import { createReport } from '../../core/db/schema';
 import { createLogger } from '../../core/utils/logger';
 import { readFileContent } from '../../core/utils/file-reader';
-import type { DeviationReport } from '../../core/workflow/types';
 
 const log = createLogger('Workflow');
 
@@ -136,7 +135,7 @@ export function registerWorkflowIPC(): void {
       const machine = baseMachine.provide({
         actors: {
           // Override generateModules to add streaming callback
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+           
           generateModules: (async ({ input }: { input: import('../../core/workflow/types').WorkflowContext }) => {
             const { generateModules, assembleReport } = await import('../../core/workflow/assembler');
             const { BackgroundGenerator } = await import('../../core/workflow/modules/background');
@@ -148,13 +147,6 @@ export function registerWorkflowIPC(): void {
             const { AttachmentsGenerator } = await import('../../core/workflow/modules/attachments');
 
             const deviationId = `DEV-${randomUUID().slice(0, 8).toUpperCase()}`;
-
-            // Streaming callback — send partial results to renderer
-            const onPartial = (partial: Partial<DeviationReport>) => {
-              if (!window.isDestroyed()) {
-                window.webContents.send('workflow:streaming', { partial });
-              }
-            };
 
             // Build module context
             const moduleContext = {
@@ -199,6 +191,7 @@ export function registerWorkflowIPC(): void {
             );
 
             return report;
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           }) as any,
         },
       });

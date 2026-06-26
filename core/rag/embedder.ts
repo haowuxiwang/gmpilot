@@ -239,10 +239,13 @@ class LocalEmbeddingProvider implements EmbeddingProvider {
 
 /**
  * Get settings from database (if available).
+ * Uses synchronous require for compatibility with module factory.
  */
 function getDbSettings(): Record<string, string> {
   try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const { getDatabase } = require('../db/connection');
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const { getAllSettings } = require('../db/schema');
     const db = getDatabase();
     return getAllSettings(db);

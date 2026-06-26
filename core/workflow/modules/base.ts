@@ -103,10 +103,10 @@ export abstract class BaseModuleGenerator {
           const { createLLMModel } = await import('../../llm/provider');
           const model = createLLMModel();
 
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           return generateObject({
             model,
             prompt,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             schema: schema as any,
             abortSignal: signal,
           });

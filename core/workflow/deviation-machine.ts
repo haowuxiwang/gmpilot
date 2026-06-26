@@ -36,7 +36,7 @@ import type { ModuleContext } from './modules/base';
 /**
  * Type-safe helper to extract output from XState actor done events.
  */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 function getActorOutput<T>(event: unknown): T {
   if (typeof event === 'object' && event !== null && 'output' in event) {
     return (event as { output: T }).output;
@@ -220,9 +220,9 @@ export function createDeviationMachine() {
         report: ({ event }) => getActorOutput<WorkflowContext['report']>(event),
         currentStep: 6,
       }),
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+       
       assignError: assign({
-        error: ({ event }: any) => {
+        error: ({ event }: { event: { error?: unknown } }) => {
           const error = event.error instanceof Error ? event.error : new Error(String(event.error));
           return error.message;
         },

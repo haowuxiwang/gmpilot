@@ -7,7 +7,7 @@
 import { ipcMain } from 'electron';
 import { getDatabase, initSchema } from '../../core/db/connection';
 import { createLogger } from '../../core/utils/logger';
-import { setSecret, getSecret, deleteSecret, isSecureStorageAvailable } from '../../core/utils/secure-storage';
+import { setSecret, getSecret, isSecureStorageAvailable } from '../../core/utils/secure-storage';
 import {
   getAllSettings,
   setSettings,

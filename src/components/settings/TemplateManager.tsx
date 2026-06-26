@@ -50,7 +50,7 @@ export function TemplateManager() {
     try {
       const list = await templateApi.list();
       setTemplates(list);
-    } catch (err) {
+    } catch {
       showError('加载模版列表失败');
     } finally {
       setLoading(false);
@@ -71,7 +71,7 @@ export function TemplateManager() {
         setContent(content);
         setHasChanges(false);
       }
-    } catch (err) {
+    } catch {
       showError('加载模版内容失败');
     }
   };
@@ -91,7 +91,7 @@ export function TemplateManager() {
       } else {
         showError('保存模版失败');
       }
-    } catch (err) {
+    } catch {
       showError('保存模版失败');
     } finally {
       setSaving(false);
@@ -114,7 +114,7 @@ export function TemplateManager() {
       } else {
         showError('重置模版失败（可能没有备份）');
       }
-    } catch (err) {
+    } catch {
       showError('重置模版失败');
     }
   };

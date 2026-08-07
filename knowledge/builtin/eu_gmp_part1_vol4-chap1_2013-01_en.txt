@@ -1,0 +1,301 @@
+[Source: 第一部分\vol4-chap1_2013-01_en.pdf]
+[Format: EU GMP Regulation]
+
+1
+EUROPEAN COMMISSION
+HEALTH AND CONSUMERS DIRECTORATE-GENERAL
+Health Systems and Products
+Medicinal Products - Quality, safety and efficacy
+Brussels,
+SANCO/AM/sl/ddg1.d.6(2012)860362
+EudraLex
+The Rules Governing Medicinal Products in the European Union
+Volume 4
+EU Guidelines for
+Good Manufacturing Practice for
+Medicinal Products for Human and Veterinary Use
+Chapter 1
+Pharmaceutical Quality System
+Legal 	basis 	for 	publishing 	the 	detailed 	guidelines: 	Article 	47 	of 	Directive
+2001/83/EC on the Community code relating to medicinal products for human use and
+Article 51 of Directive 2001/82/EC on the Community code relating to veterinary
+medicinal products. This document provides guidance for the interpretation of the
+principles and guidelines of good manufacturing practice (GMP) for medicinal
+products as laid down in Directive 2003/94/EC for medicinal products for human use
+and Directive 91/412/EEC for veterinary use.
+Status of the document: revision 3
+Reasons for changes: Amendments to the text of Chapter 1 have been made in order
+to align with the concepts and terminology described in the ICH Q10 tripartite
+guideline on Pharmaceutical Quality System. 	The title of the chapter itself is also
+changed accordingly.
+Deadline for coming into operation: 31 January 2013
+Commission Européenne, B-1049 Bruxelles / Europese Commissie, B-1049 Brussel – Belgium. Telephone: (32-2) 299 11 11
+
+-- 1 of 8 --
+
+2
+Principle
+The holder of a Manufacturing Authorisation must manufacture medicinal products so
+as to ensure that they are fit for their intended use, comply with the requirements of
+the Marketing Authorisation or Clinical Trial Authorisation, as appropriate and do not
+place patients at risk due to inadequate safety, quality or efficacy. The attainment of
+this quality objective is the responsibility of senior management and requires the
+participation and commitment by staff in many different departments and at all levels
+within the company, by the company’s suppliers and by its distributors. To achieve
+this quality objective reliably there must be a comprehensively designed and correctly
+implemented Pharmaceutical Quality System1 incorporating Good Manufacturing
+Practice and Quality Risk Management. It should be fully documented and its
+effectiveness monitored. All parts of the Pharmaceutical Quality System should be
+adequately resourced with competent personnel, and suitable and sufficient premises,
+equipment and facilities. There are additional legal responsibilities for the holder of
+the Manufacturing Authorisation and for the Qualified Person(s).
+The basic concepts of Quality Management, Good Manufacturing Practice and
+Quality Risk Management are inter-related. They are described here in order to
+emphasise their relationships and their fundamental importance to the production and
+control of medicinal products.
+Pharmaceutical Quality System1
+1.1 Quality Management is a wide-ranging concept, which covers all matters, which
+individually or collectively influence the quality of a product. It is the sum total of the
+organised arrangements made with the objective of ensuring that medicinal products
+are of the quality required for their intended use. Quality Management therefore
+incorporates Good Manufacturing Practice.
+1.2 GMP applies to the lifecycle stages from the manufacture of investigational
+medicinal 	products, 	technology 	transfer, 	commercial 	manufacturing 	through 	to
+product discontinuation. 	However the Pharmaceutical Quality System can extend to
+the pharmaceutical development lifecycle stage as described in ICH Q10, which while
+optional, should facilitate innovation and continual improvement and strengthen the
+link between pharmaceutical development and manufacturing activities. 	ICH Q10 is
+reproduced in Part III of the Guide and can be used to supplement the contents of this
+chapter.
+1.3 The size and complexity of the company’s activities should be taken into
+consideration when developing a new Pharmaceutical Quality System or modifying
+an existing one. The design of the system should incorporate appropriate risk
+management principles including the use of appropriate tools. While some aspects of
+the system can be company-wide and others site-specific, the effectiveness of the
+system is normally demonstrated at the site level.
+1 Art 6 of Directives 2003/94/EC and 91/412/EEC require manufacturers to establish and implement an effective pharmaceutical
+quality assurance system. The term Pharmaceutical Quality System is used in this chapter in the interests of consistency with
+ICH Q10 terminology. For the purposes of this chapter these terms can be considered interchangeable.
+
+-- 2 of 8 --
+
+3
+1.4 A Pharmaceutical Quality System appropriate for the manufacture of medicinal
+products should ensure that:
+(i) Product realisation is achieved by designing, planning, implementing,
+maintaining and continuously improving a system that allows the consistent
+delivery of products with appropriate quality attributes;
+(ii) Product and process knowledge is managed throughout all lifecycle stages;
+(iii) Medicinal products are designed and developed in a way that takes
+account of the requirements of Good Manufacturing Practice;
+(iv) 	Production 	and 	control 	operations 	are 	clearly 	specified 	and 	Good
+Manufacturing Practice adopted;
+(v) Managerial responsibilities are clearly specified;
+(vi) Arrangements are made for the manufacture, supply and use of the correct
+starting and packaging materials, the selection and monitoring of suppliers and
+for verifying that each delivery is from the approved supply chain;
+(vii) Processes are in place to assure the management of outsourced activities.
+(viii) A state of control is established and maintained by developing and using
+effective monitoring and control systems for process performance and product
+quality.
+(ix) The results of product and processes monitoring are taken into account in
+batch release, in the investigation of deviations, and, with a view to taking
+preventive action to avoid potential deviations occurring in the future.
+(x) All necessary controls on intermediate products, and any other in-process
+controls and validations are carried out;
+(xi) Continual improvement is facilitated through the implementation of
+quality improvements appropriate to the current level of process and product
+knowledge.
+(xii) Arrangements are in place for the prospective evaluation of planned
+changes and their approval prior to implementation taking into account
+regulatory notification and approval where required;
+(xiii) After implementation of any change, an evaluation is undertaken to
+confirm the quality objectives were achieved and that there was no unintended
+deleterious impact on product quality;
+(xiv) An appropriate level of root cause analysis should be applied during the
+investigation of deviations, suspected product defects and other problems.
+This can be determined using Quality Risk Management principles. 	In cases
+
+-- 3 of 8 --
+
+4
+where the true root cause(s) of the issue cannot be determined, consideration
+should be given to identifying the most likely root cause(s) and to addressing
+those. 	Where human error is suspected or identified as the cause, this should
+be justified having taken care to ensure that process, procedural or system-
+based errors or problems have not been overlooked, if present. Appropriate
+corrective actions and/or preventative actions (CAPAs) should be identified
+and taken in response to investigations. 	The effectiveness of such actions
+should be monitored and assessed, in line with Quality Risk Management
+principles.
+(xv) Medicinal products are not sold or supplied before a Qualified Person has
+certified that each production batch has been produced and controlled in
+accordance with the requirements of the Marketing Authorisation and any
+other regulations relevant to the production, control and release of medicinal
+products;
+(xvi) Satisfactory arrangements exist to ensure, as far as possible, that the
+medicinal products are stored, distributed and subsequently handled so that
+quality is maintained throughout their shelf life;
+(xvii) There is a process for self-inspection and/or quality audit, which
+regularly appraises the effectiveness and applicability of the Pharmaceutical
+Quality System.
+1.5 	Senior 	management 	has 	the 	ultimate 	responsibility 	to 	ensure 	an 	effective
+Pharmaceutical Quality System is in place, adequately resourced and that roles,
+responsibilities, 	and 	authorities 	are 	defined, 	communicated 	and 	implemented
+throughout the organisation. Senior management’s leadership and active participation
+in the Pharmaceutical Quality System is essential. This leadership should ensure the
+support and commitment of staff at all levels and sites within the organisation to the
+Pharmaceutical Quality System.
+1.6 There should be periodic management review, with the involvement of senior
+management, of the operation of the Pharmaceutical Quality System to identify
+opportunities for continual improvement of products, processes and the system itself.
+1.7 The Pharmaceutical Quality System should be defined and documented. 	A
+Quality Manual or equivalent documentation should be established and should contain
+a 	description 	of 	the 	quality 	management 	system 	including 	management
+responsibilities.
+Good Manufacturing Practice for Medicinal Products
+1.8 Good Manufacturing Practice is that part of Quality Management which ensures
+that products are consistently produced and controlled to the quality standards
+appropriate to their intended use and as required by the Marketing Authorisation,
+Clinical Trial Authorisation or product specification. Good Manufacturing Practice is
+concerned with both production and quality control. The basic requirements of GMP
+are that:
+
+-- 4 of 8 --
+
+5
+(i) All manufacturing processes are clearly defined, systematically reviewed in
+the light of experience and shown to be capable of consistently manufacturing
+medicinal 	products 	of 	the 	required 	quality 	and 	complying 	with 	their
+specifications;
+(ii) Critical steps of manufacturing processes and significant changes to the
+process are validated;
+(iii) All necessary facilities for GMP are provided including:
+• Appropriately qualified and trained personnel;
+• Adequate premises and space;
+• Suitable equipment and services;
+• Correct materials, containers and labels;
+• 	Approved 	procedures 	and 	instructions, 	in 	accordance 	with 	the
+Pharmaceutical Quality System;
+• Suitable storage and transport;
+(iv) Instructions and procedures are written in an instructional form in clear
+and unambiguous language, specifically applicable to the facilities provided;
+(v) Procedures are carried out correctly and operators are trained to do so;
+(vi) Records are made, manually and/or by recording instruments, during
+manufacture which demonstrate that all the steps required by the defined
+procedures and instructions were in fact taken and that the quantity and quality
+of the product was as expected.
+(vii) Any significant deviations are fully recorded, investigated with the
+objective 	of 	determining 	the 	root 	cause 	and 	appropriate 	corrective 	and
+preventive action implemented;
+(viii) 	Records 	of 	manufacture 	including 	distribution 	which 	enable 	the
+complete history of a batch to be traced are retained in a comprehensible and
+accessible form;
+(ix) The distribution of the products minimises any risk to their quality and
+takes account of Good Distribution Practice;
+(x) A system is available to recall any batch of product, from sale or supply;
+(xi) Complaints about products are examined, the causes of quality defects
+investigated and appropriate measures taken in respect of the defective
+products and to prevent reoccurrence.
+Quality Control
+1.9 Quality Control is that part of Good Manufacturing Practice which is concerned
+with sampling, specifications and testing, and with the organisation, documentation
+and release procedures which ensure that the necessary and relevant tests are actually
+carried out and that materials are not released for use, nor products released for sale or
+
+-- 5 of 8 --
+
+6
+supply, until their quality has been judged to be satisfactory. The basic requirements
+of Quality Control are that:
+(i) 	Adequate 	facilities, 	trained 	personnel 	and 	approved 	procedures 	are
+available for sampling and testing starting materials, packaging materials,
+intermediate, 	bulk, 	and 	finished 	products, 	and 	where 	appropriate 	for
+monitoring environmental conditions for GMP purposes;
+(ii) Samples of starting materials, packaging materials, intermediate products,
+bulk products and finished products are taken by approved personnel and
+methods;
+(iii) Test methods are validated;
+(iv) Records are made, manually and/or by recording instruments, which
+demonstrate that all the required sampling, inspecting and testing procedures
+were actually carried out. Any deviations are fully recorded and investigated;
+(v) The finished products contain active ingredients complying with the
+qualitative and quantitative composition of the Marketing Authorisation or
+clinical trial authorisation, are of the purity required, and are enclosed within
+their proper containers and correctly labelled;
+(vi) Records are made of the results of inspection and that testing of materials,
+intermediate, 	bulk, 	and 	finished 	products 	is 	formally 	assessed 	against
+specification. Product assessment includes a review and evaluation of relevant
+production documentation and an assessment of deviations from specified
+procedures;
+(vii) No batch of product is released for sale or supply prior to certification by
+a Qualified Person that it is in accordance with the requirements of the
+relevant authorisations in accordance with annex 16;
+(viii) Sufficient reference samples of starting materials and products are
+retained in accordance with Annex 19 to permit future examination of the
+product if necessary and that the sample is retained in the final pack.
+Product Quality Review
+1.10 Regular periodic or rolling quality reviews of all authorised medicinal products,
+including export only products, should be conducted with the objective of verifying
+the consistency of the existing process, the appropriateness of current specifications
+for both starting materials and finished product, to highlight any trends and to identify
+product and process improvements. Such reviews should normally be conducted and
+documented annually, taking into account previous reviews, and should include at
+least:
+(i) A review of starting materials including packaging materials used in the
+product, especially those from new sources and in particular the review of
+supply chain traceability of active substances.
+
+-- 6 of 8 --
+
+7
+(ii) A review of critical in-process controls and finished product results.
+(iii) A review of all batches that failed to meet established specification(s) and
+their investigation.
+(iv) A review of all significant deviations or non-conformances, their related
+investigations, and the effectiveness of resultant corrective and preventive
+actions taken.
+(v) A review of all changes carried out to the processes or analytical methods.
+(vi) A review of Marketing Authorisation variations submitted, granted or
+refused, including those for third country (export only) dossiers.
+(vii) A review of the results of the stability monitoring programme and any
+adverse trends.
+(viii) A review of all quality-related returns, complaints and recalls and the
+investigations performed at the time.
+(ix) A review of adequacy of any other previous product process or equipment
+corrective actions.
+(x) 	For 	new 	marketing 	authorisations 	and 	variations 	to 	marketing
+authorisations, a review of post-marketing commitments.
+(xi) The qualification status of relevant equipment and utilities, e.g. HVAC,
+water, compressed gases, etc.
+(xii) A review of any contractual arrangements as defined in Chapter 7 to
+ensure that they are up to date.
+1.11 The manufacturer and, where different, marketing authorisation holder should
+evaluate the results of the review and an assessment made as to whether corrective
+and 	preventive 	action 	or 	any 	revalidation 	should 	be 	undertaken, 	under 	the
+Pharmaceutical Quality System. There should be management procedures for the
+ongoing management and review of these actions and the effectiveness of these
+procedures verified during self-inspection. 	Quality reviews may be grouped by
+product type, e.g. solid dosage forms, liquid dosage forms, sterile products, etc. where
+scientifically justified.
+Where the marketing authorisation holder is not the manufacturer, there should be a
+technical agreement in place between the various parties that defines their respective
+responsibilities in producing the product quality review.
+
+-- 7 of 8 --
+
+8
+Quality Risk Management
+1.12 Quality risk management is a systematic process for the assessment, control,
+communication and review of risks to the quality of the medicinal product. It can be
+applied both proactively and retrospectively.
+1.13 The principles of quality risk management are that:
+i) The evaluation of the risk to quality is based on scientific knowledge,
+experience with the process and ultimately links to the protection of the patient
+ii) The level of effort, formality and documentation of the quality risk
+management process is commensurate with the level of risk
+Examples of the processes and applications of quality risk management can be found
+inter alia in ICH Q9 which is reproduced in Part III of the Guide.
+
+-- 8 of 8 --
+

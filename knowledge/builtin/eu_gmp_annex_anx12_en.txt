@@ -1,0 +1,253 @@
+[Source: 附件\anx12_en.pdf]
+[Format: EU GMP Regulation]
+
+115
+ANNEX 12
+USE OF IONISING RADIATION IN THE MANUFACTURE OF
+MEDICINAL PRODUCTS
+Note
+The holder of, or applicant for, a marketing authorisation for a product which includes
+irradiation as part of its processing should also refer to the note produced by the Committee
+for Proprietary Medicinal Products giving guidance on “Ionising radiation in the
+manufacture of medicinal products”.
+Introduction
+Ionising radiation may be used during the manufacturing process for various purposes
+including the reduction of bioburden and the sterilisation of starting materials, packaging
+components or products and the treatment of blood products.
+There are two types of irradiation process: Gamma Irradiation from a radioactive source
+and high energy Electron Irradiation (Beta radiation) from an accelerator.
+Gamma Irradiation: two different processing modes may be employed:
+(i) 	Batch mode: the product is arranged at fixed locations around the radiation source
+and cannot be loaded or unloaded while the radiation source is exposed.
+(ii) 	Continuous mode: an automatic system conveys the products into the radiation cell,
+past the exposed radiation source along a defined path and at an appropriate speed,
+and out of the cell.
+Electron Irradiation: the product is conveyed past a continuous or pulsed beam of high
+energy electrons (Beta radiation) which is scanned back and forth across the product
+pathway.
+Responsibilities
+1. 	Treatment by irradiation may be carried out by the pharmaceutical manufacturer or by an
+operator of a radiation facility under contract (a “contract manufacturer”), both of whom
+must hold an appropriate manufacturing authorisation.
+2. 	The pharmaceutical manufacturer bears responsibility for the quality of the product
+including the attainment of the objective of irradiation. The contract operator of the
+radiation facility bears responsibility for ensuring that the dose of radiation required by the
+manufacturer is delivered to the irradiation container (i.e. the outermost container in which
+the products are irradiated).
+3. 	The required dose including justified limits will be stated in the marketing authorisation
+for the product.
+
+-- 1 of 6 --
+
+116
+n 	Annex 12 Use of ionising radiation in the manufacture of medicinal products _____
+Dosimetry
+4. 	Dosimetry is defined as the measurement of the absorbed dose by the use of dosimeters.
+Both understanding and correct use of the technique is essential for the validation,
+commissioning and control of the process.
+5. 	The calibration of each batch of routine dosimeters should be traceable to a national or
+international standard. The period of validity of the calibration should be stated, justified
+and adhered to.
+6. 	The same instrument should normally be used to establish the calibration curve of the
+routine dosimeters and to measure the change in their absorbance after irradiation. If a
+different instrument is used, the absolute absorbance of each instrument should be
+established.
+7. 	Depending on the type of dosimeter used, due account should be taken of possible causes of
+inaccuracy including the change in moisture content, change in temperature, time elapsed
+between irradiation and measurement, and the dose rate.
+8. 	The wavelength of the instrument used to measure the change in absorbance of dosimeters
+and the instrument used to measure their thickness should be subject to regular checks of
+calibration at intervals established on the basis of stability, purpose and usage.
+Validation of the process
+9. 	Validation is the action of proving that the process, i.e. the delivery of the intended
+absorbed dose to the product, will achieve the expected results. The requirements for
+validation are given more fully in the note for guidance on “the use of ionising radiation in
+the manufacture of medicinal products”.
+10. 	Validation should include dose mapping to establish the distribution of absorbed dose
+within the irradiation container when packed with product in a defined configuration.
+11. 	An irradiation process specification should include at least the following:
+a. 	details of the packaging of the product;
+b. 	the loading pattern(s) of product within the irradiation container. Particular care
+needs to be taken, when a mixture of products is allowed in the irradiation container,
+that there is no underdosing of dense product or shadowing of other products by
+dense product. Each mixed product arrangement must be specified and validated;
+c. 	the loading pattern of irradiation containers around the source (batch mode) or the
+pathway through the cell (continuous mode);
+d. 	maximum and minimum limits of absorbed dose to the product [and associated
+routine dosimetry];
+e. 	maximum and minimum limits of absorbed dose to the irradiation container and
+associated routine dosimetry to monitor this absorbed dose;
+f. 	other process parameters, including dose rate, maximum time of exposure, number of
+exposures, etc.
+When irradiation is supplied under contract at least parts (d) and (e) of the irradiation
+process specification should form part of that contract.
+
+-- 2 of 6 --
+
+117
+____ Annex 12 Use of ionising radiation in the manufacture of medicinal products 	n
+Commissioning of the plant
+General
+12. 	Commissioning is the exercise of obtaining and documenting evidence that the irradiation
+plant will perform consistently within predetermined limits when operated according to the
+process specification. In the context of this annex, predetermined limits are the maximum
+and minimum doses designed to be absorbed by the irradiation container. It must not be
+possible for variations to occur in the operation of the plant which give a dose to the
+container outside these limits without the knowledge of the operator.
+13. 	Commissioning should include the following elements:
+a) 	Design;
+b) 	Dose mapping;
+c) 	Documentation;
+d) 	Requirement for re-commissioning.
+Gamma irradiators
+Design
+14. 	The absorbed dose received by a particular part of an irradiation container at any specific
+point in the irradiator depends primarily on the following factors:
+a) 	the activity and geometry of the source;
+b) 	the distance from source to container;
+c) 	The duration of irradiation controlled by the timer setting or conveyor speed;
+d) 	The composition and density of material, including other products, between the
+source and the particular part of the container.
+15. 	The total absorbed dose will in addition depend on the path of containers through a
+continuous irradiator or the loading pattern in a batch irradiator, and on the number of
+exposure cycles.
+16. 	For a continuous irradiator with a fixed path or a batch irradiator with a fixed loading
+pattern, and with a given source strength and type of product, the key plant parameter
+controlled by the operator is conveyor speed or timer setting.
+Dose Mapping
+17. 	For the dose mapping procedure, the irradiator should be filled with irradiation containers
+packed with dummy products or a representative product of uniform density. Dosimeters
+should be placed throughout a minimum of three loaded irradiation containers which are
+passed through the irradiator, surrounded by similar containers or dummy products. If the
+product is not uniformly packed, dosimeters should be placed in a larger number of
+containers.
+18. 	The positioning of dosimeters will depend on the size of the irradiation container. For
+example, for containers up to 1 x 1 x 0.5 m, a three-dimensional 20 cm grid throughout the
+container including the outside surfaces might be suitable. If the expected positions of the
+minimum and maximum dose are known from a previous irradiator performance
+
+-- 3 of 6 --
+
+118
+n 	Annex 12 Use of ionising radiation in the manufacture of medicinal products _____
+characterisation, some dosimeters could be removed from regions of average dose and
+replaced to form a 10 cm grid in the regions of extreme dose.
+19. 	The results of this procedure will give minimum and maximum absorbed doses in the
+product and on the container surface for a given set of plant parameters, product density
+and loading pattern.
+20. 	Ideally, reference dosimeters should be used for the dose mapping exercise because of their
+greater precision. Routine dosimeters are permissible but it is advisable to place reference
+dosimeters beside them at the expected positions of minimum and maximum dose and at
+the routine monitoring position in each of the replicate irradiation containers. The observed
+values of dose will have an associated random uncertainty which can be estimated from the
+variations in replicate measurements.
+21. 	The minimum observed dose, as measured by the routine dosimeters, necessary to ensure
+that all irradiation containers receive the minimum required dose will be set in the
+knowledge of the random variability of the routine dosimeters used.
+22. 	Irradiator parameters should be kept constant, monitored and recorded during dose
+mapping. The records, together with the dosimetry results and all other records generated,
+should be retained.
+Electron beam irradiators
+Design
+23. 	The absorbed dose received by a particular portion of an irradiated product depends
+primarily on the following factors:
+a) 	the characteristics of the beam, which are: electron energy, average beam current,
+scan width and scan uniformity;
+b) 	the conveyor speed;
+c) 	the product composition and density;
+d) 	the composition, density and thickness of material between the output window and
+the particular portion of product;
+e) 	the output window to container distance.
+24. 	Key parameters controlled by the operator are the characteristics of the beam and the
+conveyor speed.
+Dose Mapping
+25. 	For the dose mapping procedure, dosimeters should be placed between layers of
+homogeneous absorber sheets making up a dummy product, or between layers of
+representative products of uniform density, such that at least ten measurements can be
+made within the maximum range of the electrons. Reference should also be made to
+sections 18 to 21.
+26. 	Irradiator parameters should be kept constant, monitored and recorded during dose
+mapping. The records, together with the dosimetry results and all other records generated,
+should be retained.
+
+-- 4 of 6 --
+
+119
+____ Annex 12 Use of ionising radiation in the manufacture of medicinal products 	n
+Re-commissioning
+27. 	Commissioning should be repeated if there is a change to the process or the irradiator
+which could affect the dose distribution to the irradiation container (e.g. change of source
+pencils). The extent to re-commissioning depends on the extent of the change in the
+irradiator or the load that has taken place. If in doubt, re-commission.
+Premises
+28. 	Premises should be designed and operated to segregate irradiated from non-irradiated
+containers to avoid their cross-contamination. Where materials are handled within closed
+irradiation containers, it may not be necessary to segregate pharmaceutical from non-
+pharmaceutical materials, provided there is no risk of the former being contaminated by
+the latter.
+Any possibility of contamination of the products by radionuclide from the source must be
+excluded.
+Processing
+29. 	Irradiation containers should be packed in accordance with the specified loading pattern(s)
+established during validation.
+30. 	During the process, the radiation dose to the irradiation containers should be monitored
+using validated dosimetry procedures. The relationship between this dose and the dose
+absorbed by the product inside the container must have been established during process
+validation and plant commissioning.
+31. 	Radiation indicators should be used as an aid to differentiating irradiated from non-
+irradiated containers. They should not be used as the sole means of differentiation or as an
+indication of satisfactory processing.
+32. 	Processing of mixed loads of containers within the irradiation cell should only be done when
+it is known from commissioning trials or other evidence that the radiation dose received by
+individual containers remains within the limits specified.
+33. 	When the required radiation dose is by design given during more than one exposure or
+passage through the plant, this should be with the agreement of the holder of the
+marketing authorisation and occur within a predetermined time period. Unplanned
+interruptions during irradiation should be notified to the holder of the marketing
+authorisation if this extends the irradiation process beyond a previously agreed period.
+34. 	Non-irradiated products must be segregated from irradiated products at all times. Methods
+of doing this include the use of radiation indicators (31.) and appropriate design of premises
+(28.).
+Gamma irradiators
+35. 	For continuous processing modes, dosimeters should be placed so that at least two are
+exposed in the irradiation at all times.
+
+-- 5 of 6 --
+
+120
+n 	Annex 12 Use of ionising radiation in the manufacture of medicinal products _____
+36. 	For batch modes, at least two dosimeters should be exposed in positions related to the
+minimum dose position.
+37. 	For continuous process modes, there should be a positive indication of the correct position of
+the source and an interlock between source position and conveyor movement. Conveyor
+speed should be monitored continuously and recorded.
+38. 	For batch process modes source movement and exposure times for each batch should be
+monitored and recorded.
+39. 	For a given desired dose, the timer setting or conveyor speed requires adjustment for source
+decay and source additions. The period of validity of the setting or speed should be recorded
+and adhered to.
+Electron Beam Irradiators
+40. 	A dosimeter should be placed on every container.
+41. 	There should be continuous recording of average beam current, electron energy, scan-width
+and conveyor speed. These variables, other than conveyor speed, need to be controlled
+within the defined limits established during commissioning since they are liable to
+instantaneous change.
+Documentation
+42. 	The numbers of containers received, irradiated and dispatched should be reconciled with
+each other and with the associated documentation. Any discrepancy should be reported and
+resolved.
+43. 	The irradiation plant operator should certify in writing the range of doses received by each
+irradiated container within a batch or delivery.
+44. 	Process and control records for each irradiation batch should be checked and signed by a
+nominated responsible person and retained. The method and place of retention should be
+agreed between the plant operator and the holder of the marketing authorisation.
+45. 	The documentation associated with the validation and commissioning of the plant should
+be retained for one year after the expiry date or at least five years after the release of the
+last product processed by the plant, whichever is the longer.
+Microbiological monitoring
+46. 	Microbiological monitoring is the responsibility of the pharmaceutical manufacturer. It may
+include environmental monitoring where product is manufactured and pre-irradiation
+monitoring of the product as specified in the marketing authorisation.
+
+-- 6 of 6 --
+

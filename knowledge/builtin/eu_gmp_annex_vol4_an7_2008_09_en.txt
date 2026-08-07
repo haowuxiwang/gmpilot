@@ -1,0 +1,210 @@
+[Source: 附件\vol4_an7_2008_09_en.pdf]
+[Format: EU GMP Regulation]
+
+1
+EUROPEAN COMMISSION
+ENTERPRISE AND INDUSTRY DIRECTORATE-GENERAL
+Consumer goods
+Pharmaceuticals
+Brussels, 01 September 2008
+EudraLex
+The Rules Governing Medicinal Products in the European Union
+Volume 4
+EU Guidelines to
+Good Manufacturing Practice
+Medicinal Products for Human and Veterinary Use
+Annex 7
+Manufacture of Herbal Medicinal Products
+Document History
+Revision to specify application of GMP provisions for active
+substances used as starting materials (Part II) for the
+manufacture of herbal medicinal products. Additional changes
+are in particular related to the new Directive 2004/24/EC on
+traditional herbal medicinal products. Collaboration between
+GMDP Inspectors Working Group (formerly Ad Hoc GMP
+Inspection Services Working Group) and Committee of Herbal
+Medicinal Products (HMPC).
+May 2005 – March
+2006
+Public consultation 	May - July 2006
+Date of revised version coming into operation 	01 September 2009
+Commission Européenne, B-1049 Bruxelles / Europese Commissie, B-1049 Brussel – Belgium. Telephone: (32-2) 299 11 11
+
+-- 1 of 6 --
+
+2
+Principle
+Because of their often complex and variable nature, control of starting materials, storage and
+processing assume particular importance in the manufacture of herbal medicinal products.
+The “starting material” in the manufacture of a herbal medicinal product1 can be a medicinal
+plant, a herbal substance2 or a herbal preparation1
+. The herbal substance shall be of suitable
+quality 	and 	supporting 	data 	should 	be 	provided 	to 	the 	manufacturer 	of 	the 	herbal
+preparation/herbal medicinal product. 	Ensuring consistent quality of the herbal substance
+may require more detailed information on its agricultural production. The selection of seeds,
+cultivation and harvesting conditions represent important aspects of the quality of the herbal
+substance and can influence the consistency of the finished product. Recommendations on an
+appropriate quality assurance system for good agricultural and collection practice are
+provided in the HMPC guidance document: “Guideline on Good Agricultural and Collection
+Practice for starting materials of herbal origin”.
+This Annex applies to all herbal starting materials: medicinal plants, herbal substances or
+herbal preparations.
+1 Throughout the annex and unless otherwise specified, the term “herbal medicinal product/ preparation”
+includes “traditional herbal medicinal product/ preparation”.
+2 The terms herbal substance and herbal preparation as defined in Directive 2004/24/EC are considered to be
+equivalent to the Ph. Eur. terms herbal drug and herbal drug preparation respectively.
+
+-- 2 of 6 --
+
+3
+Table illustrating the application of Good Practices to the manufacture of herbal
+medicinal products3 .
+Activity 	Good Agricultural
+and Collection
+Practice (GACP) 4
+Part II of
+the GMP
+Guide †
+Part I of
+the GMP
+Guide †
+Cultivation, collection and harvesting of
+plants, algae, fungi and lichens, and
+collection of exudates
+Cutting, and drying of plants, algae, fungi,
+lichens and exudates *
+Expression from plants and distillation **
+Comminution, processing of exudates,
+extraction from plants, fractionation,
+purification, concentration or fermentation
+of herbal substances
+Further processing into a dosage form
+including packaging as a medicinal product
+† Explanatory Note.
+The GMP classification of the herbal material is dependent upon the use made of it by the
+manufacturing authorisation holder. The material may be classified as an active substance, an
+intermediate or a finished product. 	It is the responsibility of the manufacturer of the
+medicinal product to ensure that the appropriate GMP classification is applied.
+* Manufacturers should ensure that these steps are carried out in accordance with the
+marketing authorisation/registration. 	For those initial steps that take place in the field, as
+justified in the marketing authorisation/registration, the standards of Good Agricultural and
+Collection Practice for starting materials of herbal origin (GACP) is applicable. 	GMP is
+applicable to further cutting and drying steps.
+** Regarding the expression from plants and distillation, if it is necessary for these activities
+to be an integral part of harvesting to maintain the quality of the product within the approved
+specifications, it is acceptable that they are performed in the field, provided that the
+cultivation is in compliance with GACP. These circumstances should be regarded as
+exceptional and justified in the relevant marketing authorisation/ registration documentation.
+For activities carried out in the field, appropriate documentation, control, and validation
+according to the GMP principles should be assured. Regulatory authorities may carry out
+GMP inspections of these activities in order to assess compliance.
+Premises & Equipment
+Storage areas
+1. Herbal substances should be stored in separate areas. The storage area should be equipped
+in such a way as to give protection against the entry of insects or other animals, especially
+rodents. Effective measures should be taken to prevent the spread of any such animals and
+3 This table expands in detail the herbal section of Table 1 in part II of the GMP Guide.
+4 as published by the European Medicines Agency EMEA
+
+-- 3 of 6 --
+
+4
+micro-organisms brought in with the herbal substance, to prevent fermentation or mould
+growth and to prevent cross-contamination. Different enclosed areas should be used to
+quarantine incoming herbal substances and for the approved herbal substances.
+2. The storage area should be well aerated and the containers should be located in such a way
+so as to allow free circulation of air.
+3. Special attention should be paid to the cleanliness and maintenance of the storage areas
+particularly when dust is generated.
+4. Storage of herbal substances and herbal preparations may require special conditions of
+humidity, temperature or light protection; these conditions should be provided and monitored.
+Production area
+5. Specific provisions should be made during sampling, weighing, mixing and processing
+operations of herbal substances and herbal preparations whenever dust is generated, to
+facilitate 	cleaning 	and 	to 	avoid 	cross-contamination, 	as 	for 	example, 	dust 	extraction,
+dedicated premises, etc.
+Equipment
+6. The equipment, filtering materials etc. used in the manufacturing process must be
+compatible with the extraction solvent, in order to prevent any release or undesirable
+absorption of substance that could affect the product.
+Documentation
+Specifications for starting materials
+7. Herbal medicinal product manufacturers must ensure that they use only herbal starting
+materials manufactured in accordance with GMP and the Marketing Authorisation dossier.
+Comprehensive documentation on audits of the herbal starting material suppliers carried out
+by, or on behalf of the herbal medicinal product manufacturer should be made available.
+Audit trails for the active substance are fundamental to the quality of the starting material.
+The manufacturer should ensure that the suppliers of the herbal substance/preparation are in
+compliance with Good Agricultural and Collection Practice.
+8. To fulfil the specification requirements described in the basic requirements of the Guide
+(chapter 4), documentation for herbal substances/preparations should include:
+— the binomial scientific name of plant (genus, species, subspecies/variety and author
+(e.g. Linnaeus); other relevant information such as the cultivar name and 	the
+chemotype should also be provided, as appropriate;
+— details of the source of the plant (country or region of origin, and where applicable,
+cultivation, 	time 	of 	harvesting, 	collection 	procedures, 	possible 	pesticides 	used,
+possible radioactive contamination etc.);
+— which part(s) of the plant is/are used;
+— when a dried plant is used, the drying system should be specified;
+— a description of the herbal substance and its macro and microscopic examination;
+
+-- 4 of 6 --
+
+5
+— suitable identification tests including, where appropriate, identification tests for
+constituents with known therapeutic activity, or markers. Specific distinctive tests are
+required where an herbal substance is liable to be adulterated/ substituted. A reference
+authentic specimen should be available for identification purposes;
+— the water content for herbal substances, determined in accordance with the European
+Pharmacopoeia;
+— assay of constituents of known therapeutic activity or, where appropriate, of markers;
+the 	methods 	suitable 	to 	determine 	possible 	pesticide 	contamination 	and 	limits
+accepted, in accordance with European Pharmacopoeia methods or, in absence thereof,
+with an appropriate validated method, unless otherwise justified;
+— tests to determine fungal and/or microbial contamination, including aflatoxins, other
+mycotoxins, pest-infestations and limits accepted, as appropriate;
+— tests for toxic metals and for likely contaminants and adulterants, as appropriate;
+— tests for foreign materials, as appropriate;
+— any 	other 	additional 	test 	according 	to 	the 	European 	Pharmacopoeia 	general
+monograph on herbal substances or to the specific monograph of the herbal substance,
+as appropriate.
+Any treatment used to reduce fungal/microbial contamination or other infestation should be
+documented. Specifications and procedures should be available and should include details of
+process, tests and limits for residues.
+Processing instructions
+9. The processing instructions should describe the different operations carried out upon the
+herbal substance such as cleaning, drying, crushing and sifting, and include drying time and
+temperatures, and methods used to control cut size or particle size.
+10. In particular, there should be written instructions and records, which ensure that each
+container of herbal substance is carefully examined to detect any adulteration/substitution or
+presence of foreign matter, such as metal or glass pieces, animal parts or excrement, stones,
+sand, etc., or rot and signs of decay.
+11. The processing instructions should also describe security sieving or other methods of
+removing foreign materials and appropriate procedures for cleaning/selection of plant material
+before the storage of the approved herbal substance or before the start of manufacturing.
+12. For the production of an herbal preparation, instructions should include details of solvent,
+time and temperature of extraction, details of any concentration stages and methods used.
+Quality control
+Sampling
+13. Due to the fact that medicinal plant/herbal substances are heterogeneous in nature, their
+sampling should be carried out with special care by personnel with particular expertise. Each
+batch should be identified by its own documentation.
+14. A reference sample of the plant material is necessary, especially in those cases where the
+herbal 	substance 	is 	not 	described 	in 	the 	European 	Pharmacopoeia 	or 	in 	another
+
+-- 5 of 6 --
+
+6
+Pharmacopoeia of a Member State. Samples of unmilled plant material are required if
+powders are used.
+15. Quality Control personnel should have particular expertise and experience in herbal
+substances, herbal preparations and/or herbal medicinal products in order to be able to carry
+out identification tests and recognise adulteration, the presence of fungal growth, infestations,
+non-uniformity within a delivery of crude material, etc.
+16. The identity and quality of herbal substances, herbal preparations and of herbal medicinal
+products should be determined in accordance with the relevant current European guidance on
+quality and specifications of herbal medicinal products and traditional herbal medicinal
+products and, where relevant, to the specific Ph. Eur. Monographs.
+
+-- 6 of 6 --
+

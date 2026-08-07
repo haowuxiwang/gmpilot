@@ -1,0 +1,73 @@
+[Source: 附件\anx04en200408_en.pdf]
+[Format: EU GMP Regulation]
+
+ANNEX 4
+MANUFACTURE OF VETERINARY MEDICINAL PRODUCTS
+OTHER THAN IMMUNOLOGICAL VETERINARY MEDICINAL
+PRODUCTS
+Note
+This annex applies to all veterinary medicinal products falling within the scope of Directive
+2001/82/EC other than immunological veterinary medicinal products, which are the subject of a
+separate annex.
+Manufacture of premixes for medicated feedingstuffs
+For the purposes of these paragraphs,
+— 	a medicated feedingstuff is any mixture of a veterinary medicinal product or products and feed
+or feeds which is ready prepared for marketing and intended to be fed to animals without further
+processing because of its curative or preventative properties or other properties as a medicinal
+product covered by Article 1 (2) of Directive 2001/82/EC;
+— 	a pre-mix for medicated feedingstuffs is any veterinary medicinal product prepared in advance
+with a view to the subsequent manufacture of medicated feedingstuffs.
+1. 	The manufacture of premixes for medicated feedingstuffs requires the use of large quantities of
+vegetable matter which is likely to attract insects and rodents. Premises should be designed,
+equipped and operated to minimise this risk (point 3.4.) and should also be subject to a regular
+pest control programme.
+2. 	Because of the large volume of dust generated during the production of bulk material for
+premixes, specific attention should be given to the need to avoid cross contamination and
+facilitate cleaning (point 3.14), for example through the installation of sealed transport systems
+and dust extraction, whenever possible. The installation of such systems does not, however,
+eliminate the need for regular cleaning of production areas.
+3. 	Parts of the process likely to have a significant adverse influence on the stability of the active
+ingredient(s) (e.g. use of steam in pellet manufacture) should be carried out in an uniform
+manner from batch to batch.
+4. 	Consideration should be given to undertake the manufacture of premixes in dedicated areas
+which, if at all possible, do not form part of a main manufacturing plant. Alternatively, such
+dedicated areas should be surrounded by a buffer zone in order to minimise the risk of
+contamination of other manufacturing areas.
+
+-- 1 of 2 --
+
+Manufacture of ectoparasiticides
+5. 	In derogation from point 3.6, ectoparasiticides for external application to animals, which are
+veterinary medicinal products, and subject to marketing authorisation, may be produced and
+filled on a campaign basis in pesticide specific areas. However other categories of veterinary
+medicinal products should not be produced in such areas.
+6. 	Adequate validated cleaning procedures should be employed to prevent cross contamination,
+and steps should be taken to ensure the secure storage of the veterinary medicinal product in
+accordance with the guide.
+Manufacture of veterinary medicinal products containing
+penicillins
+7. 	The use of penicillins in veterinary medicine does not present the same risks of hypersensitivity
+in animals as in humans. Although incidents of hypersensitivity have been recorded in horses
+and dogs, there are other materials which are toxic to certain species, e.g. the ionophore
+antibiotics in horses. Although desirable, the requirements that such products be manufactured
+in dedicated, self-contained facilities (point 3.6) may be dispensed with in the case of facilities
+dedicated to the manufacture of veterinary medicinal products only. However, all necessary
+measures should be taken to avoid cross contamination and any risk to operator safety in
+accordance with the guide. In such circumstances, penicillin-containing products should be
+manufactured on a campaign basis and should be followed by appropriate, validated
+decontamination and cleaning procedures.
+Retention of samples (point 1.4 viii and point 6.14)
+8. 	It is recognised that because of the large volume of certain veterinary medicinal products in their
+final packaging, in particular premixes, it may not be feasible for manufacturers to retain
+samples from each batch in its final packaging. However, manufacturers should ensure that
+sufficient representative samples of each batch are retained and stored in accordance with the
+guide.
+9. 	In all cases, the container used for storage should be composed of the same material as the
+market primary container in which the product is marketed.
+Sterile veterinary medicinal products
+10. 	Where this has been accepted by the competent authorities, terminally sterilised veterinary
+medicinal products may be manufactured in a clean area of a lower grade than the grade
+required in the annex on “Sterile preparations”, but at least in a grade D environment.
+
+-- 2 of 2 --
+

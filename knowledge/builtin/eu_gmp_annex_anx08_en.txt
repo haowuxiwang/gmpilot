@@ -1,0 +1,72 @@
+[Source: 附件\anx08_en.pdf]
+[Format: EU GMP Regulation]
+
+105
+ANNEX 8
+SAMPLING OF STARTING AND PACKAGING MATERIALS
+Principle
+Sampling is an important operation in which only a small fraction of a batch is taken. Valid
+conclusions on the whole cannot be based on tests which have been carried out on non-
+representative samples. Correct sampling is thus an essential part of a system of Quality
+Assurance.
+Note
+Sampling is dealt with in Chapter 6 of the Guide, items 6.11. to 6.14. This annex gives
+additional guidance on the sampling of starting and packaging materials.
+Personnel
+1. 	Personnel who take samples should receive initial and on-going regular training in the
+disciplines relevant to correct sampling. This training should include:
+— 	sampling plans,
+— 	written sampling procedures,
+— 	the techniques and equipment for sampling,
+— 	the risks of cross-contamination,
+— 	the precautions to be taken with regard to unstable and/or sterile substances,
+— 	the importance of considering the visual appearance of materials, containers and
+labels,
+— 	the importance of recording any unexpected or unusual circumstances.
+Starting materials
+2. 	The identity of a complete batch of starting materials can normally only be ensured if
+individual samples are taken from all the containers and an identity test performed on each
+sample. It is permissible to sample only a proportion of the containers where a validated
+procedure has been established to ensure that no single container of starting material has
+been incorrectly labelled.
+3. 	This validation should take account of at least the following aspects:
+— 	the nature and status of the manufacturer and of the supplier and their
+understanding of the GMP requirements of the Pharmaceutical Industry;
+— 	the Quality Assurance system of the manufacturer of the starting material;
+
+-- 1 of 2 --
+
+106
+n 	Annex 8 	Sampling of starting and packaging materials _______________________
+— 	the manufacturing conditions under which the starting material is produced and
+controlled;
+— 	the nature of the starting material and the medicinal products in which it will be
+used.
+Under such a system, it is possible that a validated procedure exempting identity testing of
+each incoming container of starting material could be accepted for:
+— 	starting materials coming from a single product manufacturer or plant;
+— 	starting materials coming directly from a manufacturer or in the manufacturer’s
+sealed container where there is a history of reliability and regular audits of the
+manufacturer’s Quality Assurance system are conducted by the purchaser (the
+manufacturer of the medicinal product) or by an officially accredited body.
+It is improbable that a procedure could be satisfactorily validated for:
+— 	starting materials supplied by intermediaries such as brokers where the source of
+manufacture is unknown or not audited;
+— 	starting materials for use in parenteral products.
+4. 	The quality of a batch of starting materials may be assessed by taking and testing a
+representative sample. The samples taken for identity testing could be used for this
+purpose. The number of samples taken for the preparation of a representative sample
+should be determined statistically and specified in a sampling plan. The number of
+individual samples which may be blended to form a composite sample should also be
+defined, taking into account the nature of the material, knowledge of the supplier and the
+homogeneity of the composite sample.
+Packaging material
+5. 	The sampling plan for packaging materials should take account of at least the following:
+the quantity received, the quality required, the nature of the material (e.g. primary
+packaging materials and/or printed packaging materials), the production methods, and
+what is known of the Quality Assurance system of the packaging materials manufacturer
+based on audits. The number of samples taken should be determined statistically and
+specified in a sampling plan.
+
+-- 2 of 2 --
+

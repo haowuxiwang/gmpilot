@@ -1,0 +1,131 @@
+[Source: 第一部分\vol4-chap7_2012-06_en.pdf]
+[Format: EU GMP Regulation]
+
+EUROPEAN COMMISSION
+HEALTH AND CONSUMERS DIRECTORATE-GENERAL
+Health Systems and Products
+Medicinal Products - Quality, safety and efficacy
+Brussels,
+SANCO/AM/sl/ddg1.d.6(2012)860362
+EudraLex
+The Rules Governing Medicinal Products in the European Union
+Volume 4
+EU Guidelines for
+Good Manufacturing Practice for
+Medicinal Products for Human and Veterinary Use
+Chapter 7
+Outsourced Activities
+Legal 	basis 	for 	publishing 	the 	detailed 	guidelines: 	Article 	47 	of 	Directive
+2001/83/EC on the Community code relating to medicinal products for human use and
+Article 51 of Directive 2001/82/EC on the Community code relating to veterinary
+medicinal products. This document provides guidance for the interpretation of the
+principles and guidelines of good manufacturing practice (GMP) for medicinal
+products as laid down in Directive 2003/94/EC for medicinal products for human use
+and Directive 91/412/EEC for veterinary use.
+Status of the document: revision 1
+Reasons for changes: 	In view of the ICH Q10 guideline on the Pharmaceutical
+Quality System, Chapter 7 of the GMP Guide has been revised in order to provide
+updated guidance on outsourced GMP regulated activities beyond the current scope of
+contract manufacture and analysis operations. 	The title of the Chapter has been
+changed to reflect this.
+Deadline for coming into operation: 31 January 2013
+Ref. Ares(2012)778531 - 28/06/2012
+
+-- 1 of 4 --
+
+Commission Européenne, B-1049 Bruxelles / Europese Commissie, B-1049 Brussel – Belgium. Telephone: (32-2) 299 11 11
+Principle
+Any activity covered by the GMP Guide that is outsourced should be appropriately
+defined, agreed and controlled in order to avoid misunderstandings which could result
+in a product or operation of unsatisfactory quality. There must be a written Contract
+between the Contract Giver and the Contract Acceptor which clearly establishes the
+duties of each party. The Quality Management System of the Contract Giver must
+clearly state the way that the Qualified Person certifying each batch of product for
+release exercises his full responsibility.
+Note: This Chapter deals with the responsibilities of manufacturers towards the
+Competent Authorities of the Member States with respect to the granting of marketing
+and manufacturing authorizations. It is not intended in any way to affect the
+respective liability of Contract Acceptors and Contract Givers to consumers; this is
+governed by other provisions of Community and national law.
+General
+7.1 	There should be a written Contract covering the outsourced activities, the
+products or operations to which they are related, and any technical arrangements
+made in connection with it.
+7.2 	All arrangements for the outsourced activities including any proposed changes
+in technical or other arrangements should be in accordance with regulations in force,
+and the Marketing Authorisation for the product concerned, where applicable.
+7.3 	Where the marketing authorization holder and the manufacturer are not the
+same, appropriate arrangements should be in place, taking into account the principles
+described in this chapter.
+The Contract Giver
+7.4 	The pharmaceutical quality system of the Contract Giver should include the
+control and review of any outsourced activities. The Contract Giver is ultimately
+responsible to ensure processes are in place to assure the control of outsourced
+activities. These processes should incorporate quality risk management principles and
+notably include:
+7.5 	Prior to outsourcing activities, the Contract Giver is responsible for assessing
+the legality, suitability and the competence of the Contract Acceptor to carry out
+successfully the outsourced activities. The Contract Giver is also responsible for
+ensuring by means of the Contract that the principles and guidelines of GMP as
+interpreted in this Guide are followed.
+7.6 	The Contract Giver should provide the Contract Acceptor with all the
+information and knowledge necessary to carry out the contracted operations correctly
+in accordance with regulations in force, and the Marketing Authorisation for the
+product concerned. 	The Contract Giver should ensure that the Contract Acceptor is
+
+-- 2 of 4 --
+
+fully aware of any problems associated with the product or the work which might
+pose a hazard to his premises, equipment, personnel, other materials or other products.
+7.7 	The Contract Giver should monitor and review the performance of the
+Contract 	Acceptor 	and 	the 	identification 	and 	implementation 	of 	any 	needed
+improvement.
+7.8 	The Contract Giver should be responsible for reviewing and assessing the
+records and the results related to the outsourced activities. He should also ensure,
+either by himself, or based on the confirmation of the Contract Acceptor’s Qualified
+Person, that all products and materials delivered to him by the Contract Acceptor have
+been processed in accordance with GMP and the marketing authorisation.
+The Contract Acceptor
+7.9 	The Contract Acceptor must be able to carry out satisfactorily the work
+ordered 	by 	the 	Contract 	Giver 	such 	as having 	adequate 	premises, 	equipment,
+knowledge, experience, and competent personnel.
+7.10 	The 	Contract 	Acceptor 	should 	ensure 	that 	all 	products, 	materials 	and
+knowledge delivered to him are suitable for their intended purpose.
+7.11 	The Contract Acceptor should not subcontract to a third party any of the work
+entrusted to him under the Contract without the Contract Giver’s prior evaluation and
+approval of the arrangements. Arrangements made between the Contract Acceptor
+and any third party should ensure that information and knowledge, including those
+from assessments of the suitability of the third party, are made available in the same
+way as between the original Contract Giver and Contract Acceptor.
+7.12 	The Contract Acceptor should not make unauthorized changes, outside the
+terms of the Contract, which may adversely affect the quality of the outsourced
+activities for the Contract Giver.
+7.13 	The Contract Acceptor should understand that outsourced activities, including
+contract analysis, may be subject to inspection by the competent authorities.
+The Contract
+7.14 	A Contract should be drawn up between the Contract Giver and the Contract
+Acceptor 	which 	specifies 	their 	respective 	responsibilities 	and 	communication
+processes relating to the outsourced activities. Technical aspects of the Contract
+should 	be 	drawn 	up 	by 	competent 	persons 	suitably 	knowledgeable 	in 	related
+outsourced 	activities 	and 	Good 	Manufacturing 	Practice. 	All 	arrangements 	for
+outsourced activities must be in accordance with regulations in force and the
+Marketing Authorisation for the product concerned and agreed by both parties.
+7.15 	The Contract should describe clearly who undertakes each step of the
+outsourced activity, e.g. knowledge management, technology transfer, supply chain,
+subcontracting, quality and purchasing of materials, testing and releasing materials,
+
+-- 3 of 4 --
+
+undertaking production and quality controls (including in-process controls, sampling
+and analysis).
+7.16 	All records related to the outsourced activities, e.g. manufacturing, analytical
+and distribution records, and reference samples, should be kept by, or be available to,
+the Contract Giver. Any records relevant to assessing the quality of a product in the
+event of complaints or a suspected defect or to investigating in the case of a suspected
+falsified product must be accessible and specified in the relevant procedures of the
+Contract Giver.
+7.17 The Contract should permit the Contract Giver to audit outsourced activities,
+performed by the Contract Acceptor or his mutually agreed subcontractors
+
+-- 4 of 4 --
+

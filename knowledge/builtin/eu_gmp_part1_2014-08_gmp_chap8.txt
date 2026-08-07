@@ -1,0 +1,239 @@
+[Source: 第一部分\2014-08_gmp_chap8.pdf]
+[Format: EU GMP Regulation]
+
+1
+EUROPEAN COMMISSION
+HEALTH AND CONSUMERS DIRECTORATE-GENERAL
+Health systems and products
+Medicinal products – quality, safety and efficacy
+Brussels, 13 August 2014
+Ares(2014)2674297
+EudraLex
+The Rules Governing Medicinal Products in the European Union
+Volume 4
+EU Guidelines for
+Good Manufacturing Practice for
+Medicinal Products for Human and Veterinary Use
+Part 1
+Chapter 8: Complaints, Quality Defects and Product Recalls
+Legal basis for publishing the detailed guidelines: Article 47 of Directive 2001/83/EC on the
+Community code relating to medicinal products for human use and Article 51 of Directive
+2001/82/EC on the Community code relating to veterinary medicinal products. This document
+provides guidance for the interpretation of the principles and guidelines of good manufacturing
+practice (GMP) for medicinal products as laid down in Directive 2003/94/EC for medicinal
+products for human use and Directive 91/412/EEC for veterinary use.
+Status of the document: Revision
+Reasons for changes: Extensive changes have been made to this Chapter which now reflect that
+Quality Risk Management principles should be applied when investigating quality defects or
+complaints and when making decisions in relation to product recalls or other risk-mitigating
+actions. It emphasises the need for the cause(s) of quality defects or complaints to be
+investigated and determined, and that appropriate preventative actions are put in place to guard
+against a recurrence of the issue and clarifies expectations and responsibilities in relation to the
+reporting of quality defects to the Competent Authorities.
+Deadline for coming into operation: 1 March 2015.
+
+-- 1 of 6 --
+
+2
+Principle
+In order to protect public and animal health, a system and appropriate procedures should be in
+place to record, assess, investigate and review complaints including potential quality defects,
+and if necessary, to effectively and promptly recall medicinal products for human or veterinary
+use and investigational medicinal products from the distribution network. Quality Risk
+Management principles should be applied to the investigation and assessment of quality defects
+and to the decision-making process in relation to product recalls corrective and preventative
+actions and other risk-reducing actions. Guidance in relation to these principles is provided in
+Chapter 1.
+All concerned competent authorities should be informed in a timely manner in case of a
+confirmed quality defect (faulty manufacture, product deterioration, detection of falsification,
+non-compliance with the marketing authorisation or product specification file, or any other
+serious quality problems) with a medicinal or investigational medicinal product which may
+result in the recall of the product or an abnormal restriction in the supply. In situations where
+product on the market is found to be non-compliant with the marketing authorisation, there is no
+requirement to notify concerned competent authorities provided the degree of non-compliance
+satisfies the Annex 16 restrictions regarding the handling of unplanned deviations.
+In case of outsourced activities, a contract should describe the role and responsibilities of the
+manufacturer, the marketing authorisation holder and/or sponsor and any other relevant third
+parties in relation to assessment, decision-making, and dissemination of information and
+implementation of risk-reducing actions relating to a defective product. Guidance in relation to
+contracts is provided in Chapter 7. Such contracts should also address how to contact those
+responsible at each party for the management of quality defect and recall issues.
+Personnel and Organisation
+8.1 Appropriately trained and experienced personnel should be responsible for managing
+complaint and quality defect investigations and for deciding the measures to be taken to
+manage any potential risk(s) presented by those issues, including recalls. These persons
+should be independent of the sales and marketing organisation, unless otherwise justified.
+If these persons do not include the Qualified Person involved in the certification for
+release of the concerned batch or batches, the latter should be made formally aware of any
+investigations, any risk-reducing actions and any recall operations, in a timely manner.
+8.2 Sufficient trained personnel and resources should be made available for the handling,
+assessment, investigation and review of complaints and quality defects and for
+implementing any risk-reducing actions. Sufficient trained personnel and resources should
+also be available for the management of interactions with competent authorities.
+8.3 The use of inter-disciplinary teams should be considered, including appropriately trained
+Quality Management personnel.
+8.4 In situations in which complaint and quality defect handling is managed centrally within
+an organisation, the relative roles and responsibilities of the concerned parties should be
+documented. Central management should not, however, result in delays in the
+investigation and management of the issue.
+
+-- 2 of 6 --
+
+3
+Procedures for handling and investigating complaints including possible quality defects
+8.5 There should be written procedures describing the actions to be taken upon receipt of a
+complaint. All complaints should be documented and assessed to establish if they
+represent a potential quality defect or other issue.
+8.6 Special attention should be given to establishing whether a complaint or suspected quality
+defect relates to falsification.
+8.7 As not all complaints received by a company may represent actual quality defects,
+complaints which do not indicate a potential quality defect should be documented
+appropriately and communicated to the relevant group or person responsible for the
+investigation and management of complaints of that nature, such as suspected adverse
+events.
+8.8 There should be procedures in place to facilitate a request to investigate the quality of a
+batch of a medicinal product in order to support an investigation into a reported suspected
+adverse event.
+8.9 When a quality defect investigation is initiated, procedures should be in place to address at
+least the following:
+i. The description of the reported quality defect.
+ii. The determination of the extent of the quality defect. The checking or testing of
+reference and/or retention samples should be considered as part of this, and in certain
+cases, a review of the batch production record, the batch certification record and the
+batch distribution records (especially for temperature-sensitive products) should be
+performed.
+iii. The need to request a sample, or the return, of the defective product from the
+complainant and, where a sample is provided, the need for an appropriate evaluation
+to be carried out.
+iv. The assessment of the risk(s) posed by the quality defect, based on the severity and
+extent of the quality defect.
+v. The decision-making process that is to be used concerning the potential need for risk-
+reducing actions to be taken in the distribution network, such as batch or product
+recalls, or other actions.
+vi. The assessment of the impact that any recall action may have on the availability of
+the medicinal product to patients/animals in any affected market, and the need to
+notify the relevant authorities of such impact.
+vii. The internal and external communications that should be made in relation to a quality
+defect and its investigation.
+viii. The identification of the potential root cause(s) of the quality defect.
+ix. The need for appropriate Corrective and Preventative Actions (CAPAs) to be
+identified and implemented for the issue, and for the assessment of the effectiveness
+of those CAPAs.
+
+-- 3 of 6 --
+
+4
+Investigation and Decision-making
+8.10 The information reported in relation to possible quality defects should be recorded,
+including all the original details. The validity and extent of all reported quality defects
+should be documented and assessed in accordance with Quality Risk Management
+principles in order to support decisions regarding the degree of investigation and action
+taken.
+8.11 If a quality defect is discovered or suspected in a batch, consideration should be given to
+checking other batches and in some cases other products, in order to determine whether
+they are also affected. In particular, other batches which may contain portions of the
+defective batch or defective components should be investigated.
+8.12 Quality defect investigations should include a review of previous quality defect reports or
+any other relevant information for any indication of specific or recurring problems
+requiring attention and possibly further regulatory action.
+8.13 The decisions that are made during and following quality defect investigations should
+reflect the level of risk that is presented by the quality defect as well as the seriousness of
+any non-compliance with respect to the requirements of the marketing
+authorisation/product specification file or GMP. Such decisions should be timely to ensure
+that patient and animal safety is maintained, in a way that is commensurate with the level
+of risk that is presented by those issues.
+8.14 As comprehensive information on the nature and extent of the quality defect may not
+always be available at the early stages of an investigation, the decision-making processes
+should still ensure that appropriate risk-reducing actions are taken at an appropriate time-
+point during such investigations. All the decisions and measures taken as a result of a
+quality defect should be documented.
+8.15 Quality defects should be reported in a timely manner by the manufacturer to the
+marketing authorisation holder/sponsor and all concerned Competent Authorities in cases
+where the quality defect may result in the recall of the product or in an abnormal
+restriction in the supply of the product.
+Root Cause Analysis and Corrective and Preventative Actions
+8.16 An appropriate level of root cause analysis work should be applied during the
+investigation of quality defects. In cases where the true root cause(s) of the quality defect
+cannot be determined, consideration should be given to identifying the most likely root
+cause(s) and to addressing those.
+8.17 Where human error is suspected or identified as the cause of a quality defect, this should
+be formally justified and care should be exercised so as to ensure that process, procedural
+or system-based errors or problems are not overlooked, if present.
+8.18 Appropriate CAPAs should be identified and taken in response to a quality defect. The
+effectiveness of such actions should be monitored and assessed.
+8.19 Quality defect records should be reviewed and trend analyses should be performed
+regularly for any indication of specific or recurring problems requiring attention.
+
+-- 4 of 6 --
+
+5
+Product Recalls and other potential risk-reducing actions
+8.20 There should be established written procedures, regularly reviewed and updated when
+necessary, in order to undertake any recall activity or implement any other risk-reducing
+actions.
+8.21 After a product has been placed on the market, any retrieval of it from the distribution
+network as a result of a quality defect should be regarded and managed as a recall. (This
+provision does not apply to the retrieval (or return) of samples of the product from the
+distribution network to facilitate an investigation into a quality defect issue/report.)
+8.22 Recall operations should be capable of being initiated promptly and at any time. In certain
+cases recall operations may need to be initiated to protect public or animal health prior to
+establishing the root cause(s) and full extent of the quality defect
+8.23 The batch/product distribution records should be readily available to the persons
+responsible for recalls, and should contain sufficient information on wholesalers and
+directly supplied customers (with addresses, phone and/or fax numbers inside and outside
+working hours, batches and amounts delivered), including those for exported products and
+medical samples.
+8.24 In the case of investigational medicinal products, all trial sites should be identified and the
+countries of destination should be indicated. In the case of an investigational medicinal
+product for which a marketing authorisation has been issued, the manufacturer of the
+investigational medicinal product should, in cooperation with the sponsor, inform the
+marketing authorisation holder of any quality defect that could be related to the authorised
+medicinal product. The sponsor should implement a procedure for the rapid unblinding of
+blinded products, where this is necessary for a prompt recall. The sponsor should ensure
+that the procedure discloses the identity of the blinded product only in so far as is
+necessary.
+8.25 Consideration should be given following consultation with the concerned Competent
+Authorities, as to how far into the distribution network a recall action should extend,
+taking into account the potential risk to public or animal health and any impact that the
+proposed recall action may have. The Competent Authorities should also be informed in
+situations in which no recall action is being proposed for a defective batch because the
+batch has expired (such as with short shelf-life products.)
+8.26 All concerned Competent Authorities should be informed in advance in cases where
+products are intended to be recalled. For very serious issues (i.e. those with the potential
+to seriously impact upon patient or animal health), rapid risk-reducing actions (such as a
+product recall) may have to be taken in advance of notifying the Competent Authorities.
+Wherever possible, attempts should be made to agree these in advance of their execution
+with the concerned Competent Authorities
+8.27 It should also be considered whether the proposed recall action may affect different
+markets in different ways, and if this is the case, appropriate market-specific risk-reducing
+actions should be developed and discussed with the concerned competent authorities.
+Taking account of its therapeutic use the risk of shortage of a medicinal product which has
+no authorised alternative should be considered before deciding on a risk-reducing action
+such as a recall. Any decisions not to execute a risk-reducing action which would
+otherwise be required should be agreed with the competent authority in advance.
+
+-- 5 of 6 --
+
+6
+8.28 Recalled products should be identified and stored separately in a secure area while
+awaiting a decision on their fate. A formal disposition of all recalled batches should be
+made and documented. The rationale for any decision to rework recalled products should
+be documented and discussed with the relevant competent authority. The extent of shelf-
+life remaining for any reworked batches that are being considered for placement onto the
+market should also be considered.
+8.29 The progress of the recall process should be recorded until closure and a final
+report issued, including a reconciliation between the delivered and recovered
+quantities of the concerned products/batches.
+8.30 The effectiveness of the arrangements in place for recalls should be periodically evaluated
+to confirm that they remain robust and fit for use. Such evaluations should extend to both
+within office-hour situations as well as out-of-office hour situations and, when performing
+such evaluations, consideration should be given as to whether mock-recall actions should
+be performed. This evaluation should be documented and justified.
+8.31 In addition to recalls, there are other potential risk-reducing actions that may be
+considered in order to manage the risks presented by quality defects. Such actions may
+include the issuance of cautionary communications to healthcare professionals in relation
+to their use of a batch that is potentially defective. These should be considered on a case-
+by-case basis and discussed with the concerned competent authorities.
+
+-- 6 of 6 --
+

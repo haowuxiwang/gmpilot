@@ -1,0 +1,472 @@
+[Source: 附件\v4_an16_201510_en.pdf]
+[Format: EU GMP Regulation]
+
+EUROPEAN COMMISSION
+DIRECTORATE-GENERAL FOR HEALTH AND FOOD SAFETY
+Medicinal products – quality, safety and efficacy
+Brussels, 12 October 2015
+EudraLex
+Volume 4
+EU Guidelines for
+Good Manufacturing Practice for
+Medicinal Products for Human and Veterinary Use
+Annex 16: Certification by a Qualified Person and Batch Release
+Legal basis for publishing the detailed guidelines: Article 47 of Directive 2001/83/EC,
+as amended, on the Community code relating to medicinal products for human use and
+Article 51 of Directive 2001/82/EC on the Community code relating to veterinary
+medicinal products. This document provides guidance for the interpretation of the
+principles and guidelines of good manufacturing practice (GMP) for medicinal products
+as laid down in Directive 2003/94/EC for medicinal products for human use and
+Directive 91/412/EEC for veterinary use.
+Status of the document: Revision.
+Reasons for changes: The Annex has been revised to reflect the globalisation of the
+pharmaceutical supply chains and the introduction of new quality control strategies. The
+revision has been carried out in the light of Directive 2011/62/EU amending Directive
+2001/83/EC as regards the prevention of the entry into the legal supply chain of falsified
+medicinal products. This version also implements ICH Q8, Q9 and Q10 documents, and
+interpretation documents, such as the manufacturing and importation authorisation (MIA)
+interpretation document, as applicable. Also, some areas, where the interpretation by
+Member States has not been consistent, have been clarified.
+Deadline for coming into operation: 15 April 2016.
+Ref. Ares(2015)4234460 - 12/10/2015
+
+-- 1 of 12 --
+
+2
+Scope
+This Annex provides guidance on the certification by a Qualified Person (QP) and on
+batch release within the European Union (EU) of medicinal products for human or
+veterinary use holding a marketing authorisation (MA) or made for export. The
+principles of this guidance also apply to investigational medicinal products (IMP) for
+human use, subject to any difference in the legal provisions and more specific guidance
+published by the European Commission.
+The relevant legislative requirements are provided in Article 51 of Directive 2001/83/EC,
+as amended, and in Article 55 of Directive 2001/82/EC. Notice is taken of the
+arrangements referred to in Article 51(2) of Directive 2001/83/EC, as amended, and
+Article 55(2) of Directive 2001/82/EC, e.g. Mutual Recognition Agreements (MRA).
+This Annex does not address the “Official Control Authority Batch Release” which may
+be specified for certain blood and immunological products in accordance with Articles
+109, 110, 113 and 114 of Directive 2001/83/EC, as amended, and Articles 81 and 82 of
+Directive 2001/82/EC. However, this Annex does apply to the QP certification and
+subsequent release of such batches.
+The basic arrangements for batch release for a product are defined by its MA. Nothing in
+this Annex should be taken as overriding those arrangements.
+General principles
+The ultimate responsibility for the performance of a medicinal product over its lifetime,
+its safety, quality and efficacy, lies with the marketing authorisation holder (MAH).
+However, the QP is responsible for ensuring that each individual batch has been
+manufactured and checked in compliance with laws in force in the Member State where
+certification takes place, in accordance with the requirements of the marketing
+authorisation (MA) and with Good Manufacturing Practice (GMP).
+The process of batch release comprises of:
+i. The checking of the manufacture and testing of the batch in accordance with
+defined release procedures.
+ii. The certification of the finished product batch performed by a QP signifying that
+the batch is in compliance with GMP and the requirements of its MA. This
+represents the quality release of the batch.
+iii. The transfer to saleable stock, and/or export of the finished batch of product
+which should take into account the certification performed by the QP. If this
+transfer is performed at a site other than that where certification takes place, then
+the arrangement should be documented in a written agreement between the sites.
+The purpose of controlling batch release is notably to ensure that:
+i. The batch has been manufactured and checked in accordance with the
+requirements of its MA.
+ii. The batch has been manufactured and checked in accordance with the principles
+and guidelines of GM P.
+iii. Any other relevant legal requirements are taken into account.
+iv. In the event that a quality defect as referred to in Chapter 8 of EudraLex, Volume
+4, Part I, needs to be investigated or a batch recalled, to ensure that any QPs
+
+-- 2 of 12 --
+
+3
+involved in the certification or confirmation1 and any relevant records are readily
+identifiable.
+1. THE PROCESS OF CERTIFICATION
+1.1. Each batch of finished product must be certified2 by a QP within the EU before
+being released for sale or supply in the EU or for export. Certification can only be
+performed by a QP of the manufacturer and/or importer which are described in
+the MA.
+1.2. Any QP involved in the certification, or confirmation of a batch must have
+detailed knowledge of the steps for which they are taking responsibility. The QPs
+should be able to prove their continuous training regarding the product type,
+production processes, technical advances and changes to GMP.
+1.3. There may be several sites involved in the various stages of manufacture,
+importation, testing and storage of a batch before it undergoes certification.
+Regardless of how many sites are involved, the QP performing certification of the
+finished product must ensure that all necessary steps have been completed under
+accepted pharmaceutical quality systems to assure compliance of the batch with
+GMP, the MA and any other legal obligations in the Member State where
+certification is taking place.
+1.4. For manufacturing steps performed at sites in the EU each manufacturing site
+must have at least one QP.
+1.4.1 Where the site only undertakes partial manufacturing operations in relation
+to a batch, then a QP at that site must at least confirm that the operations
+undertaken by the site have been performed in accordance with GMP and
+the terms of the written agreement detailing the operations for which the
+site is responsible. If the QP is responsible for providing confirmation of
+compliance for those operations with the relevant MA, then the QP should
+have access to the necessary details of the MA.
+1.4.2 The QP who performs certification of the finished product batch may
+assume full responsibility for all stages of manufacture of the batch or this
+responsibility may be shared with other QPs who have provided
+confirmation for specified steps in the manufacture and control of a batch.
+These could be other QPs who are operating under the same manufacturing
+authorisation (MIA) holder or QPs operating under different MIA holders.
+1.4.3 Any sharing of responsibilities amongst QPs in relation to compliance of a
+batch must be defined in a document formally agreed by all parties. This
+document should detail responsibility for assessment of the impact any
+deviation(s) has/have on compliance of the batch with GMP and the MA.
+1.5 For medicinal products manufactured outside the EU, physical importation and
+certification are the final stages of manufacturing which precede the transfer to
+saleable stock of the batch.
+1.5.1 The process of certification as described in Section 1 of this Annex, applies
+to all medicinal products intended to be released for the EU markets, or for
+export, irrespective of the complexity of the supply chain and the global
+locations of manufacturing sites involved.
+1 Information required for the confirmation, where QP responsibilities for the batch are being transferred
+between sites, is presented in Appendix I to this Annex.
+2 The contents of a batch certificate for medicinal products are presented in Appendix II to this Annex.
+
+-- 3 of 12 --
+
+4
+1.5.2 In accordance with the principles described in Section 1.4 of this Annex, the
+QP certifying the finished medicinal product batch may take account of the
+confirmation by, and share defined responsibilities with, other QPs in
+relation to any manufacturing or importation operations taking place at
+other sites in the EU and other manufacturing authorisation holders defined
+in the relevant MA.
+1.5.3 Conditions of storage and transport for the batch and the sample, if sent
+separately, should be taken into account by the QP before certification of a
+batch.
+1.5.4 The QP certifying the finished product is responsible for ensuring that each
+finished medicinal product batch has been manufactured in accordance with
+GMP and the MA. Unless an MRA or similar agreement is in place between
+the EU and the exporting country, the QP is also responsible for ensuring
+that the finished medicinal product batch has undergone in a Member State
+a full qualitative analysis, a quantitative analysis of at least all the active
+substances and all the other tests or checks necessary to ensure the quality
+of medicinal products is in accordance with the requirements of the MA.
+1.5.5 Sampling of imported product should be fully representative of the batch.
+Samples may either be taken after arrival in the EU, or be taken at the
+manufacturing site in the third country in accordance with a technically
+justified approach which is documented within the company’s quality
+system. Responsibilities in relation to the sampling should be defined in a
+written agreement between the sites. Any samples taken outside the EU
+should be shipped under equivalent transport conditions as the batch that
+they represent.
+1.5.6 Where sampling is performed at a third country manufacturing site, the
+technical justification should include a formal Quality Risk Management
+process to identify and manage any risks associated with this approach.
+This should be fully documented and include at least the following
+elements:
+i. Audit of the manufacturing activity including any sampling
+activity at the third country site and evaluation of subsequent
+transportation steps of both the batch and samples to ensure that
+the samples are representative of the imported batch.
+ii. A comprehensive scientific study, including data to support any
+conclusions that samples taken in the third country are
+representative of the batch after importation. This study should at
+least include:
+o Description of the sampling process in the third country.
+o Description of the transported conditions of the sample and
+the imported batch. Any differences should be justified.
+o Comparative analysis of samples taken in the third country
+and samples taken after importation.
+o Consideration of the time interval between sampling and
+importation of the batch and generation of data to support
+appropriate defined limits.
+iii. Provision for random periodic analysis of samples taken after
+importation to justify ongoing reliance on samples taken in a third
+country.
+
+-- 4 of 12 --
+
+5
+iv. A review of any unexpected result or confirmed out of
+specification result. These may have implications for reliance on
+sampling performed at the third country manufacturing site and
+should be notified to the Supervisory Authority for the site where
+certification is performed. Such an occurrence should be regarded
+as a potential quality defect and investigated in line with the
+guidance in Chapter 8 of EudraLex, Volume 4, Part I.
+1.5.7 Different imported finished product batches may originate from the same
+bulk product batch. The QPs certifying the different finished product
+batches may base their decision on the quality control testing of the first
+imported finished batch provided that a justification has been documented
+based on Quality Risk Management principles. This should take into
+account the provisions of paragraph 1.5.6 in relation to reliance on any
+samples taken in third countries. Evidence should be available to ensure that
+the integrity and identity of the imported finished product batch has been
+established through documented verification of at least the following:
+i. Relevant requirements for storage of the bulk product prior to
+packaging have been satisfied;
+ii. The finished product batch has been stored and transported under
+the required conditions;
+iii. The consignment has remained secure and there is no evidence of
+tampering during storage or transportation;
+iv. Correct identification of the product has been established;
+v. The sample(s) tested are representative of all finished product
+batches derived from the bulk batch.
+1.6 The QP must personally ensure that the following operational responsibilities are
+fulfilled prior to certification of a batch for release to market or for export:
+i. Certification is permitted under the terms of the MIA.
+ii. Any additional duties and requirements of national legislation are
+complied with.
+iii. Certification is recorded in a register or equivalent document.
+1.7 In addition, the QP has responsibility for ensuring points 1.7.1 to 1.7.21 are
+secured. These tasks may be delegated to appropriately trained personnel or third
+parties. It is recognised that the QP will need to rely on the pharmaceutical
+quality system and the QP should have on-going assurance that this reliance is
+well founded.
+1.7.1 All activities associated with manufacture and testing of the medicinal
+product have been conducted in accordance with the principles and
+guidelines of GMP.
+1.7.2 The entire supply chain of the active substance and medicinal product up to
+the stage of certification is documented and available for the QP. This
+should include the manufacturing sites of the starting materials and
+packaging materials for the medicinal product and any other materials
+deemed critical through a risk assessment of the manufacturing process.
+The document should preferably be in the format of a comprehensive
+diagram, where each party, including subcontractors of critical steps such as
+the sterilisation of components and equipment for aseptic processing, are
+included.
+
+-- 5 of 12 --
+
+6
+1.7.3 All audits of sites involved in the manufacture and the testing of the
+medicinal products and in the manufacture of the active substance have
+been carried out and that the audit reports are available to the QP
+performing the certification.
+1.7.4 All sites of manufacture, analysis and certification are compliant with the
+terms of the MA for the intended territory.
+1.7.5 All manufacturing activities and testing activities are consistent with those
+described in the MA.
+1.7.6 The source and specifications of starting materials and packaging materials
+used in the batch are compliant with the MA. Supplier quality management
+systems are in place that ensure only materials of the required quality have
+been supplied.
+1.7.7 For medicinal products that fall within the scope of Directive 2001/83/EC,
+as amended, or Directive 2001/82/EC, the active substances have been
+manufactured in accordance with GMP and, where required, distributed in
+accordance with Good Distribution Practice (GDP) for Active Substances.
+1.7.8 The importation of active substances used in the manufacture of medicinal
+products for human use should comply with the requirements of Article
+46(b) of Directive 2001/83/EC, as amended.
+1.7.9 For medicinal products that fall within the scope of Directive 2001/83/EC,
+as amended, the excipients have been manufactured in accordance with the
+ascertained GMP referred to in Article 46 (f) of that Directive.
+1.7.10 When relevant, the TSE (Transmissible Spongiform Encephalopathy)
+status of all materials used in batch manufacture is compliant with the terms
+of the MA.
+1.7.11 All records are complete and endorsed by appropriate personnel. All
+required in-process controls and checks have been made.
+1.7.12 All manufacturing and testing processes remain in the validated state.
+Personnel are trained and qualified as appropriate.
+1.7.13 Finished product quality control (QC) test data complies with the Finished
+Product Specification described in the MA, or where authorised, the Real
+Time Release Testing programme.
+1.7.14 Any regulatory post-marketing commitments relating to manufacture or
+testing of the product have been addressed. On-going stability data
+continues to support certification.
+1.7.15 The impact of any change to product manufacturing or testing has been
+evaluated and any additional checks and tests are complete.
+1.7.16 All investigations pertaining to the batch being certified (including out of
+specification and out of trend investigations) have been completed to a
+sufficient level to support certification.
+1.7.17 Any on-going complaints, investigations or recalls do not negate the
+conditions for certification of the batch in question.
+1.7.18 The required technical agreements are in place.
+1.7.19 The self-inspection programme is active and current.
+1.7.20 The appropriate arrangements for distribution and shipment are in place.
+
+-- 6 of 12 --
+
+7
+1.7.21 In the case of medicinal products for human use intended to be placed on
+the market in the Union, the safety features referred to in Article 54(o) of
+Directive 2001/83/EC, as amended, have been affixed to the packaging,
+where appropriate.
+1.8 For certain products, special guidance may apply, such as EudraLex, Volume 4,
+Annex 2: Manufacture of Biological active substances and Medicinal Products for
+Human Use, and Annex 3: Manufacture of Radiopharmaceuticals.
+1.9 In the case of parallel importation and parallel distribution any repackaging
+operation carried out on a batch which has already been released must be
+approved by the competent authority of the intended market.
+1.9.1 Prior to certification of a repacked batch the QP should confirm compliance
+with national requirements for parallel importation and EU rules for parallel
+distribution.
+1.9.2 The QP of the MIA holder, who is named responsible for the certification
+of the batch in the MA of the repackaged finished product, certifies that the
+repackaging has been performed in accordance with the relevant
+authorisation pertaining to the repackaged product and GMP.
+1.10 Recording of QP certification.
+1.10.1 The certification of a medicinal product is recorded by the QP in a register
+or equivalent document provided for that purpose. The record should show
+that each production batch satisfies the provisions of Article 51 of Directive
+2001/83/EC, as amended, or Article 55 of Directive 2001/82/EC. The
+record must be kept up to date as operations are carried out and must
+remain at the disposal of the agents of the competent authority for the
+period specified in the provisions of the Member State concerned and in
+any event for at least five years.
+1.10.2 The control report referred to in Article 51 of Directive 2001/83/EC, as
+amended, or Article 55 of Directive 2001/82/EC or another proof for
+release to the market in question, based on an equivalent system, should be
+made available for the batch in order to be exempted from further controls
+when entering another Member State.
+2. RELYING ON GMP ASSESSMENTS BY THIRD PARTIES, E.G. AUDITS
+In some cases the QP will rely on the correct functioning of the pharmaceutical quality
+system of sites involved in the manufacture of the product and this may be derived from
+audits conducted by third parties.
+2.1 Relying on assessment by third parties, e.g. audits, should be in accordance with
+Chapter 7 of the GMP Guide in order to appropriately define, agree and control
+any outsourced activity.
+2.2 Special focus should be given to the approval of audit reports:
+i. The audit report should address general GMP requirements, as for
+example the quality management system, all relevant production and
+quality control procedures related to the supplied product, e.g. active
+substance manufacturing, quality control testing, primary packaging, etc.
+All audited areas should be accurately described resulting in a detailed
+report of the audit.
+ii. It should be determined whether the manufacture and quality control of
+the active substance and medicinal product complies with GMP, or in case
+
+-- 7 of 12 --
+
+8
+of manufacture in third countries, GMP at least equivalent to that referred
+to in Article 46 of Directive 2001/83/EC, as amended, or Article 50 of
+Directive 2001/82/EC.
+iii. In case of outsourced activities compliance with the MA should be
+verified.
+iv. The QP should ensure that a written final assessment and approval of third
+party audit reports have been made. The QP should have access to all
+documentation which facilitates review of the audit outcome and
+continued reliance on the outsourced activity.
+v. Outsourced activities with critical impact on product quality should be
+defined in accordance with the principles of Quality Risk Management as
+described in Part III of EudraLex, Volume 4. According to this, the QP
+should be aware of the outcome of an audit with critical impact on the
+product quality before certifying the relevant batches.
+vi. Repeated audits should be performed in accordance with the principles of
+Quality Risk Management.
+3. HANDLING OF UNEXPECTED DEVIATIONS
+Provided registered specifications for active substances, excipients, packaging materials
+and medicinal products are met, a QP may consider confirming compliance or certifying
+a batch where an unexpected deviation concerning the manufacturing process and/or the
+analytical control methods from details contained within the MA and/or GMP has
+occurred. The deviation should be thoroughly investigated and the root cause corrected.
+This may require the submission of a variation to the MA for the continued manufacture
+of the product.
+3.1 The impact of the deviation should be assessed in accordance with a quality risk
+management process using an appropriate approach such as described in Part III
+of the GMP Guide. The quality risk management process should include the
+following;
+i. Evaluation of the potential impact of the deviation on quality, safety or
+efficacy of the batch(es) concerned and conclusion that the impact is
+negligible.
+ii. Consideration of the need to include the affected batch(es) in the ongoing
+stability programme.
+iii. In the case of biological medicinal products, consideration that any
+deviations from the approved process can have an unexpected impact on
+safety and efficacy.
+Taking account that responsibilities may be shared between more than one QPs
+involved in the manufacture and control of a batch, the QP performing
+certification of a batch of medicinal product should be aware of and take into
+consideration any deviations which have the potential to impact compliance with
+GMP and/or compliance with the MA.
+4. THE RELEASE OF A BATCH
+4.1 Batches of medicinal products should only be released for sale or supply to the
+market after certification by a QP as described above. Until a batch is certified, it
+should remain at the site of manufacture or be shipped under quarantine to
+another site which has been approved for that purpose by the relevant Competent
+Authority.
+
+-- 8 of 12 --
+
+9
+4.2 Safeguards to ensure that uncertified batches are not transferred to saleable stock
+should be in place and may be physical in nature, e.g. the use of segregation and
+labelling or electronic in nature, e.g. the use of validated computerised systems.
+When uncertified batches are moved from one authorised site to another, the
+safeguards to prevent premature release should remain.
+4.3 The steps necessary to notify QP certification to the site where the transfer to
+saleable stock is to take place should be defined within a technical agreement.
+Such notification by a QP to the site should be formal and unambiguous and
+should be subject to the requirements of Chapter 4 of EudraLex, Volume 4, Part I.
+
+-- 9 of 12 --
+
+10
+5. GLOSSARY
+Certain words and phrases in this annex are used with the particular meanings defined
+below. Reference should also be made to the Glossary in the main part of the Guide.
+Certification of the finished product batch. The certification in a register or equivalent
+document by a QP, as defined in Article 51 of Directive 2001/83/EC, as amended, and
+Article 55 of Directive 2001/82/EC, and represents the quality release of the batch before
+the batch is released for sale or distribution.
+Confirmation (Confirm and confirmed have equivalent meanings). A signed statement
+by a QP that a process or test has been conducted in accordance with GMP and the
+relevant marketing authorisation or clinical trial authorisation, product specification file
+and/or technical agreement, as applicable, as agreed in writing with the QP responsible
+for certifying the finished product batch before release. The QP providing a confirmation
+takes responsibility for those activities being confirmed.
+Finished product batch. With reference to the control or test of the finished product, a
+finished medicinal product batch is described in Annex I, Part I, point 3.2.2.5, of
+Directive 2001/83/EC and Annex I, Part 2, section E, of Directive 2001/82/EC. In the
+context of this annex the term in particular denotes the batch of product in its final pack
+for release to the market.
+Importer. The holder of the authorisation required by Article 40(3) of Directive
+2001/83/EC, as amended, and Article 44(3) of Directive 2001/82/EC for importing
+medicinal products from third countries.
+Qualified Person (QP). The person defined in Article 48 of Directive 2001/83/EC, as
+amended, and Article 52 of Directive 2001/82/EC.
+
+-- 10 of 12 --
+
+11
+Appendix I
+Content of the confirmation of the partial manufacturing of a medicinal product
+[LETTER HEAD OF MANUFACTURER WHO CARRIED OUT THE
+MANUFACTURING ACTIVITY]
+1. Name of the product and description of the manufacturing stage (e.g. paracetamol
+500 mg tablets, primary packaging into blister packs).
+2. Batch number.
+3. Name and address of the site carrying out the partial manufacturing.
+4. Reference to the Technical Quality Agreement (in accordance with Chapter 7 of the
+Guide).
+5. Confirmation statement.
+I hereby confirm that the manufacturing stages referred to in the Technical Quality
+Agreement have been carried out in full compliance with the GMP requirements of
+the EU and the terms described in the Agreement for ensuring compliance with the
+requirements of the Marketing Authorisation(s) as provided by [Contract
+Giver/manufacturer certifying and releasing the batch].
+6. Name of the Qualified Person confirming the partial manufacturing.
+7. Signature of Qualified Person confirming the partial manufacturing.
+8. Date of signature.
+
+-- 11 of 12 --
+
+12
+Appendix II
+Content of the Batch Certificate for Medicinal Products
+[LETTER HEAD OF THE BATCH CERTIFYING AND RELEASING
+MANUFACTURER]
+1. Name, strength/potency, dosage form and package size
+(identical to the text on the finished product package).
+2. Batch number of the finished product.
+3. Name of the destination country/countries of the batch, at least when
+within the EU.
+4. Certification statement.
+I hereby certify that all the manufacturing stages of this batch of finished product have
+been carried out in full compliance with the GMP requirements of the EU and [when
+within the EU] with the requirements of the Marketing Authorisation(s) of the destination
+country/countries.
+5. Name of the Qualified Person certifying the batch.
+6. Signature of the Qualified Person certifying the batch.
+7. Date of signature.
+
+-- 12 of 12 --
+

@@ -1,0 +1,602 @@
+[Source: 附件\annex14_rev30-03_2011_en.pdf]
+[Format: EU GMP Regulation]
+
+1
+EUROPEAN COMMISSION
+HEALTH AND CONSUMERS DIRECTORATE-GENERAL
+Public Health and Risk Assessment
+Pharmaceuticals
+Brussels,
+SANCO/C8/AM/an D(2010) 380358
+EudraLex
+The Rules Governing Medicinal Products in the European Union
+Volume 4
+EU Guidelines for
+Good Manufacturing Practice for
+Medicinal Products for Human and Veterinary Use
+Annex 14
+Manufacture of Medicinal Products Derived from Human Blood or Plasma
+Legal basis for publishing the detailed guidelines: Article 47 of Directive 2001/83/EC on
+the Community code relating to medicinal products for human use and Article 51 of Directive
+2001/82/EC on the Community code relating to veterinary medicinal products. This document
+provides guidance for the interpretation of the principles and guidelines of good
+manufacturing practice (GMP) for medicinal products as laid down in Directive 2003/94/EC
+for medicinal products for human use and Directive 91/412/EEC for veterinary use.
+Status of the document: revision 1
+Reasons for changes: 	the Annex has been revised in the light of Directive 2002/98/EC and
+relevant implementing directives setting standards of quality and safety for the collection and
+testing of human blood and blood components for all uses, including the manufacture of medicinal
+products.
+Deadline for coming into operation: 30 November 2011
+Commission Européenne, B-1049 Bruxelles / Europese Commissie, B-1049 Brussel – Belgium. Telephone: (32-2) 299 11 11
+
+-- 1 of 13 --
+
+2
+Manufacture of medicinal products derived from human blood or plasma
+Contents
+Glossary
+1. 	Scope
+2. 	Principles
+3. 	Quality Management
+4. 	Traceability and Post Collection Measures
+5. 	Premises and equipment
+6. 	Manufacturing
+7. 	Quality Control
+8. 	Release of intermediate and finished products
+9. 	Retention of plasma pool samples
+10. Disposal of waste
+Glossary
+Blood
+Blood, as referred to in Directive 2002/98/EC (Art. 3a), means whole blood collected from a
+donor and processed either for transfusion or for further manufacturing.
+Blood component
+A blood component, as referred to in Directive 2002/98/EC (Art. 3b), means a therapeutic
+constituent of blood (red cells, white cells, platelets and plasma) that can be prepared by various
+methods.
+Blood establishment
+A blood establishment, as referred to in Directive 2002/98/EC (Art. 3e), is any structure or body
+that is responsible for any aspect of the collection and testing of human blood and blood
+components, whatever their intended purpose, and their processing, storage and distribution when
+intended for transfusion. While this definition does not include hospital blood banks, it is
+understood to include centres where apheresis of plasma is performed.
+Blood products
+A blood product, as referred to in Directive 2002/98/EC (Art. 3c), means any therapeutic product
+derived from human blood or plasma.
+Fractionation, fractionation plant
+Fractionation is the manufacturing process in a plant (fractionation plant) during which plasma
+components are separated/purified by various physical and chemical methods such as 	e.g.
+precipitation, chromatography.
+
+-- 2 of 13 --
+
+3
+Good Practice guidelines
+Good practice guidelines give interpretation on the Community standards and specifications
+defined for quality systems in blood establishments established in the Annex of Directive
+2005/62/EC.
+1
+Medicinal products derived from human blood or human plasma
+Medicinal products derived from human blood or human plasma, as referred to in Directive
+2001/83/EC (Art. 1 No. 10), are medicinal products based on blood constituents which are
+prepared industrially by public or private establishments.
+Plasma for fractionation
+Plasma for fractionation is the liquid part of human blood remaining after separation of the
+cellular elements from blood collected in a container containing an anticoagulant, or separated by
+continuous filtration or centrifugation of anti-coagulated blood in an apheresis procedure; it is
+intended for the manufacture of plasma derived medicinal products, in particular albumin,
+coagulation factors and immunoglobulins of human origin and specified in the European
+Pharmacopoeia (Ph. Eur.) monograph “Human Plasma for fractionation” (0853).
+Plasma Master File (PMF)
+A Plasma Master File, as referred to in Directive 2001/83/EC (Annex I, Part III, No. 1.1.a), is a
+stand-alone document, which is separate from the dossier for marketing authorisation. It provides
+all relevant detailed information on the characteristics of the entire human plasma used as a
+starting material and/or a raw material for the manufacture of sub/intermediate fractions,
+constituents of the excipients and active substances, which are part of plasma, derived medicinal
+products or medical devices.
+Processing
+According to the terminology of directive 2005/62/EC, “processing means any step in the
+preparation of blood component that is carried out between the collection of blood and the issuing
+of a blood component”, e.g. separation and freezing of blood components. 	In this Annex,
+processing in addition refers to those operations performed at the blood establishment that are
+specific to plasma to be used for fractionation.
+Qualified Person (QP)
+The qualified person is the person referred to in Directive 2001/83/EC (Art. 48).
+Responsible Person (RP)
+The responsible person is the person referred to in Directive 2002/98/EC (Art. 9).
+Third countries contract fractionation program
+This is a contract fractionation in a plant of a fractionator/manufacturer in the EU/EEA, using
+starting material from third countries and manufacturing products not intended for the EU/EEA
+market.
+1 At the time of publication of this Annex adoption of the Good Practice guidelines by the European Commission was
+still pending
+
+-- 3 of 13 --
+
+4
+1. 	Scope
+1.1 The provisions of this Annex apply to medicinal products derived from human blood or
+plasma, fractionated in or imported into the EU/EEA. The Annex applies also to the starting
+material (e.g. human plasma) for these products. In line with the conditions set out in Directive
+2003/63/EC, the requirements apply also for stable derivatives of human blood or human plasma
+(e.g. Albumin) incorporated into medical devices.
+1.2 	This 	Annex 	defines 	specific 	Good 	Manufacturing 	Practices 	(GMP) 	requirements 	for
+processing, storage and transport of human plasma used for fractionation and for the manufacture
+of medicinal products derived from human blood or plasma.
+1.3 The Annex addresses specific provisions for when starting material is imported from third
+countries and for contract fractionation programs for third countries.
+1.4 The Annex does not apply to blood components intended for transfusion.
+2. 	Principles
+2.1 Medicinal products derived from human blood or plasma (and their active substances which
+are used as starting materials) must comply with the principles and guidelines of Good
+Manufacturing 	Practice 	(as 	laid 	down 	in 	Commission 	Directive 	2003/94/EC 	and 	the 	EU
+Guidelines on GMP published by the European Commission) as well as the relevant marketing
+authorisation (Directive 2001/83/EC, Art. 46, 51). They are considered to be biological medicinal
+products and the starting materials include biological substances, such as cells or fluids (including
+blood or plasma) of human origin (Directive 2001/83/EC Annex I Part I, No.3.2.1.1.b). Certain
+special features arise from the biological nature of the source material. For example, disease-
+transmitting agents, especially viruses, may contaminate the source material. The quality and
+safety of these products relies therefore on the control of source materials and their origin as well
+as on the subsequent manufacturing procedures, including infectious marker testing, virus removal
+and virus inactivation.
+2.2 In principle active substances used as starting material for medicinal products must comply
+with the principles and guidelines of Good Manufacturing Practice (see 2.1). 	For starting
+materials derived from human blood and plasma the requirements for the collection and testing
+defined in Directive 2002/98/EC are to be followed. Collection and testing must be performed in
+accordance with an appropriate quality system for which standards and specifications are defined
+in the Annex of Directive 2005/62/EC and interpreted in the Good Practice guidelines referred to
+in Article 2 (2) of Directive 2005/62/EC. Furthermore, the requirements of Directive 2005/61/EC
+on traceability and serious adverse reactions and serious adverse event notifications from the
+donor to the recipient apply. In addition the monographs of the European Pharmacopoeia are to be
+observed (Directive 2001/83/EC, Annex 1, Part III No. 1.1.b).
+
+-- 4 of 13 --
+
+5
+2.3 Starting material for the manufacture of medicinal products derived from human blood or
+plasma imported from third countries and intended for use or distribution in the EU/EEA must
+meet standards which are equivalent to Community Standards and specifications relating to a
+quality system for blood establishments as set out in Commission Directive 2005/62/EC (Recital
+6; Article 2(3)), the traceability and serious adverse reaction and serious adverse event notification
+requirements as set out in Commission Directive 2005/61/EC (Recital 5; Article 7), and the
+technical requirements for blood and blood components as set out in Commission Directive
+2004/33/EC (Recital 4; point 2.3 of Annex V)
+2.4 In the case of third country contract fractionation programs the starting material imported from
+third countries must be in compliance with the quality and safety requirements as laid down in
+Directive 2002/98/EC and in Annex V of Directive 2004/33/EC. The activities conducted within
+the EU/EEA must fully comply with GMP. Consideration should be given to the Community
+standards and specifications relating to a quality system for blood establishments set out in
+Commission Directive 2005/62/EC, the traceability requirements and notification of serious
+adverse reactions and events set out in Commission Directive 2005/61/EC and the relevant WHO
+guidelines and recommendations as listed in the addendum
+2.5 For all subsequent steps after collection and testing (e.g. processing (including separation),
+freezing, storage and transport to the manufacturer) the requirements of Directive 2001/83/EC
+apply and must therefore be done in accordance with the principles and guidelines of Good
+Manufacturing Practice. Normally, these activities would be carried out under the responsibility of
+a Qualified Person in an establishment with a manufacturing authorisation. Where specific
+processing steps in relation to plasma for fractionation take place in a blood establishment, the
+specific appointment of a Qualified Person may, however, not be proportionate given the presence
+and responsibility of a Responsible Person. To address this particular situation and to ensure the
+legal 	responsibilities 	of 	the 	Qualified 	Person 	are 	properly 	addressed, 	the 	fractionation
+plant/manufacturer should establish a contract in accordance with Chapter 7 of the GMP Guide
+with the blood establishment that defines respective responsibilities and the detailed requirements
+in order to ensure compliance. The Responsible Person of the blood establishment and the
+Qualified Person of the fractionation/manufacturing plant (see 3.5) should be involved in drawing
+up this contract. The Qualified Person should ensure that audits are performed to confirm that the
+blood establishment complies with the contract.
+2.6 Specific requirements for documentation and other arrangements relating to the starting
+material of plasma-derived medicinal products are defined in the Plasma Master File.
+3. 	Quality Management
+3.1 Quality management should govern all stages from donor selection to delivery of the finished
+product. Reference is made to Directive 2005/61/EC for traceability up to and including the
+delivery of plasma to the fractionation plant, and to Directive 2005/62/EC for all stages
+concerning collection and testing of human blood and human plasma to be used for the
+manufacture of medicinal products.
+3.2 	Blood or plasma used as source material for the manufacture of medicinal products must be
+collected by blood establishments and be tested in laboratories which apply quality systems in
+accordance with Directive 2005/62/EC, are authorised by a national competent authority and are
+subject to regular inspections as referred to in Directive 2002/98/EC. Third country contract
+fractionation programs have to be notified to the competent EU authority by the manufacturer as
+
+-- 5 of 13 --
+
+6
+referred to in Directive 2001/83/EC.
+3.3 If plasma is imported from third countries it should only be purchased from approved
+suppliers (e.g. blood establishments, including external warehouses). They should be named in the
+specifications for starting materials as defined by the fractionation plant/manufacturer, and be
+accepted by an EU/EEA competent authority (e.g. following an inspection) and by the Qualified
+Person of the fractionation plant in the EU/EEA. Certification and release of plasma (plasma for
+fractionation) as starting material is mentioned in section 6.8.
+3.4 	Supplier 	qualification, 	including 	audits, 	should 	be 	performed 	by 	the 	fractionation
+plant/manufacturer of the finished product according to written procedures. Re-qualification of
+suppliers should be performed at regular intervals taking a risk-based approach into account.
+3.5 The fractionation plant/manufacturer of the finished product should establish written contracts
+with the supplying blood establishments. As a minimum the following key aspects should be
+addressed:
+-definition of duties and respective responsibilities
+-quality system and documentation requirements
+-donor selection criteria and testing
+-requirements for the separation of blood into blood components/plasma
+-freezing of plasma
+-storage and transport of plasma
+-traceability and post donation / collection information (including adverse events).
+The test results of all units supplied by the blood establishment should be available to the
+fractionation plant/manufacturer of the medicinal product. In addition, any fractionation step
+subcontracted should be defined in a written contract.
+3.6 A formal change control system should be in place to plan, evaluate and document all changes
+that may affect the quality or safety of the products, or traceability. The potential impact of
+proposed changes should be evaluated. The need for additional testing and validation, especially
+viral inactivation and removal steps, should be determined.
+3.7 An adequate safety strategy should be in place to minimise the risk from infectious agents and
+emerging infectious agents. This strategy should involve a risk assessment that:
+- defines an inventory holding time (internal quarantine time) before processing the plasma
+i.e. to remove look back units2
+- considers all aspects of virus reduction and/or testing for infectious agents or surrogates.
+- considers the virus reduction capabilities, the pool size and other relevant aspects of the
+manufacturing processes.
+4. 	Traceability and Post Collection Measures
+4.1 There must be a system in place that enables each donation to be traced, from the donor and
+the donation via the blood establishment through to the batch of medicinal product and vice versa.
+4.2 Responsibilities for traceability of the product should be defined (there should be no gaps):
+2 Plasma units donated by donors during a defined period (as defined on a national / EU basis) before it is found that a
+donation from a high-risk donor should have been excluded from processing, e.g. due to a positive test result.
+
+-- 6 of 13 --
+
+7
+- from the donor and the donation in the blood establishment to the fractionation plant (this
+is the responsibility of the RP at the blood establishment),
+- from the fractionation plant to the manufacturer of the medicinal product and any
+secondary facility, whether a manufacturer of a medicinal product or of a medical device
+(this is the responsibility of the QP).
+4.3 Data needed for full traceability must be stored for at least 30 years, according to Article 4 of
+Directive 2005/61/EC and Article 14 of Directive 2002/98/EC3 .
+4.4 The contracts (as mentioned in 3.5) between the blood establishments (including testing
+laboratories) and the fractionation plant/manufacturer should ensure that traceability and post
+collection 	measures 	cover 	the 	complete 	chain 	from 	the 	collection 	of 	the 	plasma 	to 	all
+manufacturers responsible for release of the final products.
+4.5 The blood establishments should notify the fractionating plant/manufacturer of any event
+which may affect the quality or safety of the product including events listed in Annex II part A
+and Annex III part A of Directive 2005/61/EC, and other relevant information found subsequent to
+donor 	acceptance 	or 	release 	of 	the 	plasma, 	e.g. 	look 	back 	information 4 (post-collection
+information). Where the fractionation plant/manufacturer is located in a third country, the
+information should be forwarded to the manufacturer responsible for release in the EU/EEA of
+any product manufactured from the plasma concerned. In both cases, if relevant for the quality or
+safety of the final product, this information should be forwarded to the competent authority 5
+responsible for the fractionation plant/manufacturer.
+4.6 The notification procedure as described in 4.5 also applies when an inspection of a blood
+establishment by a competent authority leads to a withdrawal of an existing licence/certificate/
+approval.
+4.7 The management of post-collection information should be described in standard operating
+procedures and taking into account obligations and procedures for informing the competent
+authorities. Post-collection measures should be available as defined in the “Note for Guidance on
+Plasma Derived Medicinal Products" in its current version as adopted by the Committee for
+Medicinal Products for Human Use (CHMP) and published by the European Medicines Agency.6
+5. 	Premises and Equipment
+5.1 In order to minimise microbiological contamination or the introduction of foreign material into
+the plasma pool, thawing and pooling of plasma units should be performed in an area conforming
+at least to the Grade D requirements defined in Annex 1 of the EU-GMP Guide. Appropriate
+clothing should be worn including face masks and gloves. All other open manipulations during the
+manufacturing 	process 	should 	be 	done 	under 	conditions 	conforming 	to 	the 	appropriate
+requirements of Annex 1 of the EU-GMP Guide.
+5.2 Environmental monitoring should be performed regularly, especially during the ‘opening’ of
+plasma containers, and during subsequent thawing and pooling processes in accordance with
+3 Both Directives are linked to Article 109 of Directive 2001/83/EC by defining specific rules for medicinal products
+derived from human blood or plasma
+4 Information that appears if a subsequent donation from a donor previously found negative for viral markers is found
+positive for any of the viral markers or any other risk factors which may induce a viral infection
+5 as referred to in Directive 2001/83/EC
+6 Current version at date of publication: CPMP/BWP/269/95
+
+-- 7 of 13 --
+
+8
+Annex 1 of the EU-GMP Guide. Acceptance limits should be specified.
+5.3 In the production of plasma-derived medicinal products, appropriate viral inactivation or
+removal procedures are used and steps should be taken to prevent cross contamination of treated
+with untreated products. Dedicated and distinct premises and equipment should be used for
+manufacturing steps after viral inactivation treatment.
+5.4 To avoid placing routine manufacture at risk of contamination from viruses used during
+validation studies, the validation of methods for virus reduction should not be conducted in
+production facilities. Validation should be performed according to the "Note for Guidance on
+Virus Validation Studies: The Design, Contribution and Interpretation of Studies validating the
+Inactivation and Removal of Viruses" in its current version as adopted by the Committee for
+Medicinal Products for Human Use (CHMP) and published by the European Medicines Agency7 .
+6. 	Manufacturing
+Starting material
+6.1 The starting material should comply with the requirements of all relevant monographs of the
+European 	Pharmacopoeia 	and 	of 	the 	conditions 	laid 	down 	in 	the 	respective 	marketing
+authorisation dossier including the Plasma Master File. These requirements should be defined in
+the 	written 	contract 	(see 	3.5) 	between 	the 	blood 	establishment 	and 	the 	fractionating
+plant/manufacturer and controlled through the quality system.
+6.2. Starting material for third country contract fractionation programs should comply with the
+requirements as specified in 2.4.
+6.3 Depending on the type of collection (i.e. either whole blood collection or automated apheresis)
+different processing steps may be required. All processing steps (e.g. centrifugation and/or
+separation, sampling, labelling, freezing) should be defined in written procedures.
+6.4 	Any 	mix-ups 	of 	units 	and 	of 	samples, 	especially 	during 	labelling, 	as 	well 	as 	any
+contamination, e.g. when cutting the tube segments/sealing the containers, must be avoided.
+6.5 Freezing is a critical step for the recovery of proteins that are labile in plasma, e.g. clotting
+factors. Freezing should therefore be performed as soon as possible after collection (see the
+European Pharmacopoeia monograph No 0853 "Human Plasma for Fractionation" and where
+relevant, monograph No 1646 "Human Plasma pooled and treated for virus inactivation"),
+following a validated method.
+6.6 The storage and transport of blood or plasma at any stage in the transport chain to the
+fractionation plant should be defined and recorded. Any deviation from the defined temperature
+should be notified to the fractionation plant. Qualified equipment and validated procedures should
+be used.
+Certification/release of plasma for fractionation as starting material
+6.7 Plasma for fractionation should only be released, i.e. from a quarantine status, through systems
+7 Current version at date of publication: CHMP/BWP/268/95
+
+-- 8 of 13 --
+
+9
+and procedures that assure the quality needed for the manufacture of the finished product. It
+should only be distributed to the plasma fractionation plant/manufacturer after it has been
+documented by the Responsible Person (or in case of blood/plasma collection in third countries by
+a person with equivalent responsibilities and qualifications) that the plasma for fractionation does
+comply with the requirements and specifications defined in the respective written contracts and
+that all steps have been performed in accordance with Good Practice and GMP Guidelines, as
+appropriate.
+6.8 On entering the fractionation plant, the plasma units should be released for fractionation under
+the responsibility of the Qualified Person. The Qualified Person should confirm that the plasma
+complies with the requirements of all relevant monographs and the conditions laid down in the
+respective marketing authorisation dossier including the Plasma Master File or, in case of plasma
+to be used for third country contract fractionation programs, with the requirements as specified in
+2.4.
+Processing of plasma for fractionation
+6.9 The steps used in the fractionation process vary according to product and manufacturer and
+usually include several fractionation/purification procedures, some of which may contribute to the
+inactivation and/or removal of potential contamination.
+6.10 Requirements for the processes of pooling, pool sampling and fractionation/purification and
+virus inactivation/removal should be defined and followed thoroughly.
+6.11 The methods used in the viral inactivation process should be undertaken with strict adherence
+to validated procedures and in compliance with the methods used in the virus validation studies.
+Detailed investigation of failures in virus inactivation procedures should be performed. Adherence
+to the validated production process is especially important in the virus reduction procedures as any
+deviation could result in a safety risk for the final product. Procedures should be in place, that take
+this risk into consideration.
+6.12 Any reprocessing or reworking may only be performed after a quality risk management
+exercise has been performed and using processing steps as defined in the relevant marketing
+authorisation.
+6.13 A system for clearly segregating/distinguishing between products or intermediates which
+have undergone a process of virus reduction, from those which have not, should be in place.
+6.14 	Depending 	on 	the 	outcome 	of 	a 	thorough 	risk 	management 	process 	(taking 	into
+consideration possible differences in epidemiology) production in campaigns including clear
+segregation 	and 	defined 	validated 	cleaning 	procedures 	should 	be 	adopted 	when
+plasma/intermediates of different origins is processed at the same plant. The requirement for such
+measures should be based on the recommendations of the Guideline on Epidemiological Data on
+Blood Transmissible Infections 8 . The risk management process should consider whether it is
+necessary to use dedicated equipment in the case of third country contract fractionation programs.
+6.15 For intermediate products intended to be stored, a shelf-life should be defined based on
+stability data.
+8 EMEA/CPMP/BWP/125/04
+
+-- 9 of 13 --
+
+10
+6.16 The storage and transport of intermediate and finished medicinal products at any stage of the
+transport chain should be specified and recorded. Qualified equipment and validated procedures
+should be used.
+7. 	Quality Control
+7.1 Testing requirements for viruses or other infectious agents should be considered in the light of
+knowledge emerging on infectious agents and on the availability of appropriate, validated test
+methods.
+7.2 The first homogeneous plasma pool (e.g. after separation of the cryoprecipitate from the
+plasma pool) should be tested using validated test methods of suitable sensitivity and specificity,
+according to the relevant European Pharmacopoeia monographs (e.g. No. 0853).
+8. 	Release of intermediate and finished products
+8.1 Only batches derived from plasma pools tested and found negative for virus markers/
+antibodies and found in compliance with the relevant European Pharmacopoeia monographs,
+including any specific virus cut-off limits, and with the approved specifications (e.g. Plasma
+Master File), should be released.
+8.2 The release of intermediates intended for further in-house processing or delivery to a different
+site, and, the release of finished products should be performed by the Qualified Person and in
+accordance with the approved marketing authorisation.
+8.3. The release of intermediates and final products used in third country contract fractionation
+programs should be performed by the Qualified Person on the basis of standards agreed with the
+contract giver, and compliance with EU GMP standards. Compliance with relevant European
+Pharmacopoeia monographs may not be applicable, as these products are not intended for the use
+on the European market.
+9. 	Retention of plasma pool samples
+One plasma pool may be used to manufacture more than one batch and/or product. Retention
+samples and corresponding records from every pool should be kept for at least one year after the
+expiry date of the finished medicinal product with the longest shelf-life derived from the pool.
+10. 	Disposal of waste
+There should be written procedures for the safe and documented storage and disposal of waste,
+disposable and rejected items (e.g. contaminated units, units from infected donors, out of date
+blood, plasma, intermediate or finished products).
+
+-- 10 of 13 --
+
+11
+Addendum
+A) Member States should implement the following Directives and guidelines:
+1. for collection and testing of blood and blood components:
+Directive/Guidelines 	Title 	Scope
+Directive
+2002/98/EC 	of 	the
+European Parliament
+and of the Council
+Setting 	standards 	of 	quality 	and
+safety 	for 	the 	collection, 	testing,
+processing, storage and distribution
+of 	human 	blood 	and 	blood
+components, 	amending 	Directive
+2001/83/EC.
+Art.2 	Defines 	standards 	of
+quality 	and 	safety 	for 	the
+collection 	and 	testing 	of
+human 	blood 	and 	blood
+components, 	whatever 	their
+intended purpose, and for their
+processing, 	storage 	and
+distribution when intended for
+transfusion.
+Commission
+Directive
+2004/33/EC
+Implementing Directive 2002/98/EC
+of the European Parliament and of
+the 	Council 	as 	regards 	certain
+technical 	requirements 	for 	blood
+and blood components
+Defines 	the 	provision 	of
+information 	to 	prospective
+donors 	and 	information
+required from donors (Part A
+and B, Annex II), eligibility of
+donors (Annex III), storage,
+transport 	and 	distribution
+conditions for blood and blood
+components 	(Annex 	IV), 	as
+well 	as 	quality 	and 	safety
+requirements 	for 	blood 	and
+blood components (Annex V).
+Commission
+Directive
+2005/61/EC
+Implementing Directive 2002/98/EC
+of the European Parliament and of
+the Council as regards traceability
+requirements 	and 	notification 	of
+serious 	adverse 	reactions 	and
+events.
+Defines 	traceability
+requirements 	for 	blood
+establishments, donors, blood
+and 	blood 	components, 	and
+for 	the 	final 	destination 	of
+each 	unit, 	whatever 	the
+intended 	purpose. 	It 	further
+defines 	the 	reporting
+requirements in the event of
+serious 	adverse 	events 	and
+reactions.
+
+-- 11 of 13 --
+
+12
+Commission
+Directive
+2005/62/EC
+Implementing Directive 2002/98/EC
+of the European Parliament and of
+the Council as regards Community
+standards and specifications relating
+to a quality system for blood estab-
+lishments.
+Defines the implementation of
+quality system standards and
+specifications as referred to in
+article 	47 	of 	Directive
+2001/83/EC.
+2. for collection and regulatory submission of data/information for plasma for fractionation:
+Directive/
+Guidelines Title 	Scope
+Directive
+2001/83/EC 	of 	the
+European Parliament
+and the Council
+On the Community Code relating to
+medicinal products for human use.
+Art. 2 Medicinal products for
+human 	use 	intended 	to 	be
+placed 	on 	the 	market 	in
+Member 	States 	and 	either
+prepared 	industrially 	or
+manufactured 	by 	a 	method
+involving 	an 	industrial
+process, 	covering 	medicinal
+products derived from human
+blood or human plasma.
+Commission
+Directive
+2003/63/EC
+Amending Directive 2001/83/EC of
+the European Parliament and of the
+Council 	on 	the 	Community 	code
+relating to medicinal products for
+human use; Amending the Annex on
+documentation 	of 	medicinal
+products
+Commission
+Directive
+2003/94/EC
+Laying 	down 	the 	principles 	and
+guidelines 	of 	good 	manufacturing
+practice 	in 	respect 	of 	medicinal
+products 	for 	human 	use 	and
+investigational 	medicinal 	products
+for human use
+Art. 	1 	Principles 	and
+guidelines 	of 	good
+manufacturing 	practice 	in
+respect of medicinal products
+for 	human 	use 	and
+investigational 	medicinal
+products for human use
+EU 	Guidelines 	on
+Good Manufacturing
+Practice
+Giving 	interpretation 	on 	the
+principles and guidelines on GMP
+EMEA/CHMP/BWP
+/3794/03 Rev.1, 15.
+Nov. 2006
+Guideline 	on 	the 	Scientific 	data
+requirements for a Plasma Master
+File (PMF) Revision 1
+EMEA/CHMP/BWP
+/548524/2008
+EMEA Guideline
+Guideline on Epidemiological Data
+on Blood Transmissible Infections
+
+-- 12 of 13 --
+
+13
+B). Other relevant documents:
+Document 	Title 	Scope
+Recommendation
+No. 	R 	(95) 	15
+(Council of Europe)
+Guide to the Preparation, use and
+quality 	assurance 	of 	blood
+components
+WHO
+Recommendations
+for 	the 	production,
+control 	and
+regulation of human
+plasma 	for
+fractination. Annex 4
+in:
+WHO 	Expert
+Committee 	on
+Biological
+Standardization.
+Fifty-sixth 	report.
+Geneva, 	World
+Health Organization,
+2007
+(WHO 	Technical
+Report 	Series, 	No.
+941)
+WHO 	Recommendations 	for 	the
+production, control and regulation of
+human 	plasma 	for 	fractionation
+Guidance on the production,
+control 	and 	regulation 	of
+human 	plasma 	for
+fractionation
+WHO guidelines on
+Good Manufacturing
+Practices 	for 	blood
+establishments
+Reference should be made to the latest revisions of these documents for current guidance.
+
+-- 13 of 13 --
+

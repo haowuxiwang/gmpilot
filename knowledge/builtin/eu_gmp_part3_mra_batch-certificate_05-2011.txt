@@ -1,0 +1,191 @@
+[Source: 第三部分\mra_batch-certificate_05-2011.pdf]
+[Format: EU GMP Regulation]
+
+7 Westferry Circus ● Canary Wharf ● London E14 4HB ● United Kingdom
+Telephone +44 (0)20 7418 8400 Facsimile +44 (0)20 7418 8595
+E-mail info@ema.europa.eu Website www.ema.europa.eu 	An agency of the European Union
+Final
+1 June 2011
+EMA/INS/MRA/387218/2011 Rev 5
+Compliance and Inspection
+Internationally harmonised requirements for batch
+certification
+in the context of Mutual Recognition Agreements, Agreements on Conformity
+Assessment and Acceptance of Industrial Products and other appropriate
+arrangements on GMP with the European Union.
+
+-- 1 of 6 --
+
+7 Westferry Circus ● Canary Wharf ● London E14 4HB ● United Kingdom
+Telephone +44 (0)20 7418 8400 Facsimile +44 (0)20 7418 8595
+E-mail info@ema.europa.eu Website www.ema.europa.eu 	An agency of the European Union
+Final
+Internationally Harmonised Requirements for Batch
+Certification
+in the context of Mutual Recognition Agreements, Agreements on Conformity
+Assessment and Acceptance of Industrial Products and other appropriate
+arrangements on GMP with the European Union.
+In the framework of Mutual Recognition Agreements (MRA), the Sectoral Annex on Good Manufacturing
+Practices (GMP) requires a batch certification scheme for medicinal products covered by the
+pharmaceutical annex. Batch certification is also required in the Agreements on Conformity
+Assessment and Acceptance of Industrial Products (ACAA) and other appropriate arrangements on GMP
+between third countries and the European Union (EU).
+The internationally harmonised requirements for the content of the batch certificate of a medicinal
+product are provided in this document.
+Each batch of medicinal product transferred between countries having appropriate arrangements on
+GMP, must be accompanied by a batch certificate issued by the manufacturer in the exporting country.
+In the framework of MRAs all manufacturing sites must be located in the country issuing the certificate
+or in another MRA country, if reciprocal arrangements are in force. In the framework of the European
+Union's ACAA with Israel (once in operation) all quality control sites must be located in Israel or the
+EU.
+This certificate will be issued further to a full qualitative and quantitative analysis of all active and
+other relevant constituents to ensure that the quality of the products complies with the requirements
+of the marketing authorisation of the importing country. The batch certificate will attest that the batch
+meets the specifications and has been manufactured in accordance with the marketing authorisation of
+the importing country, detailing the specifications of the product, the analytical methods referenced,
+the analytical results obtained, and containing a statement that the batch processing, packaging and
+quality control records were reviewed and found in conformity with GMP. The batch certificate will be
+signed by the person responsible for certifying that the batch is suitable for release for sale or
+supply/export.
+The importer / site of batch release of the medicinal product is to receive and maintain the batch
+certificate issued by the manufacturer of the exporting country. Upon request, it has to be readily
+available to the staff of the regulatory authorities of the importing country. This certification by the
+manufacturer on the conformity of each batch is essential to exempt the importer / site of batch
+release from re-control (for the EU, see Directive 2001/83/EC Art. 51.2 and Directive 2001/82/EC Art.
+55.2).
+Where applicable this batch certificate shall also be used for non-finished medicinal products such as
+intermediates, bulk or partially packed products.
+This certificate may also be used for active pharmaceutical ingredients and investigational medicinal
+products used in clinical trial authorisations. The terminology may need to be adapted as per the
+Glossary.
+These harmonised requirements have been agreed bilaterally by the European Union with the
+regulatory authorities of the following countries: Australia, Canada, Israel, Japan, New Zealand and
+Switzerland.
+
+-- 2 of 6 --
+
+Common Part
+7 Westferry Circus ● Canary Wharf ● London E14 4HB ● United Kingdom
+Telephone +44 (0)20 7418 8400 Facsimile +44 (0)20 7418 8595
+E-mail info@ema.europa.eu Website www.ema.europa.eu 	An agency of the European Union
+Final
+Content of the Batch Certificate for Medicinal Products
+(Note: For equivalence of terminology refer to the Explanatory Notes and Glossary)
+[ LETTER HEAD OF EXPORTING MANUFACTURER ]
+1. 	Name of product
+2. 	Importing country
+3. 	Marketing authorisation number or Clinical Trial Authorisation Number
+4. 	Strength/Potency
+5. 	Dosage form
+6. 	Package size and type
+7. 	Batch number
+8. 	Date of manufacture
+9. 	Expiry date
+10. Name, address and authorisation number of all manufacturing sites and quality control sites
+11. Certificates of GMP Compliance of all sites listed under 10 or, if available, EudraGMP reference
+numbers
+12. Results of analysis
+13. Comments
+14. Certification statement
+15. Name and position/title of person authorising the batch release
+16. Signature of person authorising the batch release
+17. Date of signature
+
+-- 3 of 6 --
+
+Common Part
+7 Westferry Circus ● Canary Wharf ● London E14 4HB ● United Kingdom
+Telephone +44 (0)20 7418 8400 Facsimile +44 (0)20 7418 8595
+E-mail info@ema.europa.eu Website www.ema.europa.eu 	An agency of the European Union
+Final
+Explanatory Notes and Glossary
+1 	Name of product
+Proprietary, brand or trade or proper name in the importing country, as applicable. For
+Investigational Medicinal Products (IMPs) the code number as referred to in the clinical trial
+application.
+2 	Importing Country
+3 	Marketing Authorisation Number or Clinical Trial Authorisation Number
+The marketing authorisation number of the product in the importing country. For IMPs, the
+Clinical Trial authorisation number or trial reference to be provided when available.
+4 	Strength/Potency
+Identity (name) and amount per unit dose required for all active ingredients/constituents. IMPs
+include placebos and the manner in which this information is provided should not unblind the
+study.
+5 	Dosage form or pharmaceutical form, e.g. tablets, capsules, ointments
+6 	Package size and type
+This would be the contents of container and vials, bottles, blisters etc
+7 	Batch number
+or Lot number related to the product. Unique combination of numbers, letters or symbols that
+identifies a batch and from which the production and distribution history can be determined.
+8 	Date of manufacture
+In accordance with national (local) requirements of the importing country.
+9 	Expiry date
+The date placed on the container/label of a product designating the time during which the
+product is expected to remain within the authorised shelf life specifications authorised by the
+importing country, if stored under defined conditions, and after which it should not be used.
+10 	Name, address and authorisation number of all manufacturing and quality control sites
+All sites involved in the manufacture including packaging/labelling and quality control of the
+batch should be listed with name, address and authorisation number. The name and address
+must correspond to the information provided on the manufacturing authorisation.
+11 	Certificate of GMP Compliance of all sites listed under 10 or, if available, EudraGMP
+reference number
+Certificate numbers and/or EudraGMP reference numbers should be listed under this item.
+12 	Results of analysis.
+Should include the authorised specifications, all results obtained and refer to the methods used
+(may refer to a separate certificate of analysis which must be dated, signed and attached).
+13 	Comments/remarks
+Any additional information that can be of value to the importer and/or inspector verifying the
+compliance of the batch certificate (e.g. specific storage or transportation conditions).
+14 	Certification statement.
+This statement should cover the fabrication/manufacturing, including packaging/labelling and
+quality control. The following text should be used: ”I hereby certify that the above information is
+authentic 	and 	accurate. 	This 	batch 	of 	product 	has 	been 	manufactured, 	including
+packaging/labelling and quality control at the above mentioned site(s) in full compliance with the
+GMP requirements of the local Regulatory Authority and with the specifications in the Marketing
+Authorisation of the importing country or product specification file for Investigational Medicinal
+Products. The batch processing, packaging and analysis records were reviewed and found to be
+in compliance with GMP”.
+15 	Name and position/title of person authorising the batch release
+Including the name and address, if more than one site is mentioned under item 10.
+16 	Signature of person authorising the batch release
+17 	Date of signature
+
+-- 4 of 6 --
+
+Common Part
+7 Westferry Circus ● Canary Wharf ● London E14 4HB ● United Kingdom
+Telephone +44 (0)20 7418 8400 Facsimile +44 (0)20 7418 8595
+E-mail info@ema.europa.eu Website www.ema.europa.eu 	An agency of the European Union
+Final
+Glossary of equivalent terms used in the Certificate template (non-
+exhaustive)
+active substances = active pharmaceutical ingredients/constituents
+batch = lot
+dosage form = pharmaceutical form
+manufacturer = fabricator
+manufacturing/manufacture = fabrication
+manufacturing authorisation = establishment licence
+medicinal product = pharmaceutical product = drug product
+quality control = testing
+
+-- 5 of 6 --
+
+7 Westferry Circus ● Canary Wharf ● London E14 4HB ● United Kingdom
+Telephone +44 (0)20 7418 8400 Facsimile +44 (0)20 7418 8595
+E-mail info@ema.europa.eu Website www.ema.europa.eu 	An agency of the European Union
+Final
+EU Revision History
+Adopted and published final version 	1 February 2001
+Revision 1 - only explanatory note 	26 April 2002
+Revision 2 - only explanatory note 	22 October 2002
+Revision 3 - only explanatory note 	16 December 2002
+Revision 4 - Draft 3 EU agreed, awaiting MRA partners comments 	27 January 2004
+Revision 4 – additions to include investigational medicinal products 	1 May 2004
+Revision 5 – editorial changes, extension of use of the certificate to other
+arrangements on GMP and addition of quality control sites was agreed;
+draft subject to comments of MRA/ACAA partners;
+15 September 2010
+Revision 5 – addition of a glossary and adoption by GMDP IWG 	24 May 2011
+
+-- 6 of 6 --
+

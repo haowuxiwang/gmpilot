@@ -1,0 +1,95 @@
+[Source: 第三部分\2013_01_28_template.pdf]
+[Format: EU GMP Regulation]
+
+Commission européenne/Europese Commissie, 1049 Bruxelles/Brussel, BELGIQUE/BELGIË - Tel. +32 22991111
+Office: DM24 - Tel. direct line +32 229-67543 - Fax +32 229-98046
+Sanco-pharmaceuticals-d6@ec.europa.eu
+EUROPEAN COMMISSION
+HEALTH AND CONSUMERS DIRECTORATE-GENERAL
+Health systems and products
+Medicinal products – quality, safety and efficacy
+Brussels,
+SANCO/SFS/SF/mg/ddg1.d.6(2013)118630
+Template for the 'written confirmation' for active substances exported to the European
+Union for medicinal products for human use, in accordance with Article 46b(2)(b) of
+Directive 2001/83/EC
+Version 2.0 (January 2013)
+1. 	Directive 2011/62/EU of the European Parliament and of the Council of 8 June 2011
+amending Directive 2001/83/EC on the Community code relating to medicinal products
+for human use, as regards the prevention of the entry into the legal supply chain of
+falsified medicinal products (OJ L 174, 1.7.2011, p. 74) introduces EU-wide rules for the
+importation of active substances: According to Article 46b(2) of Directive 2001/83/EC,
+active substances shall only be imported if, inter alia, the active substances are
+accompanied by a written confirmation from the competent authority of the exporting
+third country which, as regards the plant manufacturing the exported active substance,
+confirms that the standards of good manufacturing practice and control of the plant are
+equivalent to those in the Union.
+2. 	The template for this written confirmation is set out in annex.
+Document history:
+Date of submission of draft to the Pharmaceutical
+Committee: 1 	16 January 2013
+e	v	o	b	a	e	e	S	:	n	o	it	a	c	il	b	u	p	f	o	e	t	a	D
+Date of entry into force: 	N/A2
+2	1	0	2	y	l	u	J	f	o	0	.	1	n	o	i	s	r	e	V	:	s	e	d	e	s	r	e	p	u	S 2
+Changes compared to superseded version 1.0:
+- Clarification that EU-GMP are those of
+WHO/ICH Q7
+- Indication of inspection authority if
+different from that issuing the written
+confirmation
+- Reminder of general principle of
+manufacturer's responsibility
+1 	http://ec.europa.eu/health/documents/pharmaceutical-committee/index_en.htm
+2 	Written confirmations based on the previous version of the template remain valid.
+Ref. Ares(2013)101580 - 28/01/2013
+
+-- 1 of 2 --
+
+Annex:
+Letterhead of the issuing regulatory authority
+Written confirmation for active substances exported to the European Union (EU) for medicinal
+products for human use, in accordance with Article 46b(2)(b) of Directive 2001/83/EC
+Confirmation no. (given by the issuing regulatory authority):
+……………………………………………………………………………………………………………………………………………………….
+1. Name and address of site (including building number, where applicable):
+……………………………………………………………………………………………………………………………………………………….
+2. Manufacturer's licence number(s):3
+……………………………………………………………………………………………………………………………………………………….
+REGARDING 	THE 	MANUFACTURING 	PLANT 	UNDER 	(1) 	OF 	THE 	FOLLOWING 	ACTIVE
+SUBSTANCE(S) EXPORTED TO THE EU FOR MEDICINAL PRODUCTS FOR HUMAN USE
+Active substance(s): 4 	Activity(ies): 5
+THE ISSUING REGULATORY AUTHORITY HEREBY CONFIRMS THAT:
+The standards of good manufacturing practice (GMP) applicable to this manufacturing plant
+are at least equivalent to those laid down in the EU (= GMP of WHO/ICH Q7);
+The manufacturing plant is subject to regular, strict and transparent controls and to the
+effective enforcement of good manufacturing practice, including repeated and unannounced
+inspections, so as to ensure a protection of public health at least equivalent to that in the EU;
+and
+In the event of findings relating to non-compliance, information on such findings is supplied by
+the exporting third country without delay to the EU.6
+Date of inspection of the plant under (1). Name of inspecting authority if different from the
+issuing regulatory authority:
+……………………………………………………………………………………………………………………………………………………….
+This written confirmation remains valid until
+……………………………………………………………………………………………………………………………………………………….
+The authenticity of this written confirmation may be verified with the issuing regulatory
+authority.
+This written confirmation is without prejudice to the responsibilities of the manufacturer to
+ensure the quality of the medicinal product in accordance with Directive 2001/83/EC.
+Address of the issuing regulatory authority:
+……………………………………………………………………………………………………………………………………………………..
+Name and function of responsible person:
+……………………………………………………………………………………………………………………………………………………….
+E-mail, Telephone no., and Fax no.:
+……………………………………………………………………………………………………………………………………………………….
+Signature 	Stamp of the authority and date
+3 	Where the regulatory authority issues a licence for the site. Record 'not applicable' in case where there
+is no legal framework for issuing of a licence.
+4 	Identification of the specific active substances through an internationally-agreed terminology
+(preferably international nonproprietary name).
+5 	For example, 'Chemical synthesis', 'Extraction from natural sources', 'Biological processes', 'Finishing
+steps'.
+6 	qdefect@ema.europa.eu.
+
+-- 2 of 2 --
+

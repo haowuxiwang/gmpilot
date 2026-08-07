@@ -1,0 +1,1416 @@
+[Source: 第三部分\gmp_mah_rp_en.pdf]
+[Format: EU GMP Regulation]
+
+Official address Domenico Scarlattilaan 6 ● 1083 HS Amsterdam ● The Netherlands
+An agency of the European Union
+Address for visits and deliveries Refer to www.ema.europa.eu/how-to-find-us
+Send us a question Go to www.ema.europa.eu/contact Telephone +31 (0)88 781 6000
+© European Medicines Agency, 2022. Reproduction is authorised provided the source is acknowledged.
+10 January 2022
+EMA/419571/2021
+Human Medicines, Pharmacovigilance and Committees Division
+Version 2
+Reflection paper on Good Manufacturing Practice and
+Marketing Authorisation Holders
+
+-- 1 of 29 --
+
+EMA/INS/3094/2022 	Page 2/29
+Table of contents
+1. Introduction and Purpose ....................................................................... 3
+2. Scope ...................................................................................................... 4
+3. How this Reflection Paper sets out the various MAH Responsibilities ...... 5
+4. The role of the MAH in Facilitating Compliance with GMP and the
+Marketing Authorisation (MA)..................................................................... 5
+5. Areas of the EC Guide to GMP that relate to MAHs ................................... 7
+5.1. Outsourcing and Technical Agreements................................................ 7
+5.3. Communication with Manufacturing Sites and Competent Authorities
+(e.g. MA Dossier Information, Variations, Regulatory Commitments, etc.) 12
+5.4. Product Quality Reviews (PQRs) ........................................................ 16
+5.5. Quality Defects, Complaints and Product Recalls................................ 18
+5.6. Maintenance of Supply of Medicinal Products ..................................... 20
+5.7. Continual Improvement Activities ...................................................... 22
+6. Falsified Medicines Directive (FMD)-related Responsibilities ................. 23
+7. Conclusion ............................................................................................ 25
+8. References ............................................................................................ 26
+9. List of Abbreviations ............................................................................. 27
+
+-- 2 of 29 --
+
+EMA/INS/3094/2022 	Page 3/29
+1. Introduction and Purpose
+This Reflection Paper is focussed on the GMP-related responsibilities that apply to Marketing
+Authorisation Holder (MAH) companies. While it is recognised that many MAH companies are not
+directly engaged in the manufacture of medicinal products themselves, the current European
+Commission (EC) Guide to GMP (hereafter referred to as the ‘GMP Guide’) refers, in several places, to
+MAHs and their responsibilities in relation to GMP.
+In general, these responsibilities range from responsibilities that relate to outsourcing and technical
+agreements, to ones that require the MAH to perform certain specific tasks (e.g. evaluating the results
+of product quality reviews, agreeing irradiation cycles with manufacturers, etc.). These responsibilities
+are spread over the various chapters and annexes of the GMP Guide, and are quite numerous.
+This Reflection Paper seeks to provide clarity as to what the various responsibilities are and what they
+mean for MAHs at a practical level. In addition to the MAH responsibilities in the GMP Guide, this paper
+also addresses the various legislative provisions (i.e. in European Directives, Regulations and in other
+guidelines) which relate to GMP and which concern MAHs. Some of the responsibilities stated in the
+legislation (e.g. in Directive 2001/83/EC and Regulation (EU) 2019/6) and in applicable guidelines are
+written in a way that they apply to marketing authorisation applicants, and they are included in this
+Reflection Paper because those provisions also convey responsibilities upon marketing authorisation
+holders in the post-authorisation phase.
+It should be noted that, as indicated in Annex 16 of the GMP Guide, the ultimate responsibility for the
+performance of a medicinal product over its lifetime, its safety, quality and efficacy, lies with the MAH.
+(This does not alter the fact that, also as per Annex 16, the Qualified Person (QP) is responsible for
+ensuring that each individual batch has been manufactured and checked in compliance with laws in
+force in the Member State where certification takes place, in accordance with the requirements of the
+marketing authorisation (MA) and with Good Manufacturing Practice (GMP).) It is also important to
+note that, while certain activities of an MAH may be delegated to a manufacturer or other party, the
+MAH retains the responsibilities which are outlined in this paper. The GMP guide also does not provide
+for reduced MAH responsibilities (or for the delegation of responsibilities) in situations where the MAH
+and the manufacturer belong to the same overall group of companies but where the two companies are
+different legal entities. There is no difference in the responsibilities that apply to the MAH in this
+situation relative to when the MAH and the manufacturer are from separate and unrelated companies.
+It is acknowledged that many MAHs are part of large and complex global organisations which operate
+shared Pharmaceutical Quality Systems. While tasks pertaining to the MAH responsibilities outlined in
+this paper may be delegated to other groups or entities within the global organisation, the actual
+responsibilities of the MAH may not be delegated.
+While relevant activities pertaining to the GMP-related responsibilities held by MAHs may be delegated
+by the MAH to its representative (if there is one) in a member state, none of the responsibilities may
+be delegated to that person. (Note: The representative of the MAH, commonly known as the local
+representative, is the person designated by the MAH to represent him in the Member State
+concerned. (Ref. Part 18a of Article 1 in Directive 2001/83/EC and Article 58 (1) in Regulation (EU)
+2019/6).
+It is recognised that, while MAHs have a significant role in facilitating GMP and MA compliance, their
+responsibilities in this area can, in some cases, be difficult to comprehend when reading the GMP Guide
+or the applicable legislation. Notwithstanding this, such responsibilities are there and may be inferred.
+This Reflection Paper seeks to provide clarity on these.
+In relation to maintaining the supply of medicinal products, the EU medicines legislation, as well as the
+GMP Guide, place obligations upon the MAH that relate to the supply of its medicinal products and to
+the maintenance of such supply. This relates to the avoidance of medicines shortages for patients and
+animals. It is considered that MAHs should also comply with any national requirements that may exist
+within the EEA in relation to maintaining product supply.
+All of the references currently in the GMP Guide (as of April 2019) that relate to MAH responsibilities
+are discussed in this Reflection Paper. This paper, however, should not be taken to provide an
+exhaustive list of those references on an ongoing basis. Rather, it sets out the general GMP-related
+responsibilities and activities of the MAH, and it presents them under a number of different themes.
+
+-- 3 of 29 --
+
+EMA/INS/3094/2022 	Page 4/29
+These themes are outlined below in Section 5. MAH companies should have a system in place to
+ensure that they remain up-to-date with current GMP requirements and updates thereafter.
+Where possible, the text within each theme provides an explanation of what the various responsibilities
+may mean at a practical level for MAHs; guidance is also given on what is expected of an MAH when
+fulfilling that responsibility. It should be noted, however, that this Reflection Paper does not provide
+guidance on ‘how’ the various responsibilities might be fulfilled.
+Article 111 of Directive 2001/83/EC and Article 123 (1c) Regulation (EU) 2019/6 give powers to
+member state authorities to inspect the premises of MAH companies; this includes situations in which
+there are grounds for suspecting non-compliance with the legal requirements laid down in the
+Directives and Regulations, including with the principles and guidelines of GMP. When such inspections
+are carried out, this Reflection Paper may serve as useful guidance for the competent authorities
+performing the inspections.
+2. Scope
+The Reflection Paper concerns the responsibilities and activities of MAHs with respect to the European
+Commission’s Guide to GMP (Parts I, II, and its relevant Annexes) for medicines for human and
+veterinary use. It also covers the responsibilities of MAHs and Sponsors (where the Sponsor is different
+from the MAH) with regard to the handling of quality defects with investigational medicinal products.
+The scope also extends to certain legislative provisions that have relevance to GMP, such as those
+stated in the GMP Directives 2003/94/EC and 91/412/EC (as amended), as well as relevant articles in
+Directive 2001/83/EC and Regulation (EU) 2019/6.
+When referring to manufacturers and manufacturing sites, the Reflection Paper is referring to any site
+engaged in manufacturing and related activities (e.g. contract analysis) that are subject to EU GMP
+requirements. This includes holders of manufacturing and importation authorisations, as well as
+contract testing facilities e.g. performing batch release testing or ongoing stability testing; this latter
+refers to annual stability testing.
+This Reflection Paper is focussed on the GMP-related responsibilities that apply to all MAH companies,
+regardless of the authorisation or registration procedure used. This means that it also applies to
+holders of Registration and Traditional-use Registrations for herbal/homeopathic medicinal products.
+FMD: The relevant provisions of the Falsified Medicines Directive 2011/62/EU and the related
+Delegated Regulations (including the Safety Features Regulation 2016/161) are also within scope of
+this Reflection Paper. 	Note that these requirements only apply to medicinal products for human use.
+ATMPs: The principles set out in this paper also generally apply to MAHs of ATMPs. However, the
+specific provisions of Part IV of the GMP Guide are not specifically discussed here, and there are certain
+specific requirements that apply to ATMPs, as stated in Part IV (such as a 30 year data retention
+requirement) that differ from what is set out in this Reflection Paper. Note that these requirements
+only apply to medicinal products for human use.
+GDP Responsibilities: While this Reflection Paper is not intended to address the GDP-related
+responsibilities that may apply to MAHs, it is considered important to highlight here that MAHs do need
+to understand the type of interfaces that may need to be in place with the wholesalers they employ or
+engage. For example, current EU GDP guidelines in relation to medicinal products for human use require
+that medicines wholesalers notify the MAH of certain information, e.g. information concerning falsified
+products and quality defects (Ref. EU GDP Guidelines, 2013, Sections 6.2 and 6.4). 	As a result, it is
+considered that MAHs should have systems in place to accept and act upon such information from the
+wholesale distribution chain when received. (Note that in relation to veterinary medicinal products, new
+GDP requirements are expected to be published by January 2022 and these may specify responsibilities
+for MAHs of veterinary medicinal products.)
+The Reflection Paper does not extend to other MAH responsibilities and activities that may be set-out in
+other official guidance documents and legislation, such as those relating to other GxP areas,
+pharmacovigilance, etc.
+
+-- 4 of 29 --
+
+EMA/INS/3094/2022 	Page 5/29
+3. How this Reflection Paper sets out the various MAH
+Responsibilities
+In Section 5 of this paper, each GMP requirement that applies to the MAH is outlined, with its key
+message stated or summarised.
+• 	This is then followed by the exact text that is in the GMP Guide (or in applicable legislation or in
+other guidelines) on this point. In some cases, the exact text is presented between quotation
+marks.
+• 	A clear reference to the relevant part of the GMP Guide or the applicable legislation is then stated.
+• 	Where possible, an explanation of what the requirement means at a practical level for the MAH is
+provided, in italics.
+4. The role of the MAH in Facilitating Compliance with GMP and
+the Marketing Authorisation (MA)
+While GMP compliance is the responsibility of the manufacturer, the MAH has a clear role in facilitating
+GMP compliance. This is reflected in the multiple references to MAH responsibilities that are in the
+GMP Guide. These responsibilities generally relate to:
+• 	The provision of information by the MAH to competent authorities, manufacturing sites and
+Qualified Persons;
+• 	The collation of quality-related information from different actors in the manufacturing and
+distribution chain.
+Evidence of GMP Compliance: The applicant has the responsibility to make sure that the
+manufacturers proposed in a new application for an MA hold a valid Manufacturer’s and Import
+Authorisation (MIA) in the case of sites located in the EEA. In the case of manufacturers located
+outside the EEA, there should be a valid proof of authorisation (equivalent to MIA) where one is
+required, and a valid EU GMP Certificate (or, where an MRA or equivalent applies, evidence of
+successful GMP inspection in relation to the product category / manufacturing activity of interest). For
+sites located in EEA, the MIAs and GMP Certificates are publicly accessible on the EudraGMDP
+database. Note that the validity of GMP certificates for sites which had been inspected more than 3
+years prior to when performing the check may be verified with the relevant competent authority.
+Abbreviated Version of CTD Module 3/Part 2 of Veterinary Marketing Authorisation dossier:
+In the introductory chapter to the GMP Guide, it is stated that “Throughout the Guide, it is assumed
+that the requirements of the Marketing Authorisation relating to the safety, quality and efficacy of the
+products, are systematically incorporated into all the manufacturing, control and release for sale
+arrangements of the holder of the Manufacturing Authorisation.” This implies that the MAH has a
+responsibility to communicate what is registered in the MA to the manufacturing sites. In doing this,
+MAHs sometimes prepare abbreviated versions of CTD module 3 / Part 2 of the veterinary dossier of
+the MA for use by the manufacturing sites and QPs; this is considered acceptable; as long as those
+abbreviated versions are sufficiently comprehensive and are subject to formal change control and
+oversight activities. It is considered that the provision and use of such abbreviated versions of Module
+3/Part 2 should be addressed in a technical agreement between the parties.
+Labelling and Product Information: Care should also be taken to ensure that, what is registered in
+CTD module 1 / Part 1 of the veterinary dossier in relation to the approved product labelling (including
+the package leaflet) and changes to same are communicated to the manufacturer in a timeframe which
+will enable the manufacturer to ensure that all batches it produces have the correct labelling and
+product information.
+Chapter 7 and MAHs: While Chapter 7 is primarily intended to deal with “the responsibilities of
+manufacturers towards the Competent Authorities of the Member States with respect to the granting of
+marketing and manufacturing authorisations” (Ref. Chapter 7, Principle), it is also directly relevant to
+MAHs, as indicated by paragraph 7.3. This states: “Where the marketing authorization holder and the
+manufacturer are not the same, appropriate arrangements should be in place, taking into account the
+principles described in this chapter.” (Ref. Chapter 7, Paragraph 7.3).
+
+-- 5 of 29 --
+
+EMA/INS/3094/2022 	Page 6/29
+MA Variations: The need to provide the relevant manufacturing sites with the necessary information
+about MA variation approval and target implementation dates is considered another important
+responsibility for the MAH. It is a key activity which enables those sites to ensure that future batches
+of the product, which may be QP-certified after a certain date, comply with the varied MA. It also
+facilitates the generation of Product Quality Reviews in line with Chapter 1 of the EU GMP Guide. This
+responsibility may be inferred from Chapter 7 of the GMP Guide, in relation to Outsourced Activities,
+which states:
+“The Contract Giver should provide the Contract Acceptor with all the information and
+knowledge necessary to carry out the contracted operations correctly in accordance with
+regulations in force, and the Marketing Authorisation for the product concerned.” (Ref.
+Chapter 7, Paragraph 7.6)
+Regulatory Commitments: The management of regulatory commitments (which are often made by
+MAHs to competent authorities) is another area that can have a significant impact upon MA compliance
+generally, if it is not under an appropriate level of control by the MAH. This is especially the case in
+relation to the communication of such commitments to the manufacturing sites by the MAH; thus, the
+importance of robust communication processes is highlighted in this Reflection Paper. Indeed, the
+management of regulatory commitments may assume increased importance in the coming years, given
+that the regulatory environment may move towards greater flexibility in the area of post-approval
+change management, via ICH Q12, with respect to medicinal products for human use. Such flexibility
+is likely to rely on the effectiveness of the pharmaceutical quality system that is in place, as this will
+help assure regulatory compliance in the implementation of such post-approval changes. MAHs may
+have an important role in this area.
+Two-way Communication Systems: MAHs can facilitate compliance by establishing robust two-way
+communication systems with national competent authorities, manufacturing sites, Qualified Persons
+(QPs), and any organisations relevant to the monitoring of post-marketing quality (e.g. complaints
+processing and on-going stability monitoring). Doing so can help ensure that:
+• 	The manufacturing sites and QPs have visibility of what is registered in the marketing authorisation
+and what, if any, regulatory commitments have been agreed with the competent authorities.
+• 	The MAHs have adequate knowledge of the details of the manufacturing processes, including
+impurity formation, and their related controls at the finished product and active substance
+manufacturing sites. Such knowledge can enable MAHs ensure that the active substance and/or
+finished product specifications reflect those controls, as necessary. This also includes situations
+where there are Active Substance Master Files (ASMFs) and Certificates of suitability to the
+monographs of the European Pharmacopoeia (CEPs) in place.
+• 	The MAHs are adequately informed of the change management activities at the manufacturing
+sites, particularly in relation to changes which may impact upon Modules 1, 2 and 3 / Parts 1 and 2
+of the veterinary dossier, as well as on the contents of ASMFs and CEPs. This can help ensure that
+the MAHs are involved in regulatory impact assessments for relevant change proposals and that
+any necessary notifications or variation applications are made to the competent authorities.
+• 	The manufacturing sites are adequately informed by the MAHs of any MA changes which may have
+an impact on those sites, such as changes to the package leaflet, changes to specifications, etc.
+Data integrity: This is another area of relevance to MAHs; it can result in GMP non-compliances if
+there are not robust control systems to assure the integrity of data pertaining to the MA, which may be
+used or required by the manufacturers. Thus, it is considered that MAHs should have systems in place
+to ensure the integrity and reliability of the data that are used to discharge their responsibilities.
+There should be assurance that product lifecycle data relating to GMP activities, including relevant MA
+variations, are reliable, complete and accurate. The MAH should also ensure the long term security and
+archiving of the data upon which the MA relies.
+Compliance Management Process: MAHs should be aware of the ‘Compliance Management’ process
+that has been put in place within the EEA; this is used in situations where a manufacturing site has
+been found to be on the border between achieving a minimum level of GMP compliance and serious
+GMP non-compliance. MAHs should be aware of their ability to facilitate compliance, and may find that
+their involvement in the remediation of such issues is necessary, in relation to the products for which
+
+-- 6 of 29 --
+
+EMA/INS/3094/2022 	Page 7/29
+the MAH has responsibility. More information in this regard is available at (link – to be inserted when
+available).
+Non-compliance with MAH Obligations: Based on Article 116 of Directive 2001/83/EC and Article
+130 (3) of Regulation (EU) 2019/6, a MA for which the MAH does not fulfil its various obligations may
+be suspended, revoked or varied by the competent authority. Article 116 of Directive 2001/83/EC
+states that an authorisation shall be “suspended, revoked, withdrawn or varied where the particulars
+supporting the application as provided for in Article 8 or Articles 10, 10a, 10b, 10c and 11 are incorrect
+or have not been amended in accordance with Article 23, or where the controls referred to in Article
+112 have not been carried out.”
+5. Areas of the EC Guide to GMP that relate to MAHs
+As noted in the Introduction, there are various references within the GMP guide to MAH-related
+responsibilities. These span a number of different chapters and annexes, and in this Reflection Paper,
+they are grouped together under a number of different themes. These are set out below. While there
+is some duplication across the different themes, it is considered helpful to consider the responsibilities
+and activities in this way.
+A number of the legislative provisions that exist within EU medicines legislation which concern the
+GMP-related responsibilities of MAHs are also included within the various themes, where relevant. The
+themes are:
+• 	Outsourcing and Technical Agreements
+• 	Audits and Qualification Activities
+• 	Communication with Manufacturing Sites (e.g. MA Dossier Information, Variations, Regulatory
+Commitments, etc.)
+• 	Product Quality Reviews
+• 	Quality Defects, Complaints and Product Recalls
+• 	Maintenance of Supply of Medicinal Products
+• 	Continual Improvement Activities
+(Note that FMD-related responsibilities are discussed in Chapter 6.)
+5.1. Outsourcing and Technical Agreements
+This section discusses the various MAH responsibilities which apply to outsourced activities and
+technical agreements. (Note that the term ‘technical agreement’ is considered to mean a document
+that sets out the responsibilities and tasks/duties of the various parties, as agreed by those parties.)
+Section 5.2 below, relating to Audits and Qualification, is also relevant here and its contents should be
+noted.
+See also section 5.3 below in relation to the importance of a technical agreement being in place
+between the MAH and manufacturer when they are different legal entities. That section also addresses
+communications in relation to situations in which there is an Active Substance Master File (ASMF) or a
+CEP registered for a MA.
+Delegation of Activities:
+As noted earlier in this Reflection Paper, there is no provision within the GMP guide or in applicable
+legislation for the delegation of responsibilities by an MAH to other parties. However, there may be
+delegation of the tasks and activities which relate to those responsibilities, and this is relevant to the
+topic of outsourcing. It is considered that any such delegation should be described in writing and
+agreed by the relevant parties.
+In general terms, it is the responsibility of the MAH to ensure that the person or entity, to whom any
+task or activity has been delegated, possesses the required competence, information and knowledge to
+successfully carry out the outsourced activities (Ref: GMP Guide Chapter 7, Paragraphs 7.5 and 7.6).
+Special attention should be given to situations where tasks have been delegated in a fragmented way -
+to more than one party – as applying oversight of multiple parties can be a challenge in the life-cycle
+management of the medicinal product.
+
+-- 7 of 29 --
+
+EMA/INS/3094/2022 	Page 8/29
+Documenting Outsourced Activities:
+There are obligations to ensure that outsourced activities are described in writing. Chapter 7 of the
+GMP Guide requires that “any activity that is outsourced should be appropriately defined, agreed and
+controlled in order to avoid misunderstandings which could result in a product or operation of
+unsatisfactory quality.” (Ref: GMP Guide Chapter 7, Principle).
+Chapter 7 of the GMP Guide also states that “Where the marketing authorization holder and the
+manufacturer are not the same, appropriate arrangements should be in place, taking into account the
+principles described in this chapter.” (Ref. Chapter 7, Paragraph 7.3). In practice there are various
+scenarios that may apply. For example, the two parties may be different legal entities within the same
+company group, or they may be unrelated companies. Regardless of such scenarios, it is considered
+that the arrangements between the parties should be documented in technical agreements.
+Where an MAH is engaged in an outsourcing activity, the above means that the MAH should agree in
+writing what exactly the activity is, and how it will be controlled.
+Compliance with the Marketing Authorisation:
+If an outsourced activity is one that may affect compliance with the MA, there should be controls in
+place which provide assurance that the requirements of the MA are complied with. This also has
+relevance in relation to activities concerning post-approval changes and their implementation.
+The GMP Guide states that “All arrangements for the outsourced activities including any proposed
+changes in technical or other arrangements should be in accordance with regulations in force, and the
+Marketing Authorisation for the product concerned, where applicable.” (Ref. Chapter 7, Paragraph 7.2)
+Chapter 1 of the GMP Guide states that “Where manufacture is outsourced, the technical agreement
+between MAH and manufacturer should address the respective responsibilities in producing and
+evaluating the product quality review.” (Ref. Chapter 1, Paragraph 1.11). This means that the
+manufacturer may be responsible for compiling and evaluating certain elements of the PQR, while the
+MAH may be responsible for compiling and evaluating other parts of the PQR. (See below and also
+Section 5.4 for further information in relation to PQRs.) It is noted that PQRs contain information in
+relation to the MA, in terms of variations, post-approval commitments, etc.
+Document Retention:
+There are certain document retention requirements stated in the GMP Guide which are important from
+the perspective of the MAH, as they support the MA, and also, documentation retention activities may
+be the subject of outsourcing.
+With regard to medicinal products, it is considered that while GMP-related document retention is the
+responsibility of the manufacturer, the MAH has an interest in this area, given that certain
+documentation supports information in the Marketing Authorisation. Chapter 4 of the GMP Guide
+provides useful guidance relating to the storage and retention requirements of documentation. It
+states that “…the retention period will depend on the business activity which the documentation
+supports. Critical documentation, including raw data (for example relating to validation or stability),
+which supports information in the Marketing Authorisation should be retained whilst the authorization
+remains in force.” (Ref. Chapter 4, Paragraph 4.12)
+While the above wording in Chapter 4 of the GMP Guide is aimed at the manufacturer and does not
+convey a direct responsibility on the MAH, it is considered that the MAH should be satisfied with the
+documentation retention policies and practices that are in place at the manufacturer, given the role of
+certain documentation in supporting the MA. It is considered that the arrangements in this area should
+be addressed in a technical agreement or a contract between the parties, whichever may apply.
+The above paragraph from Chapter 4 of the GMP Guide goes on to state that:
+“It may be considered acceptable to retire certain documentation (e.g. raw data supporting
+validation reports or stability reports) where the data has been superseded by a full set of new
+data. Justification for this should be documented and should take into account the
+requirements for retention of batch documentation; for example, in the case of process
+validation data, the accompanying raw data should be retained for a period at least as long as
+
+-- 8 of 29 --
+
+EMA/INS/3094/2022 	Page 9/29
+the records for all batches whose release has been supported on the basis of that validation
+exercise.”
+Again, the above text is relevant to the MAH, as validation data and reports, and stability reports also,
+are key elements of the documentation needed to support an MA.
+In relation to investigational medicinal products for human use, the GMP Directive 2003/94/EC places a
+direct responsibility on the MAH with respect to the retention of documentation. In this regard, it
+requires the batch documentation to:
+“… be retained for at least five years after the completion or formal discontinuation of the last
+clinical trial in which the batch was used. The sponsor or marketing authorisation holder, if
+different, shall be responsible for ensuring that records are retained as required for marketing
+authorisation in accordance with the Annex I to Directive 2001/83/EC, if required for a
+subsequent marketing authorisation” (Ref. Directive 2003/94/EC, Article 9).
+Please note that this requirement is not stated in Directive 2017/1572 which will replace Directive
+2003/94/EC in 2019.
+It is considered that record retention responsibilities and activities should be agreed between the
+manufacturer, MAH or sponsor. The EMA Guideline EMA/202679/2018 (Guideline on the responsibilities
+of the sponsor with regard to handling and shipping of investigational medicinal products for human
+use in accordance with Good Clinical Practice and Good Manufacturing Practice) also provides useful
+information in this regard.
+Technical Agreements in relation to Product Quality Reviews (PQRs):
+Chapter 1 of the GMP Guide states that “Where manufacture is outsourced, the technical agreement
+between MAH and manufacturer should address the respective responsibilities in producing and
+evaluating the product quality review.” (Ref. Chapter 1, Paragraph 1.11). This means that the
+manufacturer may be responsible for compiling and evaluating certain elements of the PQR, while the
+MAH may be responsible for compiling and evaluating other parts of the PQR. (See Section 5.4 below
+for further information in relation to PQRs.)
+Technical Agreements in relation to the manufacture of biological active substances and
+medicinal products for human use:
+In relation to the manufacture of biological active substances and medicinal products for human use,
+there is a responsibility on the MAH to have a technical agreement in place with other parties which
+describes its responsibilities relating to the sourcing of human derived starting materials for biological
+products. The GMP Guide states that for human tissues and cells used as starting materials for
+biological medicinal products, “a technical agreement should be in place between the responsible
+parties (e.g. manufacturers, tissue establishment, Sponsors, MA Holder) which defines the tasks of
+each party, including the RP [Responsible Person] and Qualified Person” (Ref. Annex 2, Paragraph
+36(g)).
+Technical Agreements in relation to the use of ionising radiation in the manufacture of
+medicinal products:
+In relation to the use of ionising radiation in the manufacture of medicinal products, there are certain
+responsibilities for the MAH documented in Annex 12 of the GMP Guide.
+One is a responsibility for the MAH to agree the design of irradiation cycles with the manufacturer, and
+another is to agree how and where irradiation cycle records are retained. The Guide states that:
+“When the required radiation dose is by design given during more than one exposure or passage
+through the plant, this should be with the agreement of the holder of the marketing authorisation
+and occur within a predetermined time period. Unplanned interruptions during irradiation should
+be notified to the holder of the marketing authorisation if this extends the irradiation process
+beyond a previously agreed period.” (Ref. Annex 12, Paragraph 33).
+
+-- 9 of 29 --
+
+EMA/INS/3094/2022 	Page 10/29
+Annex 12 also states that:
+“Process and control records for each irradiation batch should be checked and signed by a
+nominated responsible person and retained. The method and place of retention should be agreed
+between the plant operator and the holder of the marketing authorisation.” (Ref. Annex 12,
+Paragraph 44).
+Annex 12 also requires the MAH of a product which includes ionising radiation in its processing to refer
+to the CPMP guidance on “Ionising radiation in the manufacture of medicinal products” (Ref. Annex 12,
+Note).
+Some of the above responsibilities in Annex 12 are quite technical in nature, and they require the MAH
+to be in a position to understand and to technically assess the design of irradiation cycles.
+The direct requirement for the MAH to work with the manufacturer with regard to the design of irradiation
+cycles is not considered a task that may be delegated by the MAH to the manufacturer of the medicinal
+product. However, the records retention tasks are considered ones that may be delegated to the
+manufacturer, and thus may be the subject of outsourcing arrangements.
+Arrangements in relation to Reference and Retention Samples:
+There is an Annex in the GMP Guide that provides guidance in relation to reference and retention
+samples. This is Annex 19, and it states certain responsibilities for the MAH in this area, mainly in
+relation to agreeing with the relevant manufacturers the arrangements for the taking and storage of
+reference and retention samples. (Note that Annex 6 of the GMP Guide provides an exemption to
+manufacturers of medicinal gases for the need to take and store reference and retention samples of
+such products, unless such samples are otherwise required.)
+In the section titled ‘Written Agreements’ in Annex 19, the following is stated:
+“Where the marketing authorisation holder is not the same legal entity as the site(s)
+responsible for batch release within the EEA, the responsibility for taking and storage of
+reference/retention samples should be defined in a written agreement between the two parties
+in accordance with Chapter 7 of the EC Guide to Good Manufacturing Practice. This applies also
+where any manufacturing or batch release activity is carried out at a site other than that with
+overall responsibility for the batch on the EEA market and the arrangements between each
+different site for the taking and keeping of reference and retention samples should be defined
+in a written agreement.” (Ref. Annex 19, Paragraph 6.1)
+Annex 19 also addresses situations involving the closedown of a manufacturer and how reference and
+retention samples are to be managed. It states that
+“If the manufacturer is not in a position to make the necessary arrangements this may be
+delegated to another manufacturer. The Marketing Authorisation holder (MAH) is responsible
+for such delegation and for the provision of all necessary information to the Competent
+Authority. In addition, the MAH should, in relation to the suitability of the proposed
+arrangements for storage of reference and retention samples, consult with the competent
+authority of each Member State in which any unexpired batch has been placed on the market.”
+(Ref. Annex 19, Paragraph 10.2)
+While the taking and storage of reference and retention samples has often been regarded as purely a
+manufacturing activity, it is clear from the above that the MAH has responsibilities in this area also.
+5.2. Audits & Qualification Activities
+There are references to GMP audits within the European medicines legislation which have implications
+for applicants for MAs as well as for the corresponding MAHs. There is also a need for finished product
+manufacturers to be suitably qualified in order to be able to verify, for the applicant and the MAH, the
+GMP compliance status of the active substance manufacturer(s), as required in legislation.
+QP Declarations regarding GMP compliance status of the active substance manufacturer:
+
+-- 10 of 29 --
+
+EMA/INS/3094/2022 	Page 11/29
+Article 8(3)(ha) of Directive 2001/83/EC, for example, places a legal obligation on the applicant to
+provide information in the MA application concerning the GMP compliance status of the manufacturer of
+the active substance, and in this regard, reference is made to audits of that manufacturer. This article
+requires the applicant to provide “A written confirmation [QP Declaration] that the manufacturer of the
+medicinal product has verified compliance of the manufacturer of the active substance, with [the]
+principles and guidelines of good manufacturing practice by conducting audits, in accordance with point
+(f) of Article 46.”
+Article 46 relates to the obligations that are placed upon the holder of the manufacturing
+authorisation, and sub-point (f) requires the finished product manufacturer “to use only active
+substances, which have been manufactured in accordance with good manufacturing practice
+for active substances and distributed in accordance with good distribution practices for active
+substances.”
+Article 8(3)(ha) goes on to state that the written confirmation submitted by the applicant “shall contain
+a reference to the date of the audit and a declaration that the outcome of the audit confirms that the
+manufacturing complies with the principles and guidelines of good manufacturing practice.”
+The above means that the MA applicant has a responsibility to confirm that such audits have been
+carried out prior to the submission of the MA application, and to be satisfied with the GMP compliance
+status of the manufacturer of the active substance, as determined by the holder of the medicinal
+product manufacturing authorisation. The above confirmation should be made in the form of a QP
+Declaration. (Note: The term “Written Confirmation” as used in Article 8(3)(ha) is essentially a
+reference to the ‘QP Declaration’; it is the term used in the European Commission “Guidelines on the
+details of the various categories of variations” for the QP Declaration.)
+In relation to medicinal products for veterinary use, EC Regulation 2019/6 states the following: “The
+manufacturing processes for the active substance(s) and finished product shall comply with Good
+Manufacturing Practice (GMP).” (Ref. Article 8 (a) and (b), Annex I item 4.1, and Annex II section I
+item I.1.4). In parallel, Article 93 (j) of Regulation 2019/06 requires that the holder of a manufacturing
+authorisation “shall use as starting materials only active substances which have been manufactured in
+accordance with good manufacturing practice for active substances and distributed in accordance with
+good distribution practice for active substances”. Article 93 (l) requires that the holder of a MA “shall
+perform audits based on a risk assessment of the manufacturers, distributors and importers from
+whom the holder of a manufacturing authorisation obtains active substances”.
+In addition, Eudralex Volume 6 B, Notice to Applicants, states that a declaration(s) from the Qualified
+Person of the manufacturing authorisation holder is required.
+The above means that a QP Declaration based on an audit is also expected for medicinal products for
+veterinary use.
+The above responsibilities to confirm to the competent authority the GMP status of the active
+substance manufacturer continues into the post-authorisation phase of the medicinal product, and it is
+the MAH that bears this responsibility. In this regard:
+• 	GMP audits of the manufacturer are again required – such audits are referred to in the guidelines
+concerning MA variations (Ref. EC Guidelines 2013/C 223/01 and Commission Implementing
+Regulation (EU) 2021/17 of 8 January 2021).
+• 	In the section dealing with Administrative Changes, the aforementioned guidelines place a
+responsibility on the MAH to submit a Type 1A variation notification in relation to changes in the
+date of the audit to verify GMP compliance of the manufacturer of the active substance. This
+concerns notifying the competent authority of new audits of such sites.
+• 	The MAH is required to provide a “written confirmation from the manufacturer of the finished
+product stating verification of compliance of the manufacturer of the active substance with
+principles and guidelines of good manufacturing practices” (Ref. Administrative Change A.8). Note
+that a variation application is not needed when the information has been otherwise transmitted to
+the authorities (e.g. through a QP declaration).
+
+-- 11 of 29 --
+
+The document titled ‘Guidance for the template for the qualified person’s declaration
+concerning GMP compliance of active substance manufacture’ also addresses the
+responsibility of the MAH to ensure that a written confirmation of compliance of the
+manufac
+EMA/INS/3094/2022 	Page 12/29
+The document titled ‘Guidance for the template for the qualified person’s declaration concerning GMP
+compliance of active substance manufacture’ also addresses the responsibility of the MAH to ensure
+that a written confirmation of compliance of the manufacturer of the active substance with GMP is
+provided to the competent authority. This document also indicates that such confirmations of
+compliance should be based on audits; it states that “Audits of each site for GMP compliance should be
+undertaken at regular intervals, normally within three years. Justification should be provided if the
+date since the last audit exceeds this period.”
+• 	Use of the QP declaration template facilitates the provision of the required audit-related
+information by the MAH.
+• 	The audit reports should be readily available and shared with the authorities, if requested.
+• 	The above variation (or QP declaration) requirement relates to the fact that the GMP compliance
+status of the active substance manufacturer is expected to be confirmed by the manufacturer of
+the finished product and transmitted to the MAH, and that such confirmations (declarations) are
+based on audits carried out by, or on behalf of, the manufacturer of the finish product, as required
+by Article 46(f) of Directive 2001/83/EC and Article 93 (l) of Regulation 2019/6.
+The above responsibilities apply to the MA Applicant and then to the MAH after the MA has been
+granted.
+5.3. 	Communication 	with 	Manufacturing 	Sites 	and 	Competent
+Authorities 	(e.g. 	MA 	Dossier 	Information, 	Variations, 	Regulatory
+Commitments, etc.)
+The Need for Two-way Communication Systems:
+As noted earlier in this paper, the introductory chapter to the GMP Guide refers to the need for “the
+requirements of the Marketing Authorisation, relating to the safety, quality and efficacy of the
+product”, to be “systematically incorporated into all the manufacturing, control and release for sale
+arrangements of the holder of the Manufacturing Authorisation”. This implies the need for cooperation
+between the MAH and manufacturer, and the need for two-way communication systems to be in place
+between them, particularly in relation to what is registered in the MA.
+Likewise, the so called ‘GMP Directives’ 2003/94/EC and 91/412 require the manufacturer to ensure
+that “all manufacturing operations for medicinal products subject to a marketing authorisation are
+carried out in accordance with the information provided in the application for marketing authorisation
+as accepted by the competent authorities”. (Ref. Article 5 of Directives 2003/94/EC and 91/412).
+It is reasonable to take the view that manufacturers cannot comply with the GMP requirement for
+batches to be in line with the relevant MA unless the MAH communicates to them what is registered in
+the dossier. A similar point is made in the preamble to the forthcoming new GMP Directive 2017/1572.
+This will replace Directive 2003/94/EC in 2019, when EU regulation 536/2014 on Clinical Trials enters
+into force, and it states the following:
+“All medicinal products for human use manufactured or imported into the Union, including
+medicinal products intended for export, should be manufactured in accordance with the
+principles and guidelines of good manufacturing practice. However, for the manufacturer to be
+able to comply with those principles and guidelines, cooperation between the manufacturer and
+the marketing authorisation holder, when they are different legal entities, is necessary. The
+obligations of the manufacturer and marketing authorisation holder vis-à-vis each other should
+be defined in a technical agreement between them.” (Ref. Directive 2017/1572, Preamble Point
+4)
+Thus, it is considered important that there is cooperation and communication between the MAH and
+manufacturer, when they are different legal entities, and that such arrangements be described in a
+technical agreement between the parties.
+
+-- 12 of 29 --
+
+EMA/INS/3094/2022 	Page 13/29
+Specific Example of Required Communications:
+Example 1 - The use of ionising radiation in the manufacture of medicinal products
+An example which illustrates the need for such communication can be found in Annex 12 to the GMP
+Guide. This Annex concerns the use of ionising radiation in the manufacture of medicinal products.
+• 	It states that the “required dose including justified limits will be stated in the marketing
+authorisation” (Ref. EU GMP Guide Annex 12, Paragraph 3).
+• 	This implies a need for communication between the MAH and the manufacturer in relation to the
+strength and limits of the irradiating dose.
+• 	The MAH has a responsibility to ensure that this information is registered in the marketing
+authorisation, and he is expected to communicate what has been registered with the
+manufacturer, so that the manufacturer may maintain compliance with the marketing
+authorisation.
+Example 2 - ASMFs and CEPs
+Another area of importance in relation to communication processes and responsibilities is where there
+is an Active Substance Master File (ASMF) registered for a marketing authorisation which has both
+closed and open parts, or where a Certificate of Suitability to the monographs of the European
+Pharmacopoeia (CEP) is registered (or applied for) in the MA. (Note: the information in the CEP
+replaces those MA dossier sections that normally describe the manufacture and control during
+manufacture of the active substance (as well as stability data, in cases where the CEP includes a re-
+test date). Such CEP information will have been evaluated by the European Directorate for the Quality
+of Medicines (EDQM).)
+These approaches are covered by Directive 2001/83/EC and Regulation 2019/6, as follows:
+With regard to medicinal products for human use:
+- 	“For a well-defined active substance, the active substance manufacturer or the applicant may
+arrange for the (i) detailed description of the manufacturing process, (ii) quality control during
+manufacture, and (iii) process validation, to be supplied in a separate document directly to the
+competent authorities by the manufacturer of the active substance as an Active Substance
+Master File. In this case, the manufacturer shall, however, provide the applicant with all of the
+data, which may be necessary for the latter to take responsibility for the medicinal product.
+The manufacturer shall confirm in writing to the applicant that he shall ensure batch to batch
+consistency and not modify the manufacturing process or specifications without informing the
+applicant. Documents and particulars supporting the application for such a change shall be
+supplied to the competent authorities; these documents and particulars will be also supplied to
+the applicant when they concern the open part of the active substance master file” (Ref.
+Directive 2001/83/EC, Annex 1).
+- 	“Where the active substance and/or a raw and starting material or excipient(s) are the subject
+of a monograph of the European Pharmacopoeia, the applicant can apply for a certificate of
+suitability that, where granted by the European Directorate for the Quality of Medicines, shall
+be presented in the relevant section of this Module (i.e. Module 3). Those certificates of
+suitability of the monograph of the European Pharmacopoeia are deemed to replace the
+relevant data of the corresponding sections described in this Module. The manufacturer shall
+give the assurance in writing to the applicant that the manufacturing process has not been
+modified since the granting of the certificate of suitability by the European Directorate for the
+Quality of Medicines” (Ref. Directive 2001/83/EC, Annex I)
+With regard to medicinal products for veterinary use:
+- 	“For a non-biological active substance, the applicant may arrange for the information on active
+substance in point (2) to be supplied directly to the competent authorities by the manufacturer
+
+-- 13 of 29 --
+
+EMA/INS/3094/2022 	Page 14/29
+of the active substance as an Active Substance Master File. In this case, the manufacturer of
+the active substance shall provide the applicant with all the data (applicant’s part of the Active
+Substance Master File) which may be necessary for the latter to take responsibility for the
+veterinary medicinal product. A copy of the data provided by the active substance
+manufacturer to the applicant shall be included in the medicinal product dossier. The
+manufacturer of the active substance shall confirm in writing to the applicant that he shall
+ensure batch-to-batch consistency and not modify the manufacturing process or specifications
+without informing the applicant.” (Ref. Regulation 2019/6 Annex II)
+- 	“Where a certificate of suitability has been issued by the European Directorate for the Quality
+of Medicines and HealthCare for a starting material, active substance or excipient, that
+certificate constitutes the reference to the relevant monograph of the European
+Pharmacopoeia. Where a certificate of suitability is referred to, the manufacturer shall give an
+assurance in writing to the applicant that the manufacturing process has not been modified
+since the granting of the certificate of suitability by the European Directorate for the Quality of
+Medicines and HealthCare.“ (Regulation 2019/6 Annex II)
+It is important to note that, irrespective of whether an ASMF or a CEP is in place, the MAH retains his
+responsibility for ensuring the quality of the active substance. In this regard, the following points
+should be noted:
+• 	The MAH is responsible for ensuring, that it, in conjunction with the finished product manufacturer,
+has access to all relevant information concerning the current manufacture of the active substance.
+This requires effective communication processes to be in place between the concerned parties in
+relation to the manufacture of the active substance. It is expected that the MA applicant/ MAH
+have access to the open part (or its equivalent) of the ASMF, including when a CEP is used. In the
+case of an aseptically manufactured active substance, full information on the sterilization step
+needs to be made available to the finished product manufacturer and should be included in Module
+3/Part II of the MA dossier. The MA applicant/MAH should ensure that they have access to all the
+relevant information.
+• 	Such communication processes should also address proposed changes in the manufacturing
+process or specifications, to enable the MAH to assess the implications of the proposed change on
+the finished product and to apply for any required variations to the MA, in accordance with the EU
+Variation Classification Guideline.
+• 	In addition, if a CEP for an active substance is registered in an MA, this does not exempt the MAH
+from the responsibility to have available a declaration of GMP (signed by the Qualified Person)
+relating to the GMP compliance status of the active substance manufacturer. See the earlier text
+in this Reflection Paper for information on QP Declarations.
+• 	The level of knowledge that the MAH has in relation to the manufacture and control of the active
+substance should be such that it permits the MAH to take responsibility for the quality of the
+medicinal product. This should not be less than when there is an ASMF registered in the MA.
+In order for the MAH (or applicant) to be able to fulfil the responsibilities referred to above, it is
+considered that he should ensure that the above requirements are clearly addressed, and if necessary
+via a technical agreement between the MAH and the active substance manufacturer.
+Example 3 – Documentation reflecting what is registered is the MA
+A third example is found in Chapter 4 of the GMP Guide, in relation to Documentation. It states that
+“Documents should be designed, prepared, reviewed, and distributed with care. They should comply
+with the relevant parts of Product Specification Files, Manufacturing and Marketing Authorisation
+dossiers, as appropriate. The reproduction of working documents from master documents should not
+allow any error to be introduced through the reproduction process” (Ref. GMP Guide Chapter 4,
+Paragraph 4.2).
+This implies a responsibility for the MAH to ensure that any documents that it provides to the
+manufacturing sites relating to what is registered in the MA accurately reflect the relevant parts of the
+MA.
+
+-- 14 of 29 --
+
+EMA/INS/3094/2022 	Page 15/29
+• 	Examples of such documents might include the release and shelf-life specifications for the product,
+information in relation to the registered manufacturing process, copies of the registered artwork for
+the product packaging, etc.
+• 	It is especially important that documents relating the registered product information intended for
+the patient or user of the medicine (i.e. labels and leaflets) are in line with the marketing
+authorisation, and that changes (variations) to these items are communicated to the
+manufacturing site in a timely manner.
+The Effectiveness and Frequency of Communications:
+It is considered that there should be effective and frequent communications between the MAH and the
+relevant manufacturing sites. This is not just in relation to what is registered in the MA, but also, it
+might concern the results of Product Quality Reviews (PQRs), information about regulatory
+commitments, proposed changes which may affect Modules 1, 2 and 3 / Parts 1 and 2 of the MA,
+among other things.
+Documenting Communication Processes – Complexity and Legal Arrangements:
+How such communication processes and responsibilities may be documented depends on the
+relationship between the various entities, and on the complexity of the arrangements that may be in
+place. Complexity in relation to the supply chain is particularly important to consider when
+determining what communication processes need to be in place – this can relate to the number and
+type of different manufacturers in the supply chain, the degree of outsourcing that is in place, the
+geographic spread of the various actors in the supply chain, etc.
+In cases where the MAH and the manufacturer are part of the same overall group of companies, it may
+be sufficient to document, using SOPs, how the actual communication processes are expected to work.
+This is as long as those SOPs are approved by both parties and as long as they are referred to within
+the technical agreement between the parties. In other situations, where the MAH and the
+manufacturer are not part of the same overall group of companies, the communication processes and
+responsibilities should be documented in technical agreements or in contracts, as they may be more
+complex and at a higher risk of failing.
+The two-way flow of information between the parties is important, especially in the context of
+proposed changes which may require variation applications or regulatory notifications to the competent
+authority by the MAH. This is also the case with regard to suspected quality defects and potential
+recall issues which may have been reported to one or other party, but not to both, and which may
+need to be reported onwards to the competent authority. See also section 5.5.4 in relation to Quality
+defects with investigational medicinal products.
+Life-cycle Considerations:
+Communication processes and systems should be maintained with care, extending over the product
+life-cycle (e.g. during the licensing procedure, commercial manufacture, the fulfilment of regulatory
+commitments, the submission and implementation of post-approval variations, etc.) or at least up until
+the end of the relationship between the concerned parties. The MAH should ensure that communication
+systems are in place which will enable it to keep abreast of all developments, changes and
+commitments relating to the specific product of concern.
+Communications with the Competent Authorities – MA Variations:
+In relation to manufacturing-related MA variations, the MAH has a responsibility via Directive
+2001/83/EC and Regulation 2019/6 to provide the competent authority with information on
+amendments relative to the information submitted in the dossier. The Directive states that “The
+marketing authorisation holder shall forthwith provide the national competent authority with any new
+information which might entail the amendment of the particulars or documents referred to in Article
+8(3), Articles 10, 10a, 10b and 11, or Article 32(5), or Annex I” (Ref. Directive 2001/83/EC, Article 23
+(2)). Similar provisions are referred to in the Veterinary regulation, Regulation 2019/6, via Article
+8(b), 18(1); 18(2) 58 (3), (10), 35, 42 and 43
+
+-- 15 of 29 --
+
+EMA/INS/3094/2022 	Page 16/29
+Some of these articles directly concern GMP-related information, such as Article 8(3) in Directive
+2001/83/EC and Article 5 of Regulation 2019/6, which relates to, among other things, a description of
+the manufacturing method and the control methods employed by the manufacturer.
+Communications relating to Product Supply:
+Robust and timely communications are important in other areas too, not only in ensuring the
+regulatory compliance status of the product in the marketplace. In relation to ensuring the continued
+supply of medicinal products for patients and animals, for example, communication processes between
+MAHs, manufacturers and national competent authorities can play a pivotal role. See Section 5.6
+below for further information on this point.
+Communications relating to Scientific Advances:
+Another area in which effective communication processes can be of significant importance is in the
+maintenance of MAs in line with scientific advances. Article 23 of Directive 2001/83/EC states that,
+“after an authorisation has been issued, the authorisation holder must, in respect of the methods of
+manufacture and control provided for in the application, take account of scientific and technical
+progress and introduce any changes that may be required to enable the medicinal product to be
+manufactured and checked by means of generally accepted scientific methods.” The Veterinary
+Regulation 2019/6, has similar wording, via Article 58.
+The above articles imply a responsibility of the MAH to have communication systems in place with
+manufacturing sites and other parties which will enable it to keep abreast of scientific and technical
+progress and advances and to discuss initiatives in this area. This is so that any necessary MA
+variations can be submitted. This is further discussed in section 5.7 below.
+Communicating Changes to CTD Modules 1, 2 and 3 / Parts 1 and 2 of Veterinary Marketing
+Authorisation dossier to the Manufacturing Sites:
+As CTD Modules 1, 2 and 3 / Parts 1 and 2 of the MA change over time with the approval of variations
+and with the introduction of continual improvements, etc., it can be a challenge to retain knowledge at
+both the MAH and at the manufacturer of what is registered at any one time.
+• 	In this regard, it is expected that the copies of these CTD Modules / Parts 1 and 2 as held by the
+MAH (and by the manufacturer, if applicable) are continually kept updated (by replacing individual
+documents or Sections within a Module with the updated versions) as changes are made to those
+documents or sections within that Module.
+• 	This results in always having up-to-date copies of Modules 1, 2 and 3 / Parts 1 and 2 available as a
+definitive record of what is registered.
+• 	It can help avoid the need to maintain multiple different documents and document repositories to
+capture what is registered at any point in time.
+• 	Having such ‘live’ versions of Modules 1, 2 and 3 / Parts 1 and 2 in place can also facilitate
+communications between the MAH and the manufacturer in relation to what is registered at any
+point in time.
+5.4. Product Quality Reviews (PQRs)
+The area of product quality reviews is a topic that is of a direct relevance to MAHs. This is an area in
+which the GMP Guide is quite prescriptive, in relation to what is expected of the MAH. Chapter 1 of the
+Guide addresses this topic; and it states the following:
+“The manufacturer and, where different, marketing authorisation holder should evaluate the
+results of the review and an assessment made as to whether corrective and preventive action or
+any revalidation should be undertaken, under the Pharmaceutical Quality System. There should be
+management procedures for the ongoing management and review of these actions and the
+effectiveness of these procedures verified during self-inspection. Quality reviews may be grouped
+by product type, e.g. solid dosage forms, liquid dosage forms, sterile products, etc. where
+scientifically justified.” (Ref. Chapter 1, Paragraph 1.11).
+
+-- 16 of 29 --
+
+EMA/INS/3094/2022 	Page 17/29
+The GMP Guide goes on to state that “Where the marketing authorisation holder is not the
+manufacturer, there should be a technical agreement in place between the various parties that defines
+their respective responsibilities in producing the product quality review.” (Ref. Chapter 1, Paragraph
+1.11).
+There are several important points in the above text which are useful to consider.
+• 	The first is a clear obligation on the MAH, when it is not the product manufacturer, to evaluate the
+results of the PQR and to make an assessment in relation to the need for corrective and preventive
+actions (CAPAs), and revalidation activities. The text requires both parties to do the above
+evaluation and assessment work.
+• 	The second is the importance that the GMP Guide places on this PQR evaluation and assessment
+work by both parties. This is evident from the requirement in Chapter 1 to apply oversight to
+those activities, and in two different ways –ongoing management review and self-inspection
+processes.
+• 	Lastly, it is clear from the reference to a technical agreement above that each party has
+responsibilities in relation to PQR activities. In the case of the MAH, the primary responsibility is to
+perform the PQR evaluation and assessment work that is referred to above.
+Given the importance that the GMP Guide attributes to the involvement of both parties in such work, it
+is not considered appropriate for the MAH to delegate its evaluation and assessment work to the
+manufacturer. There are several good and risk-based reasons for this.
+• 	Firstly, there is information to be included and evaluated in PQRs which may be spread across
+both parties, the MAH and the manufacturer, or primarily held by only one. This includes
+information concerning complaints (and their investigation), as well as quality-related returns,
+recalls, MA variations (in terms of their status – submitted, granted or refused), and post-
+marketing commitments.
+• 	Secondly, there are items to be reviewed in a PQR for which both parties may have had different
+roles. An example here is the product stability data. The MAH may have outsourced the storage
+and/or testing of the stability samples to a third party, such as a contract laboratory, which is not
+the product manufacturer, and the results of the testing may be sent to the MAH, and not directly
+to the manufacturer by the laboratory. In such a situation, the MAH would have an important role
+in ensuring that the relevant stability data are included in the PQR and that the data are subject to
+an adequate review.
+The evaluation and assessment of such PQR information by both parties (the MAH and the
+manufacturer) is important in another way too - it can help mitigate two key risks:
+a) The risk of producing PQRs which are incomplete and which are missing important signals, trends
+and learnings, and
+b) The risk of placing batches of a product on the market which are non-compliant with the
+requirements of the MA.
+For example, the MAH may have information which the manufacturer may not necessarily have about
+the required implementation date of a MA variation concerning the package leaflet, submitted to
+update the leaflet with certain new safety information about the product.
+The MAH’s evaluation and assessment work on the PQR is beneficial because it has the potential to
+verify compliance with the variation implementation requirements, not only via a review of the
+variations section of the PQR, but also via a review of the change control section. The manufacturer’s
+review gives a related opportunity, to review the status of approved product artwork-related MA
+variations which were listed in the PQR by the MAH.
+In order for an MAH to add value in relation to its PQR activities, it is considered that its role in relation
+to PQRs should be different from thoat of the manufacturer. It is recognised that PQRs are documents
+that are primarily generated by the product manufacturer, not the MAH. Most of the information and
+
+-- 17 of 29 --
+
+EMA/INS/3094/2022 	Page 18/29
+data that needs to be included and reviewed in a PQR is firmly in the realm of GMP, and usually resides
+at manufacturing sites, not at the MAHs. (This includes information relating to change controls,
+process deviations, rejected batches, critical in-process controls, etc.)
+There are several ways in which MAHs may add value in relation to PQRs:
+• 	The MAH can ensure that information that it holds which is relevant to the PQR is actually included
+in the PQR. This applies, for example, to information relating to product complaints, which the
+MAH may have received directly from the marketplace and which may not have been also been
+sent directly to the manufacturer, as well as information about product recalls, MA variations and
+other changes, as well as post-marketing commitments. The manufacturer may have some of the
+above information, but it may not possess all of it, and the MAH can ensure that the contents of
+the PQR report in these areas are complete.
+• 	The MAH can cross-check the information included in the PQR by the manufacturer against its own
+records, in order to check whether there are any gaps in the data held by the manufacturer which
+need to be addressed.
+• 	The MAH can review the change control section of the PQR to check that changes with a potential
+impact on regulatory compliance have been adequately managed.
+• 	The MAH can ensure that its evaluation of the results of the PQR is focussed on assessing the MA
+compliance status of the product during the review period, instead of focussing on areas for which
+the MAH may not have a high level of competency or expertise, such as in relation to analytical
+method changes, the adequacy of equipment-related corrective actions, and the qualification
+status of relevant equipment and utilities, e.g. HVAC (heating, ventilation and air conditioning),
+water, compressed gases, etc.
+Overall, an MAH’s involvement in PQR activities provides tangible benefits, and further information in
+this regard is presented in Section 5.7 below, in relation to Continual Improvement Activities.
+Experience has shown that, when MAHs are not involved in the evaluation and assessment of PQR data
+and reports, those PQRs appear to be at greater risk of not complying with the requirements of
+Chapter 1 of the GMP Guide, and, more importantly, batches in the marketplace may be at greater risk
+of having MA non-compliances associated with them.
+5.5. Quality Defects, Complaints and Product Recalls
+Chapter 8 of the GMP Guide deals with the above topics. In many companies, the management of
+complaints, quality defects and recalls is performed centrally within the organisation, and Chapter 8
+makes provision for this. It states that “the relative roles and responsibilities of the concerned parties
+should be documented” and that such central management “should not result in delays in the
+investigation and management of the issue.” (Ref. Chapter 8, Paragraph 8.4).
+MAH Contact Person:
+It is considered that the MAH should be satisfied with the centralised arrangements that are in place
+for handling quality defects, such as within corporate quality groups or at manufacturing site(s). This
+includes arrangements regarding the contact persons who may communicate quality defect issues to
+the competent authorities (and the EMA in the case of products authorised via the Centralised
+Procedure.) Note that a Qualified Person may be designated by the MAH as the contact person. It is
+important to also note that the applicant/MAH is expected to have a dedicated responsible person to
+serve as a contact person for product defects and recalls in the post-authorisation phase – in this
+regard, the applicant/MAH is expected to provide information on its contact person in the MA-
+application form (Ref. MA Application Form in Notice to Applicants Volume 2B, Article 6 of Regulation
+726/2004, Annex I to Directive 2001/83/EC, Volume 6B of the Notice to Applicants, and Annex II of
+Regulation 6/2019.)
+Arrangements for Dealing with Quality Defects and Recalls:
+Chapter 8 places obligations on the MAH, the manufacturer and other parties to define and agree their
+respective roles and responsibilities with regard to quality defective medicinal products. In this
+
+-- 18 of 29 --
+
+EMA/INS/3094/2022 	Page 19/29
+context, the outsourcing of manufacturing and other activities is of relevance here, as outsourcing is
+often an activity in which the MAH is directly involved.
+Chapter 8 also recognises this, stating that “in case of outsourced activities, a contract should describe
+the role and responsibilities of the manufacturer, the marketing authorisation holder and/or sponsor
+and any other relevant third parties in relation to assessment, decision-making, and dissemination of
+information and implementation of risk-reducing actions relating to a defective product.” It clarifies
+that such contracts “should also address how to contact those responsible at each party for the
+management of quality defect and recall issues. (Ref. Chapter 8, Principle).
+Notification of Quality Defects to Competent Authorities:
+There are obligations stated in Chapter 8 which relate to the notification of quality defects to the
+relevant competent authority, and these are linked with the requirement to notify competent
+authorities of potential supply restrictions and/or product recall as a consequence of quality defect
+issues. The MAH often has a direct interest in such notification processes, and it is named in Chapter 8
+as a party to such notifications. Chapter 8 states that “Quality defects should be reported in a timely
+manner by the manufacturer to the marketing authorisation holder/sponsor and all concerned
+Competent Authorities in cases where the quality defect may result in the recall of the product or in an
+abnormal restriction in the supply of the product.” (Ref. Chapter 8, Paragraph 8.15).
+Quality Defects with Investigational Medicinal Products:
+Chapter 8 also addresses situations in which quality defects may occur in investigational medicinal
+products, and these can also be of relevance to MAHs. The text here states that “In the case of an
+investigational medicinal product for which a marketing authorisation has been issued, the
+manufacturer of the investigational medicinal product should, in cooperation with the sponsor, inform
+the marketing authorisation holder of any quality defect that could be related to the authorised
+medicinal product.” (Ref. Chapter 8, Paragraph 8.24). This requirement is taken directly from Article
+13 of GMP Directive 2003/94/EC for medicinal products and investigational medicinal products for
+human use, which carries almost identical wording. (Note that there is no equivalent article in the GMP
+Directive for veterinary medicines.)
+Potentially Falsified Medicines & Reporting Requirements:
+With regard to medicinal products for human use, the Falsified Medicines Directive (FMD), 2011/62/EU,
+discussed in detail in Section 6, placed specific reporting obligations on manufacturers in relation to
+products suspected of being falsified. This is relevant to the topic of quality defects, complaints and
+recalls, as falsified medicines are considered defective medicines and they can lead to recall actions.
+In amending Directive 2001/83/EC with the addition of Article 46 (g), the FMD Directive introduced a
+responsibility for the manufacturer to inform the competent authority and the MAH immediately of
+information which indicates that a medicinal product within the scope of its manufacturing
+authorisation is, or is suspected of being, falsified. (This is required irrespective of whether the
+medicinal product was distributed within the legal supply chain or by illegal means, including illegal
+sale via information society services.)
+The above responsibilities imply that the MAH should have a system in place to receive such quality
+defect and product falsification reports from manufacturers and it should be able to respond to them in
+a manner that is appropriate. This is also linked with the requirements of the EU pharmacovigilance
+legislation, by which the MAH is obliged to have systems in place to deal with adverse reaction reports.
+Product Recall Management:
+The management of product recalls is a specific area of importance for the MAH to have robust
+procedures in. This is because the MAH is usually heavily involved in recall decision making with the
+national competent authorities and in the coordination of recalls, when they are required. Chapter 8
+states that the “effectiveness of the arrangements in place for recalls should be periodically evaluated
+to confirm that they remain robust and fit for use.” It requires such evaluations to “extend to both
+within office-hour situations as well as out-of-office hour situations” and, when performing such
+evaluations, it requires consideration to be given “as to whether mock-recall actions should be
+performed.” It also requires such evaluations to be “documented and justified.” (Ref. Chapter 8,
+Paragraph 8.30).
+
+-- 19 of 29 --
+
+EMA/INS/3094/2022 	Page 20/29
+Each of these requirements is applicable to the MAH, given the MAH’s role in recall decision making,
+coordination and management, and it is important that the MAH has systems in place to deal with
+these activities.
+Other Notification Responsibilities:
+Directive 2001/83/EC also contains provisions in this area that concern the MAH. Article 123 of the
+Directive, for example, places an obligation upon the MAH to “notify the Member States concerned
+forthwith of any action taken by the MAH to suspend the marketing of a medicinal product, to withdraw
+a medicinal product from the market, to request the withdrawal of a marketing authorisation or not to
+apply for the renewal of a marketing authorisation, together with the reasons for such action.” (Ref.
+Directive 2001/83/EC, Article 123).
+Note that, in relation to veterinary medicinal products, Regulation 2019/6 	contains a similar (but not
+identical) provision. It states: “The marketing authorisation holder shall record in the product
+database the dates when its authorised veterinary medicinal products are placed on the market,
+information on the availability for each veterinary medicinal product in each relevant Member State
+and, as applicable, the dates of any suspension or revocation of the marketing authorisations
+concerned. […] The marketing authorisation holder shall without delay inform the competent authority
+which has granted the marketing authorisation or the Commission, as applicable, of any prohibition or
+restriction imposed by a competent authority or by an authority of a third country and of any other
+new information which might influence the assessment of the benefits and risks of the veterinary
+medicinal product concerned, including from the outcome of the signal management process carried
+out in accordance with Article 81. […] The marketing authorisation holder shall without delay inform
+the competent authority which has granted the marketing authorisation, or the Commission, as
+applicable, of any action which the holder intends to take in order to cease the marketing of a
+veterinary medicinal product prior to taking such action, together with the reasons for such action..”
+(Ref. Regulation 2019/6, Articles 58 (6), (10) and (13)).
+Article 123 of Directive 2001/83/EC also requires the MAH to declare if such action is based on any of
+the grounds set out in Article 116 or Article 117(1). These articles relate to situations in which a view
+is taken by Member States that “the medicinal product is harmful or that it lacks therapeutic efficacy,
+or that the risk-benefit balance is not favourable, or that its qualitative and quantitative composition is
+not as declared.” They also relate to situations in which “the controls on the medicinal product and/or
+on the ingredients and the controls at an intermediate stage of the manufacturing process have not
+been carried out or if some other requirement or obligation relating to the grant of the manufacturing
+authorisation has not been fulfilled.”
+5.6. Maintenance of Supply of Medicinal Products
+The MAH’s Obligation to Ensure Continued Supply:
+The EU medicines legislation, as well as the GMP Guide, place obligations upon the MAH that relate to
+the supply of its medicinal products and to the maintenance of such supply. For example, Article 81 of
+Directive 2001/83/EC states the following:
+“The holder of a marketing authorisation for a medicinal product and the distributors of the
+said medicinal product actually placed on the market in a Member State shall, within the limits
+of their responsibilities, ensure appropriate and continued supplies of that medicinal product to
+pharmacies and persons authorised to supply medicinal products so that the needs of patients
+in the Member State in question are covered.”
+For veterinary medicinal products, Regulation 2019/6 (Article 58 (2)) states the following:
+“The marketing authorisation holder shall, within the limits of its responsibilities, ensure
+appropriate and continued supplies of its veterinary medicinal products.”
+This directly relates to the avoidance of medicines shortages for patients and animals.
+It is considered that MAHs should also comply with any national requirements that may exist within the
+EEA in relation to maintaining product supply.
+
+-- 20 of 29 --
+
+EMA/INS/3094/2022 	Page 21/29
+Reporting Supply Restrictions and Problems:
+In addition, in accordance with Chapter 5 of the GMP Guide, the MAH has a responsibility to report
+restrictions in supply to the relevant competent authorities. In this regard, the MAH may have to rely
+upon the manufacturer to notify it of potential supply problems. Chapter 5 states that “The
+manufacturer should report to the marketing authorisation holder (MAH) any constraints in
+manufacturing operations which may result in abnormal restriction in the supply. This should be done
+in a timely manner to facilitate reporting of the restriction in supply by the MAH, to the relevant
+competent authorities, in accordance with its legal obligations.” (Ref. Chapter 5, Paragraph 5.71)
+It is useful to consider what actions may be taken by the MAH in order to minimise the impact on
+patients as a result of potential supply issues with their medicines.
+• 	At a starting point, it is considered that the MAH should ensure that the communication
+arrangements between it and the manufacturer on potential supply issues are agreed and clearly
+documented in a technical agreement between the parties.
+• 	Where the two companies are part of the same overall organisation, the specific details in relation
+to how the communications processes are intended to work at a practical level may be documented
+in SOPs, as long as those SOPs are approved by both parties and as long as they are referred to
+within the technical agreement between the parties.
+In addition to information from the internal supply chain, alerts on supply problems issued by e.g.
+wholesalers, pharmacies and hospitals should also be considered by the MAH.
+• 	This can help the MAH fulfil its notification obligations to the relevant competent authorities.
+(Note: The MAH may delegate tasks regarding such notification obligations concerning supply
+issues to the local affiliate in a member state.)
+There is European legislation in place which governs the notification of supply issues to the competent
+authorities. If the product ceases to be placed on the market of a Member State, either temporarily or
+permanently, the MAH is required, via Article 23a of Directive 2001/83/EC, to notify the competent
+authority of that Member State. The Directive requires that such notifications shall, “other than in
+exceptional circumstances, be made no less than two months before the interruption in the placing on
+the market of the product.”
+The MAH is also required to inform the competent authority of the reasons for such action in
+accordance with Article 123(2) of the Directive. This article requires the MAH to notify the Member
+States concerned forthwith “of any action taken by the MAH to suspend the marketing of a medicinal
+product, to withdraw a medicinal product from the market, to request the withdrawal of a marketing
+authorisation or not to apply for the renewal of a marketing authorisation, together with the reasons
+for such action.”
+Note that, in relation to veterinary medicinal products, Regulation 2019/6 (Article 58(13)) contains a
+similar (but not identical) provision. It states: “The marketing authorisation holder shall without delay
+inform the competent authority which has granted the marketing authorisation or the Commission, as
+applicable, of any action which the holder intends to take in order to cease the marketing of a
+veterinary medicinal product prior to taking such action, together with the reasons for such action.”
+Possible Reasons for Supply Disruptions – Complexity, Outsourcing & Other Factors:
+There is a variety of factors that may lead to disruptions of supply chains and product shortages for
+patients and animals. The globalisation of manufacturing and distribution activities is one such factor;
+it has contributed to the current situation in which many medicinal products are associated with highly
+complex supply chains, and this level of complexity gives rise to increased risks of problems arising in
+those supply chains. These can be difficult to resolve in a timely manner, because coupled with this is
+the added complexity that extensive outsourcing of manufacturing operations brings. Taken together,
+they can result in long lead times in manufacturing when crisis situations in the supply of medicines
+occur.
+There are many factors which can lead to product supply issues, and these can be quite diverse,
+ranging from, for example, a lack of robustness in the supply chain of the active substance, to the poor
+management of MA transfers between companies, resulting in the correct product artwork not being
+available in a timely manner following such transfers. The movement of manufacturing processes
+
+-- 21 of 29 --
+
+EMA/INS/3094/2022 	Page 22/29
+between two sites can also be a factor if it is not planned and managed adequately, especially where
+there are tight logistics associated with the manufacturing and supply chain activities.
+Prevention of Product Shortages:
+It is, therefore, important for MAHs to be proactive in their approach to supply chain management, in
+order to try and prevent product shortages and to meet the obligation as set out in Article 81 of
+Directive 2001/83/EC and Article 58 of Regulation 2019/6. In this regard, it is recommended that
+MAHs carry out, in line with quality risk management principles, proactive and detailed risk
+assessments of their manufacturing, regulatory and supply chain processes, and to work to address
+any identified weaknesses in those areas. A number of useful industry guidance documents on
+preventing (and reacting to) shortages of medicinal products have been published (e.g. by the ISPE
+and PDA) and these documents provide useful guidance for MAHs in this area. Note that in addition to
+proactively preventing shortages, MAHs are encouraged also to have a risk management protocol in
+place, should a supply disruption occur, to mitigate its impact.
+It is worth noting that the ICH Guideline on Quality Risk Management (Q9) refers to product availability
+risks, and in that context, it links such risks with the potential for patient harm. This is an important
+point to take account of when working to prevent and mitigate the risks of medicines shortages.
+5.7. Continual Improvement Activities
+Guidance on the need for continual improvement activities was introduced into the GMP Guide in 2013,
+when Chapter 1 was revised to align it with the concepts and terminology described in the ICH Q10
+tripartite guideline on the Pharmaceutical Quality System.
+Chapter 1 states that a Pharmaceutical Quality System appropriate for the manufacture of medicinal
+products should ensure that “Continual improvement is facilitated through the implementation of
+quality improvements appropriate to the current level of process and product knowledge” (Ref. Chapter
+1, Paragraph 1.4(xi)). This is relevant to the MAH in several ways, including PQR activities, where the
+MAH’s involvement in PQRs provides tangible benefits.
+For example, the responsibility that the MAH has to evaluate the results of PQRs provides it with
+process and product knowledge which it may not have had before then. This can help the MAH identify,
+with its manufacturing site partners, the need for specific continual improvement activities to be
+initiated.
+PQR data can also enable the MAH to identify the need for improvement in its own regulatory affairs
+processes that operate in conjunction with the manufacturing sites. Examples here include the
+management of MA variations (relating to CTD Module 3 / Notice to Applicants Part 2) of the MA
+dossier, the support that the MAH provides manufacturing sites in relation to site change control
+activities (via the provision of regulatory impact assessments for specific change control proposals),
+amongst others.
+Scientific Advances:
+The concept of continual improvement in medicines manufacturing is related to advances in science.
+Articles 23 and 58 (3) of Directive 2001/83/EC and Regulation 2019/6, respectively, require MAHs to
+maintain MAs in line with scientific advances. Article 23 states that, after an authorisation has been
+issued, “the authorisation holder must, in respect of the methods of manufacture and control” provided
+for in the marketing authorisation application, take account of “scientific and technical progress and
+introduce any changes that may be required to enable the medicinal product to be manufactured and
+checked by means of generally accepted scientific methods”. Article 58 (3) of the Veterinary
+Regulation has similar wording.
+• 	The above requirements place a responsibility on the MAH to work with the manufacturing sites in
+order to incorporate generally accepted scientific methods into the registered methods of
+manufacture and the registered controls.
+• 	The MAH also has the responsibility to ensure that any variation applications which may be
+required in light of the above changes, are submitted to keep the marketing authorisation up-to-
+date.
+
+-- 22 of 29 --
+
+EMA/INS/3094/2022 	Page 23/29
+• 	This means that, for the manufacturing process, the process description as included in CTD Module
+3 / Notice to Applicants Part 2 should be updated, where necessary, to include sufficient details
+according to current guidelines. In some cases, consideration should also be given to updating the
+manufacturing process itself.
+It is considered also that, with regard to Article 23 of Directive 2001/83/EC and Article 58 (3) of
+Regulation 2019/6, a company’s internal manufacturing documents which describe the manufacturing
+process should be kept updated in light of scientific and technical progress and that they contain
+sufficiently detailed information so as to ensure that key manufacturing details are not lost when site
+transfers occur.
+Regarding updates to the methods of control, the MAH is required to ensure that material and product
+specifications registered in the MA include tests according to the current pharmacopoeia and quality
+guidelines, and analytical methods should be able to detect/quantify relevant impurities to ICH and
+VICH thresholds.
+In cases where a Ph. Eur. monograph is revised in line with scientific advances to control an active
+substance, it can be useful for an MAH to work with the manufacturing sites and consider the need for
+early testing of the substance in question according to the draft revised monograph, and to submit
+comments on the draft monograph to the EDQM, if necessary. Such activities involving the MAH and
+manufacturer could be described in a technical agreement.
+Other References to Continual Improvement:
+There are other references to continual improvement in the GMP Guide also which have relevance for
+the MAH. For example, Chapter 7, on Outsourcing, states that “the Contract Giver should monitor and
+review the performance of the Contract Acceptor and the identification and implementation of any
+needed improvement” (Ref. Chapter 7, Paragraph 7.7). This places a responsibility upon the MAH to
+perform such review and monitoring activities in cases when it is a contact giver for an outsourced
+operation involving medicines manufacturing. It is considered that part of this responsibility may be
+fulfilled through an MAH’s evaluation and assessment of the results of PQRs, as PQR data can be
+indicative of the performance of a manufacturer in the manufacture of a product.
+Updating Manufacturing Processes in line with Changes to the EU GMP Guide:
+Finally, it is important to note that the MAH has some responsibility in ensuring that updates to the
+GMP guide are incorporated at manufacturing site level. This is because, in Directive 2001/83/EC,
+Annex I, it is stated that “the manufacturing process shall comply with the requirements of Directive
+91/356/EEC [since replaced in 2003 by Directive 2003/94/EC] laying down the principles and
+guidelines of GMP for medicinal products for human use and with the principles and guidelines on GMP,
+published by the Commission in the rules governing medicinal products in the EC, Volume 4.” (It is
+noted that the Veterinary Regulation 2019/6 has similar wording in Annex I and Annex II.)
+The above relates to the manufacturing process as described in the MA, and as it is the MAH who seeks
+to register the manufacturing process in the dossier, the above Annex I requirement places an
+obligation upon the MAH to ensure that the registered manufacturing process is in line with current
+GMP guidance. This is relevant in the context of continual improvement, because the GMP Guide
+undergoes periodic improvement activities itself.
+6. Falsified Medicines Directive (FMD)-related
+Responsibilities
+In relation to medicinal products for human use, where applicable, the MAH has a number of
+responsibilities related to the Falsified Medicines Directive (FMD) 2011/62/EU and the related
+Delegated Regulations (including the Safety Features Regulation 2016/161). 	One of those
+responsibilities, as discussed in Section 5.2 of this Reflection Paper (Audits & Qualification Activities),
+relates to the need to confirm the GMP status of the active substance manufacturer by means of GMP
+audits. This responsibility is stated in Article 8(ha) of Directive 2001/83/EC, which originated in the
+FMD Directive.
+
+-- 23 of 29 --
+
+EMA/INS/3094/2022 	Page 24/29
+Safety Features:
+Other FMD-related responsibilities concern safety features on product packaging:
+• 	Commission Delegated Regulation (EU) 2016/161 sets out what is expected of the MAH in relation
+to the upload to the repositories system of pack serialisation data, as well as responsibilities in
+relation to the decommissioning of pack serialisation codes.
+• 	Article 33 of this Regulation requires the MAH to ensure that the information of unique identifier
+and various additional defined data about the medicinal product and its distribution are "uploaded
+to the repositories system before the medicinal product is released for sale or distribution by the
+manufacturer, and that it is kept up to date thereafter." (Note that the Q&A Document on the
+Commission’s Website provides additional guidance in this area – see Q&A 4.5.)
+It is considered that the QP who certifies batches prior to their release to the market should be
+satisfied with the arrangements that have been put in place by the MAH for the upload of the safety
+features data to the repositories system. (In relation to QP responsibilities in this general area, it is
+useful to note that Annex 16 to the GMP Guide places a responsibility on the QP to ensure that the
+following point is secured, that:
+"In the case of medicinal products for human use intended to be placed on the market in the
+Union, the safety features referred to in Article 54(o) of Directive 2001/83/EC, as amended,
+have been affixed to the packaging, where appropriate." (Ref. Annex 16, Paragraph 1.7.21).
+Annex 16 indicates that this task may be delegated to “appropriately trained personnel or third
+parties”, and in this regard, the Annex recognises that the QP will “need to rely on the
+pharmaceutical quality system” that is in place and it requires the QP to have “on-going
+assurance that this reliance is well founded”. (Ref. Annex 16, Paragraph 1.7.)
+It is considered that the transfer of the unique identifier (UI) data from the location where they were
+generated until their upload to the European Hub is performed in a secure manner and in such as a
+way that the integrity of data is not compromised.
+The Repositories System & MAH Responsibilities:
+The repositories system is expected to be established and managed by the MAHs (Ref. Paragraph 28 of
+the preamble text of Delegated Regulation (EU) 2016/161). Article 32 of the Delegated Regulation sets
+out the required structure of the repositories system – there should be a central information and data
+router (known as the European Hub) and repositories which serve the territory of one or multiple
+Member States. Those repositories are required to be connected to the EU-Hub. The European
+Medicines Verification Organisation (EMVO) is the organisation representing stakeholders who have
+taken responsibility for the formation of the European Medicines Verification System (EMVS/EU-Hub).
+Each EU Member State is expected to implement a National Medicines Verification System (NMVS)
+which will be set up and managed by a National Medicines Verification Organisation (NMVO). The MAHs
+are expected to liaise with both the EMVO and the relevant NMVOs for the concerned products.
+Various items of information are required to be uploaded to the repositories system, including:
+• 	The data elements of the unique identifier;
+• 	The coding scheme of the product code;
+• 	The name and the common name of the medicinal product, the pharmaceutical form, the strength,
+the pack type and the pack size;
+• 	The Member State or Member States where the medicinal product is intended to be placed on the
+market;
+• 	The name and address of the manufacturer placing the safety features;
+• 	A list of wholesalers who are designated by the MAH, by means of a written contract, to store and
+distribute the products covered by the marketing authorisation on his behalf.
+This and other information is intended to be stored in all of the national or supranational repositories
+serving the territory of the Member State, or Member States, where the medicinal product bearing the
+
+-- 24 of 29 --
+
+EMA/INS/3094/2022 	Page 25/29
+UI is intended to be placed on the market for at least one year after the expiry date of the medicinal
+product, or five years after the product has been released for sale or distribution, whichever is longer.
+The same responsibility applies to persons responsible for placing parallel imported or parallel
+distributed medicinal products onto the market.
+Serialisation Data - Uploading Responsibilities:
+The MAH may delegate the uploading of the information laid down in Article 33(2) to a third party;
+such delegation is expected to be documented in a written agreement between both parties. It is
+important to note that the MAH may subcontract, or delegate, data uploading only to parties which
+perform the data upload by means of infrastructure, hardware and software, which is physically located
+within the EEA. Importantly, the MAH remains legally responsible for such tasks, as stated in the
+document titled ‘Safety Features For Medicinal Products For Human Use; Questions And Answers’,
+available on the European Commission’s website.
+Unique Identifier Decommissioning Responsibilities:
+In relation to decommissioning, which is a term that relates to various pack statuses within the
+repositories, including the pack status called ‘supplied’, it is an MAH responsibility according to Article
+40 of the Delegated Regulation to ensure the decommissioning of pack codes in the case of a product
+recall or withdrawal. Article 40 states that “the marketing authorisation holder shall promptly take all
+the following measures:
+(a) ensure the decommissioning of the unique identifier of a medicinal product which is to be recalled
+or withdrawn, in every national or supranational repository serving the territory of the Member State
+or Member States in which the recall or the withdrawal is to take place;
+(b) ensure the decommissioning of the unique identifier, where known, of a medicinal product which
+has been stolen, in every national or supranational repository in which information on that product is
+stored;
+(c) indicate in the repositories referred to in points (a) and (b) that that product has been recalled or
+withdrawn or stolen, where applicable.”
+The same responsibility applies to persons responsible for placing parallel imported or parallel
+distributed medicinal products onto the market.
+It is worth noting that “decommissioned” as such is not a status in the system; multiple statuses that
+are different from “active” have been developed in the EMVS by EMVO, such as “RECALLED”,
+“DESTROYED” or “STOLEN”. All of these are considered as “decommissioned”.
+For the above responsibilities to be met by the MAH, it is considered that there should be robust
+communication systems in place between the MAH and the manufacturer (or other third party) to
+whom such tasks have been delegated. This is because the various data elements that must be
+uploaded to the repositories system may be held by the different entities – the manufacturer will likely
+hold the actual pack serialisation codes per batch, while the MAH may hold the information about the
+wholesalers which have been designated by it to store and distribute the product, as well as
+information about the distribution of free medical samples and about product recall actions.
+7. Conclusion
+The EU Guide to GMP refers in several places to MAH companies and their responsibilities in relation to
+GMP. Such responsibilities are spread over various chapters and annexes of the Guide, and are quite
+numerous. There are also various GMP-related responsibilities for MAHs stated in applicable medicines
+legislation. There appears, however, to be a lack of clarity and understanding as to what these
+responsibilities actually are in their totality, and what they mean for MAHs, especially at a practical
+level. Thus, it was considered that it would be of benefit to MAHs (and also to manufacturers, GMP
+Inspectors and other stakeholders) if these responsibilities were documented in one place and
+adequately explained. This Reflection Paper seeks to address this.
+
+-- 25 of 29 --
+
+EMA/INS/3094/2022 	Page 26/29
+While it is recognised that many MAH companies are not directly engaged in the manufacture of
+medicinal products themselves, GMP is an area that has direct relevance for them. Indeed, it is of
+interest that the GMP Guide states the following: “…the ultimate responsibility for the performance of a
+medicinal product over its lifetime, its safety, quality and efficacy, lies with the marketing authorisation
+holder”. A significant part of the performance of a medicinal product relates to compliance with the
+GMP requirements during product manufacturing.
+This Reflection Paper sets out what the various responsibilities for MAHs are and it seeks to explain
+their practical implications. It essentially seeks to present a more complete picture of the regulatory
+environment with respect to GMP in which the MAH operates. It groups the responsibilities under a
+number of different themes; this is in an effort to illustrate the general areas in which the
+responsibilities lie, and to provide a holistic view of them. It is intended that this Reflection Paper will
+provide increased clarity for MAHs in this area, and that it will serve as a useful resource for MAHs
+when designing (or reviewing) their internal systems as well as their interactions with manufacturing
+sites.
+Overall, this Reflection Paper is intended to be of assistance to MAHs as they work with the product
+manufacturers and other stakeholders to facilitate compliance of the medicines placed on the market,
+in terms of GMP and the MA. This ultimately serves the interests of patients and animals, as it
+contributes to ensuring the availability of high quality, safe and effective medicines.
+8. References
+The Rules Governing Medicinal Products in the European Union Volume 4 Good Manufacturing Practice
+Medicinal Products for Human and Veterinary Use
+https://ec.europa.eu/health/documents/eudralex/vol-4_en
+The Rules Governing Medicinal Products in the European Union Volume 2B Presentation and Content of
+the Dossier (Human Medicinal Products)
+https://ec.europa.eu/health/sites/default/files/files/eudralex/vol-2/b/update_200805/ctd_05-
+2008_en.pdf
+The Rules Governing Medicinal Products in the European Union Volume 6B Presentation and Content of
+Application Dossier (Veterinary Medicinal Products)
+https://ec.europa.eu/health/sites/default/files/files/eudralex/vol-6/b/nta_volume_6b_2015_.pdf
+Directive 2001/83/EC of the European Parliament and of the Council of 6 November 2001 on
+the Community code relating to medicinal products for human use. (Consolidated version :
+16/11/2012) http://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:02001L0083-
+20121116&qid=1472567249742&from=EN
+https://ec.europa.eu/health/sites/health/files/files/eudralex/vol-
+1/dir_2001_83_consol_2012/dir_2001_83_cons_2012_en.pdf
+Regulation (EU) 2019/6 of the European Parliament and of the Council of 11 December 2018 on
+veterinary medicinal products and repealing Directive 2001/82/EC. https://eur-lex.europa.eu/legal-
+content/EN/TXT/PDF/?uri=CELEX:32019R0006&from=EN
+Commission Directive 2003/94/EC of 8 October 2003 laying down the principles and guidelines of good
+manufacturing practice in respect of medicinal products for human use and investigational medicinal
+products for human use
+http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2003:262:0022:0026:en:PDF
+Directive 1991/412/EEC of 23 July 1991 laying down the principles and guidelines of good
+manufacturing practice for veterinary medicinal products
+https://ec.europa.eu/health//sites/health/files/files/eudralex/vol-
+5/dir_1991_412/dir_1991_412_en.pdf
+Commission Directive (EU) 2017/1572 of 15 September 2017 supplementing Directive 2001/83/EC of
+the European Parliament and of the Council as regards the principles and guidelines of good
+manufacturing practice for medicinal products for human use
+https://eur-lex.europa.eu/eli/dir/2017/1572/oj
+
+-- 26 of 29 --
+
+EMA/INS/3094/2022 	Page 27/29
+Directive 2011/62/EU of the European Parliament and of the Council of 8 June 2011 amending
+Directive 2001/83/EC on the Community code relating to medicinal products for human use, as regards
+the prevention of the entry into the legal supply chain of falsified medicinal products
+http://eur-lex.europa.eu/LexUriServ/LexUriServ.do?uri=OJ:L:2011:174:0074:0087:EN:PDF
+Commission Delegated Regulation (EU) No 2016/161 of 2 October 2015 supplementing Directive
+2001/83/EC of the European Parliament and of the Council by laying down detailed rules for the safety
+features appearing on the packaging of medicinal products for human use (OJ L 32, 9.2.2016, p. 1-27)
+https://ec.europa.eu/health/sites/health/files/files/eudralex/vol-
+1/reg_2016_161/reg_2016_161_en.pdf
+European Medicines Agency: EMA/196292/2014; Guidance for the template for the qualified person’s
+declaration concerning GMP compliance of active substance manufacture “The QP declaration template”
+http://www.ema.europa.eu/docs/en_GB/document_library/Regulatory_and_procedural_guideline/2014
+/06/WC500167852.pdf
+ICH Q10, Pharmaceutical Quality System, dated 4 June 2008
+http://www.ich.org/fileadmin/Public_Web_Site/ICH_Products/Guidelines/Quality/Q10/Step4/Q10_Guid
+eline.pdf
+Final Concept Paper on ICH Q12: Technical and Regulatory Considerations for Pharmaceutical Product
+Lifecycle Management, dated 28 July 2014, Endorsed by the ICH Steering Committee on 9 September
+2014
+http://www.ich.org/fileadmin/Public_Web_Site/ICH_Products/Guidelines/Quality/Q12/Q12_Final_Conce
+pt_Paper_July_2014.pdf
+ICH Q12, Technical and Regulatory Considerations for Pharmaceutical Product Lifecycle Management,
+adopted 20 November 2019
+https://database.ich.org/sites/default/files/Q12_Guideline_Step4_2019_1119.pdf
+Veterinary ICH Impurities Guidelines
+http://www.vichsec.org/guidelines/pharmaceuticals/pharma-quality/impurities.html
+PDA Technical Report No. 68 titled Risk-based Approach for Prevention and Management of Drug
+Shortages, January 2015, available at https://store.pda.org/ProductCatalog/
+ISPE Drug Shortages Prevention Plan, A Holistic View from Root Cause to Prevention, October 2014
+https://www.ispe.org/sites/default/files/initiatives/drug-shortages/drug-shortages-prevention-plan.pdf
+Prevention of Drug Shortages Based on Quality and Manufacturing Issues, Final report by the inter-
+associations team with representatives from EFPIA / EGA / AESGP / PPTA, ISPE, and PDA, 23/12/2014
+https://ispe.org/sites/default/files/initiatives/drug-shortages/prevention-drug-shortages-report-
+ema.pdf
+Guidelines of 5 November 2013 on Good Distribution Practice of medicinal products for human
+(Text with EEA relevance) 2013/C 343/01
+http://eur-lex.europa.eu/legal-
+content/EN/TXT/?uri=uriserv:OJ.C_.2013.343.01.0001.01.ENG&toc=OJ:C:2013:343:TOC
+Compliance Management Procedure - Compilation of Union Procedures on Inspections and Exchange of
+Information - revision 18 (europa.eu)
+9. List of Abbreviations
+ATMP 	Advanced Therapy Medicinal Products
+ASMF 	Active Substance Master File
+
+-- 27 of 29 --
+
+EMA/INS/3094/2022 	Page 28/29
+CTD 	Common Technical Document
+CAPA 	Corrective Actions and Preventive Actions
+CEP 	Certificate of Suitability to the monographs of the European Pharmacopoeia
+CHMP 	Committee for Medicinal Products for Human use
+CMO 	Contract Manufacturing Organisation
+EC 	European Commission
+EDQM 	European Directorate for the Quality of Medicines
+EMA 	European Medicines Agency
+EEA 	European Economic Area
+EMVO 	European Medicines Verification Organisation
+EMVS 	European
+EudraGMDP - the name for the Union database referred to in article 111(6) of Directive 2001/83/EC
+and article 80(6) of Directive 2001/82/EC
+EUDRA European Union Drug Regulatory Authority
+FMD 	Falsified Medicines Directive (2011/62/EU)
+GDP 	Good Distribution Practice
+GMP 	Good Manufacturing Practice
+GMDP 	Good Manufacturing Practice / Good Distribution Practice
+HVAC 	Heating, Ventilation and Air Conditioning
+ISPE 	International Society for Pharmaceutical Engineering
+ICH 	International Council for Harmonisation of Technical Requirements for Pharmaceuticals for
+Human Use
+MA 	Marketing Authorisation
+MAA 	Marketing Authorisation Application
+MAH 	Marketing Authorisation Holder
+MIA 	Manufacturing and Importation Authorisation
+NMVS 	National Medicines Verification System
+NMVO 	National Medicines Verification Organisation
+PDA 	Parenteral Drug Association
+PQR 	Product Quality Review
+QP 	Qualified Person
+PQS 	Pharmaceutical Quality System
+QMS 	Quality Management System
+
+-- 28 of 29 --
+
+EMA/INS/3094/2022 	Page 29/29
+RH 	Registration Holder
+RP 	Responsible Person
+SOP 	Standard Operating Procedure
+TRH 	Traditional-use Registration Holder
+UI 	Unique Identifier
+
+-- 29 of 29 --
+

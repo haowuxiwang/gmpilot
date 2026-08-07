@@ -1,0 +1,430 @@
+[Source: 第三部分\guideline-setting-health-based-exposure-limits-use-risk-identification-manufacture-different-medicinal-products-shared-facilities_en.pdf]
+[Format: EU GMP Regulation]
+
+30 Churchill Place ● Canary Wharf ● London E14 5EU ● United Kingdom
+An agency of the European Union
+Telephone +44 (0)20 3660 6000 Facsimile +44 (0)20 3660 5555
+Send a question via our website www.ema.europa.eu/contact
+© European Medicines Agency, 2014. Reproduction is authorised provided the source is acknowledged.
+20 November 2014
+EMA/CHMP/ CVMP/ SWP/169430/2012
+Committee for Medicinal Products for Human Use (CHMP)
+Committee for Medicinal Products for Veterinary Use (CVMP)
+Guideline on setting health based exposure limits for use
+in risk identification in the manufacture of different
+medicinal products in shared facilities
+Draft Agreed by Safety Working Party 	December 2012
+Adoption by CVMP for release for consultation 	November 2012
+Adoption by CHMP for release for consultation 	13 December 2012
+End of consultation (deadline for comments) 	30 June 2013
+Adoption by CVMP 	11 September 2014
+Adopted by Safety Working Party 	October 2014
+Adoption by CHMP 	20 November 2014
+Date for coming into effect 	01 June 2015
+Keywords 	Shared facilities, risk identification, exposure limits, toxicological data,
+residual active substances, PDE.
+
+-- 1 of 11 --
+
+Guideline on setting health based exposure limits for use in risk identification in the
+manufacture of different medicinal products in shared facilities
+EMA/CHMP/CVMP/SWP/169430/2012 	Page 2/11
+Guideline on setting health based exposure limits for use
+in risk identification in the manufacture of different
+medicinal products in shared facilities
+Table of contents
+Executive summary ..................................................................................... 3
+1. 	Introduction (background).................................................................... 3
+2. 	Scope .................................................................................................... 3
+3. 	Legal basis ............................................................................................ 4
+4. 	Determination of health based exposure limits ..................................... 4
+4.1 	Calculation of a Permitted Daily Exposure (PDE) ..................................................... 4
+4.2 	Use of clinical data .............................................................................................. 6
+4.3 	Extrapolation to other routes of administration ...................................................... 6
+5. 	Specific considerations .......................................................................... 7
+6. 	Reporting of the PDE determination strategy ........................................ 9
+7. 	Implementation .................................................................................... 9
+8. 	Definitions ............................................................................................. 9
+References: ............................................................................................... 10
+Annex........................................................................................................ 11
+
+-- 2 of 11 --
+
+Guideline on setting health based exposure limits for use in risk identification in the
+manufacture of different medicinal products in shared facilities
+EMA/CHMP/CVMP/SWP/169430/2012 	Page 3/11
+Executive summary
+When different medicinal products are produced in shared facilities, the potential for cross-
+contamination is a concern. Medicinal products provide a benefit to the intended patient or target
+animal; however as a cross contaminant, they provide no benefit to the patient or target animal and
+may even pose a risk. Hence, the presence of such contaminants should be managed according to the
+risk posed which in turn are related to levels that can be considered safe for all populations. To this
+end, health based limits through the derivation of a safe threshold value should be employed to
+identify the risks posed. The derivation of such a threshold value (e.g. permitted daily exposure (PDE)
+or threshold of toxicological concern (TTC) should be the result of a structured scientific evaluation of
+all available pharmacological and toxicological data including both non-clinical and clinical data.
+Deviation from the main approach highlighted in this guideline to derive such safe threshold levels
+could be accepted if adequately justified.
+1. 	Introduction (background)
+During the manufacture of medicinal products accidental cross-contamination can result from the
+uncontrolled release of dust, gases, vapours, aerosols, genetic material or organisms from active
+substances, other starting materials, and other products being processed concurrently, as well as from
+residues on equipment, and from operators’ clothing. Due to the perceived risk, certain classes of
+medicinal product have previously been required to be manufactured in dedicated or segregated self-
+contained facilities including, “certain antibiotics, certain hormones, certain cytotoxics and certain
+highly active drugs”. Until now no official guidance is available in order to assist manufacturers to
+differentiate between individual products within these specified classes. 	Chapters 3 and 5 of the GMP
+guideline have been revised to promote a science and risk-based approach and refer to a “toxicological
+evaluation” for establishing threshold values for risk identification.
+Cleaning is a risk reducing measure and carry-over limits for cleaning validation studies are widely
+used in the pharmaceutical industry. A variety of approaches are taken in order to establish these
+limits and often do not take account of the available pharmacological and toxicological data. Hence, a
+more scientific case by case approach is warranted for risk identification and to support risk reduction
+measures for all classes of pharmaceutical substances.
+The objective of this guideline is to recommend an approach to review and evaluate pharmacological
+and toxicological data of individual active substances and thus enable determination of threshold levels
+as referred to in the GMP guideline. These levels can be used as a risk identification tool and can also
+be used to justify carry over limits used in cleaning validation. While Active Pharmaceutical Ingredients
+(APIs) are not discussed in Chapters 3 and 5 of the GMP guideline, the general principles outlined in
+this guideline to derive a threshold value for risk identification could be applied where required.
+Deviation from the main approach highlighted in this guideline to derive safe threshold levels could be
+accepted if adequately justified.
+2. 	Scope
+The scope of the present guideline is to ensure the safety of human patients and target animals
+exposed to residual active substances via medicinal products as well as consumers potentially exposed
+to residual active substances present in food of animal origin as a result of treatment of food
+producing animals with veterinary medicinal products in which residual active substances are present.
+
+-- 3 of 11 --
+
+Guideline on setting health based exposure limits for use in risk identification in the
+manufacture of different medicinal products in shared facilities
+EMA/CHMP/CVMP/SWP/169430/2012 	Page 4/11
+In doing so, this document aims to recommend an approach for deriving a scientifically based
+threshold value for individual active substances to be applied for risk identification. The guideline
+outlines how the data on which the threshold value is derived should be presented in order to achieve
+a clear and harmonious approach across pharmaceutical industry.
+3. 	Legal basis
+This guideline should be read in conjunction with:
+EudraLex - Volume 4 Good manufacturing practice (GMP) Guidelines, Chapter 3 and 5.
+Note for Guidance on Impurities: Residual Solvents (CPMP/ICH/283/95 in conjunction with
+CPMP/ICH/1507/02, 	CPMP/ICH/1940/00 	corr, 	CPMP/QWP/450/03, 	EMEA/CVMP/511/03 	and
+CPMP/QWP/8567/99).
+VICH GL18(R): Impurities: Residual solvents in new veterinary medicinal products, active substances
+and excipients (EMA/CVMP/VICH/502/99-Rev.1).
+Guideline 	on 	the 	Limits 	of 	Genotoxic 	Impurities 	(EMEA/CHMP/QWP/251344/2006 	and
+CPMP/SWP/5199/02).
+4. 	Determination of health based exposure limits
+4.1 	Calculation of a Permitted Daily Exposure (PDE)
+The procedure proposed in this document for determination of health based exposure limits for a
+residual active substance is based on the method for establishing the so-called Permitted Daily
+Exposure (PDE) as described in Appendix 3 of ICH Q3C (R4) “Impurities: Guideline for Residual
+Solvents” and Appendix 3 of VICH GL 18 on “residual solvents in new veterinary medicinal products,
+active substances and excipients (Revision)”. The PDE represents a substance-specific dose that is
+unlikely to cause an adverse effect if an individual is exposed at or below this dose every day for a
+lifetime.
+Determination of a PDE involves (i) hazard identification by reviewing all relevant data, (ii)
+identification of “critical effects”, (iii) determination of the no-observed-adverse-effect level (NOAEL) of
+the findings that are considered to be critical effects, and (iv) use of several adjustment factors to
+account for various uncertainties. Appendices 3 of the ICH Q3C and VICH GL 18 guidelines present the
+following equation for the derivation of the PDE:
+PDE = NOAEL x Weight Adjustment
+F1 x F2 x F3 x F4 x F5
+In relation to the establishment of health based exposure limits that can be accepted in veterinary
+medicinal products, it would in principle, be possible to use the PDE approach to establish different
+limits for different target species. However, this would be highly impractical. Consequently, it is
+considered pragmatic that PDEs should be derived assuming human exposure. The level of
+contamination that can be accepted is then calculated from the human PDE, even when the product
+that will be contaminated is a veterinary medicinal product. This is considered to represent a
+pragmatic approach and is in line with the approach taken in VICH GL 18, in which human PDEs are
+used to calculate residual solvent limits applied for veterinary medicinal products.
+
+-- 4 of 11 --
+
+Guideline on setting health based exposure limits for use in risk identification in the
+manufacture of different medicinal products in shared facilities
+EMA/CHMP/CVMP/SWP/169430/2012 	Page 5/11
+The derivation of limits will need to take account of the dose to be administered, which will be
+influenced by the body weight of the species to be treated. In order to facilitate this, the PDE should
+be calculated on a mg/kg bw basis (i.e. using a weight adjustment figure of 1) rather than on a per
+person basis.1
+When the product that may become contaminated with a residual active substance is a veterinary
+medicinal product for administration to food producing animals, the carryover limit applied must take
+account of both target animal safety considerations and consumer safety considerations. It should
+therefore be demonstrated, based on worst case exposure scenarios, that neither the target animal
+nor the consumer will be exposed to residual active substance levels exceeding the PDE.
+Alternative approaches to the NOAEL such as the Benchmark dose may also be used.
+The use of other approaches to determine health based exposure limits could be considered acceptable
+if adequately and scientifically justified.
+Data requirements for hazard identification
+Hazard identification is the qualitative appraisal of the inherent property of a substance to produce
+adverse effects. For hazard identification, a review of all available animal and human data should be
+performed for each compound. Data for hazard identification would include non-clinical
+pharmacodynamic data, repeat-dose toxicity studies, carcinogenicity studies, in vitro and in vivo
+genotoxicity studies, reproductive and developmental toxicity studies as well as clinical data
+(therapeutic and adverse effects). The availability of data for an active substance will vary depending
+on the stage of development and indication. If data sets are incomplete, the identified gaps will need
+to be critically assessed with regard to the impact this might have on deriving a reliable health based
+exposure limit.
+Identification of critical effects
+Critical effects would include the most sensitive indicator of an adverse effect seen in non-clinical
+toxicity studies unless there is clear evidence (e.g. from mechanistic studies, pharmacodynamic data
+etc.) that such findings are not relevant to humans or the target animal. A critical effect would also
+include any clinical therapeutic and adverse effect.
+Establishing NOAEL(s)
+For all critical effects identified, a NOAEL should be established. The NOAEL is the highest tested dose
+at which no “critical” effect is observed. If the critical effect is observed in several animal studies, the
+NOAEL occurring at the lowest dose should be used for calculation of the PDE value. If no NOAEL is
+obtained, the lowest-observed-adverse-effect level (LOAEL) may be used. A NOAEL based on clinical
+pharmacodynamic effects should correspond to the highest dose tested which is considered
+therapeutically inefficacious.
+Application of adjustment factors
+The PDE is derived by dividing the NOAEL for the critical effect by various adjustment factors (also
+referred to as safety-, uncertainty-, assessment- or modifying factors) to account for various
+uncertainties and to allow extrapolation to a reliable and robust no-effect level in the human or target
+animal population. F1 to F5 are addressing the following sources of uncertainty:
+1 If the product information for the next medicinal product to be manufactured expresses the daily dose on a per patient
+basis rather than on a mg/kg bw basis, a standard body weight of 50 kg should be used for human medicinal products. For
+medicinal products for veterinary use doses are generally expressed on a mg/kg bw basis. In those instances where this is
+not the case, a standard body weight of 1 kg should be assumed as this would represent the lower end of animal body
+weights.
+
+-- 5 of 11 --
+
+Guideline on setting health based exposure limits for use in risk identification in the
+manufacture of different medicinal products in shared facilities
+EMA/CHMP/CVMP/SWP/169430/2012 	Page 6/11
+F1: A factor (values between 2 and 12) to account for extrapolation between species
+F2: A factor of 10 to account for variability between individuals
+F3: A factor 10 to account for repeat-dose toxicity studies of short duration, i.e., less than 4-weeks
+F4: A factor (1-10) that may be applied in cases of severe toxicity, e.g. non-genotoxic carcinogenicity,
+neurotoxicity or teratogenicity
+F5: A variable factor that may be applied if the no-effect level was not established. When only an LOEL
+is available, a factor of up to 10 could be used depending on the severity of the toxicity.
+The use of additional modifying factors to address residual uncertainties not covered by the above
+factors may be accepted provided they are well supported with literature data and an adequate
+discussion is provided to support their use e.g. lack of data for reproductive and developmental
+toxicity (see section 5.4).
+Please refer to Appendices 3 of the ICH Q3C (R4) and VICH GL 18 guidelines for further guidance on
+the choice of adjustment factors F1 and F4. The use and choice of adjustment factors should be
+justified. A restriction to use of F2 and potentially F5 may be acceptable when deriving a PDE on the
+basis of human end points. Deviations from the default values for the adjustment factors presented
+above can be accepted if adequately and scientifically justified.
+Selection of final PDE
+If several critical effects have been identified resulting in calculation of more than one PDE value, a
+decision with respect to the most appropriate PDE to be used for the cleaning validation process should
+be made with an appropriate justification. Usually, by default the lowest PDE value will be used.
+4.2 	Use of clinical data
+The aim of determining a health-based exposure limit is to ensure human safety, and consequently it
+is considered that good quality human clinical data is highly relevant. Unintended pharmacodynamic
+effects in patients caused by contaminating active substances may constitute a hazard thus clinical
+pharmacological data should be considered when identifying the critical effect. Consideration should
+be given to what extent the active substance in question has been associated with critical adverse
+effects in the clinical setting.
+If the most critical effect identified to determine a health-based exposure limit is based on
+pharmacological and/or toxicological effects observed in humans rather than animals, the use of the
+PDE formula may be inappropriate and a substance-specific assessment of the clinical data may be
+used for this purpose.
+4.3 	Extrapolation to other routes of administration
+While the PDE value derived for an active substance (contaminant) generally is based on studies
+applying the intended clinical route of administration, a different route of administration may be
+applied for the active substance or medicinal product subsequently produced in the shared facility.
+Changing the route of administration may change the bioavailability; hence correction factors for
+route-to-route extrapolation should be applied if there are clear differences (e.g. > 40%) in route-
+specific bioavailability. As bioavailability may vary between species, the correction factors for route-to-
+route extrapolation should preferably be based on human data or in the case of veterinary medicinal
+products, data in the relevant target animal.
+
+-- 6 of 11 --
+
+Guideline on setting health based exposure limits for use in risk identification in the
+manufacture of different medicinal products in shared facilities
+EMA/CHMP/CVMP/SWP/169430/2012 	Page 7/11
+In case human or target animal bioavailability data are not available for other routes and it is to be
+expected that the change in route of administration may result in an increase in systemic exposure for
+the contaminant (e.g. oral to inhalation), a conservative extrapolation can be performed by assuming
+100% bioavailability of the contaminant. For example, in the case of oral-to-inhalation extrapolation,
+the PDE derived on basis of oral data can be corrected by multiplying with the following correction
+factor:
+Correction factor (oral-to-inhalation): % oral absorption/ 100% respirable absorption.
+In cases where human or target animal bioavailability data are not available for other routes and it can
+be expected that the systemic exposure to the contaminant will be lower via the route applied for the
+contaminated active substance/medicinal product, there is no need to apply a correction factor to the
+PDE calculation. It is expected that the route-to-route extrapolation will be performed on a case-by-
+case basis.
+5. 	Specific considerations
+5.1 	Active substances with a genotoxic potential
+For genotoxic active substances for which there is no discernible threshold, it is considered that any
+level of exposure carries a risk. However, a pre-defined level of acceptable risk for non-threshold
+related genotoxicants has been established in the EMA Guideline on the Limits of Genotoxic Impurities
+in the form of the Threshold of Toxicological Concern (TTC) of 1.5 μg/person/day. The TTC represents
+the genotoxic impurity exposure level associated with a theoretical cancer risk of 1 additional cancer in
+100,000 patients when exposed over a life time. Given the fact that exposure duration to residual
+active substances will be much more restricted (for example because, in practice, levels of residual
+active substance carryover can be expected to diminish on a batch by batch basis), limits based on a
+maximum, exposure to 1.5 μg/person/day in this case would not exceed a theoretical 1 x 10-6 excess
+cancer risk. Hence, in the case of residual active substances without a threshold, a limit dose of 1.5
+μg/person/day may be applied.
+When the product that may become contaminated with a residual active substance is a veterinary
+medicinal product the same TTC should be used, but expressed on a ‘per kg bodyweight’ basis (ie the
+TTC is 0.03 μg/kg bw/day). When the contaminated product is for administration to food producing
+animals, the carryover limit applied must take account of both target animal safety considerations and
+consumer safety considerations. It should therefore be demonstrated, based on worst case exposure
+scenarios, that neither the target animal nor the consumer will be exposed to residual active substance
+levels exceeding the TTC.
+For genotoxic active substances where sufficient carcinogenicity data exists, compound-specific risk
+assessments to derive acceptable intakes should be applied instead of the TTC-based acceptable
+intake approach.
+For genotoxic pharmaceutical substances with sufficient evidence of a threshold related mechanism,
+safe exposure levels without appreciable risk of genotoxicity can be established by using the PDE
+approach.
+5.2 	Active substances with a highly sensitising potential
+
+-- 7 of 11 --
+
+Guideline on setting health based exposure limits for use in risk identification in the
+manufacture of different medicinal products in shared facilities
+EMA/CHMP/CVMP/SWP/169430/2012 	Page 8/11
+Drug-induced immune-mediated hypersensitivity reactions may develop in sensitive individuals. The
+observed reactions may range from mild cases of contact sensitisation to potentially lethal
+anaphylactic reactions.
+As outlined in Chapter 3 paragraph 3.6 of the GMP guideline, dedicated facilities are required for
+manufacturing active substances and medicinal products with a high sensitising potential for which
+scientific data does not support an acceptable level of exposure or the risk associated with the
+handling the product at the facility cannot be adequately controlled by organisational or technical
+measures. Classification of an active substance or medicinal product with a high sensitising potential
+should consider whether the substance shows a high frequency of sensitising occurrence in humans; or
+a probability of occurrence of a high sensitisation rate in humans based on animal data or other
+validated tests. Severity of these reactions should also be considered and should be included in a
+weight of evidence assessment.
+5.3 	Therapeutic macromolecules and peptides
+Therapeutic macromolecules and peptides are known to degrade and denature when exposed to pH
+extremes and/or heat, and may become pharmacologically inactive. The cleaning of biopharmaceutical
+manufacturing equipment is typically performed under conditions which expose equipment surfaces to
+pH extremes and/or heat, which would lead to the degradation and inactivation of protein-based
+products. In view of this, the determination of health based exposure limits using PDE limits of the
+active and intact product may not be required.
+Where other potential routes of cross-contamination exist, the risks posed should be considered on a
+case-by-case basis.
+5.4 	Lack of animal data on reproductive and developmental toxicity
+In order to ensure protection of all populations, the presence of residual active substance should be
+reduced to a level that will not pose a risk for effects on reproductive and developmental parameters.
+However, in the early phases of development, non-clinical data to assess the potential of the new
+active substance to cause reproductive and developmental toxicity may not yet have been generated.
+Gaps in scientific knowledge may also exist for authorised medicinal products, e.g., the potential for a
+male-specific drug to cause adverse effects on embryo-foetal development. In these cases, the NOAEL
+of a sub-chronic/chronic study may be used in the calculation of a PDE with application of an additional
+adjustment factor (e.g. 10) if adequately justified. In cases where appropriate data from reproductive
+and developmental toxicity studies of related compounds are available a class-specific profile may be
+used for hazard identification of the not tested contaminant through application of a read across
+approach.
+5.5 	Investigational Medicinal Products
+For early development (Phase I/II) investigational medicinal products (IMPs) estimation of PDEs may
+be difficult based on their limited data sets. Where this is apparent, an alternative approach using
+categorisation into specific default value categories e.g. based on low/high expected pharmacological
+potency, low/high toxicity, genotoxicity/carcinogenicity, similar to the tiered Threshold of Toxicological
+Concern approaches proposed by Kroes et al. (2004), Munro et al. (2008), and Dolan et al. (2005)2,
+2 Kroes R, Renwick A, Cheeseman M, Kleiner J, Mangelsdorf I, Piersma A, Schilter B, Schatter J, van Schothorst F, Vos JG,
+Würtzen G. (2004). Structure-based thresholds of toxicological concern (TTC): guidance for application to substances
+present at low levels in the diet. Fd Chem Toxicol 42, 65-83.
+
+-- 8 of 11 --
+
+Guideline on setting health based exposure limits for use in risk identification in the
+manufacture of different medicinal products in shared facilities
+EMA/CHMP/CVMP/SWP/169430/2012 	Page 9/11
+can be considered to derive health-based exposure limits if adequately justified. Since most default
+limits are defined for chronic exposure durations, a higher limit may be justified if a drug substance
+shares equipment with another that is intended for short-term clinical trials (Bercu and Dolan, 2013)3.
+With the availability of more pharmacological and toxicological data, compound-specific limits should
+be calculated as described above for the derivation of health-based exposure limits.
+6. 	Reporting of the PDE determination strategy
+The identification of a “critical effects” in the establishment of a PDE as outlined in section 4 should be
+based on a comprehensive literature search including handbook and monographs as well as searches
+in electronic scientific databases. The search strategy and the results of the search must be clearly
+documented. Following an expert review, the company should provide a discussion with respect to the
+critical endpoints of concern and their rationale for the choice of endpoints and dose that is to be used
+in the derivation of the PDE. The pivotal animal and human studies used for the derivation of the PDE
+should be sourced to the original reference and reviewed regarding their quality (study design,
+description of finding, accuracy of the report etc.). The PDE determination strategy should provide a
+clear rationale regarding the adjustment factors that were applied in deriving the PDE. Moreover, in
+order to provide an overview to the GMP inspectors, the initial page of any prepared PDE
+determination strategy document should be a summary of the assessment process (please see Annex
+for template example).
+7. 	Implementation
+This guideline has been developed as a risk identification tool to facilitate the implementation of a
+science and risk based approach to manufacture of medicinal products using shared manufacturing
+facilities in accordance with Chapters 3 and 5 of the GMP Guide. To allow manufacturers to adapt
+accordingly the date of coming into effect will be phased in as follows:
+For medicinal products introduced for the first time into shared manufacturing facilities: 6
+months from publication of this guideline.
+For medicinal products already produced in shared manufacturing facilities the guidance will
+take effect, or existing arrangements should be scientifically justified, within:
+• 	1 year after publication of the guideline for manufacturers of products for human use
+including those who manufacture human and veterinary medicines using shared
+manufacturing facilities.
+• 	2 years after publication of the guideline for manufacturers solely producing products
+for veterinary use.
+8. 	Definitions
+F: 	Adjustment Factor
+GMP: 	Good Manufacturing Practice
+Munro IC, Renwick AG, Danielewska-Nikiel B (2008). The threshold of toxicological concern (TTC) in risk assessment.
+Toxicol Lett 180, 151-156.
+Dolan DG, Naumann BD, Sargent EV, Maier A, Dourson M (2005). Application of the threshold of toxicological concern
+concept to pharmaceutical manufacturing operations. Regul Toxicol Pharmacol, 43, 1-9.
+3 Bercu JP & Dolan DG, (2013). Application of the threshold of toxicological concern concept when applied to
+pharmaceutical manufacturing operations intended for short-term clinical trials. Regul Toxicol Pharmacol. 2013
+Feb;65(1):162-7.
+
+-- 9 of 11 --
+
+Guideline on setting health based exposure limits for use in risk identification in the
+manufacture of different medicinal products in shared facilities
+EMA/CHMP/CVMP/SWP/169430/2012 	Page 10/11
+ICH: 	International Conference on Harmonisation
+LOAEL: 	Lowest Observed Adverse Effect Level
+PDE: 	Permitted Daily Exposure (ADE Allowable Daily Exposure4)
+NOAEL: 	No Observed Adverse Effect Level
+TTC: 	Threshold of Toxicological Concern
+VICH: 	Veterinary International Conference on Harmonisation
+References:
+Kroes R, Renwick A, Cheeseman M, Kleiner J, Mangelsdorf I, Piersma A, Schilter B, Schatter J, van
+Schothorst F, Vos JG, Würtzen G. (2004). Structure-based thresholds of toxicological concern (TTC):
+guidance for application to substances present at low levels in the diet. Fd Chem Toxicol 42, 65-83.
+Munro IC, Renwick AG, Danielewska-Nikiel B (2008). The threshold of toxicological concern (TTC) in
+risk assessment. Toxicol Lett 180, 151-156.
+Dolan DG, Naumann BD, Sargent EV, Maier A, Dourson M (2005). Application of the threshold of
+toxicological concern concept to pharmaceutical manufacturing operations. Regul Toxicol Pharmacol,
+43, 1-9.
+1 Bercu JP & Dolan DG, (2013). Application of the threshold of toxicological concern concept when
+applied to pharmaceutical manufacturing operations intended for short-term clinical trials. Regul
+Toxicol Pharmacol. 2013 Feb;65(1):162-7.
+4 PDE and ADE are effectively synonymous.
+
+-- 10 of 11 --
+
+Guideline on setting health based exposure limits for use in risk identification in the
+manufacture of different medicinal products in shared facilities
+EMA/CHMP/CVMP/SWP/169430/2012 	Page 11/11
+Annex
+PDE Determination Strategy
+Company Name
+Company Address
+Expert Name and Signature 	Date
+Assessment Review Date
+Chemical Name/s
+Hazards Identified
+YES 	NO 	UNKNOWN
+Genotoxicant
+Reproductive developmental toxicant
+Carcinogen
+Highly sensitizing potential
+Basis for the PDE
+Justification for selection of ”lead” critical effect used for final PDE calculation
+NOAEL and applied adjustment factors upon which the PDE is based
+Reference(s)
+Publication(s) used to identify the critical effect and dose
+Summary of the Expert CV
+
+-- 11 of 11 --
+

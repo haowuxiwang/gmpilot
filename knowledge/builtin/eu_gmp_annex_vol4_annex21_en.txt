@@ -1,0 +1,205 @@
+[Source: 附件\vol4_annex21_en.pdf]
+[Format: EU GMP Regulation]
+
+EN EN
+EUROPEAN
+COMMISSION
+Brussels, 16.2.2022
+C(2022) 843 final
+GUIDELINES
+The Rules Governing Medicinal Products in the European Union
+Volume 4 EU Guidelines for Good Manufacturing Practice for Medicinal Products for
+Human and Veterinary Use
+
+-- 1 of 6 --
+
+Page 1 of 5
+EudraLex
+The Rules Governing Medicinal Products in the European Union
+Volume 4 EU Guidelines for Good Manufacturing Practice for Medicinal Products
+for Human and Veterinary Use
+Annex 21: Importation of medicinal products
+Legal basis for publishing the detailed guidelines: Article 47 of Directive 2001/83/EC
+on the Community code relating to medicinal products for human use and Regulation
+2019/6 on the Community code relating to veterinary medicinal products. This document
+provides guidance for the interpretation of the principles and guidelines of good
+manufacturing practice (GMP) for medicinal products as laid down in Directive
+2003/94/EC for medicinal products for human use and Directive 91/412/EEC for
+veterinary use, and the Clinical trials Regulation 536/2014, the Commission Delegated
+Regulation 2017/1569 supplementing it.
+Status of the document: New annex.
+Reasons for changes: Not applicable at this occasion.
+Deadline for coming into operation: 21 August 2022 (6 months after publication].
+
+-- 2 of 6 --
+
+Page 2 of 5
+1. Scope
+This Annex summarizes the GMP requirements applicable to a Manufacturing
+Import Authorisation (MIA) holder, when importing medicinal products (human,
+investigational and veterinary) from outside the EU/EEA. The guidance in the
+main chapters and other annexes of the Guide to Good Manufacturing Practice
+for Medicinal Products ("the EU GMP Guide") also apply, as appropriate, for
+other GMP activities carried out and should be consulted for supplementary
+guidance. Medicinal products that enter the EU/EEA with the intention of export
+only and that are not processed in any form nor released for placing on the
+EU/EEA market, are not covered by this Annex.
+2. Principles
+2.1. For the purpose of this annex, the term importation refers to the action of
+physically bringing a medicinal product, from outside the territory of EEA/EU;
+fiscal transactions are not part of this annex. Qualified Person (QP) certification
+or confirmation, as appropriate, of a batch of a medicinal product takes place only
+after physical importation and custom clearance into the customs territory of an
+EU/EEA State. Imported bulk products and intermediate products may undergo
+further manufacturing operations in accordance with the marketing authorisation
+or clinical trial authorisation prior to QP certification or confirmation, as
+appropriate. The sites which are considered to have specific importation
+responsibilities in relation to a medicinal product, a bulk or an intermediate
+product, are:
+a) Site of Physical Importation.
+b) Site of QP certification of imported medicinal products or QP
+confirmation for bulk or intermediate products undergoing further
+processing, as appropriate.
+The above importation responsibilities must be carried out by entities
+appropriately authorized under a MIA.
+2.2. All stages of manufacture of imported medicinal products that are carried out in
+third countries should be conducted in accordance with the EU GMP Guide or
+equivalent standards and in conformance with the Marketing Authorisation (MA),
+the clinical trial authorisation (CTA) and the relevant quality agreement, as
+applicable.
+2.3. For products authorized in the EU/EEA, the overall responsibility for placing the
+medicinal products on the market lies with the marketing authorisation holder
+(MAH).
+2.4. The Qualified Person certifying the batch must ensure that all the medicinal
+products for human or veterinary use or investigational medicinal products that
+are imported into the Union from a third country were manufactured in accordance
+with the EU GMP Guide or recognised equivalent standards, and for products with
+a marketing authorisation, tested upon importation in the Union , unless there are
+appropriate arrangements in place between the Union and the third country (e.g.
+Mutual Recognition Agreement (MRA) or Agreement on conformity assessment
+and acceptance of industrial products, ACAA). See also Annex 16 of the EU GMP
+
+-- 3 of 6 --
+
+Page 3 of 5
+Guide and Annex 13, the detailed guidelines on GMP for Investigational
+Medicinal Products (IMPs) for further guidance.
+2.5. Testing in an EU/EEA state should cover all the tests needed to demonstrate that
+the medicinal product meets the specifications that are set out in the marketing
+authorisation.
+2.6. Written agreements should be in place between the site(s) performing
+manufacturing, importation activities and the MAH or sponsor, as appropriate, in
+accordance with Chapter 7 of the EU GMP Guide.
+3. Pharmaceutical Quality System
+3.1. The site(s) conducting importation activities should have an appropriately detailed
+Pharmaceutical Quality System in accordance with Chapter 1 of the EU GMP
+Guide and reflecting the scope of the activities carried out.
+3.2. Product Quality Reviews should be performed by the site responsible for QP
+certification for the products imported, including products imported for further
+processing before export with the exception of investigational medicinal products.
+o Written agreements should be in place to define the respective
+responsibilities of the MAH, the importer(s), the site responsible for
+QP certification and the third country manufacturers, as appropriate,
+in relation to compiling of the Product Quality Reviews as outlined in
+Chapter 1 of the EU GMP Guide.
+o In addition to the Product Quality Review (PQR) requirements
+described in Chapter 1 of the EU GMP Guide, where sampling of the
+imported product is conducted in a third country in accordance with
+Annex 16 of the EU GMP Guide, the PQR should include an
+assessment of the basis for continued reliance on this sampling
+practice. PQRs should also include a review of deviations relating to
+transportation up to the point of batch certification. Specific
+requirements for sampling and transportation of imported products are
+detailed further in Annex 16 of the EU GMP Guide.
+o As part of this review, the analytical results from importation testing
+should be compared with those in the Certificate of Analysis generated
+by the third country manufacturer. Any discrepancies or out of trends
+(OOT) should be documented and investigated.
+4. Premises and equipment
+4.1. The site(s) involved in importation activities should have adequate premises and
+equipment to ensure the respective activities are performed in accordance with
+EU GMP Guide.
+4.2. Imported medicinal products should be stored under quarantine after receipt, until
+their release for further processing or following QP certification or confirmation
+as appropriate, in accordance with Annex 16 of the EU GMP Guide. Segregated
+areas should exist for quarantined products. Any system replacing the physical
+quarantine should ensure an equivalent level of security.
+5. Documentation
+
+-- 4 of 6 --
+
+Page 4 of 5
+5.1. Full batch documentation must be available to the MIA holder responsible for QP
+certification or confirmation of the batch, as appropriate, at the time of
+certification or confirmation of the batch. Other MIA holders involved in the
+importation process should have access to batch documentation as necessary in
+accordance with the activities for which the site is responsible, and as reflected in
+written agreements between the parties involved in the importation process.
+5.1.1. The site responsible for QP certification or confirmation, as appropriate,
+should have access to those documents that would support batch certification
+as defined in Annex 16 of the EU GMP Guide. The frequency at which full
+batch documentation is reviewed at the site responsible for QP certification
+or confirmation, as appropriate, of the product should be justified on a risk
+assessment basis and defined in the Pharmaceutical Quality System.
+Documentary evidence should be available to demonstrate that the QP has
+certified or confirmed the batch in accordance with the MA or clinical trial
+authorisation and any other regulatory restrictions that may apply (e.g. where
+an EU GMP certificate restricts activities to specific manufacturing
+units/buildings at the third country manufacturing site).
+5.1.2. The documentation on the site of physical importation should include, at a
+minimum, the details of transportation and receipt of the product (see also
+Annex 16 of the EU GMP Guide).
+5.1.3. Relevant ordering and delivery documentation should be available for
+inspection at the site responsible for QP certification or confirmation, as
+appropriate, and clearly indicate:
+o The site from where the product has been dispatched (the origin of the
+product).
+o The site of physical importation.
+o Shipping details (including transportation route and temperature
+monitoring records) and customs documentation, such as the packing
+list, freight documentation or customs import declaration, as
+applicable.
+5.2. Documentation must be retained in accordance with the requirements of Chapter
+4 of the EU GMP Guide. The site responsible for QP certification should ensure
+that the third country manufacturing site has a record retention policy equivalent
+to EU requirements.
+5.3. Batch documentation, including batch certificates, supplied by the third country
+manufacturing site should be in a format understood by the importer. It may be
+necessary to provide documents in more than one language to facilitate
+understanding.
+5.4. There should be documentary evidence that the site performing QP certification
+has qualified the third country manufacturer and regularly monitors its
+performance by periodic on-site audits, either by the site performing QP
+certification or by a third party on its behalf in accordance with Annex 16 of the
+EU GMP Guide, to ensure that the imported products are manufactured in
+accordance with EU GMP rules or equivalent requirements and the MA or clinical
+trial authorisation.
+5.5. Where batches have been subdivided and the individual quantities imported
+separately, documentation confirming reconciliation of the quantities should be
+made available at the site responsible for QP certification. Any discrepancy should
+be investigated under the responsibility of the certifying QP.
+
+-- 5 of 6 --
+
+Page 5 of 5
+6. Operations
+6.1. The site responsible for QP certification should ensure that an ongoing stability
+program is in place, as required in Chapter 6 of the EU GMP Guide. The ongoing
+stability program may be carried out at a third country site as an outsourced
+activity provided that the QP has all the necessary information to assure ongoing
+product quality. Details of the ongoing stability program, such as protocols, results
+and reports should be available for inspection at the site responsible for QP
+certification.
+6.2. The QP certifying the batch is responsible for ensuring that, where required, the
+safety features have been affixed to the packaging.
+6.3. The certifying QP is also responsible for ensuring that reference and retention
+samples have been taken in accordance with the requirements in Annex 19 of the
+EU GMP Guide and applicable detailed guidelines for GMP for IMPs.
+7. Complaints, Quality Defects and Product Recalls
+7.1. Adequate provisions should be in place between the site(s) performing
+importation activities, the third country manufacturer and the MAH or sponsor for
+handling complaints, quality defects and product recalls as required in Chapter 8
+of the EU GMP Guide. These should be defined in contractual arrangements.
+
+-- 6 of 6 --
+

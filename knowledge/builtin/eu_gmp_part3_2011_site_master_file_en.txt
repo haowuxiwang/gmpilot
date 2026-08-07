@@ -1,0 +1,281 @@
+[Source: 第三部分\2011_site_master_file_en.pdf]
+[Format: EU GMP Regulation]
+
+1 of 8
+EUROPEAN COMMISSION
+HEALTH AND CONSUMERS DIRECTORATE-GENERAL
+Public Health and Risk Assessment
+Pharmaceuticals
+Brussels,
+SANCO/C8/AM/sl/ares(2010)1064603
+EudraLex
+The Rules Governing Medicinal Products in the European Union
+Volume 4
+Good Manufacturing Practice
+Medicinal Products for Human and Veterinary Use
+Explanatory Notes on the preparation of a Site Master File
+These notes are intended to provide guidance on the recommended content of the Site
+Master File. A requirement for a Site Master File is referred to in Chapter 4 of the GMP
+Guide.
+Status of the document: New
+Commission Européenne, B-1049 Bruxelles / Europese Commissie,
+B-1049 Brussel - Belgium
+Telephone: (32-2) 299 11 11
+
+-- 1 of 8 --
+
+1. 	INTRODUCTION
+1.1 	The Site Master File is prepared by the pharmaceutical manufacturer and should
+contain 	specific 	information 	about 	the 	quality 	management 	policies 	and
+activities of the site, the production and/or quality control of pharmaceutical
+manufacturing 	operations 	carried 	out 	at 	the 	named 	site 	and 	any 	closely
+integrated operations at adjacent and nearby buildings. 	If only part of a
+pharmaceutical operation is carried out on the site, a Site Master File need only
+describe those operations, e.g. analysis, packaging, etc.
+1.2 	When submitted to a regulatory authority, the Site Master File should provide
+clear information on the manufacturer’s GMP related activities that can be
+useful in general supervision and in the efficient planning and undertaking of
+GMP inspections.
+1.3 	A Site Master File should contain adequate information but, as far as possible,
+not exceed 25-30 pages plus appendices. Simple plans outline drawings or
+schematic layouts are preferred instead of narratives. The Site Master File,
+including appendices, should be readable when printed on A4 paper sheets.
+1.4 	The Site Master File should be a part of documentation belonging to the quality
+management system of the manufacturer and kept updated accordingly. The Site
+Master File should have an edition number, the date it becomes effective and the
+date by which it has to be reviewed. It should be subject to regular review to
+ensure that it is up to date and representative of current activities. Each
+Appendix can have an individual effective date, allowing for independent
+updating.
+2. 	PURPOSE
+The aim of these Explanatory Notes is to guide the manufacturer of medicinal products
+in the preparation of a Site Master File that is useful to the regulatory authority in
+planning and conducting GMP inspections.
+3. 	SCOPE
+These Explanatory Notes apply to the preparation and content of the Site Master File.
+Manufacturers should refer to regional / national regulatory requirements to establish
+whether it is mandatory for manufacturers of medicinal products to prepare a Site
+Master File.
+These Explanatory Notes apply for all kind of manufacturing operations such as
+production, packaging and labelling, testing, relabeling and repackaging of all types of
+medicinal products. The outlines of this guide could also be used in the preparation of a
+Site Master File or corresponding document by Blood and Tissue Establishments and
+manufacturers of Active Pharmaceutical Ingredients.
+
+-- 2 of 8 --
+
+4. 	CONTENT OF SITE MASTER FILE
+Refer to the Annex for the format to be used.
+
+-- 3 of 8 --
+
+4 of 8
+ANNEX: CONTENT OF SITE MASTER FILE
+1. GENERAL INFORMATION ON THE MANUFACTURER
+1.1 	Contact information on the manufacturer
+- 	Name and official address of the manufacturer;
+- 	Names and street addresses of the site, buildings and 	production units
+located on the site;
+- 	Contact information of the manufacturer including 24 hrs telephone
+number of the contact personnel in the case of product defects or recalls.
+- 	Identification number of the site as e.g. GPS details, or any other
+geographic 	location 	system, 	D-U-N-S 	(Data 	Universal 	Numbering
+System) Number (a unique identification number provided by Dun &
+Bradstreet) of the site1
+1.2 	Authorised pharmaceutical manufacturing activities of the site.
+- 	Copy of the valid manufacturing authorisation issued by the relevant
+Competent Authority in Appendix 1; or when applicable, reference to the
+EudraGMP 	database. 	If 	the 	Competent 	Authority 	does 	not 	issue
+manufacturing authorizations, this should be stated.
+- 	Brief description of manufacture, import, export, distribution and other
+activities as authorized by the relevant Competent Authorities including
+foreign authorities with authorized dosage forms/activities, respectively;
+where not covered by the manufacturing authorization;
+- 	Type of products currently manufactured on-site (list in Appendix 2)
+where not covered by Appendix 1 or EudraGMP entry;
+- 	List of GMP inspections of the site within the last 5 years; including
+dates and name/country of the Competent Authority having performed
+the inspection. A copy of current GMP certificate (Appendix 3) or
+reference to the EudraGMP database, should be included, if available.
+1.3 	Any other manufacturing activities carried out on the site
+- 	Description of non-pharmaceutical activities on-site, if any.
+2. QUALITY MANAGEMENT SYSTEM OF THE MANUFACTURER
+2.1 	The quality management system of the manufacturer
+- 	Brief description of the quality management systems run by the company
+and reference to the standards used;
+- 	Responsibilities related to the maintaining of quality system including
+senior management;
+1 A D-U-N-S reference is required for Site Master Files submitted to EU/EEA authorities for
+manufacturing sites located outside of the EU/EEA.
+
+-- 4 of 8 --
+
+5 of 8
+- 	Information of activities for which the site is accredited and certified,
+including dates and contents of accreditations, names of accrediting
+bodies.
+2.2. 	Release procedure of finished products
+- 	Detailed description of qualification requirements (education and work
+experience) of the Authorised Person(s) / Qualified Person(s) responsible
+for batch certification and releasing procedures;
+- 	General description of batch certification and releasing procedure;
+- 	Role of Authorised Person / Qualified Person in quarantine and release
+of finished products and in assessment of compliance with the Marketing
+Authorisation;
+- 	The arrangements between Authorised Persons / Qualified Persons when
+several Authorised Persons / Qualified Persons are involved;
+- 	Statement on whether the control strategy employs Process Analytical
+Technology (PAT) and/or Real Time Release or Parametric Release;
+2.3 	Management of suppliers and contractors
+- 	A brief summary of the establishment/knowledge of supply chain and the
+external audit program;
+- 	Brief 	description 	of 	the 	qualification 	system 	of 	contractors,
+manufacturers of active pharmaceutical ingredients (API) 	and other
+critical materials suppliers;
+- 	Measures taken to ensure that products manufactured are compliant with
+TSE (Transmitting animal spongiform encephalopathy) guidelines.
+- 	Measures adopted where counterfeit/falsified products, bulk products
+(i.e. unpacked tablets), active pharmaceutical ingredients or excipients
+are suspected or identified.
+- 	Use of outside scientific, analytical or other technical assistance in
+relation to manufacture and analysis;
+- 	List of contract manufacturers and laboratories including the addresses
+and contact information and flow charts of supply-chains for outsourced
+manufacturing and Quality Control activities; e.g. sterilization of primary
+packaging material for aseptic processes, testing of starting raw-materials
+etc, should be presented in Appendix 4;
+- 	Brief overview of the responsibility sharing between the contract giver
+and 	acceptor 	with 	respect 	to 	compliance 	with 	the 	Marketing
+Authorization (where not included under 2.2).
+2.4 	Quality Risk Management (QRM)
+- 	Brief description of QRM methodologies used by the manufacturer;
+- 	Scope and focus of QRM including brief description of any activities
+which are performed at corporate level, and those which are performed
+locally. Any application of the QRM system to assess continuity of
+supply should be mentioned;
+2.5 	Product Quality Reviews
+- 	Brief description of methodologies used
+
+-- 5 of 8 --
+
+6 of 8
+3. 	PERSONNEL
+- 	Organisation chart showing the arrangements for quality management,
+production and quality control positions/titles in Appendix 5, including
+senior management and Qualified Person(s);
+- 	Number of employees engaged in the quality management, production,
+quality control, storage and distribution respectively;
+4. 	PREMISES AND EQUIPMENT
+4.1 	Premises
+- 	Short description of plant; size of the site and list of buildings. If the
+production for different markets, i.e. for local, EU, USA etc takes place
+in different buildings on the site, the buildings should be listed with
+destined markets identified (if not identified under 1.1);
+- 	Simple plan or description of manufacturing areas with indication of
+scale (architectural or engineering drawings are not required);
+- 	Lay outs and flow charts of the production areas (in Appendix 6)
+showing 	the 	room 	classification 	and 	pressure 	differentials 	between
+adjoining 	areas 	and 	indicating 	the 	production 	activities 	(i.e.
+compounding, filling, storage, packaging, etc.) in the rooms.;
+- 	Lay-outs of warehouses and storage areas, with special areas for the
+storage and handling of highly toxic, hazardous and sensitising materials
+indicated, if applicable;
+- 	Brief description of specific storage conditions if applicable, but not
+indicated on the lay-outs;
+4.1.1 	Brief description of heating, ventilation and air conditioning (HVAC) systems
+- 	Principles for defining the air supply, temperature, humidity, pressure
+differentials and air change rates, policy of air recirculation (%);
+4.1.2 	Brief description of water systems
+- 	Quality references of water produced
+- 	Schematic drawings of the systems in Appendix 7
+4.1.3. 	Brief description of other relevant utilities, such as steam, compressed air,
+nitrogen , etc.
+4.2 	Equipment
+4.2.1 	Listing of major production and control laboratory equipment with critical
+pieces of equipment identified should be provided in Appendix 8.
+4.2.2 	Cleaning and sanitation
+- 	Brief description of cleaning and sanitation methods of product contact
+surfaces (i.e. manual cleaning, automatic Clean-in-Place, etc).
+4.2.3 	GMP critical computerised systems
+- 	Description of GMP critical computerised systems (excluding equipment
+specific Programmable Logic Controllers (PLCs)
+
+-- 6 of 8 --
+
+7 of 8
+5. 	DOCUMENTATION
+- 	Description of documentation system (i.e. electronic, manual);
+- 	When documents and records are stored or archived off-site (including
+pharmacovigilance 	data, 	when 	applicable): 	List 	of 	types 	of
+documents/records; Name and address of storage site and an estimate of
+time required retrieving documents from the off-site archive.
+6. 	PRODUCTION
+6.1. 	Type of products
+(References to Appendix 1 or 2 can be made):
+- 	Type of products manufactured including
+ list of dosage forms of both human and veterinary products which
+are manufactured on the site
+ list of dosage forms of investigational medicinal products (IMP)
+manufactured 	for 	any 	clinical 	trials 	on 	the 	site, 	and 	when
+different from the commercial manufacturing, information of
+production areas and personnel
+- 	Toxic or hazardous substances handled (e.g. with high pharmacological
+activity and/or with sensitising properties);
+- 	Product types manufactured in a dedicated facility or on a campaign
+basis, if applicable;
+- 	Process Analytical Technology (PAT) applications, if applicable: general
+statement 	of 	the 	relevant 	technology, 	and 	associated 	computerized
+systems;
+6.2 	Process validation
+- 	Brief description of general policy for process validation;
+- 	Policy for reprocessing or reworking;
+6.3 	Material management and warehousing
+- 	Arrangements for the handling of starting materials, packaging materials,
+bulk and finished products including sampling, quarantine, release and
+storage
+- 	Arrangements for the handling of rejected materials and products
+7. 	QUALITY CONTROL (QC)
+- 	Description of the Quality Control activities carried out on the site in
+terms of physical, chemical, and microbiological and biological testing.
+8. 	DISTRIBUTION, COMPLAINTS, PRODUCT DEFECTS AND RECALLS
+8.1 	Distribution (to the part under the responsibility of the manufacturer)
+- 	Types (wholesale licence holders, manufacturing licence holders, etc)
+and locations (EU/EEA, USA, etc) of the companies to which the
+products are shipped from the site;
+
+-- 7 of 8 --
+
+8 of 8
+- 	Description of the system used to verify that each customer / recipient is
+legally entitled to receive medicinal products from the manufacturer
+- 	Brief description of the system to ensure appropriate environmental
+conditions during transit, e.g. temperature monitoring/ control;
+- 	Arrangements for product distribution and methods by which product
+traceability is maintained;
+- 	Measures taken to prevent manufacturers’ products to fall in the illegal
+supply chain.
+8.2 	Complaints, product defects and recalls
+- 	Brief description of the system for handling complains, product defects
+and recalls
+9. 	SELF INSPECTIONS
+- 	Short description of the self inspection system with focus on criteria used
+for selection of the areas to be covered during planned inspections,
+practical arrangements and follow-up activities
+___________
+Appendix 1 	Copy of valid manufacturing authorisation
+Appendix 2 	List of dosage forms manufactured including the INN-names or
+common name (as available) of active pharmaceutical ingredients
+(API) used
+Appendix 3 	Copy of valid GMP Certificate
+Appendix 4 	List 	of 	contract 	manufacturers 	and 	laboratories 	including 	the
+addresses and contact information, and flow-charts of the supply-
+chains for these outsourced activities
+Appendix 5 	Organisational charts
+Appendix 6 	Lay outs of production areas including material and personnel
+flows, general flow charts of manufacturing processes of each
+product type (dosage form)
+Appendix 7 	Schematic drawings of water systems
+Appendix 8 	List of major production and laboratory equipment
+
+-- 8 of 8 --
+

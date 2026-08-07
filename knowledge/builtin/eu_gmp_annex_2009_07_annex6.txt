@@ -1,0 +1,446 @@
+[Source: 附件\2009_07_annex6.pdf]
+[Format: EU GMP Regulation]
+
+EUROPEAN COMMISSION
+ENTERPRISE AND INDUSTRY DIRECTORATE-GENERAL
+Consumer goods
+Pharmaceuticals
+Commission Européenne, B-1049 Bruxelles / Europese Commissie, B-1049 Brussel – Belgium. Telephone: (32-2) 299 11 11
+Brussels, 03 February 2010
+ENTR/F/2/AM/an D(2010) 3374
+EudraLex
+The Rules Governing Medicinal Products in the European Union
+Volume 4
+Good Manufacturing Practice
+Medicinal Products for Human and Veterinary Use
+Annex 6
+Manufacture of Medicinal Gases
+Document History
+The Annex was revised as a consequence of the restructuring of the
+GMP Guide and the need to modify the requirements of Part II of the
+Guide for applicability to medicinal gases. There was a need to define
+more clearly what should be considered as a starting material as
+opposed to a bulk pharmaceutical product.
+The opportunity was also been taken to update the annex in general.
+February 2007
+Public consultation July 2007 until
+December 2007
+Adopted by the European Commission 	31 January 2010
+Deadline for coming into operation 	31 July 2010
+
+-- 1 of 11 --
+
+- 2 -
+PRINCIPLE
+Gases which fulfil the definition of medicinal product of Directive 2001/83/EC or Directive
+2001/82/EC (hereinafter, medicinal gases) are subject to the requirements laid down in these
+Directives, including the requirements on manufacturing. In this regard, this Annex deals with
+the manufacture of active substance gases and with the manufacture of medicinal gases.
+The delineation between the manufacture of the active substance and the manufacture of the
+medicinal product should be clearly defined in each Marketing Authorisation dossier.
+Normally, the production and purification steps of the gas belong to the field of manufacture
+of active substances. Gases enter the pharmaceutical field from the first storage of gas
+intended for such use.
+Manufacture of active substance gases should comply with the Basic Requirements of this
+guide (Part II), with the relevant part of this Annex, and with the other Annexes of the guide if
+relevant.
+Manufacture of medicinal gases should comply with the Basic Requirements of this guide
+(Part I), with the relevant part of this Annex, and with the other Annexes of the guide if
+relevant.
+In the exceptional cases of continuous processes where no intermediate storage of gas
+between the manufacture of the active substance and the manufacture of the medicinal
+product is possible, the whole process (from starting materials of active substance to
+medicinal finished product) should be considered as belonging to the pharmaceutical field.
+This should be clearly stated in the Marketing Authorisation dossier.
+The Annex does not cover the manufacture and handling of medicinal gases in hospitals
+unless this is considered industrial preparation or manufacturing. However, relevant parts of
+this Annex may be used as a basis for such activities.
+MANUFACTURE OF ACTIVE SUBSTANCE GASES
+Active substance gases can be prepared by chemical synthesis or be obtained from natural
+sources followed by purification steps, if necessary (as for example in an air separation plant).
+1. The processes corresponding to these two methods of manufacturing active substance gases
+should comply with Part II of the Basic Requirements. However:
+(a) the requirements regarding starting materials for active substances (Part II Chapter 7)
+do not apply to the production of active substance gases by air separation (however, the
+manufacturer should ensure that the quality of ambient air is suitable for the established
+process and any changes in the quality of ambient air do not affect the quality of the
+active substance gas);
+(b) the requirements regarding on-going stability studies (Part II chapter 11.5), which
+are used to confirm storage conditions and expiry/retest dates (Part II chapter 11.6), do
+not apply in case initial stability studies have been replaced by bibliographic data (see
+Note for Guidance CPMP/QWP/1719/00); and
+
+-- 2 of 11 --
+
+- 3 -
+(c) the requirements regarding reserve/retention samples (Part II chapter 11.7) do not
+apply to active substance gases, unless otherwise specified.
+2. The production of active substance gases through a continuous process (e.g. air separation)
+should be continuously monitored for quality. The results of this monitoring should be kept in
+a manner permitting trend evaluation.
+3. In addition:
+(a) transfers and deliveries of active substance gases in bulk should comply with the
+same requirements as those mentioned below for the medicinal gases (sections 19 to 21
+of this Annex);
+(b) filling of active substance gases into cylinders or into mobile cryogenic vessels
+should comply with the same requirements as those mentioned below for the medicinal
+gases (sections 22 to 37 of this Annex) as well as Part II Chapter 9.
+MANUFACTURE OF MEDICINAL GASES
+Manufacture of medicinal gases is generally carried out in closed equipment. Consequently,
+environmental contamination of the product is minimal. However, risks of contamination (or
+cross contamination with other gases) may arise, in particular because of the reuse of
+containers.
+4. Requirements applying to cylinders should also apply to cylinders bundles (except storage
+and transportation under cover).
+Personnel
+5. All personnel involved in manufacture and distribution of medicinal gases should receive
+an appropriate GMP training specifically applying to this type of products. They should be
+aware of the critically important aspects and potential hazards for patients from these
+products. The training programs should include the tanker lorries drivers.
+6. Personnel of subcontractors that could influence the quality of medicinal gases (such as
+personnel in charge of maintenance of cylinders or valves) should be appropriately trained.
+Premises and equipment
+Premises
+7. Cylinders and mobile cryogenic vessels should be checked, prepared, filled and stored in
+separate areas from non-medicinal gases, and there should be no exchange of cylinders /
+mobile cryogenic vessels between these areas. However, it could be accepted to check,
+prepare, fill and store other gases in the same areas, provided they comply with the
+specifications of medicinal gases and that the manufacturing operations are performed
+according to GMP standards.
+
+-- 3 of 11 --
+
+- 4 -
+8. Premises should provide sufficient space for manufacturing, testing and storage operations
+in order to prevent any risk of mix-up. Premises should be designed to provide:
+(a) separate marked areas for different gases;
+(b) clear identification and segregation of cylinders/mobile cryogenic vessels at various
+stages 	of 	processing 	(e.g. 	“waiting 	checking” 	"awaiting 	filling", 	"quarantine",
+"certified", “rejected” “prepared deliveries”).
+The method used to achieve these various levels of segregation will depend on the nature,
+extent and complexity of the overall operation. Marked-out floor areas, partitions, barriers,
+signs, labels or other appropriate means could be used.
+9. 	Empty 	cylinders/home 	cryogenic 	vessels 	after 	sorting 	or 	maintenance, 	and 	filled
+cylinders/home cryogenic vessels should be stored under cover, protected from adverse
+weather conditions. 	Filled cylinders/mobile cryogenic vessels should be stored in a manner
+that ensures that they will be delivered in a clean state, compatible with the environment in
+which they will be used.
+10. 	Specific 	storage 	conditions 	should 	be 	provided 	as 	required 	by 	the 	Marketing
+Authorisation (e.g. for gas mixtures where phase separation occurs on freezing).
+Equipment
+11. Equipment should be designed to ensure the correct gas is filled into the correct container.
+There should normally be no cross connections between pipelines carrying different gases. If
+cross connections are needed (e.g. filling equipment of mixtures), qualification should ensure
+that there is no risk of cross contamination between the different gases. In addition, the
+manifolds should be equipped with specific connections. These connections may be subject to
+national or international standards. The use of connections meeting different standards at the
+same filling site should be carefully controlled, as well as the use of adaptors needed in some
+situations to bypass the specific fill connection systems.
+12. Tanks and tankers should be dedicated to a single and defined quality of gas. However
+medicinal gases may be stored or transported in the same tanks, other containers used for
+intermediate storage, or tankers, as the same non-medicinal gas, provided that the quality of
+the latter is at least equal to the quality of the medicinal gas and that GMP standards are
+maintained. In such cases, quality risk management should be performed and documented.
+13. A common system supplying gas to medicinal and non-medicinal gas manifolds is only
+acceptable if there is a validated method to prevent backflow from the non-medicinal gas line
+to the medicinal gas line.
+14. Filling manifolds should be dedicated to a single medicinal gas or to a given mixture of
+medicinal gases. In exceptional cases, filling gases used for other medical purposes on
+manifolds dedicated to medicinal gases may be acceptable if justified and performed under
+control. In these cases, the quality of the non-medicinal gas should be at least equal to the
+required quality of the medicinal gas and GMP standards should be maintained. Filling should
+then be carried out by campaigns.
+
+-- 4 of 11 --
+
+- 5 -
+15. Repair and maintenance operations (including cleaning and purging) of equipment, should
+not adversely affect the quality of medicinal gases. In particular, procedures should describe
+the measures to be taken after repair and maintenance operations involving breaches of the
+system’s integrity. Specifically it should be demonstrated that the equipment is free from any
+contamination that may adversely affect the quality of the finished product before releasing it
+for use. Records should be maintained.
+16. A procedure should describe the measures to be taken when a tanker is back into
+medicinal gas service (after transporting non-medicinal gas in the conditions mentioned in
+section 12, or after a maintenance operation). This should include analytical testing.
+Documentation
+17. Data included in the records for each batch of cylinders/mobile cryogenic vessels must
+ensure that each filled container is traceable to significant aspects of the relevant filling
+operations. As appropriate, the following should be entered:
+(a) name of the product;
+(b) batch number;
+(c) date and time of the filling operation;
+(d) identification of the person(s) carrying out each significant step (e.g. line clearance,
+receipt, preparation before filling, filling etc.);
+(e) batch(es) reference(s) for the gas(es) used for the filling operation as referred to in
+section 22, including status;
+(f) equipment used (e.g. filling manifold);
+(g) quantity of cylinders/mobile cryogenic vessels before filling, including individual
+identification references and water capacity(ies);
+(h) pre-filling operations performed (see section 30);
+(i) key parameters that are needed to ensure correct filling at standard conditions;
+(j) results of appropriate checks to ensure the cylinders/mobile cryogenic vessels have
+been filled;
+(k) a sample of the batch label;
+(l) specification of the finished product and results of quality control tests (including
+reference to the calibration status of the test equipment);
+(m) 	quantity 	of 	rejected 	cylinders/mobile 	cryogenic 	vessels, 	with 	individual
+identification references and reasons for rejections;
+(n) details of any problems or unusual events, and signed authorisation for any deviation
+from filling instructions; and
+(o) certification statement by the Qualified Person, date and signature.
+18. Records should be maintained for each batch of gas intended to be delivered into hospital
+tanks. These records should, as appropriate, include the following (items to be recorded may
+vary depending on local legislation):
+(a) name of the product;
+(b) batch number;
+(c) identification reference for the tank (tanker) in which the batch is certified;
+(d) date and time of the filling operation;
+(e) identification of the person(s) carrying out the filling of the tank (tanker);
+(f) reference to the supplying tanker (tank), reference to the source gas as applicable;
+(g) relevant details concerning the filling operation;
+
+-- 5 of 11 --
+
+- 6 -
+(h) specification of the finished product and results of quality control tests (including
+reference to the calibration status of the test equipment);
+(i) details of any problems or unusual events, and signed authorisation for any deviation
+from filling instructions; and
+(j) certification statement by the Qualified Person, date and signature.
+Production
+Transfers and deliveries of cryogenic and liquefied gas
+19. The transfers of cryogenic or liquefied gases from primary storage, including controls
+before transfers, should be in accordance with validated procedures designed to avoid the
+possibility of contamination. Transfer lines should be equipped with non-return valves or
+other suitable alternatives. Flexible connections, coupling hoses and connectors should be
+flushed with the relevant gas before use.
+20. The transfer hoses used to fill tanks and tankers should be equipped with product-specific
+connections. The use of adaptors allowing the connection of tanks and tankers not dedicated
+to the same gases should be adequately controlled.
+21. Deliveries of gas may be added to tanks containing the same defined quality of gas
+provided that a sample is tested to ensure that the quality of the delivered gas is acceptable.
+This sample may be taken from the gas to be delivered or from the receiving tank after
+delivery.
+Note: See specific arrangements in section 42 for filling of tanks retained by customers at the
+customer’s premises.
+Filling and labelling of cylinders and mobile cryogenic vessels
+22. Before filling cylinders and mobile cryogenic vessels, a batch (batches) of gas(es) should
+be determined, controlled according to specifications and approved for filling.
+23. In the case of continuous processes as those mentioned in ‘Principle’, there should be
+adequate in-process controls to ensure that the gas complies with specifications.
+24. Cylinders, mobile cryogenic vessels and valves should conform to appropriate technical
+specifications and any relevant requirements of the Marketing Authorisation. They should be
+dedicated to a single medicinal gas or to a given mixture of medicinal gases. Cylinders should
+be colour-coded according to relevant standards. They should preferably be fitted with
+minimum pressure retention valves with non-return mechanism in order to provide adequate
+protection against contamination.
+25. Cylinders, mobile cryogenic vessels and valves should be checked before first use in
+production, and should be properly maintained. Where CE marked medical devices are used,
+the maintenance should address the medical device manufacturer’s instructions.
+26. Checks and maintenance operations should not affect the quality and the safety of the
+medicinal product. The water used for the hydrostatic pressure testing carried out on cylinders
+should be at least of drinking quality.
+
+-- 6 of 11 --
+
+- 7 -
+27. As part of the checks and maintenance operations, cylinders should be subject to an
+internal visual inspection before fitting the valve, to make sure they are not contaminated
+with water or other contaminants. This should be done:
+• 	when they are new and initially put into medicinal gas service;
+• 	following any hydrostatic statutory pressure test or equivalent test where the valve is
+removed;
+• 	whenever the valve is replaced.
+After fitting, the valve should be kept closed to prevent any contamination from entering the
+cylinder. If there is any doubt about the internal condition of the cylinder, the valve should
+be removed and the cylinder internally inspected to ensure it has not been contaminated.
+28. Maintenance and repair operations of cylinders, mobile cryogenic vessels and valves are
+the responsibility of the manufacturer of the medicinal product. If subcontracted, they should
+only be carried out by approved subcontractors, and contracts including technical agreements
+should be established. Subcontractors should be audited to ensure that appropriate standards
+are maintained.
+29. There should be a system to ensure the traceability of cylinders, mobile cryogenic vessels
+and valves.
+30. Checks to be performed before filling should include:
+(a) in the case of cylinders, a check, carried out according to defined procedure, to
+ensure there is a positive residual pressure in each cylinder;
+• 	if the cylinder is fitted with a minimum pressure retention valve, when there is
+no signal indicating there is a positive residual pressure, the correct functioning
+of the valve should be checked, and if the valve is shown not to function
+properly the cylinder should be sent to maintenance,
+• 	if the cylinder is not fitted with a minimum pressure retention valve, when there
+is no positive residual pressure the cylinder should be put aside for additional
+measures, to make sure it is not contaminated with water or other contaminants;
+additional measures could consist of internal visual inspection followed by
+cleaning using a validated method;
+(b) a check to ensure that all previous batch labels have been removed;
+(c) a check that any damaged product labels have been removed and replaced;
+(d) a visual external inspection of each cylinder, mobile cryogenic vessel and valve for
+dents, arc burns, debris, other damage and contamination with oil or grease; cleaning
+should be done if necessary;
+(e) a check of each cylinder or mobile cryogenic vessel outlet connection to determine
+that it is the proper type for the particular gas involved;
+(f) a check of the date of the next test to be performed on the valve (in the case of valves
+that need to be periodically tested);
+
+-- 7 of 11 --
+
+- 8 -
+(g) a check of the cylinders or mobile cryogenic vessels to ensure that any tests required
+by national or international regulations (e.g. hydrostatic pressure test or equivalent for
+cylinders) have been conducted and are still valid; and
+(h) a check to determine that each cylinder is colour-coded as specified in the Marketing
+Authorisation (colour-coding of the relevant national / international standards).
+31. A batch should be defined for filling operations.
+32. Cylinders that have been returned for refilling should be prepared with care in order to
+minimise the risks of contamination, in line with the procedures defined in the Marketing
+Authorisation. These procedures, which should include evacuation and/or purging operations,
+should be validated.
+Note: For compressed gases, a maximum theoretical impurity of 500 ppm v/v should be
+obtained for a filling pressure of 200 bar at 15°C (and equivalent for other filling pressures).
+33. Mobile cryogenic vessels that have been returned for refilling should be prepared with
+care in order to minimise the risks of contamination, in line with the procedures defined in
+the Marketing Authorisation. In particular, mobile vessels with no residual pressure should
+be prepared using a validated method.
+34. There should be appropriate checks to ensure that each cylinder/mobile cryogenic vessel
+has been properly filled.
+35. Each filled cylinder should be tested for leaks using an appropriate method, prior to
+fitting the tamper evident seal (see section 36). The test method should not introduce any
+contaminant into the valve outlet and, if applicable, should be performed after any quality
+sample is taken.
+36. After filling, cylinders valves should be fitted with covers to protect the outlets from
+contamination. Cylinders and mobile cryogenic vessels should be fitted with tamper-evident
+seals.
+37. Each cylinder or mobile cryogenic vessel should be labelled. The batch number and the
+expiry date may be on a separate label.
+38. In the case of medicinal gases produced by mixing two or more different gases (in-line
+before filling or directly into the cylinders); the mixing process should be validated to ensure
+that the gases are properly mixed in every cylinder and that the mixture is homogeneous.
+Quality Control
+39. Each batch of medicinal gas (cylinders, mobile cryogenic vessels, hospital tanks) should
+be tested in accordance with the requirements of the Marketing Authorisation and certified.
+40. Unless different provisions are required in the Marketing Authorisation, the sampling plan
+and the analysis to be performed should comply, in the case of cylinders with the following
+requirements.
+
+-- 8 of 11 --
+
+- 9 -
+(a) In the case of a single medicinal gas filled into cylinders via a multi-cylinder
+manifold, the gas from at least one cylinder from each manifold filling cycle should be
+tested for identity and assay each time the cylinders are changed on the manifold.
+(b) In the case of a single medicinal gas filled into cylinders one at a time, the gas from
+at least one cylinder of each uninterrupted filling cycle should be tested for identity and
+assay. An example of an uninterrupted filling cycle is one shift's production using the
+same personnel, equipment, and batch of gas to be filled.
+(c) In the case of a medicinal gas produced by mixing two or more gases in a cylinder
+from the same manifold, the gas from every cylinder should be tested for assay and
+identity of each component gas. For excipients, if any, testing on identity could be
+performed on one cylinder per manifold filling cycle (or per uninterrupted filling cycle
+in case of cylinders filled one at a time). Fewer cylinders may be tested in case of
+validated automated filling system.
+(d) Premixed gases should follow the same principles as single gases when continuous
+in-line testing of the mixture to be filled is performed.
+Premixed gases should follow the same principle as medicinal gases produced by
+mixing gases in the cylinders when there is no continuous in-line testing of the mixture
+to be filled.
+Testing for water content should be performed unless otherwise justified
+Other sampling and testing procedures that provide at least equivalent level of quality
+assurance may be justified.
+41. Unless different provisions are required in the Marketing Authorisation, final testing on
+mobile cryogenic vessels should include a test for assay and identity on each vessel. Testing
+by batches should only be carried out if it has been demonstrated that the critical attributes of
+the gas remaining in each vessel before refilling have been maintained.
+42. Cryogenic vessels retained by customers (hospital tanks or home cryogenic vessels),
+which are refilled in place from dedicated tankers do not need to be sampled after filling
+provided that a certificate of analysis on the contents of the tanker accompanies the delivery.
+However, it should be demonstrated that the specification of the gas in the vessels is
+maintained over the successive refillings.
+43. Reference and retention samples are not required, unless otherwise specified.
+44. On-going stability studies are not required in case initial stability studies have been
+replaced by bibliographic data (see Note for Guidance CPMP/QWP/1719/00).
+Transportation of packaged gases
+45. Filled gas cylinders and home cryogenic vessels should be protected during transportation,
+so that, in particular, they are delivered to customers in a clean state compatible with the
+environment in which they will be used.
+
+-- 9 of 11 --
+
+- 10 -
+GLOSSARY
+Active substance gas
+Any gas intended to be an active substance for a medicinal product.
+Air separation
+Separation of atmospheric air into its constituent gases using fractional distillation at
+cryogenic temperatures.
+Compressed gas
+Gas 	which, 	when 	packaged 	under 	pressure 	for 	transport, 	is 	entirely 	gaseous 	at 	all
+temperatures above –50°C.
+Container
+A container is a cryogenic vessel (tank, tanker or other type of mobile cryogenic vessel) a
+cylinder, a cylinder bundle or any other package that is in direct contact with the gas.
+Cryogenic gas
+A gas which liquefies at 1.013 bar at temperatures below –150°C.
+Cylinder
+Container usually cylindrical suited for compressed, liquefied or dissolved gas, fitted with a
+device to regulate the spontaneous outflow of gas at atmospheric pressure and room
+temperature.
+Cylinder bundle
+An assembly of cylinders that are fastened together, interconnected by a manifold and
+transported and used as a unit.
+Evacuate
+To remove the residual gas from a container / system to a pressure less than 1.013 bar, using a
+vacuum system.
+Gas
+Any substance that is completely gaseous at 1.013 bar and +20°C or has a vapour pressure
+exceeding 3 bar at +50°C.
+Home cryogenic vessel
+Mobile cryogenic vessel designed to hold liquid oxygen and dispense gaseous oxygen at
+patients’ home.
+Hydrostatic pressure test
+Test performed as required by national or international regulations, in order to ensure that
+pressure containers are able to withstand pressures up to the container’s design pressure.
+Liquefied gas
+A gas which, when packaged for transport, is partially liquid (or solid) at a temperature above
+–50 O
+C.
+
+-- 10 of 11 --
+
+- 11 -
+Manifold
+Equipment or apparatus designed to enable one or more gas containers to be emptied and
+filled at the same time.
+Maximum theoretical residual impurity
+Gaseous impurity from a possible backflow that remains after the cylinder pre-treatment
+process before filling. The calculation of the maximum theoretical residual impurity is only
+relevant for compressed gases and assumes that the gases behave as perfect gases.
+Medicinal gas
+Any gas or mixture of gases classified as a medicinal product (as defined in Directives
+2001/83/EC and 2001/82/EC).
+Minimum pressure retention valve
+A cylinder valve, which maintains a positive pressure above atmospheric pressure in a gas
+cylinder after use, in order to prevent internal contamination of the cylinder.
+Mobile cryogenic vessel
+Mobile thermally insulated container designed to maintain the contents in a liquid state. In the
+Annex, this term does not include the tankers.
+Non-return valve
+Valve, which permits flow in one direction only.
+Purge
+To remove the residual gas from a container / system by first pressurising and then venting
+the gas used for purging to 1.013 bar.
+Tank
+Static thermally insulated container designed for the storage of liquefied or cryogenic gas.
+They are also called “Fixed cryogenic vessels”.
+Tanker
+In the context of the Annex, thermally insulated container fixed on a vehicle for the transport
+of liquefied or cryogenic gas.
+Valve
+Device for opening and closing containers.
+Vent
+To remove the residual gas from a container / system down to 1.013 bar, by opening the
+container / system to atmosphere.
+
+-- 11 of 11 --
+

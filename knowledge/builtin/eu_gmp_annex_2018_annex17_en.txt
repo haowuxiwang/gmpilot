@@ -1,0 +1,304 @@
+[Source: 附件\2018_annex17_en.pdf]
+[Format: EU GMP Regulation]
+
+1
+EUROPEAN COMMISSION
+HEALTH AND CONSUMERS DIRECTORATE-GENERAL
+Medicinal Products – Quality, Safety and Efficacy
+EudraLex
+The Rules Governing Medicinal Products in the European Union
+Volume 4
+EU Guidelines for Good Manufacturing Practice
+for Medicinal Products for Human and Veterinary Use
+Annex 17: Real Time Release Testing and Parametric Release
+Legal basis for publishing the detailed guidelines: Article 47 of Directive 2001/83/EC on the
+Community code relating to medicinal products for human use and Article 51 of Directive
+2001/82/EC on the Community code relating to veterinary medicinal products. This document
+provides guidance for the interpretation of the principles and guidelines of good manufacturing
+practice (GMP) for medicinal products as laid down in Directive 2003/94/EC for medicinal
+products for human use and Directive 91/412/EEC for veterinary use.
+Status of the document: Revision 1
+Reasons for changes: The previous guideline only focused on the application of Parametric
+Release for the routine release of terminally sterilised products waiving the performance of a test
+for sterility on the basis of successful demonstration that predetermined and validated sterilising
+conditions have been achieved. Moreover, advances in the application of process analytical
+technology (PAT), quality by design (QbD) and quality risk management (QRM) principles to
+pharmaceutical development and manufacturing have shown that an appropriate combination of
+process controls together with timely monitoring and verification of pre-established material
+attributes provides greater assurance of product quality than finished product testing
+(conventionally regarded as the end-product testing) alone.
+This revision to Annex 17 takes into account changes to other sections of the EudraLex, Volume 4,
+Part I, Chapter 1, Annex 1 and 15, ICH Q8, Q9, Q10 and Q11, QWP Guideline on Real Time
+Release Testing, and changes in manufacturing and analytical technology.
+Deadline for coming into operation: 26 December 2018 (6 months after publication]
+
+-- 1 of 8 --
+
+2
+Table of Contents
+1. Principle page 4
+2. Scope page 4
+3. Real Time Release Testing page 4
+4. Parametric Release page 6
+5. Glossary page 8
+
+-- 2 of 8 --
+
+3
+1. Principle	1
+2
+1.1 Medicinal products must comply with their approved specifications and subject to compliance	3
+with GMP, can normally be released to market by performing a complete set of tests on active	4
+substances and/or finished products as defined in the relevant marketing authorization or clinical	5
+trial authorization. In specific circumstances, where authorised, based on product knowledge and	6
+process understanding, information collected during the manufacturing process can be used instead	7
+of end-product testing for batch release. Any separate activities required for this form of batch	8
+release should be integrated into the Pharmaceutical Quality System (PQS).	9
+10
+2. Scope	11
+12
+2.1 This document is intended to outline the requirements for application of Real Time Release	13
+Testing (RTRT) and parametric release, where the control of critical parameters and relevant	14
+material attributes are authorized as an alternative to routine end-product testing of active	15
+substances and/or finished products. A specific aim of this guideline is to incorporate the	16
+application of RTRT to any stage in the manufacturing process and to any type of finished products	17
+or active substances, including their intermediates.	18
+19
+3. Real time release testing (RTRT)	20
+21
+3.1 Under RTRT, a combination of in-process monitoring and controls may provide, when	22
+authorized, substitute for end-product testing as part of the batch release decision.	23
+Interaction with all relevant regulatory authorities prior and during the assessment process	24
+preceding regulatory approval is required. The level of interaction will depend on the level of	25
+complexity of the RTRT control procedure applied on site.	26
+27
+3.2 When designing the RTRT strategy, the following minimum criteria are expected to be	28
+established and met:	29
+30
+(i) Real time measurement and control of relevant in-process material attributes and process	31
+parameters should be accurate predictors of the corresponding finished product attributes.	32
+(ii) The valid combination of relevant assessed material attributes and process controls to	33
+replace finished product attributes should be established with scientific evidence based on	34
+material, product and process knowledge.	35
+(iii) The combined process measurements (process parameters and material attributes) and any	36
+other test data generated during the manufacturing process should provide a robust	37
+foundation for RTRT and the batch release decision.	38
+39
+3.3 A RTRT strategy should be integrated and controlled through the PQS. This should include or	40
+reference information at least of the following:	41
+- quality risk management, including a full process related risk assessment, in accordance with	42
+the principles described in EudraLex, Volume 4, Part I Chapter 1 and Part II Chapter 2,	43
+- change control program,	44
+- control strategy,	45
+- specific personnel training program,	46
+- qualification and validation policy,	47
+
+-- 3 of 8 --
+
+4
+- deviation/CAPA system,	48
+- contingency procedure in case of a process sensor/equipment failure,	49
+- periodic review/assessment program to measure the effectiveness of the RTRT plan for	50
+continued assurance of product quality.	51
+52
+3.4 In accordance with the principles described in EudraLex, Volume 4, Part I Chapter 1, Part II	53
+Chapter 13 and Annex 15, the change control program is an important part of the real time release	54
+testing approach. Any change that could potentially impact product manufacturing and testing, or	55
+the validated status of facilities, systems, equipment, analytical methods or processes, should be	56
+assessed for risk to product quality and impact on reproducibility of the manufacturing process. Any	57
+change should be justified by the sound application of quality risk management principles, and fully	58
+documented. After change implementation, an evaluation should be undertaken to demonstrate that	59
+there are no unintended or deleterious impact on product quality.	60
+61
+3.5 A control strategy should be designed not only to monitor the process, but also to maintain a	62
+state of control and ensure that a product of the required quality will be consistently produced. The	63
+control strategy should describe and justify the selected in-process controls, material attributes and	64
+process parameters which require to be routinely monitored and should be based on product,	65
+formulation and process understanding. The control strategy is dynamic and may change throughout	66
+the lifecycle of the product requiring the use of a quality risk management approach and of	67
+knowledge management. The control strategy should also describe the sampling plan and	68
+acceptance/rejection criteria.	69
+70
+3.6 Personnel should be given specific training on RTRT technologies, principles and procedures.	71
+Key personnel should demonstrate adequate experience, product and process knowledge and	72
+understanding. Successful implementation of RTRT requires input from a cross-functional/multi-	73
+disciplinary team with relevant experience on specific topics, such as engineering, analytics,	74
+chemometric modeling or statistics.	75
+76
+3.7 Important parts of the RTRT strategy are validation and qualification policy, with particular	77
+reference to advanced analytical methods. Particular attention should be focused on the	78
+qualification, validation and management of in-line and on-line analytical methods, where the	79
+sampling probe is placed within the manufacturing equipment.	80
+81
+3.8 Any deviation or process failure should be thoroughly investigated and any adverse trending	82
+indicating a change in the state of control should be followed up appropriately.	83
+84
+3.9 Continuous learning through data collection and analysis over the life cycle of a product is	85
+important and should be part of the PQS. With advances in technology, certain data trends, intrinsic	86
+to a currently acceptable process, may be observed. Manufacturers should scientifically evaluate the	87
+data, in consultation if appropriate, with the regulatory authorities, to determine how or if such	88
+trends indicate opportunities to improve quality and/or consistency.	89
+90
+3.10 When RTRT has been approved, this approach should be routinely used for batch release. In	91
+the event that the results from RTRT fail or are trending toward failure, a RTRT approach may not	92
+be substituted by end-product testing. Any failure should be thoroughly investigated and considered	93
+in the batch release decision depending on the results of these investigations, and must comply with	94
+
+-- 4 of 8 --
+
+5
+the content of the marketing authorisation and GMP requirements. Trends should be followed up	95
+appropriately.	96
+97
+3.11 Attributes (e.g. uniformity of content) that are indirectly controlled by approved RTRT should	98
+still appear in the Certificate of Analysis for batches. The approved method for end-product testing	99
+should be mentioned and the results given as “Complies if tested” with a footnote: “Controlled by	100
+approved Real Time Release Testing”.	101
+102
+4. Parametric release and sterilization	103
+104
+4.1 This section provides guidance on parametric release which is defined as the release of a batch	105
+of terminally sterilised product based on a review of critical process control parameters rather than	106
+requiring an end-product testing for sterility.	107
+108
+4.2 An end-product test for sterility is limited in its ability to detect contamination as it utilises only	109
+a small number of samples in relation to the overall batch size, and secondly, culture media may	110
+only stimulate growth of some, but not all, microorganisms. Therefore, an end-product testing for	111
+sterility only provides an opportunity to detect major failures in the sterility assurance system (i.e. a	112
+failure that results in contamination of a large number of product units and/or that result in	113
+contamination by the specific microorganisms whose growth is supported by the prescribed media).	114
+In contrast, data derived from in-process controls (e.g. pre-sterilization product bioburden or	115
+environmental monitoring) and by monitoring relevant sterilization parameters can provide more	116
+accurate and relevant information to support sterility assurance of the product.	117
+118
+4.3 Parametric release can only be applied to products sterilised in their final container using either	119
+moist heat, dry heat or ionising radiation (dosimetric release), according to European	120
+Pharmacopoeial requirements.	121
+122
+4.4 To utilise this approach, the manufacturer should have a history of acceptable GMP compliance	123
+and a robust sterility assurance program in place to demonstrate consistent process control and	124
+process understanding.	125
+126
+4.5 The sterility assurance program should be documented and include, at least, the identification	127
+and monitoring of the critical process parameters, sterilizer cycle development and validation,	128
+container/packaging integrity validation, bioburden control, environmental monitoring program,	129
+product segregation plan, equipment, services and facility design and qualification program,	130
+maintenance and calibration program, change control program, personnel training, and incorporate	131
+a quality risk management approach.	132
+133
+4.6 Risk management is an essential requirement for parametric release and should focus on	134
+mitigating the factors which increase the risk of failure to achieve and maintain sterility in each unit	135
+of every batch. If a new product or process is being considered for parametric release, then a risk	136
+assessment should be conducted during process development including an evaluation of production	137
+data from existing products if applicable. If an existing product or process is being considered, the	138
+risk assessment should include an evaluation of any historical data generated.	139
+140
+
+-- 5 of 8 --
+
+6
+4.7 Personnel involved in the parametric release process should have experience in the following	141
+areas: microbiology, sterility assurance, engineering, production and sterilization. The	142
+qualifications, experience, competency and training of all personnel involved in parametric release	143
+should be documented.	144
+145
+4.8 Any proposed change which may impact on sterility assurance should be recorded in the change	146
+control system and reviewed by appropriate personnel who are qualified and experienced in sterility	147
+assurance.	148
+149
+4.9 A pre-sterilization bio-burden monitoring program for the product and components should be	150
+developed to support parametric release. The bioburden should be performed for each batch. The	151
+sampling locations of filled units before sterilization should be based on a worst-case scenario and	152
+be representative of the batch. Any organisms found during bioburden testing should be identified	153
+to confirm that they are not spore forming which may be more resistant to the sterilizing process.	154
+155
+4.10 Product bio-burden should be minimized by appropriate design of the manufacturing	156
+environment and the process by:	157
+- good equipment and facility design to allow effective cleaning, disinfection and sanitisation;	158
+- availability of detailed and effective procedures for cleaning, disinfection and sanitisation;	159
+- use of microbial retentive filters where possible;	160
+- availability of operating practices and procedures which promote personnel hygiene and enforce	161
+appropriate garment control;	162
+- - appropriate microbiological specifications for raw materials, intermediates and process aids	163
+(e.g. gases)	164
+165
+4.11 For aqueous or otherwise microbiologically unstable products, the time lag between dissolving	166
+the starting materials, product fluid filtration, and sterilization should be defined in order to	167
+minimise the development of bioburden and an increase in endotoxins (if applicable).	168
+169
+Sterilization Process	170
+171
+4.12 Qualification and validation are critical activities to assure that sterilization equipment can	172
+consistently meet cycle operational parameters and that the monitoring devices provide verification	173
+of the sterilization process.	174
+175
+4.13 Periodic requalification of equipment and revalidation of processes should be planned and	176
+justified in accordance with the requirements of Annexes 1 and 15.	177
+178
+4.14 Appropriate measurement of critical process parameters during sterilization is a critical	179
+requirement in a parametric release program. The standards used for process measuring devices	180
+should be specified and the calibration should be traceable to national or international standards.	181
+182
+4.15 Critical process parameters should be established, defined and undergo periodic re-evaluation.	183
+The operating ranges should be developed based on sterilization process, process capability,	184
+calibration tolerance limits and parameter criticality.	185
+186
+
+-- 6 of 8 --
+
+7
+4.16 Routine monitoring of the sterilizer should demonstrate that the validated conditions necessary	187
+to achieve the specified process is achieved in each cycle. Critical processes should be specifically	188
+monitored during the sterilization phase.	189
+190
+4.17 The sterilization record should include all the critical process parameters. The sterilization	191
+records should be checked for compliance to specification by at least two independent systems.	192
+These systems may consist of two people or a validated computer system plus a person.	193
+194
+4.18 Once parametric release has been approved by the regulatory authorities, decisions for release	195
+or rejection of a batch should be based on the approved specifications and the review of critical	196
+process control data. Routine checks of the sterilizer, changes, deviations, unplanned and routine	197
+planned maintenance activities should be recorded, assessed and approved before releasing the	198
+products to the market. Non-compliance with the specification for parametric release cannot be	199
+overruled by a finished product passing the test for sterility.	200
+201
+
+-- 7 of 8 --
+
+8
+5. Glossary	202
+203
+Control strategy	204
+A planned set of controls, derived from current product and process understanding that ensures	205
+process performance and product quality. The controls can include parameters and attributes related	206
+to drug substance and drug product materials and components, facility and equipment operating	207
+conditions, in-process controls, finished product specifications, and the associated methods and	208
+frequency of monitoring and control.	209
+210
+Critical Process Parameters:	211
+A process parameter whose variability has an impact on a critical quality attribute and therefore	212
+should be monitored or controlled to ensure the process produces the desired quality [ICH Q8	213
+(R2)].	214
+215
+Critical Quality Attributes	216
+A physical, chemical, biological, or microbiological property or characteristic that should be within	217
+an appropriate limit, range, or distribution to ensure the desired product quality. [ICH Q8 (R2)]	218
+219
+Parametric release	220
+One form of RTRT. Parametric release for terminally sterilised product is based on the review of	221
+documentation on process monitoring (e.g. temperature, pressure, time for terminal sterilization)	222
+rather than the testing of a sample for a specific attribute (ICH Q8 Q&A). (Together with	223
+compliance with specific GMP requirements related to parametric release this provides the desired	224
+assurance of the quality of the product.) (EMA guideline on Real-Time Release Testing)	225
+226
+Real time release testing	227
+The ability to evaluate and ensure the quality of in-process and/or final product based on process	228
+data, which typically include a valid combination of measured material attributes and process	229
+controls. (ICH Q8)	230
+231
+State of Control	232
+A condition in which the set of controls consistently provides assurance of continued process	233
+performance and product quality. (ICH Q10)	234
+
+-- 8 of 8 --
+

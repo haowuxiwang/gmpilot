@@ -1,0 +1,204 @@
+[Source: 第三部分\guideline_handling-shipping_investigational-mp_en.pdf]
+[Format: EU GMP Regulation]
+
+Official address Domenico Scarlattilaan 6 ● 1083 HS Amsterdam ● The Netherlands
+An agency of the European Union
+Address for visits and deliveries Refer to www.ema.europa.eu/how-to-find-us
+Send us a question Go to www.ema.europa.eu/contact 	Telephone +31 (0)88 781 6000
+© European Medicines Agency, 2022. Reproduction is authorised provided the source is acknowledged.
+14 September 2022
+EMA/INS/GMP/258937/2022
+European Medicines Agency
+Guideline on the responsibilities of the sponsor with
+regard to handling and shipping of investigational
+medicinal products for human use in accordance with
+Good Clinical Practice and Good Manufacturing Practice
+Keywords 	Clinical trial Regulation (EU) No 536/2014, detailed Commission
+guidelines No C(2017) 8179 on GMP for investigational medicinal
+products for human use, clinical trials, sponsor, Qualified Person,
+batch release, regulatory release, shipping, technical agreements,
+contractual arrangements
+Related content 	The clinical trial regulation (EU) No 536/2014
+http://www.ema.europa.eu/ema/index.jsp?curl=pages/regulation/general/ge
+neral_content_000629.jsp
+Detailed Commission guidelines No C(2017) 8179 on GMP for
+investigational medicinal products for human use
+https://ec.europa.eu/health/sites/default/files/files/eudralex/vol-
+10/guideline_adopted_1_en_act_part1_v3.pdf
+Adopted by GCP Inspectors Working Group (GCP IWG) 	13 December 2021
+Adopted by GMPD Inspectors Working Group (GMPD IWG) 	15 December 2021
+Consultation of the European Commission Ad Hoc Group On
+Clinical Trials 19 January 2018
+Consultation of the Clinical Trial Facilitation Group 	1 February 2018
+Start of public consultation 	23 May 2018
+End of consultation (deadline for comments) 	31 August 2018
+Date of publication 	14 September 2022
+Date of coming into effect 	01 January 2023
+
+-- 1 of 6 --
+
+Guideline on the responsibilities of the sponsor with regard to handling and shipping of
+investigational medicinal products for human use in accordance with Good Clinical
+Practice and Good Manufacturing Practice
+Page 2/6
+Table of contents
+1. Introduction ............................................................................................ 3
+2. Investigational medicinal product (IMP) release procedure ................... 3
+3. Shipping .................................................................................................. 4
+4. Contractual arrangements or Technical agreements ............................... 5
+
+-- 2 of 6 --
+
+Guideline on the responsibilities of the sponsor with regard to handling and shipping of
+investigational medicinal products for human use in accordance with Good Clinical
+Practice and Good Manufacturing Practice
+Page 3/6
+1. Introduction
+This guideline complements the Delegated Regulation (EU) No 2017/1569 of 23 May 2017, on good
+manufacturing practice (GMP) for investigational medicinal products (IMP) and arrangements for
+inspections, that has as legal basis the first subparagraph of Article 63(1) of Regulation (EU) No
+536/2014 on clinical trials on medicinal products for human use, and the detailed Commission
+guidelines No C(2017) 8179 on good manufacturing practice for investigational medicinal products for
+human use, pursuant to the second subparagraph of Article 63(1) of Regulation (EU) No 536/2014.
+The guideline lays down the principles for management of the investigational medicinal products by the
+sponsor for use in a clinical trial and in accordance with Good Clinical Practice (GCP) which are at the
+interface with, and complementary to, Good Manufacturing Practice.
+This guideline is not applicable to operations related to direct-to-patient delivery of IMP. When direct-
+to-patient delivery of IMP is defined in national legislation the applicable provisions of this Guideline
+should be followed.
+2. IMP release procedure
+A clinical trial in the EU can only start after a clinical trial authorisation has been granted by the EU
+member states concerned, following fulfilment of the requirements of Chapter II (Authorisation
+procedure for a clinical trial) of Regulation (EU) No 536/2014. This involves the assessment of the site
+suitability adapted to the nature and use of the investigational medicinal product. The necessary
+documentation that needs to be submitted with the initial application or an application for a substantial
+modification to approve a new site is described in Annex I.N.67 of Regulation (EU) No 536/2014. An EU
+harmonised template for site suitability and the declaration of site suitability is published on Eudralex-
+101. According to Article 15 of Regulation (EU) No 536/2014, the addition of a new site is always a
+substantial modification to the trial and therefore requires assessment and regulatory approval.
+The release process consists of the batch certification by the Qualified Person (QP) followed by the
+regulatory release of the IMP by the sponsor to the sites for use in a clinical trial. These steps should
+be recorded and retained in the clinical trial master file. Investigational medicinal products should
+remain under the control of the sponsor until the release process is complete.
+The certification of each batch by the QP ensures, in line with Article 62(1) of Regulation (EU) No
+536/2014, that the provisions of 63(1) and 63(3) of Regulation (EU) No 536/2014 and those set out in
+Article 12 of the Commission Delegated Regulation (EU) No 2017/1569, have been complied with and
+documented.
+The regulatory release is the verification of completion of batch certification by the QP and that the
+necessary authorisations are in place for the clinical trial, before supply of IMP to the clinical trial site.
+In line with the detailed Commission guidelines No C(2017) 8179 on good manufacturing practice for
+investigational medicinal products for human use, where the manufacturer is delegated by the sponsor
+to perform the regulatory release of the IMP to the trial sites in addition to certification by the QP, the
+arrangements should be defined in an agreement between the sponsor and the manufacturer. The
+sponsor should provide all the necessary information to the manufacturer to allow the delegated
+regulatory release. The manufacturer should verify that the necessary clinical trial authorisations are in
+1 https://ec.europa.eu/health/system/files/2019-10/site_suitability_template_en_0.pdf
+
+-- 3 of 6 --
+
+Guideline on the responsibilities of the sponsor with regard to handling and shipping of
+investigational medicinal products for human use in accordance with Good Clinical
+Practice and Good Manufacturing Practice
+Page 4/6
+place prior to shipping the medicinal product for use in the trial (e.g. by consulting the Clinical Trials
+Information System (CTIS) referred to in Articles 80 and 81 of Regulation (EU) No 536/2014).
+Importantly, un-blinding arrangements, according to Annex I.D.22 and Annex III of Regulation (EU) No
+536/2014, should be available to the appropriate responsible clinical trial site personnel before, or at
+the same time, IMPs are received at the clinical trial site. The sponsor is responsible for ensuring that
+the investigator has appropriate access to systems for immediate un-blinding of each single treatment
+prior to the start of the trial.
+3. Shipping
+It should be ensured that the shipping of the IMPs minimises any risk of exposure to conditions that
+could impact quality and integrity of the product. This includes security of the product (e.g. against
+adulteration, tampering or theft), ensuring that the applicable principles of the guidelines on Good
+Distribution Practice (GDP) of medicinal products for human use are taken into consideration, including
+but not limited to, documentation, transportation (including selection of container and packaging,
+qualification and/or validation activities, monitoring of transport conditions) and outsourced activities.
+Shipping of IMPs to the clinical trial site or pharmacy, where applicable, should be conducted according
+to detailed instructions given by, or on behalf of, the sponsor (e.g.in the shipping order). Any
+departures from these instructions should be reported to the sponsor and/or representative. Records to
+support the supply chain should be maintained, including evaluation of transportation time against any
+applicable limits. IMPs should be transported in accordance with the storage conditions defined in the
+product specification file. Equipment which is critical to maintaining the product under the required
+conditions during transportation should be qualified. Transport validation should be considered
+according to the stage of development of the IMP. Temperature monitoring of transport and storage
+conditions are necessary, and these records should also be maintained and evaluated at delivery. A
+risk assessment should be performed to identify variable conditions expected during transportation and
+determine continuous monitoring and recording of other critical environmental conditions to which the
+product may be subjected. Any deviation to the specified conditions during shipment should be
+recorded and formally investigated with assistance from the manufacturer in order to conclude on the
+quality implications for the IMPs. In addition, appropriate corrective and preventive actions should be
+identified, implemented and their effectiveness should also be monitored. Responsibility for the control
+of the IMPs during shipment remains with the sponsor (or representative) until it has been received
+and accepted by the clinical trial site or pharmacy, as applicable.
+A detailed inventory of the shipments made should be maintained in order to assure traceability of the
+products during the shipment process in terms of product(s) identity and quantity. Shipping
+documentation should identify the intended recipient as well as any relevant contact information.
+Transfers of IMPs from one trial site to another should remain the exception. Such transfers should be
+covered by standard operating procedures. The product history while outside of the control of the
+manufacturer should be established, including review of trial monitoring reports and records of storage
+conditions at the original trial site. This should be part of the assessment of the product’s suitability for
+transfer and the advice of the certifying QP should be sought. If deemed appropriate, re-labelling or
+re-packaging of the product may be performed in accordance with the provisions under Article 61(5)(a)
+of Regulation (EU) No 536/2014 and any national legislation which may apply. Otherwise the product
+should be returned to the original manufacturer, or another authorised manufacturer, for re-labelling
+or re-packaging and certification by a QP. Records should be retained and full traceability ensured as
+described in Article 51 of Regulation (EU) No 536/2014.
+
+-- 4 of 6 --
+
+Guideline on the responsibilities of the sponsor with regard to handling and shipping of
+investigational medicinal products for human use in accordance with Good Clinical
+Practice and Good Manufacturing Practice
+Page 5/6
+4. Contractual arrangements or technical agreements
+Responsibilities of the manufacturer and sponsor should be appropriately defined, agreed and
+controlled in a written contract or technical agreement, as mentioned in recital 4 to the Commission
+Delegated Regulation (EU) No 2017/1569 specifying principles and guidelines for good manufacturing
+practice for investigational medicinal products for human use and arrangements for inspections. The
+agreement should clearly establish the duties of each party, taking into account the guidance in
+EudraLex, Volume 4, Part I, Chapter 7, as applicable.
+The detailed Commission guidelines No C(2017) 8179 on good manufacturing practice for
+investigational medicinal products for human use further mentions certain issues which could be
+covered by technical agreements, to ensure that all relevant responsibilities are clearly defined and
+documented (e.g. transport, storage, re-labelling or re-packaging, recall, return, destruction) where
+applicable, for example:
+• 	Ensuring that any authorised products used in the clinical trial are sourced from an authorized
+vendor and that arrangements for recall are in place.
+• 	Ensuring that the most up to date information is provided to the QP for consideration during the
+batch certification process in accordance with the documents set out in the clinical trial applications
+authorised by EU member states2.
+• 	Ensuring that any proposed revision of manufacturing and control methods are appropriately
+communicated between the manufacturer and the sponsor as this may require submission of a
+substantial modification to the clinical trial application.
+• 	Ensuring that un-blinding arrangements and the respective responsibilities of each party are
+appropriately defined.
+• 	Ensuring that any agreed responsibilities are not subcontracted to a third party without prior
+evaluation and approval from the contract giver.
+• 	Ensuring that the documentation required in the clinical trial master file (e.g. IMP batch
+certification by the QP (https://ec.europa.eu/health/sites/default/files/files/eudralex/vol-
+4/template_imp_batch_certification.docx), documentation related to assembly and packaging of
+IMPs, Certificate of Analysis) remains available to the sponsor, in accordance with 58 of Regulation
+(EU) No 536/2014, after the retention periods as defined in Article 8 of the Commission Delegated
+Regulation (EU) 2017/1569 on GMP for IMPs expires.
+• 	Ensuring that storage condition and location of reference and retention samples is defined and
+documented.
+• 	Clarifying the manufacturer’s roles and deliverables regarding the regulatory release.
+• 	Where the sponsor is not the IMP manufacturer and relies on chain of contracted manufacturers,
+specifying the exact role of each manufacturer (e.g. specific tasks and GMP and GDP related
+responsibilities) in the chain of manufacturers.
+• 	Defining responsibilities for the handling of deviations during shipment to clinical trial sites.
+2 As described in chapters II, for initial applications, and chapter III, for substantial modifications, of the Regulation (EU) No
+536/2014
+
+-- 5 of 6 --
+
+Guideline on the responsibilities of the sponsor with regard to handling and shipping of
+investigational medicinal products for human use in accordance with Good Clinical
+Practice and Good Manufacturing Practice
+Page 6/6
+• 	Defining requirements for the exceptional process of transferring IMPs from one clinical trial site to
+another.
+
+-- 6 of 6 --
+

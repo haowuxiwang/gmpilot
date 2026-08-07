@@ -1,0 +1,182 @@
+[Source: 附件\2005_12_14_annex19_en.pdf]
+[Format: EU GMP Regulation]
+
+EUROPEAN COMMISSION
+ENTERPRISE AND INDUSTRY DIRECTORATE-GENERAL
+Consumer goods
+Pharmaceuticals
+Brussels, 14 December 2005
+EudraLex
+The Rules Governing Medicinal Products in the European Union
+Volume 4
+EU Guidelines to
+Good Manufacturing Practice
+Medicinal Products for Human and Veterinary Use
+Annex 19
+Reference and Retention Samples
+Document History
+Date for new annex coming into operation 	01 June 2006
+Commission européenne, B-1049 Bruxelles / Europese Commissie, B-1049 Brussel - Belgium.
+Telephone: (32-2) 299 11 11
+
+-- 1 of 5 --
+
+2
+1. 	Scope
+1.1 	This Annex to the Guide to Good Manufacturing Practice for Medicinal Products (“the GMP
+Guide”) gives guidance on the taking and holding of reference samples of starting materials, packag-
+ing materials or finished products and retention samples of finished products.
+1.2 	Specific requirements for investigational medicinal products are given in Annex 13 to the
+Guide.
+1.3 	This annex also includes guidance on the taking of retention samples for parallel imported/
+distributed medicinal products.
+2. 	Principle
+2.1 	Samples are retained to fulfil two purposes; firstly to provide a sample for analytical testing
+and secondly to provide a specimen of the fully finished product. Samples may therefore fall into two
+categories:
+Reference sample: a sample of a batch of starting material, packaging material or finished product
+which is stored for the purpose of being analysed should the need arise during the shelf life of the
+batch concerned. Where stability permits, reference samples from critical intermediate stages (e.g.
+those requiring analytical testing and release) or intermediates, that are transported outside of the
+manufacturer’s control, should be kept.
+Retention sample: a sample of a fully packaged unit from a batch of finished product. It is stored for
+identification purposes. For example, presentation, packaging, labelling, patient information leaflet,
+batch number, expiry date should the need arise during the shelf life of the batch concerned. There
+may be exceptional circumstances where this requirement can be met without retention of duplicate
+samples e.g. where small amounts of a batch are packaged for different markets or in the production of
+very expensive medicinal products.
+For finished products, in many instances the reference and retention samples will be presented identi-
+cally, i.e. as fully packaged units. In such circumstances, reference and retention samples may be re-
+garded as interchangeable.
+2.2 	It is necessary for the manufacturer, importer or site of batch release, as specified under sec-
+tion 7 and 8, to keep reference and/or retention samples from each batch of finished product and, for
+the manufacturer to keep a reference sample from a batch of starting material (subject to certain excep-
+tions – see 3.2 below) and/or intermediate product. Each packaging site should keep reference samples
+of each batch of primary and printed packaging materials. Availability of printed materials as part of
+the reference and/or retention sample of the finished product can be accepted.
+2.3 	The reference and/or retention samples serve as a record of the batch of finished product or
+starting material and can be assessed in the event of, for example, a dosage form quality complaint, a
+query relating to compliance with the marketing authorisation, a labelling/packaging query or a phar-
+macovigilance report.
+2.4 	Records of traceability of samples should be maintained and be available for review by com-
+petent authorities.
+3. 	Duration of Storage
+3.1 	Reference and retention samples from each batch of finished product should be retained for at
+least one year after the expiry date. The reference sample should be contained in its finished primary
+
+-- 2 of 5 --
+
+3
+packaging or in packaging composed of the same material as the primary container in which the prod-
+uct is marketed (for veterinary medicinal products other than immunologicals, see also Annex 4, para-
+graphs 8 & 9).
+3.2 	Unless a longer period is required under the law of the Member State of manufacture, samples
+of starting materials (other than solvents, gases or water used in the manufacturing process) shall be
+retained for at least two years after the release of product. That period may be shortened if the period
+of stability of the material, as indicated in the relevant specification, is shorter. Packaging materials
+should be retained for the duration of the shelf life of the finished product concerned.
+4. 	Size of Reference and Retention Samples
+4.1 	The reference sample should be of sufficient size to permit the carrying out, on, at least, two
+occasions, of the full analytical controls on the batch in accordance with the Marketing Authorisation
+File which has been assessed and approved by the relevant Competent Authority / Authorities. Where
+it is necessary to do so, unopened packs should be used when carrying out each set of analytical con-
+trols. Any proposed exception to this should be justified to, and agreed with, the relevant competent
+authority.
+4.2 	Where applicable, national requirements relating to the size of reference samples and, if nec-
+essary, retention samples, should be followed.
+4.3 	Reference samples should be representative of the batch of starting material, intermediate
+product or finished product from which they are taken. Other samples may also be taken to monitor
+the most stressed part of a process (e.g. beginning or end of a process). Where a batch is packaged in
+two, or more, distinct packaging operations, at least one retention sample should be taken from each
+individual packaging operation. 	Any proposed exception to this should be justified to, and agreed
+with, the relevant competent authority.
+4.4 	It should be ensured that all necessary analytical materials and equipment are still available, or
+are readily obtainable, in order to carry out all tests given in the specification until one year after ex-
+piry of the last batch manufactured.
+5. 	Storage Conditions
+5.1 	Storage of reference samples of finished products and active substances should be in accor-
+dance with the current version of the Note for Guidance on Declaration of Storage Conditions for Me-
+dicinal Products and Active Substances.
+5.2 	Storage conditions should be in accordance with the marketing authorisation (e.g. refriger-
+ated storage where relevant).
+6. 	Written Agreements
+6.1 	Where the marketing authorisation holder is not the same legal entity as the site(s) responsible
+for batch release within the EEA, the responsibility for taking and storage of reference/retention sam-
+ples should be defined in a written agreement between the two parties in accordance with Chapter 7 of
+the EC Guide to Good Manufacturing Practice. This applies also where any manufacturing or batch
+release activity is carried out at a site other than that with overall responsibility for the batch on the
+EEA market and the arrangements between each different site for the taking and keeping of reference
+and retention samples should be defined in a written agreement.
+6.2 	The Qualified Person who certifies a batch for sale should ensure that all relevant reference
+and retention samples are accessible at all reasonable times. Where necessary, the arrangements for
+such access should be defined in a written agreement.
+
+-- 3 of 5 --
+
+4
+6.3 	Where more than one site is involved in the manufacture of a finished product, the availability
+of written agreements is key to controlling the taking and location of reference and retention samples.
+7. 	Reference Samples – General Points
+7.1 	Reference samples are for the purpose of analysis and, therefore, should be conveniently
+available to a laboratory with validated methodology. For starting materials used for medicinal prod-
+ucts manufactured within the EEA, this is the original site of manufacture of the finished product. For
+finished products manufactured within the EEA, this is the original site of manufacture.
+7.2 	For finished products manufactured by a manufacturer in a country outside the EEA;
+7.2.1 	where an operational Mutual Recognition Agreement (MRA) is in place, the reference sam-
+ples may be taken and stored at the site of manufacture. This should be covered in a written
+agreement (as referred to in section 6 above) between the importer/site of batch release and
+the manufacturer located outside the EEA.
+7.2.2 	where an operational MRA is not in place, reference samples of the finished medicinal prod-
+uct should be taken and stored at an authorised manufacturer located within the EEA. These
+samples should be taken in accordance with written agreement(s) between all of the parties
+concerned. The samples should, preferably, be stored at the location where testing on impor-
+tation has been performed.
+7.2.3 	reference samples of starting materials and packaging materials should be kept at the original
+site at which they were used in the manufacture of the medicinal product.
+8. 	Retention Samples – General Points
+8.1 	A retention sample should represent a batch of finished products as distributed in the EEA and
+may need to be examined in order to confirm non-technical attributes for compliance with the market-
+ing authorisation or EU legislation. Therefore, retention samples should in all cases be located within
+the EEA. These should preferably be stored at the site where the Qualified Person (QP) certifying the
+finished product batch is located.
+8.2 	In accordance with 8.1 above, where an operational MRA is in place and reference samples
+are retained at a manufacturer located in a country outside the EEA (section 7.2.2 above), separate re-
+tention samples should be kept within the EEA.
+8.3 	Retention samples should be stored at the premises of an authorised manufacturer in order to
+permit ready access by the Competent Authority.
+8.4 	Where more than one manufacturing site within the EEA is involved in the manufacture im-
+portation/packaging/testing/batch release, as appropriate of a product, the responsibility for taking and
+storage of retention samples should be defined in a written agreement(s) between the parties con-
+cerned.
+9. 	Reference and Retention Samples for Parallel Imported/Parallel Distributed Products.
+9.1 	Where the secondary packaging is not opened, only the packaging material used needs to be
+retained, as there is no, or little, risk of product mix up.
+9.2 	Where the secondary packaging is opened, for example, to replace the carton or patient infor-
+mation leaflet, then one retention sample, per packaging operation, containing the product should be
+taken, as there is a risk of product mix-up during the assembly process. It is important to be able to
+identify quickly who is responsible in the event of a mix-up (original manufacturer or parallel import
+assembler), as it would affect the extent of any resulting recall.
+
+-- 4 of 5 --
+
+5
+10. 	Reference and Retention Samples in the Case of Closedown of a Manufacturer
+10.1 	Where a manufacturer closes down and the manufacturing authorisation is surrendered, re-
+voked, or ceases to exist, it is probable that many unexpired batches of medicinal products manufac-
+tured by that manufacturer remain on the market. In order for those batches to remain on the market,
+the manufacturer should make detailed arrangements for transfer of reference and retention samples
+(and relevant GMP documentation) to an authorised storage site. The manufacturer should satisfy the
+Competent Authority that the arrangements for storage are satisfactory and that the samples can, if
+necessary, be readily accessed and analysed.
+10.2 	If the manufacturer is not in a position to make the necessary arrangements this may be dele-
+gated to another manufacturer. 	The Marketing Authorisation holder (MAH) is responsible for such
+delegation and for the provision of all necessary information to the Competent Authority. In addition,
+the MAH should, in relation to the suitability of the proposed arrangements for storage of reference
+and retention samples, consult with the competent authority of each Member State in which any unex-
+pired batch has been placed on the market.
+10.3 	These requirements apply also in the event of the closedown of a manufacture located outside
+the EEA. In such instances, the importer has a particular responsibility to ensure that satisfactory ar-
+rangements are put in place and that the competent authority/authorities is/are consulted.
+
+-- 5 of 5 --
+

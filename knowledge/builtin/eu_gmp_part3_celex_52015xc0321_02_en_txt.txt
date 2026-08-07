@@ -1,0 +1,141 @@
+[Source: 第三部分\CELEX_52015XC0321(02)_EN_TXT.pdf]
+[Format: EU GMP Regulation]
+
+Guidelines
+of 19 March 2015
+on the formalised risk assessment for ascertaining the appropriate good manufacturing practice for
+excipients of medicinal products for human use
+(Text with EEA relevance)
+(2015/C 95/02)
+Introduction
+These guidelines are based on the fifth paragraph of Article 47 of Directive 2001/83/EC (1).
+According to the second paragraph of Article 46(f) of Directive 2001/83/EC, the manufacturing authorisation holder is
+required to ensure that the excipients are suitable for use in medicinal products by ascertaining what the appropriate
+good manufacturing practice (GMP) is. The appropriate GMP for excipients of medicinal products for human use shall
+be ascertained on the basis of a formalised risk assessment in accordance with these guidelines. The risk assessment
+shall take into account requirements under other appropriate quality systems as well as the source and intended use of
+the excipients and previous instances of quality defects. The manufacturing authorisation holder shall ensure that the
+appropriate GMP ascertained is applied. The manufacturing authorisation holder shall document the measures taken.
+The excipient risk assessment/risk management procedure should be incorporated in the pharmaceutical quality system
+of the manufacturing authorisation holder.
+Manufacturing authorisation holders should have the risk assessment/management documentation for appropriate GMP
+for excipients available on site for review by GMP inspectors. Consideration should be given to sharing relevant informa
+tion from the risk assessment with the excipient manufacturer to facilitate continuous improvement.
+A risk assessment as set out in these guidelines should be carried out for excipients for authorised medicinal products
+for human use by 21 March 2016.
+CHAPTER 1 — SCOPE
+1.1. These guidelines apply to the risk assessment for ascertaining the appropriate GMP for excipients for medicinal
+products for human use. According to Article 1(3b) of Directive 2001/83/EC, an excipient is any constituent of
+a medicinal product other than the active substance and the packaging material.
+1.2. These guidelines do not cover substances added to stabilise active substances that cannot exist on their own.
+CHAPTER 2 — DETERMINATION OF APPROPRIATE GMP BASED ON TYPE AND USE OF EXCIPIENT
+2.1. In EudraLex Volume 4, Guidelines for Good Manufacturing Practice, Medicinal Products for Human and Veterinary
+Use, Part III: GMP related documents, ICH guideline Q9 on Quality Risk Management (ICH Q9), principles and
+examples of tools for quality risk management that can be applied to different aspects of pharmaceutical quality,
+including excipients, can be found.
+2.2. These quality risk management principles should be used to assess the risks presented to the quality, safety and
+function of each excipient and to classify the excipient in question, e.g. as low risk, medium risk or high risk.
+Quality risk management tools such as those listed in EudraLex Volume 4, Part III, ICH Q9 (e.g. hazard analysis
+and critical control points — HACCP) should be used for this purpose.
+2.3. For each excipient from each manufacturer used, the manufacturing authorisation holder should identify the risks
+presented to the quality, safety and function of each excipient from its source — be that animal, mineral, vegetable,
+synthetic, etc. — through to its incorporation in the finished pharmaceutical dose form. Areas for consideration
+should include, but are not limited to:
+(i) transmissible spongiform encephalopathy;
+(ii) potential for viral contamination;
+(1) Directive 2001/83/EC of the European Parliament and of the Council of 6 November 2001 on the Community code relating to medicinal
+products for human use (OJ L 311, 28.11.2001, p. 67).
+C 95/10 EN Official Journal of the European Union 21.3.2015
+
+-- 1 of 4 --
+
+(iii) potential for microbiological or endotoxin/pyrogen contamination;
+(iv) potential, in general, for any impurity originating from the raw materials, e.g. aflatoxins or pesticides, or
+generated as part of the process and carried over, e.g. residual solvents and catalysts;
+(v) sterility assurance for excipients claimed to be sterile;
+(vi) potential for any impurities carried over from other processes, in absence of dedicated equipment and/or
+facilities;
+(vii) environmental control and storage/transportation conditions including cold chain management, if
+appropriate;
+(viii) supply chain complexity;
+(ix) stability of excipient;
+(x) packaging integrity evidence.
+2.4. Additionally, with respect to the use and function of each excipient, the manufacturing authorisation holder should
+consider:
+(i) the pharmaceutical form and use of the medicinal product containing the excipient;
+(ii) the function of the excipient in the formulation, e.g. lubricant in a tablet product or preservative material in
+a liquid formulation, etc.;
+(iii) the proportion of the excipient in the medicinal product composition;
+(iv) daily patient intake of the excipient;
+(v) any known quality defects/fraudulent adulterations, both globally and at a local company level related to the
+excipient;
+(vi) whether the excipient is a composite;
+(vii) known or potential impact on the critical quality attributes of the medicinal product;
+(viii) other factors as identified or known to be relevant to assuring patient safety.
+2.5. Having established and documented the risk profile of the excipient, the manufacturing authorisation holder
+should establish and document the elements of EudraLex Volume 4 that he believes are needed to be in place in
+order to control and maintain the quality of the excipient, e.g. Annex 1 or/and Annex 2; Part II: Basic Require
+ments for Active Substances used as Starting Materials.
+2.6. These elements will vary depending on the source, the supply chain and the subsequent use of the excipient, but as
+a minimum the following high level GMP elements should be considered by the manufacturing authorisation
+holder:
+(i) establishment and implementation of an effective pharmaceutical quality system;
+(ii) sufficient competent and appropriately qualified personnel;
+(iii) defined job descriptions for managerial and supervisory staff responsible for manufacturing and quality
+activities;
+(iv) training programmes for all staff involved in manufacturing and quality activities;
+(v) training programmes related to health, hygiene and clothing as identified as necessary to the intended
+operations;
+(vi) provision and maintenance of premises and equipment appropriate to the intended operations;
+21.3.2015 EN Official Journal of the European Union C 95/11
+
+-- 2 of 4 --
+
+(vii) documentation system(s) covering all processes and specifications for the various manufacturing and quality
+operations;
+(viii) systems for coding and identifying starting materials, intermediates and excipients to allow full traceability;
+(ix) qualification program of suppliers;
+(x) system for quality control of the excipient and a responsible person independent from production to release
+the batches;
+(xi) retention of records for incoming materials and excipients and retention of samples of excipients for the peri
+ods required by EudraLex Volume 4, Part II;
+(xii) systems to ensure that any activity contracted out is subject to a written contract;
+(xiii) maintenance of an effective system whereby complaints are reviewed and excipients may be recalled;
+(xiv) change management and deviation management system;
+(xv) self-inspection program;
+(xvi) environmental control and storage conditions.
+CHAPTER 3 — DETERMINATION OF EXCIPIENT MANUFACTURER’S RISK PROFILE
+3.1. After determination of the appropriate GMP, a gap analysis of the required GMP against the activities and capabili
+ties of the excipient manufacturer should be performed.
+3.2. Data/evidence to support the gap analysis should be obtained through audit or from information received from the
+excipient manufacturer.
+3.3. Certification of quality systems and/or GMP held by the excipient manufacturer and the standards against which
+these have been granted should be considered as such certification may fulfil the requirements.
+3.4. Any gaps identified between the required GMP and the activities and capabilities of the excipient manufacturer should
+be documented. Furthermore, the manufacturing authorisation holder should perform a further risk assessment to
+determine the risk profile, e.g. low risk, medium risk or high risk, for that excipient manufacturer. EudraLex Volume 4,
+Part III, ICH Q9 should be used for that purpose. Quality risk management tools such as those listed there — HACCP
+etc. — should be used for this.
+3.5. The manufacturing authorisation holder should have a series of strategies ranging from acceptance through control
+to unacceptable for the different risk profiles and based on these a control strategy, e.g. audit, document retrieval
+and testing, should be established.
+CHAPTER 4 — CONFIRMATION OF APPLICATION OF APPROPRIATE GMP
+4.1. Once the appropriate GMP for the excipient and the risk profile of the excipient manufacturer have been defined,
+ongoing risk review should be performed through mechanisms such as:
+(i) number of defects connected to batches of excipient received;
+(ii) type/severity of such defects;
+(iii) monitoring and trend analysis of excipient quality;
+(iv) loss of relevant quality system and/or GMP certification by excipient manufacturer;
+(v) observation of trends in drug product quality attributes; this will depend on the nature and role of excipient;
+(vi) observed organisational, procedural or technical/process changes at the excipient manufacturer;
+C 95/12 EN Official Journal of the European Union 21.3.2015
+
+-- 3 of 4 --
+
+(vii) audit/re-audit of excipient manufacturer;
+(viii) questionnaires.
+Based on the outcome of the risk review, the established control strategy should be reviewed and revised if needed.
+21.3.2015 EN Official Journal of the European Union C 95/13
+
+-- 4 of 4 --
+

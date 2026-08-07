@@ -1,0 +1,58 @@
+[Source: 附件\anx10_en.pdf]
+[Format: EU GMP Regulation]
+
+109
+ANNEX 10
+MANUFACTURE OF PRESSURISED METERED DOSE
+AEROSOL PREPARATIONS FOR INHALATION
+Principle
+The manufacture of pressurised aerosol products for inhalation with metering valves
+requires special consideration because of the particular nature of this form of product. It
+should be done under conditions which minimise microbial and particulate contamination.
+Assurance of the quality of the valve components and, in the case of suspensions, of
+uniformity is also of particular importance.
+General
+1. 	There are presently two common manufacturing and filling methods as follows:
+a. 	Two-shot system (pressure filling). The active ingredient is suspended in a high
+boiling point propellant, the dose is put into the container, the valve is crimped on
+and the lower boiling point propellant is injected through the valve stem to make up
+the finished product. The suspension of active ingredient in propellant is kept cool to
+reduce evaporation loss.
+b. 	One-shot process (cold filling). The active ingredient is suspended in a mixture of
+propellants and held either under high pressure or at a low temperature, or both.
+The suspension is then filled directly into the container in one shot.
+Premises and equipment
+2. 	Manufacture and filling should be carried out as far as possible in a closed system.
+3. 	Where products or clean components are exposed, the area should be fed with filtered air,
+should comply with the requirements of at least a Grade D environment and should be
+entered through airlocks.
+Production and quality control
+4. 	Metering valves for aerosols are more complex pieces of engineering than most items used
+in pharmaceutical production. Their specifications, sampling and testing should recognise
+this. Auditing the Quality Assurance system of the valve manufacturer is of particular
+importance.
+5. 	All fluids (e.g. liquid or gaseous propellants) should be filtered to remove particles greater
+than 0.2 micron. An additional filtration where possible immediately before filling is
+desirable.
+
+-- 1 of 2 --
+
+110
+n 	Annex 10 	Manufacture of pressurised metered dose aerosol preparations for
+inhalation ________________________________________________________________
+6. 	Containers and valves should be cleaned using a validated procedure appropriate to the use
+of the product to ensure the absence of any contaminants such as fabrication aids (e.g.
+lubricants) or undue microbiological contaminants. After cleaning, valves should be kept in
+clean, closed containers and precautions taken not to introduce contamination during
+subsequent handling, e.g. taking samples. Containers should be fed to the filling line in a
+clean condition or cleaned on line immediately before filling.
+7. 	Precautions should be taken to ensure uniformity of suspensions at the point of fill
+throughout the filling process.
+8. 	When a two-shot filling process is used, it is necessary to ensure that both shots are of the
+correct weight in order to achieve the correct composition. For this purpose, 100% weight
+checking at each stage is often desirable.
+9. 	Controls after filling should ensure the absence of undue leakage. Any leakage test should
+be performed in a way which avoids microbial contamination or residual moisture.
+
+-- 2 of 2 --
+

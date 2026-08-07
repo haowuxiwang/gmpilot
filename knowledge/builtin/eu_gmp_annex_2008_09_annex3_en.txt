@@ -1,0 +1,283 @@
+[Source: 附件\2008_09_annex3_en.pdf]
+[Format: EU GMP Regulation]
+
+1
+EUROPEAN COMMISSION
+ENTERPRISE AND INDUSTRY DIRECTORATE-GENERAL
+Consumer goods
+Pharmaceuticals
+Brussels, 01 September 2008
+EudraLex
+The Rules Governing Medicinal Products in the European Union
+Volume 4
+EU Guidelines to
+Good Manufacturing Practice
+Medicinal Products for Human and Veterinary Use
+Annex 3
+Manufacture of Radiopharmaceuticals
+Release for public consultation 	December 2006
+Deadline for comments 	March 2007
+Agreed by GMP/GDP Inspectors Working Group December 2007
+Adopted by European Commission 	August 2008
+Deadline for coming into operation 	01 March 2009
+The annex has been revised in the light of new GMP requirements for actives substances used as
+starting materials (GMP Part II) and updated for all relevant aspects of GMP for radiopharmaceuticals.
+Commission Européenne, B-1049 Bruxelles / Europese Commissie, B-1049 Brussel – Belgium. Telephone: (32-2) 299 11 11
+
+-- 1 of 8 --
+
+2
+Annex 3
+Manufacture of Radiopharmaceuticals
+Principle
+The manufacture of radiopharmaceuticals shall be undertaken in accordance with the principles of
+Good Manufacturing Practice for Medicinal Products Part I and II. This annex specifically addresses
+some of the practices, which may be specific for radiopharmaceuticals.
+Note i. 	Preparation of radiopharmaceuticals in radiopharmacies (hospitals or certain pharmacies),
+using Generators and Kits with a marketing authorisation or a national licence, is not
+covered by this guideline, unless covered by national requirement.
+Note ii. 	According to radiation protection regulations it should be ensured that any medical
+exposure 	is 	under 	the 	clinical 	responsibility 	of 	a 	practitioner. 	In 	diagnostic 	and
+therapeutic nuclear medicine practices a medical physics expert shall be available.
+Note iii. 	This 	annex 	is 	also 	applicable 	to 	radiopharmaceuticals 	used 	in 	clinical 	trials.
+Note iv. 	Transport of radiopharmaceuticals is regulated by the International Atomic Energy
+Association (IAEA) and radiation protection requirements.
+Note v. 	It is recognised that there are acceptable methods, other than those described in this
+annex, which are capable of achieving the principles of Quality Assurance. Other
+methods should be validated and provide a level of Quality Assurance at least equivalent
+to those set out in this annex.
+Introduction
+1. The manufacturing and handling of radiopharmaceuticals is potentially hazardous. The level of risk
+depends in particular upon the types of radiation, the energy of radiation and the half-lives of the
+radioactive isotopes. Particular attention must be paid to the prevention of cross contamination, to the
+retention of radionuclide contaminants, and to waste disposal.
+2. Due to short shelf-life of their radionuclides, some radiopharmaceuticals may be released before
+completion of all quality control tests. In this case, the exact and detailed description of the whole
+release procedure 	including the 	responsibilities of 	the involved 	personnel and 	the continuous
+assessment 	of 	the 	effectiveness 	of 	the 	quality 	assurance 	system 	is 	essential.
+
+-- 2 of 8 --
+
+3
+3. This guideline is applicable to manufacturing procedures employed by industrial manufacturers,
+Nuclear Centres/Institutes and PET Centres for the production and quality control of the following
+types of products:
+ 	Radiopharmaceuticals
+ 	Positron Emitting (PET) Radiopharmaceuticals
+ 	Radioactive Precursors for radiopharmaceutical production
+ 	Radionuclide Generators
+Type of manufacture 	Non - GMP * 	GMP part II & I (Increasing) including relevant annexes
+Radiopharmaceuticals
+PET Radiopharmaceuticals
+Radioactive Precursors
+Reactor/Cyclotron
+Production
+Chemical
+synthesis
+Purification
+steps
+Processing,
+formulation and
+dispensing
+Aseptic 	or 	final
+sterilization
+Radionuclide Generators 	Reactor/Cyclotron
+Production
+Processing
+* Target and transfer system from cyclotron to synthesis rig may be considered as the first step of
+active substance manufacture.
+4. The manufacturer of the final radiopharmaceutical should describe and justify the steps for
+manufacture of the active substance and the final medicinal product and which GMP (part I or II)
+applies for the specific process/manufacturing steps.
+5. Preparation of radiopharmaceuticals involves adherence to regulations on radiation protection.
+6. Radiopharmaceuticals to be administered parenterally should comply with sterility requirements for
+parenterals and, where relevant, aseptic working conditions for the manufacture of sterile medicinal
+products, which are covered in Eudralex Volume 4, Annex 1.
+7. 	Specifications 	and 	quality 	control 	testing 	procedures 	for 	the 	most 	commonly 	used
+radiopharmaceuticals are specified in the European Pharmacopoeia or in the marketing authorisation.
+Clinical Trials
+8. Radiopharmaceuticals intended for use in clinical trials as investigational medicinal products should
+in addition be produced in accordance with the principles in Eudralex Volume 4, annex 13.
+Quality assurance
+9. Quality assurance is of even greater importance in the manufacture of radiopharmaceuticals because
+of their particular characteristics, low volumes and in some circumstances the need to administer the
+product before testing is complete.
+
+-- 3 of 8 --
+
+4
+10. As with all pharmaceuticals, the products must be well protected against contamination and cross-
+contamination. However, the environment and the operators must also be protected against radiation.
+This means that the role of an effective quality assurance system is of the utmost importance.
+11. It is important that the data generated by the monitoring of premises and processes are rigorously
+recorded and evaluated as part of the release process.
+12. The principles of qualification and validation should be applied to the manufacturing of
+radiopharmaceuticals and a risk management approach should be used to determine the extent of
+qualification/validation, focusing on a combination of Good Manufacturing Practice and Radiation
+Protection.
+Personnel
+13. All manufacturing operations should be carried out under the responsibility of personnel with
+additional competence in radiation protection. Personnel involved in production, analytical control and
+release of radiopharmaceuticals should be appropriately trained in radiopharmaceutical specific aspects
+of the quality management system. The QP should have the overall responsibility for release of the
+products.
+14. All personnel (including those concerned with cleaning and maintenance) employed in areas where
+radioactive products are manufactured should receive appropriate additional training specific to these
+types of procedures and products
+15. Where production facilities are shared with research institutions, the research personnel must be
+adequately trained in GMP regulations and the QA function must review and approve the research
+activities to ensure that they do not pose any hazard to the manufacturing of radiopharmaceuticals.
+Premises and equipment
+General
+16. Radioactive products should be manufactured in controlled (environmental and radioactive) areas.
+All 	manufacturing 	steps 	should 	take 	place 	in 	self-contained 	facilities 	dedicated 	to 	radio-
+pharmaceuticals
+17. Measures should be established and implemented to prevent cross-contamination from personnel,
+materials, radionuclides etc. Closed or contained equipment should be used whenever appropriate.
+Where open equipment is used, or equipment is opened, precautions should be taken to minimize the
+risk of contamination. The risk assessment should demonstrate that the environmental cleanliness level
+proposed is suitable for the type of product being manufactured.
+18. Access to the manufacturing areas should be via a gowning area and should be restricted to
+authorised personnel.
+
+-- 4 of 8 --
+
+5
+19. Workstations and their environment should be monitored with respect to radioactivity, particulate
+and microbiological quality as established during performance qualification (PQ).
+20. Preventive maintenance, calibration and qualification programmes should be operated to ensure that
+all facilities and equipment used in the manufacture of radiopharmaceutical are suitable and qualified.
+These activities should be carried out by competent personnel and records and logs should be
+maintained.
+21. Precautions should be taken to avoid radioactive contamination within the facility. 	Appropriate
+controls should be in place to detect any radioactive contamination, either directly through the use of
+radiation detectors or indirectly through a swabbing routine.
+22. Equipment should be constructed so that surfaces that come into contact with the product are not
+reactive, additive or absorptive so as to alter the quality of the radiopharmaceutical.
+23. Re-circulation of air extracted from area where radioactive products are handled should be avoided
+unless 	justified. 	Air 	outlets 	should 	be 	designed 	to 	minimize 	environmental 	contamination 	by
+radioactive particles and gases and appropriate measures should be taken to protect the controlled areas
+from particulate and microbial contamination.
+24. In order to contain radioactive particles, it may be necessary for the air pressure to be lower where
+products are exposed, compared with the surrounding areas. However, it is still necessary to protect the
+product from environmental contamination. This may be achieved by, for example, using barrier
+technology or airlocks, acting as pressure sinks.
+Sterile production
+25. Sterile radiopharmaceuticals may be divided into those, which are manufactured aseptically, and
+those, 	which 	are 	terminally 	sterilised. 	The 	facility 	should 	maintain 	the 	appropriate 	level 	of
+environmental cleanliness for the type of operation being performed. For manufacture of sterile
+products the working zone where products or containers may be exposed to the environment, the
+cleanliness requirements should comply with the requirements described in the Eudralex Volume 4,
+Annex 1.
+26. For manufacture of radiopharmaceuticals a risk assessment may be applied to determine the
+appropriate pressure differences, air flow direction and air quality.
+27. In case of use of closed and automated systems (chemical synthesis, purification, on-line sterile
+filtration) a grade C environment (usually “Hot-cell”) will be suitable. Hot-cells should meet a high
+degree of air cleanliness, with filtered feed air, when closed. 	Aseptic activities must be carried out in a
+grade A area.
+28. Prior to the start of manufacturing, assembly of sterilised equipment and consumables (tubing,
+sterilised filters and sterile closed and sealed vials to a sealed fluid path) must be performed under
+aseptic conditions
+
+-- 5 of 8 --
+
+6
+Documentation
+29. All documents related to the manufacture of radiopharmaceuticals should be prepared, reviewed,
+approved and distributed according to written procedures.
+30. Specifications should be established and documented for raw materials, labelling and packaging
+materials, critical intermediates and the finished radiopharmaceutical. Specifications should also be in
+place for any other critical items used in the manufacturing process, such as process aids, gaskets,
+sterile filtering kits, that could critically impact on quality.
+31. Acceptance criteria should be established for the radiopharmaceutical including criteria for release
+and shelf life specifications (examples: chemical identity of the isotope, radioactive concentration,
+purity, and specific activity).
+32. Records of major equipment use, cleaning, sanitisation or sterilisation and maintenance should
+show the product name and batch number, where appropriate, in addition to the date and time and
+signature for the persons involved in these activities.
+33. Records should be retained for at least 3 years unless another timeframe is specified in national
+requirements.
+Production
+34. Production of different radioactive products in the same working area (i.e. hot-cell, LAF unit), at
+the same time should be avoided in order to minimise the risk of radioactive cross-contamination or
+mix-up.
+35. Special attention should be paid to validation including validation of computerised systems which
+should be carried out in accordance in compliance with Eudralex Volume 4, annex 11. 	New
+manufacturing processes should be validated prospectively.
+36. The critical parameters should normally be identified before or during validation and the ranges
+necessary for reproducible operation should be defined.
+37. Integrity testing of the membrane filter should be performed for aseptically filled products, taking
+into account the need for radiation protection and maintenance of filter sterility.
+38. Due to radiation exposure it is accepted that most of the labelling of the direct container, is done
+prior to manufacturing. Sterile empty closed vials may be labelled with partial information prior to
+filling providing that this procedure does not compromise sterility or prevent visual control of the filled
+vial.
+
+-- 6 of 8 --
+
+7
+Quality control
+39. Some radiopharmaceuticals may have to be distributed and used on the basis of an assessment of
+batch documentation and before all chemical and microbiology tests have been completed.
+Radiopharmaceutical product release may be carried out in two or more stages, before and after full
+analytical testing:
+a) 	Assessment by a designated person of batch processing records, which should cover production
+conditions and analytical testing performed thus far, before allowing transportation of the
+radiopharmaceutical under quarantine status to the clinical department.
+b) 	Assessment of the final analytical data, ensuring all deviations from normal procedures are
+documented, justified and appropriately released prior to documented certification by the
+Qualified Person. 	Where certain test results are not available before use of the product, the
+Qualified Person should conditionally certify the product before it is used and should finally
+certify the product after all the test results are obtained.
+40. Most radiopharmaceuticals are intended for use within a short time and the period of validity with
+regard to the radioactive shelf-life, must be clearly stated.
+41. Radiopharmaceuticals having radionuclides with long half-lives should be tested to show, that they
+meet all relevant acceptance criteria before release and certification by the QP.
+42. Before testing is performed samples can be stored to allow sufficient radioactivity decay. All tests
+including the sterility test should be performed as soon as possible.
+43. A written procedure detailing the assessment of production and analytical data, which should be
+considered before the batch is dispatched, should be established.
+44. Products that fail to meet acceptance criteria should be rejected. If the material is reprocessed, pre-
+established procedures should be followed and the finished product should meet acceptance criteria
+before release. 	Returned products may not be reprocessed and must be stored as radioactive waste.
+45. A procedure should also describe the measures to be taken by the Qualified Person if unsatisfactory
+test results (Out-of-Specification) are obtained after dispatch and before expiry. Such events should be
+investigated to include the relevant corrective and preventative actions taken to prevent future events.
+This process must be documented.
+46. Information should be given to the clinical responsible persons, if necessary. To facilitate this, a
+traceability system should be implemented for radiopharmaceuticals.
+47. A system to verify the quality of starting materials should be in place. Supplier approval should
+include 	an 	evaluation 	that 	provides 	adequate 	assurance 	that 	the 	material 	consistently 	meets
+specifications. The starting materials, packaging materials and critical process aids should be purchased
+from approved suppliers.
+
+-- 7 of 8 --
+
+8
+Reference and Retention samples
+48. 	For radiopharmaceuticals sufficient samples of each batch of bulk formulated product shall be
+retained for at least six months after expiry of the finished medicinal product unless otherwise justified
+through risk management.
+49. Samples of starting materials, other than solvents gases or water used in the manufacturing process
+shall be retained for at least two years after the release of the product. That period may be shortened if
+the period of stability of the material as indicated in the relevant specification is shorter.
+50. Other conditions may be defined by agreement with the competent authority, for the sampling and
+retaining of starting materials and products manufactured individually or in small quantities or when
+their storage could raise special problems.
+Distribution
+51. Distribution of the finished product under controlled conditions, before all appropriate test results
+are available, is acceptable for radiopharmaceuticals, providing the product is not administered by the
+receiving institute until satisfactory test results has been received and assessed by a designated person.
+10. Glossary
+Preparation: handling and radiolabelling of kits with radionuclide eluted from generators or
+radioactive precursors within a hospital. Kits, generators and precursors should have a marketing
+authorisation or a national licence.
+Manufacturing: production, quality control and release and delivery of radiopharmaceuticals from
+the active substance and starting materials.
+Hot –cells: shielded workstations for manufacture and handling of radioactive materials. Hot-cells
+are not necessarily designed as an isolator.
+Qualified person: QP as described in Directives 2001/83/EC and 2001/82/EC. QP responsibilities
+are elaborated in Eudralex Volume 4, annex 16.
+
+-- 8 of 8 --
+

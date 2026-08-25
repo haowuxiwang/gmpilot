@@ -37,6 +37,13 @@ export default defineConfig({
         input: {
           index: path.resolve(__dirname, 'index.html'),
         },
+        output: {
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+            'vendor-gsap': ['gsap'],
+            'vendor-icons': ['lucide-react'],
+          },
+        },
       },
     },
     resolve: {

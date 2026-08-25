@@ -5,38 +5,61 @@ directories:
 files:
   - dist/**/*
   - dist-electron/**/*
+  - electron/splash.html
   - core/**/*
   - "!core/**/__tests__/**"
-  - knowledge/**/*
-  - resources/**/*
-  - package.json
   - "!**/*.ts"
   - "!**/*.tsx"
-asar: true
-asarUnpack:
-  - resources/**/*
+  - "!**/*.map"
+  - "!**/node_modules/**/test/**"
+  - "!**/node_modules/**/tests/**"
+  - "!**/node_modules/**/docs/**"
+  - "!**/node_modules/**/*.md"
+  - package.json
+# Static resources bundled outside asar (accessible via process.resourcesPath)
+extraResources:
+  - from: knowledge/
+    to: knowledge/
+    filter: ["**/*"]
+  - from: core/db/migrations/
+    to: core/db/migrations/
+    filter: ["*.sql"]
+  - from: core/llm/prompts/
+    to: core/llm/prompts/
+    filter: ["*.txt"]
+  - from: docs/templates/
+    to: docs/templates/
+    filter: ["*.md"]
+  - from: resources/
+    to: resources/
+    filter: ["**/*"]
+  - from: model/
+    to: model/
+    filter: ["**/*"]
+asar: false
 win:
+  # 便携分发：默认 dir（win-unpacked 文件夹 + GMPilot.exe，双击即用，无安装器）。
+  # 需要单文件绿色版时用 npm run build:portable（electron-builder --win portable）。
   target:
-    - nsis
+    - dir
   icon: resources/icons/icon.ico
-  # Completely disable code signing
-  sign: false
-  signingHashAlgorithms: []
-  # Skip signing tool
-  signDlls: false
-nsis:
-  oneClick: false
-  allowToChangeInstallationDirectory: true
-  createDesktopShortcut: true
+  artifactName: GMPilot-${version}.${ext}
+electronDist: node_modules/electron/dist
+portable:
+  artifactName: GMPilot-Portable-${version}.${ext}
 mac:
   target:
     - dmg
   icon: resources/icons/icon.icns
-  # Code signing configuration for macOS
-  # Set CSC_LINK and CSC_KEY_PASSWORD environment variables
-  identity: null  # Will use environment variables if available
+  # Code signing: set CSC_LINK and CSC_KEY_PASSWORD environment variables
+  identity: null
+  artifactName: GMPilot-${version}.${ext}
 linux:
   target:
     - AppImage
   icon: resources/icons
   category: Office
+  artifactName: GMPilot-${version}.${ext}
+# Native module rebuild (better-sqlite3) - skipped, using prebuild-install
+npmRebuild: false
+nodeGypRebuild: false

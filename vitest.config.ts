@@ -5,7 +5,10 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
-    include: ['core/**/__tests__/**/*.test.ts'],
+    include: ['core/**/__tests__/**/*.test.ts', 'src/**/__tests__/**/*.test.{ts,tsx}'],
+    environmentMatchGlobs: [
+      ['src/**', 'jsdom'],
+    ],
     pool: 'threads',
     poolOptions: {
       threads: {
@@ -23,14 +26,17 @@ export default defineConfig({
     },
     coverage: {
       provider: 'v8',
-      include: ['core/**/*.ts'],
+      include: ['core/**/*.ts', 'src/hooks/**/*.ts'],
       exclude: [
         'core/**/*.d.ts',
         'core/**/__tests__/**',
+        'src/**/__tests__/**',
         'core/integration/**',
         'core/pdf/**',
         'core/workflow/types.ts',         // Pure type definitions, no executable code
         'core/workflow/report-types.ts',  // Auto-generated type definitions
+        'core/workflow/modules/index.ts', // Pure re-exports, no executable code
+        'core/template/types.ts',         // Pure type definitions
         'core/types/ipc.ts',             // Pure type definitions
         'core/utils/secure-storage.ts',  // Requires Electron APIs, tested via integration
       ],

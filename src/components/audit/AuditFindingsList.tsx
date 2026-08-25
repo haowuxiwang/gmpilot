@@ -1,17 +1,20 @@
 /**
- * AuditFindingsList - Displays audit findings from AuditBee.
+ * AuditFindingsList - Displays audit findings from built-in audit agent.
  * Shows findings sorted by severity with expandable details.
  */
 
 import { useState, useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ChevronDown, AlertTriangle, AlertCircle, Info, FileText, Pencil } from 'lucide-react';
-import { Badge, Button } from '../ui';
-import type { AuditBeeFinding } from '../../../core/integration/types';
+import { Badge } from '../ui/badge';
+import { Button } from '../ui/button';
+import type { AuditFinding } from '../../../core/llm/caller';
 import { cn } from '../../lib/utils';
 
 interface AuditFindingsListProps {
-  findings: AuditBeeFinding[];
+  findings: AuditFinding[];
+  overallScore?: number | null;
+  summary?: string | null;
   onRevise?: () => void;
   onExport?: () => void;
 }
@@ -54,7 +57,7 @@ const SEVERITY_CONFIG = {
   },
 };
 
-function FindingCard({ finding }: { finding: AuditBeeFinding }) {
+function FindingCard({ finding }: { finding: AuditFinding }) {
   const [expanded, setExpanded] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
   const config = SEVERITY_CONFIG[finding.severity] || SEVERITY_CONFIG.info;
@@ -110,14 +113,6 @@ function FindingCard({ finding }: { finding: AuditBeeFinding }) {
               <p className="text-sm text-stone-700">{finding.description}</p>
             </div>
           )}
-          {finding.evidence && (
-            <div>
-              <p className="text-xs font-medium text-stone-500 mb-1">证据</p>
-              <p className="text-sm text-stone-600 bg-white/60 rounded-lg p-2">
-                {finding.evidence}
-              </p>
-            </div>
-          )}
           {finding.suggestion && (
             <div>
               <p className="text-xs font-medium text-stone-500 mb-1">改进建议</p>
@@ -138,7 +133,7 @@ function FindingCard({ finding }: { finding: AuditBeeFinding }) {
   );
 }
 
-export function AuditFindingsList({ findings, onRevise, onExport }: AuditFindingsListProps) {
+export function AuditFindingsList({ findings, overallScore, summary, onRevise, onExport }: AuditFindingsListProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -169,9 +164,26 @@ export function AuditFindingsList({ findings, onRevise, onExport }: AuditFinding
 
   return (
     <div ref={ref} className="space-y-3">
+      {/* Score and summary */}
+      {overallScore != null && (
+        <div className="flex items-center gap-3 mb-2">
+          <div className={cn(
+            'w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold',
+            overallScore >= 80 ? 'bg-teal-50 text-teal-700' :
+            overallScore >= 60 ? 'bg-amber-50 text-amber-700' :
+            'bg-red-50 text-red-700'
+          )}>
+            {overallScore}
+          </div>
+          {summary && (
+            <p className="text-sm text-stone-600 flex-1">{summary}</p>
+          )}
+        </div>
+      )}
+
       {/* Summary header */}
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-sm font-medium text-stone-700">审计结果</span>
+        <span className="text-sm font-medium text-stone-700">审核发现</span>
         {counts.high ? (
           <Badge variant="red" className="text-[10px]">{counts.high} 高风险</Badge>
         ) : null}
@@ -188,8 +200,8 @@ export function AuditFindingsList({ findings, onRevise, onExport }: AuditFinding
 
       {/* Findings list */}
       <div className="space-y-2 max-h-[400px] overflow-y-auto pr-1">
-        {sorted.map((finding) => (
-          <FindingCard key={finding.id} finding={finding} />
+        {sorted.map((finding, index) => (
+          <FindingCard key={index} finding={finding} />
         ))}
       </div>
 

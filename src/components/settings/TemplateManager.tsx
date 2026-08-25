@@ -8,7 +8,6 @@ import { useState, useEffect } from 'react';
 import { templateApi, type TemplateInfo } from '@/services/api';
 import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/providers/ToastProvider';
 import {
@@ -28,6 +27,7 @@ interface TemplateField {
   label: string;
   type: string;
   description?: string;
+  required?: boolean;
 }
 
 export function TemplateManager() {
@@ -179,20 +179,11 @@ export function TemplateManager() {
             <label className="block text-sm font-medium text-stone-700 mb-1">
               {field.label || field.name}
             </label>
-            {field.type === 'longtext' ? (
-              <textarea
-                className="w-full px-3 py-2 text-sm border border-stone-200 rounded-lg focus:outline-none focus:border-teal-400"
-                rows={3}
-                placeholder={field.description || `输入 ${field.label || field.name}`}
-              />
-            ) : (
-              <Input
-                placeholder={field.description || `输入 ${field.label || field.name}`}
-              />
-            )}
-            {field.description && (
-              <p className="text-xs text-stone-400 mt-1">{field.description}</p>
-            )}
+            <div className="px-3 py-2 text-sm text-stone-500 border border-stone-100 bg-stone-50 rounded-lg">
+              {field.type === 'longtext' ? '多行文本' : '单行文本'}
+              {field.required ? ' · 必填' : ' · 选填'}
+              {field.description ? ` · ${field.description}` : ''}
+            </div>
           </div>
         ))}
       </div>
@@ -281,7 +272,7 @@ export function TemplateManager() {
                   {editMode === 'markdown' ? (
                     <>
                       <FormInput className="w-4 h-4 mr-1.5" />
-                      表单模式
+                      字段预览
                     </>
                   ) : (
                     <>

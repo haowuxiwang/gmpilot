@@ -1,13 +1,11 @@
 /**
  * Chat message component.
- * Clean, modern design using the precision laboratory color system.
- * User messages: right-aligned, teal accent.
- * AI messages: left-aligned, subtle border.
+ * Claude-style: AI messages are text-only with subtle left border,
+ * user messages are teal bubbles. No avatars.
  */
 
 import { memo, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { FlaskConical, User } from 'lucide-react';
 
 export interface Message {
   id: string;
@@ -28,9 +26,9 @@ export const ChatMessage = memo(function ChatMessage({ message }: ChatMessagePro
   useEffect(() => {
     if (ref.current) {
       animRef.current = gsap.from(ref.current, {
-        y: 10,
+        y: 8,
         opacity: 0,
-        duration: 0.35,
+        duration: 0.3,
         ease: 'power3.out',
       });
     }
@@ -44,50 +42,31 @@ export const ChatMessage = memo(function ChatMessage({ message }: ChatMessagePro
     minute: '2-digit',
   });
 
-  return (
-    <div
-      ref={ref}
-      className={`flex gap-3 ${isAI ? 'justify-start' : 'justify-end'}`}
-    >
-      {/* AI avatar */}
-      {isAI && (
-        <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-          <FlaskConical
-            className="w-4 h-4 text-teal-600"
-            strokeWidth={1.5}
-          />
+  if (isAI) {
+    return (
+      <div ref={ref} className="group flex justify-start">
+        <div className="max-w-[85%] pl-3 border-l-2 border-stone-200 group-hover:border-teal-300 transition-colors duration-200">
+          <p className="text-[13.5px] text-stone-700 leading-[1.7] whitespace-pre-wrap">
+            {message.content}
+          </p>
+          <span className="inline-block text-[10px] text-stone-300 mt-1.5 font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            {timeStr}
+          </span>
         </div>
-      )}
+      </div>
+    );
+  }
 
-      <div
-        className={`flex flex-col ${isAI ? 'items-start' : 'items-end'}`}
-      >
-        {/* Message bubble */}
-        <div
-          className={`
-            max-w-[85%] px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap
-            ${
-              isAI
-                ? 'bg-white border border-stone-200 text-stone-800 rounded-2xl rounded-tl-md'
-                : 'bg-teal-600 text-white rounded-2xl rounded-tr-md shadow-sm shadow-teal-600/10'
-            }
-          `}
-        >
+  return (
+    <div ref={ref} className="group flex justify-end">
+      <div className="max-w-[80%] flex flex-col items-end">
+        <div className="bg-teal-600 text-white text-[13.5px] leading-[1.7] px-4 py-2.5 rounded-2xl rounded-br-md whitespace-pre-wrap">
           {message.content}
         </div>
-
-        {/* Timestamp */}
-        <span className="text-[10px] text-stone-400 mt-1.5 px-1 font-mono tracking-wider">
+        <span className="text-[10px] text-stone-300 mt-1 font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           {timeStr}
         </span>
       </div>
-
-      {/* User avatar */}
-      {!isAI && (
-        <div className="w-8 h-8 rounded-lg bg-stone-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-          <User className="w-4 h-4 text-stone-500" strokeWidth={1.5} />
-        </div>
-      )}
     </div>
   );
 });

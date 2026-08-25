@@ -8,13 +8,19 @@ import { ipcMain } from 'electron';
 import { getDatabase, initSchema } from '../../core/db/connection';
 import { createLogger } from '../../core/utils/logger';
 import { setSecret, getSecret, isSecureStorageAvailable } from '../../core/utils/secure-storage';
+import { updateResolvedApiKey } from '../../core/llm/provider';
 import {
   getAllSettings,
   setSettings,
-  getReports,
+  getReportSummaries,
   getReport,
   createReport,
   deleteReport,
+  getConversations,
+  getConversation,
+  createConversation,
+  updateConversation,
+  deleteConversation,
 } from '../../core/db/schema';
 
 const log = createLogger('DB');
@@ -90,6 +96,7 @@ export function registerDatabaseIPC(): void {
           if (secureStorageAvailable && value) {
             try {
               await setSecret(key, value);
+              updateResolvedApiKey(key, value); // Update in-memory cache for getProviderConfig
               cleaned[key] = '••••••••'; // Store masked value in DB
               log.info('API key stored in secure storage', { key });
             } catch (error) {
@@ -120,10 +127,12 @@ export function registerDatabaseIPC(): void {
       // Validate and clamp limit/offset
       const limit = Math.min(Math.max(Number(options?.limit) || 50, 1), 200);
       const offset = Math.max(Number(options?.offset) || 0, 0);
-      return getReports(getDatabase(), limit, offset);
+      // 列表只返回元数据（排除 content 等大字段），避免大 JSON 拖慢列表加载
+      return getReportSummaries(getDatabase(), limit, offset);
     } catch (error) {
-      log.error('getReports failed', { error: String(error) });
-      return [];
+      const msg = error instanceof Error ? error.message : String(error);
+      log.error('getReports failed', { error: msg });
+      return { success: false, error: msg, data: [] };
     }
   });
 
@@ -185,6 +194,86 @@ export function registerDatabaseIPC(): void {
     } catch (error) {
       const msg = error instanceof Error ? error.message : String(error);
       log.error('deleteReport failed', { error: msg });
+      return { success: false, error: msg };
+    }
+  });
+
+  // Conversations
+  ipcMain.handle('db:getConversations', async (_event, options?: { limit?: number; offset?: number }) => {
+    try {
+      await ensureInitialized();
+      const limit = Math.min(Math.max(Number(options?.limit) || 50, 1), 200);
+      const offset = Math.max(Number(options?.offset) || 0, 0);
+      return getConversations(getDatabase(), limit, offset);
+    } catch (error) {
+      log.error('getConversations failed', { error: String(error) });
+      return [];
+    }
+  });
+
+  ipcMain.handle('db:getConversation', async (_event, id: number) => {
+    try {
+      await ensureInitialized();
+      return getConversation(getDatabase(), id);
+    } catch (error) {
+      log.error('getConversation failed', { error: String(error) });
+      return null;
+    }
+  });
+
+  ipcMain.handle('db:createConversation', async (_event, conversation: { title: string; messages_json: string }) => {
+    try {
+      if (!conversation || typeof conversation !== 'object') {
+        return { success: false, error: '无效的对话数据' };
+      }
+      if (!conversation.title || typeof conversation.title !== 'string') {
+        return { success: false, error: '对话标题不能为空' };
+      }
+      if (!conversation.messages_json || typeof conversation.messages_json !== 'string') {
+        return { success: false, error: '对话消息不能为空' };
+      }
+      await ensureInitialized();
+      const id = createConversation(getDatabase(), conversation);
+      return { success: true, id };
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : String(error);
+      log.error('createConversation failed', { error: msg });
+      return { success: false, error: msg };
+    }
+  });
+
+  ipcMain.handle('db:updateConversation', async (_event, id: number, title: string, messagesJson: string) => {
+    try {
+      if (!Number.isInteger(id) || id <= 0) {
+        return { success: false, error: '无效的对话 ID' };
+      }
+      if (!title || typeof title !== 'string') {
+        return { success: false, error: '对话标题不能为空' };
+      }
+      if (!messagesJson || typeof messagesJson !== 'string') {
+        return { success: false, error: '对话消息不能为空' };
+      }
+      await ensureInitialized();
+      updateConversation(getDatabase(), id, title, messagesJson);
+      return { success: true };
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : String(error);
+      log.error('updateConversation failed', { error: msg });
+      return { success: false, error: msg };
+    }
+  });
+
+  ipcMain.handle('db:deleteConversation', async (_event, id: number) => {
+    try {
+      if (!Number.isInteger(id) || id <= 0) {
+        return { success: false, error: '无效的对话 ID' };
+      }
+      await ensureInitialized();
+      deleteConversation(getDatabase(), id);
+      return { success: true };
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : String(error);
+      log.error('deleteConversation failed', { error: msg });
       return { success: false, error: msg };
     }
   });

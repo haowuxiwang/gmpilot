@@ -24,7 +24,9 @@ const SECTION_PATTERNS = [
   /^[（(]\d+[)）]\s+.*/,                              // (1) 质量保证
 ];
 
-const SENTENCE_DELIMITERS = /([。！？；\n])/;
+// 中英文句末分隔符：英文文档（如 EU GMP 法规原文）依赖 . ! ? 切句，
+// 缺失会导致超长"单句"块超过 embedding 模型 512 token 上限（SiliconFlow 400: code 20015）
+const SENTENCE_DELIMITERS = /([。！？；.!?;\n])/;
 
 /**
  * Check if a line is a section heading.
@@ -95,35 +97,44 @@ export function chunkText(
     let buffer = '';
     let bufferSection = section.title;
 
-    for (const para of paragraphs) {
-      if (buffer.length + para.length > maxChars && buffer.length > 0) {
+    // Flush helper: 超过 maxChars 的内容必须再经句子切分（英文段落可能单段超长，
+    // 直接 push 会产生超过 embedding 模型 512 token 上限的块 → SiliconFlow 400）
+    const flushBuffer = () => {
+      if (!buffer.trim()) return;
+      if (buffer.length > maxChars) {
+        for (const sc of splitBySentences(buffer, maxChars, overlapChars, bufferSection)) {
+          chunks.push({ ...sc, index: chunkIndex++ });
+        }
+      } else {
         chunks.push({
           content: buffer,
           index: chunkIndex++,
           sectionPath: bufferSection,
           charCount: buffer.length,
         });
-        // Overlap: keep last part of previous chunk
-        buffer = buffer.slice(-overlapChars) + '\n\n' + para;
+      }
+      buffer = '';
+    };
+
+    for (const para of paragraphs) {
+      // 单段已超长：先 flush 现有 buffer，再把该段独立送入句子切分
+      if (para.length > maxChars) {
+        flushBuffer();
+        buffer = para;
+        flushBuffer();
+        continue;
+      }
+      if (buffer.length + para.length > maxChars && buffer.length > 0) {
+        const overlapTail = buffer.slice(-overlapChars); // 保留上一块尾部作为重叠
+        flushBuffer();
+        buffer = overlapTail + '\n\n' + para;
       } else {
         buffer += (buffer ? '\n\n' : '') + para;
       }
     }
 
-    // Phase 3: If buffer still too large, split by sentences
-    if (buffer.length > maxChars) {
-      const sentenceChunks = splitBySentences(buffer, maxChars, overlapChars, section.title);
-      for (const sc of sentenceChunks) {
-        chunks.push({ ...sc, index: chunkIndex++ });
-      }
-    } else if (buffer.trim()) {
-      chunks.push({
-        content: buffer,
-        index: chunkIndex++,
-        sectionPath: bufferSection,
-        charCount: buffer.length,
-      });
-    }
+    // Phase 3: flush remaining buffer（同样经句子切分）
+    flushBuffer();
   }
 
   const avgChunkSize = chunks.length > 0

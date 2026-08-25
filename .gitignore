@@ -53,3 +53,24 @@ test-results/
 # Archives
 *.zip
 *.7z
+
+# Local embedding model (3.7GB, downloaded via npm run download:model)
+model/
+
+# Debug/temp artifacts
+logs/dev-output.log
+current-state.png
+dark-mode-test.png
+gmpilot-*.png
+*.doc
+nul
+temp-flow.txt
+design.txt
+GMP/
+
+# Hermes agent workspace
+.hermes/
+
+# Root-level template copies (source of truth lives in resources/templates/)
+/偏差调查和风险评估报告模板.docx
+/*.docx

@@ -1,21 +1,32 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import type { Report, ReportInsert, KnowledgeDoc, AuditTask } from '../core/db/schema';
+import type { Report, ReportSummary, ReportInsert, KnowledgeDoc, Conversation, ConversationInsert } from '../core/db/schema';
 import type { DeviationReport } from '../core/workflow/types';
-import type { AuditBeeFinding, AuditBeeTask } from '../core/integration/types';
-import type { WorkflowProgress, AuditBeeProgress } from '../core/types/ipc';
+import type { WorkflowProgress } from '../core/types/ipc';
 
 // Expose gmpilot API to renderer process
 contextBridge.exposeInMainWorld('gmpilot', {
+  // Bundled resource paths (fonts etc.), resolvable via file:// in renderer
+  resources: {
+    getFontPath: () => ipcRenderer.invoke('resources:getFontPath'),
+  },
+
   // Database operations
   db: {
     getSettings: () => ipcRenderer.invoke('db:getSettings'),
     saveSettings: (settings: Record<string, string>) =>
       ipcRenderer.invoke('db:saveSettings', settings),
-    getReports: (options?: { limit?: number; offset?: number }) =>
+    getReports: (options?: { limit?: number; offset?: number }): Promise<ReportSummary[]> =>
       ipcRenderer.invoke('db:getReports', options),
-    getReport: (id: number) => ipcRenderer.invoke('db:getReport', id),
+    getReport: (id: number): Promise<Report | null> => ipcRenderer.invoke('db:getReport', id),
     createReport: (report: ReportInsert) => ipcRenderer.invoke('db:createReport', report),
     deleteReport: (id: number) => ipcRenderer.invoke('db:deleteReport', id),
+    getConversations: (options?: { limit?: number; offset?: number }) =>
+      ipcRenderer.invoke('db:getConversations', options),
+    getConversation: (id: number) => ipcRenderer.invoke('db:getConversation', id),
+    createConversation: (conversation: ConversationInsert) => ipcRenderer.invoke('db:createConversation', conversation),
+    updateConversation: (id: number, title: string, messagesJson: string) =>
+      ipcRenderer.invoke('db:updateConversation', id, title, messagesJson),
+    deleteConversation: (id: number) => ipcRenderer.invoke('db:deleteConversation', id),
   },
 
   // Knowledge base operations
@@ -23,7 +34,7 @@ contextBridge.exposeInMainWorld('gmpilot', {
     query: (query: string) => ipcRenderer.invoke('knowledge:query', query),
     // C-2 fix: Removed addDocument — use pickAndAdd (dialog-based) instead
     listDocuments: () => ipcRenderer.invoke('knowledge:listDocuments'),
-    pickAndAdd: () => ipcRenderer.invoke('knowledge:pickAndAdd'),
+    pickAndAdd: (category?: string) => ipcRenderer.invoke('knowledge:pickAndAdd', category),
     deleteDocument: (docId: number) => ipcRenderer.invoke('knowledge:deleteDocument', docId),
     getContext: (query: string) => ipcRenderer.invoke('knowledge:getContext', query),
     stats: () => ipcRenderer.invoke('knowledge:stats'),
@@ -36,12 +47,15 @@ contextBridge.exposeInMainWorld('gmpilot', {
     stream: (params: { prompt: string; systemPrompt?: string }) =>
       ipcRenderer.invoke('llm:stream', params),
     onChunk: (callback: (data: { chunk: string }) => void) => {
+      ipcRenderer.removeAllListeners('llm:stream:chunk'); // Prevent listener accumulation
       ipcRenderer.on('llm:stream:chunk', (_event, data) => callback(data));
     },
     onDone: (callback: () => void) => {
+      ipcRenderer.removeAllListeners('llm:stream:done');
       ipcRenderer.on('llm:stream:done', () => callback());
     },
     onError: (callback: (data: { error: string }) => void) => {
+      ipcRenderer.removeAllListeners('llm:stream:error');
       ipcRenderer.on('llm:stream:error', (_event, data) => callback(data));
     },
     offStream: () => {
@@ -57,7 +71,11 @@ contextBridge.exposeInMainWorld('gmpilot', {
   workflow: {
     runDeviation: (clueText: string, files?: { name: string; content?: string }[]) =>
       ipcRenderer.invoke('workflow:runDeviation', clueText, files),
+    cancel: () => ipcRenderer.invoke('workflow:cancel'),
+    reviseTargeted: (params: { report: unknown; targets: string[]; revisionContext: string; analysis?: unknown; factors?: unknown; regulations?: unknown[]; findings?: unknown[] }) =>
+      ipcRenderer.invoke('workflow:reviseTargeted', params),
     onProgress: (callback: (data: WorkflowProgress) => void) => {
+      ipcRenderer.removeAllListeners('workflow:progress'); // Prevent listener accumulation
       ipcRenderer.on('workflow:progress', (_event, data) => callback(data));
     },
     offProgress: () => {
@@ -65,6 +83,7 @@ contextBridge.exposeInMainWorld('gmpilot', {
     },
     // 优化2: 流式报告内容监听
     onStreaming: (callback: (data: { partial: Partial<DeviationReport> }) => void) => {
+      ipcRenderer.removeAllListeners('workflow:streaming'); // Prevent listener accumulation
       ipcRenderer.on('workflow:streaming', (_event, data) => callback(data));
     },
     offStreaming: () => {
@@ -77,26 +96,7 @@ contextBridge.exposeInMainWorld('gmpilot', {
     // C-1 fix: Removed readFile — use pickAndRead (dialog-based) instead
     pickAndRead: () => ipcRenderer.invoke('file:pickAndRead'),
     exportPdf: (report: DeviationReport) => ipcRenderer.invoke('file:exportPdf', report),
-  },
-
-  // AuditBee integration
-  auditbee: {
-    // C-3 fix: Removed baseUrl param from all methods — SSRF prevention
-    checkHealth: () => ipcRenderer.invoke('auditbee:checkHealth'),
-    auditReport: (params: { report: DeviationReport; reportId?: number }) =>
-      ipcRenderer.invoke('auditbee:auditReport', params),
-    getFindings: (params: { taskId: number }) =>
-      ipcRenderer.invoke('auditbee:getFindings', params),
-    getTaskStatus: (params: { taskId: number }) =>
-      ipcRenderer.invoke('auditbee:getTaskStatus', params),
-    getAuditHistory: (reportId: number) =>
-      ipcRenderer.invoke('auditbee:getAuditHistory', reportId),
-    onProgress: (callback: (data: AuditBeeProgress) => void) => {
-      ipcRenderer.on('auditbee:progress', (_event, data) => callback(data));
-    },
-    offProgress: () => {
-      ipcRenderer.removeAllListeners('auditbee:progress');
-    },
+    exportDocx: (report: DeviationReport) => ipcRenderer.invoke('file:exportDocx', report),
   },
 
   // Template operations
@@ -108,13 +108,30 @@ contextBridge.exposeInMainWorld('gmpilot', {
     reset: (templateId: string) => ipcRenderer.invoke('template:reset', templateId),
     clearCache: () => ipcRenderer.invoke('template:clearCache'),
   },
+
+  // Notification operations (Feishu)
+  notification: {
+    getFeishuConfig: () => ipcRenderer.invoke('notification:getFeishuConfig'),
+    saveFeishuConfig: (config: { appId?: string; appSecret?: string; receiveIdType?: string; receiveId?: string; enabled?: boolean }) =>
+      ipcRenderer.invoke('notification:saveFeishuConfig', config),
+    testFeishu: () => ipcRenderer.invoke('notification:testFeishu'),
+  },
+
+  // Logging operations (forward renderer logs to main process)
+  log: {
+    forward: (entry: { level: 'debug' | 'info' | 'warn' | 'error'; module: string; message: string; data?: Record<string, unknown>; error?: { message: string; stack?: string } }) =>
+      ipcRenderer.invoke('log:forward', entry),
+  },
 });
 
 // Re-export types for backward compatibility
-export type { WorkflowProgress, AuditBeeProgress } from '../core/types/ipc';
+export type { WorkflowProgress } from '../core/types/ipc';
 
 // Type definition for window.gmpilot
 export interface GmpilotAPI {
+  resources: {
+    getFontPath: () => Promise<string>;
+  };
   db: {
     getSettings: () => Promise<Record<string, string>>;
     saveSettings: (settings: Record<string, string>) => Promise<{ success: boolean; error?: string }>;
@@ -122,12 +139,17 @@ export interface GmpilotAPI {
     getReport: (id: number) => Promise<Report | null>;
     createReport: (report: ReportInsert) => Promise<{ success: boolean; id?: number; error?: string }>;
     deleteReport: (id: number) => Promise<{ success: boolean; error?: string }>;
+    getConversations: (options?: { limit?: number; offset?: number }) => Promise<Conversation[]>;
+    getConversation: (id: number) => Promise<Conversation | null>;
+    createConversation: (conversation: ConversationInsert) => Promise<{ success: boolean; id?: number; error?: string }>;
+    updateConversation: (id: number, title: string, messagesJson: string) => Promise<{ success: boolean; error?: string }>;
+    deleteConversation: (id: number) => Promise<{ success: boolean; error?: string }>;
   };
   knowledge: {
     query: (query: string) => Promise<unknown[]>;
     // C-2 fix: Removed addDocument
     listDocuments: () => Promise<KnowledgeDoc[]>;
-    pickAndAdd: () => Promise<{ success: boolean; docId?: number; chunkCount?: number; filename?: string; error?: string }>;
+    pickAndAdd: (category?: string) => Promise<{ success: boolean; docId?: number; chunkCount?: number; filename?: string; category?: string; error?: string }>;
     deleteDocument: (docId: number) => Promise<{ success: boolean; error?: string }>;
     getContext: (query: string) => Promise<string>;
     stats: () => Promise<{ docCount: number; chunkCount: number; isAvailable: boolean }>;
@@ -143,7 +165,9 @@ export interface GmpilotAPI {
     testProvider: (provider: string) => Promise<{ success: boolean; latency?: number; error?: string }>;
   };
   workflow: {
-    runDeviation: (clueText: string, files?: { name: string; content?: string }[]) => Promise<{ success: boolean; report?: DeviationReport; error?: string }>;
+    runDeviation: (clueText: string, files?: { name: string; content?: string }[]) => Promise<{ success: boolean; report?: DeviationReport; auditFindings?: unknown[]; auditScore?: number; auditSummary?: string; fallbackModules?: string[]; error?: string }>;
+    cancel: () => Promise<{ success: boolean; error?: string }>;
+    reviseTargeted: (params: { report: unknown; targets: string[]; revisionContext: string }) => Promise<{ success: boolean; report?: DeviationReport; fallbackModules?: string[]; auditFindings?: unknown[]; auditScore?: number; auditSummary?: string; error?: string }>;
     onProgress: (callback: (data: WorkflowProgress) => void) => void;
     offProgress: () => void;
     onStreaming: (callback: (data: { partial: Partial<DeviationReport> }) => void) => void;
@@ -153,16 +177,7 @@ export interface GmpilotAPI {
     // C-1 fix: Removed readFile — use pickAndRead instead
     pickAndRead: () => Promise<{ success: boolean; content?: string; filePath?: string; error?: string }>;
     exportPdf: (report: DeviationReport) => Promise<{ success: boolean; filePath?: string; error?: string }>;
-  };
-  auditbee: {
-    // C-3 fix: Removed baseUrl param from all methods
-    checkHealth: () => Promise<{ available: boolean; error?: string }>;
-    auditReport: (params: { report: DeviationReport; reportId?: number }) => Promise<{ success: boolean; findings?: AuditBeeFinding[]; taskId?: number; error?: string }>;
-    getFindings: (params: { taskId: number }) => Promise<{ success: boolean; findings?: AuditBeeFinding[]; error?: string }>;
-    getTaskStatus: (params: { taskId: number }) => Promise<{ success: boolean; task?: AuditBeeTask; error?: string }>;
-    getAuditHistory: (reportId: number) => Promise<AuditTask[]>;
-    onProgress: (callback: (data: AuditBeeProgress) => void) => void;
-    offProgress: () => void;
+    exportDocx: (report: DeviationReport) => Promise<{ success: boolean; filePath?: string; error?: string }>;
   };
   template: {
     list: () => Promise<{ success: boolean; templates?: unknown[]; error?: string }>;
@@ -171,6 +186,14 @@ export interface GmpilotAPI {
     update: (templateId: string, content: string) => Promise<{ success: boolean; error?: string }>;
     reset: (templateId: string) => Promise<{ success: boolean; error?: string }>;
     clearCache: () => Promise<{ success: boolean; error?: string }>;
+  };
+  notification: {
+    getFeishuConfig: () => Promise<{ success: boolean; config?: { appId: string; appSecret: string; receiveIdType: string; receiveId: string; enabled: boolean }; error?: string }>;
+    saveFeishuConfig: (config: { appId?: string; appSecret?: string; receiveIdType?: string; receiveId?: string; enabled?: boolean }) => Promise<{ success: boolean; error?: string }>;
+    testFeishu: () => Promise<{ success: boolean; latency?: number; error?: string }>;
+  };
+  log: {
+    forward: (entry: { level: 'debug' | 'info' | 'warn' | 'error'; module: string; message: string; data?: Record<string, unknown>; error?: { message: string; stack?: string } }) => Promise<void>;
   };
 }
 

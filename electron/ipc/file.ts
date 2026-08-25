@@ -15,6 +15,14 @@ export function registerFileIPC(): void {
   // C-1 fix: Removed file:readFile — arbitrary file read vulnerability.
   // Use file:pickAndRead (dialog-based) instead for safe file selection.
 
+  // Font path for renderer-side FontFace registration (bundled via extraResources)
+  ipcMain.handle('resources:getFontPath', () => {
+    const base = process.resourcesPath || path.join(__dirname, '..', '..');
+    const fontPath = path.join(base, 'resources', 'fonts', 'NotoSerifCJKsc-Regular.otf');
+    log.debug('resources:getFontPath', { fontPath });
+    return fontPath;
+  });
+
   // Pick file via dialog and read content
   ipcMain.handle('file:pickAndRead', async () => {
     try {
@@ -77,6 +85,35 @@ export function registerFileIPC(): void {
     } catch (error) {
       const msg = error instanceof Error ? error.message : String(error);
       log.error('exportPdf failed', { deviationId: report.deviationId, error: msg });
+      return { success: false, error: msg };
+    }
+  });
+
+  // Export Word (docx) — fill the factory template via docxtemplater
+  ipcMain.handle('file:exportDocx', async (_event, report: DeviationReport) => {
+    try {
+      log.info('Export Word requested', { deviationId: report.deviationId });
+
+      const { defaultDocxFileName } = await import('../../core/word/filler');
+      const result = await dialog.showSaveDialog({
+        title: '导出 Word',
+        defaultPath: defaultDocxFileName(report),
+        filters: [{ name: 'Word 文档', extensions: ['docx'] }],
+      });
+
+      if (result.canceled || !result.filePath) {
+        log.info('Word export cancelled by user');
+        return { success: false, error: '用户取消' };
+      }
+
+      const { exportDocxToFile } = await import('../../core/word/filler');
+      const filePath = exportDocxToFile(report, result.filePath);
+
+      log.info('Word exported successfully', { filePath });
+      return { success: true, filePath };
+    } catch (error) {
+      const msg = error instanceof Error ? error.message : String(error);
+      log.error('exportDocx failed', { deviationId: report.deviationId, error: msg });
       return { success: false, error: msg };
     }
   });

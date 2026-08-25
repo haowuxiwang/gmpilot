@@ -29,12 +29,29 @@ export class ConclusionGenerator extends BaseModuleGenerator {
   async generate(context: ModuleContext): Promise<ConclusionOutput> {
     log.info('Generating conclusion', { deviationId: context.deviationId });
 
-    // Check if investigation results are available
+    // 注入完整调查结果（根本原因 + 重复偏差 + 其他产品），让 LLM 综合生成结论。
+    // 依赖 {investigation} 占位符替换（见 base.ts buildPrompt）。
+    const enrichedContext = {
+      ...context,
+      previousResults: {
+        ...context.previousResults,
+        investigation: context.previousResults?.investigation ?? '',
+      },
+    };
+
+    const prompt = this.buildPrompt(enrichedContext);
+    const result = await this.callLLM(prompt, conclusionSchema);
+    return result as ConclusionOutput;
+  }
+
+  /**
+   * Template fallback: reuse investigation conclusion or placeholder.
+   */
+  async generateFallback(context: ModuleContext): Promise<ConclusionOutput> {
     const investigation = context.previousResults?.investigation as {
       rootCause?: { conclusion?: string };
     } | undefined;
 
-    // If we have investigation results, use them to build conclusion
     if (investigation?.rootCause?.conclusion) {
       return {
         rootCause: investigation.rootCause.conclusion,
@@ -42,9 +59,15 @@ export class ConclusionGenerator extends BaseModuleGenerator {
       };
     }
 
-    // Fall back to LLM generation
-    const prompt = this.buildPrompt(context);
-    const result = await this.callLLM(prompt, conclusionSchema);
-    return result as ConclusionOutput;
+    const factorText = Object.values(context.factors)
+      .flat()
+      .filter(Boolean)
+      .join('、') || '待补充';
+
+    log.warn('Conclusion generated from fallback', { deviationId: context.deviationId });
+    return {
+      rootCause: '待补充',
+      mostLikelyCause: `可能与以下因素相关：${factorText}，需进一步调查确认。`,
+    };
   }
 }

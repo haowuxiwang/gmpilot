@@ -51,6 +51,7 @@ gmpilot/
 │   ├── rag/            # RAG (chunker, embedder, store, retriever)
 │   ├── db/             # SQLite (connection, schema, migrations)
 │   ├── pdf/            # PDF 生成 (generator + templates)
+│   ├── word/           # Word 模板填充 (filler + template-structure 测试)
 │   ├── schema/         # deviation-report-schema.json (单一真相源)
 │   ├── template/       # 模版系统 (loader, parser, types)
 │   ├── integration/    # AuditBee API 客户端 + 类型
@@ -98,6 +99,20 @@ See `docs/project-structure.md` for detailed directory layout.
 - Embedding model missing → skip RAG, use keyword search
 - sqlite-vec unavailable → in-memory fallback (dev mode only)
 
+### Word Template Filling Pattern
+- 工厂模板 `resources/templates/deviation-report-fillable.docx` 为唯一 Word 输出模板（单一真相源）
+- `core/word/filler.ts` 通过 docx 占位符（`{{module_name}}`）填充，按模块插入点（编号标题）写入章节
+- 模板结构由 `core/word/__tests__/template-structure.test.ts` 锁定（标题顺序/样式/页眉），改动模板必须同步更新断言
+- 重新生成模板：`npm run build` 自动执行 `scripts/prepare-word-template.cjs`（工厂版式 → fillable 占位符版）
+- 工厂模板变更 SOP 见 `docs/template-change-sop.md`
+
+### Embedding Worker Pattern（打包版关键）
+- onnxruntime-node 的 run() 同步阻塞调用线程，主进程直跑会卡死 UI/IPC
+- `electron/embed-worker.cjs`（copy-worker.cjs 复制到 dist-electron/main/）承载模型加载 + 推理
+- `core/rag/embedder.ts` 的 `WorkerEmbeddingProvider` 优先（不阻塞）；worker 文件缺失时回退主线程 `LocalEmbeddingProvider`
+- 模型目录打包感知：`core/utils/paths.ts` 的 `getModelDirPath()`（打包 → exe 旁 model/ 或 resources/model/；dev → ./model）
+- transformers.js 必须显式设置 `env.localModelPath` + `env.allowRemoteModels=false`（GMP 离线环境禁止远程下载）
+
 ## Development Commands
 
 ```bash
@@ -119,7 +134,27 @@ npm run format           # Prettier format
 
 # Type Check
 npm run typecheck        # TypeScript type check
+
+# Tests (4 层)
+npm run test             # Vitest 单元+集成（789 测试，核心逻辑/LLM prompt/Word 模板）
+npm run test:llm-e2e     # 真实 LLM 端到端（硅基流动 20 + 工作流 1，需 API key）
+npm run test:e2e         # Playwright 渲染端 e2e（37 测试，dev 模式）
+npm run test:packaged    # Playwright 打包版 e2e（7 测试：启动/RAG/LLM/工作流/导出，验证 release/win-unpacked）
 ```
+
+## Testing（4 层体系）
+
+| 层 | 命令 | 数量 | 作用 |
+|---|---|---|---|
+| 单元+集成 | `npm run test` (vitest) | 789 | 工作流状态机、LLM caller（含 JSON 解析重试）、RAG 检索、Word 模板结构断言、SQLite schema |
+| 真实 LLM | `npm run test:llm-e2e` | 21 | 硅基流动 Qwen2.5-72B 全链路（9 provider 工厂/结构化输出/工作流 1 例） |
+| 渲染 e2e | `npm run test:e2e` (playwright dev) | 37 | 5 页面交互、主题持久化、报告生成（真实 LLM）、PDF/Word 导出 |
+| 打包版 e2e | `npm run test:packaged` (playwright) | 7 | 对 release/win-unpacked 真实二进制：启动、知识库 RAG 索引+语义检索、LLM 连接、完整报告生成、导出入口 |
+
+要点：
+- packaged e2e 验证打包关键路径（embedding worker 接线、模型路径打包感知、sqlite-vec native ABI），发布前必跑
+- LLM/渲染 e2e 需 `config/.env` 中的 API key（测试专用 key 硬编码在 e2e/packaged.spec.ts）
+- 打包版 e2e 使用独立临时数据目录（APP_DATA_DIR），不污染开发数据
 
 ## Code Style
 
@@ -132,13 +167,6 @@ npm run typecheck        # TypeScript type check
 - **File naming:** kebab-case for utilities (e.g., `clue-analysis.ts`)
 - **Chinese comments** — for business logic explanation
 - **English comments** — for technical implementation details
-
-## Testing
-
-- **Framework:** Vitest (fast, Vite-native)
-- **Coverage:** Core workflow logic + LLM prompt templates
-- **Priority:** Workflow state transitions, RAG retrieval accuracy
-- Run: `npm run test`
 
 ## Environment Variables
 

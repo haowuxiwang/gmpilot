@@ -62,7 +62,7 @@ function ToastItem({ toast, onRemove }: { toast: ToastType; onRemove: (id: strin
       <span className="flex-1 text-sm text-stone-700">{toast.message}</span>
       <button
         onClick={() => onRemove(toast.id)}
-        className="p-1 rounded-lg hover:bg-stone-100 transition-colors text-stone-400 hover:text-stone-600"
+        className="p-1 rounded-lg hover:bg-stone-100 hover:rotate-90 transition-all duration-200 text-stone-400 hover:text-stone-600"
       >
         <X className="w-4 h-4" />
       </button>

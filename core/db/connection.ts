@@ -7,14 +7,9 @@ import Database from 'better-sqlite3';
 import path from 'path';
 import fs from 'fs';
 import { createLogger } from '../utils/logger';
+import { getMigrationsPath, getDataDirPath } from '../utils/paths';
 
 const log = createLogger('DB');
-
-// 获取 migration 目录路径（兼容打包后的 Electron 环境）
-function getMigrationsDir(): string {
-  // 开发环境使用项目根目录
-  return path.join(process.cwd(), 'core', 'db', 'migrations');
-}
 
 let db: Database.Database | null = null;
 let initPromise: Promise<void> | null = null;
@@ -26,7 +21,7 @@ let initPromise: Promise<void> | null = null;
 export function getDatabase(dbPath?: string): Database.Database {
   if (db) return db;
 
-  const dataDir = process.env.APP_DATA_DIR || path.join(process.cwd(), 'data');
+  const dataDir = getDataDirPath();
   const resolvedPath = dbPath || path.join(dataDir, 'gmpilot.db');
 
   // Ensure directory exists
@@ -60,7 +55,7 @@ export async function initSchema(database?: Database.Database): Promise<void> {
   initPromise = (async () => {
     try {
       const conn = database || getDatabase();
-      const migrationsDir = getMigrationsDir();
+      const migrationsDir = getMigrationsPath();
 
       // 检查 migrations 目录是否存在
       if (!fs.existsSync(migrationsDir)) {
@@ -111,6 +106,22 @@ export async function initSchema(database?: Database.Database): Promise<void> {
             FOREIGN KEY (report_id) REFERENCES reports(id)
           );
 
+          CREATE TABLE IF NOT EXISTS workflow_checkpoints (
+            correlation_id TEXT PRIMARY KEY,
+            step TEXT NOT NULL,
+            context_json TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+          );
+
+          CREATE TABLE IF NOT EXISTS conversations (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            messages_json TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+          );
+
           CREATE TABLE IF NOT EXISTS schema_migrations (
             version INTEGER PRIMARY KEY,
             applied_at DATETIME DEFAULT CURRENT_TIMESTAMP
@@ -145,8 +156,12 @@ export async function initSchema(database?: Database.Database): Promise<void> {
         if (isNaN(version) || applied.has(version)) continue;
 
         const sql = fs.readFileSync(path.join(migrationsDir, file), 'utf-8');
-        conn.exec(sql);
-        conn.prepare('INSERT INTO schema_migrations (version) VALUES (?)').run(version);
+        // Wrap each migration in a transaction for atomicity
+        const applyMigration = conn.transaction(() => {
+          conn.exec(sql);
+          conn.prepare('INSERT INTO schema_migrations (version) VALUES (?)').run(version);
+        });
+        applyMigration();
         appliedCount++;
         log.info(`Migration ${file} applied`, { version });
       }
@@ -181,7 +196,7 @@ export function closeDatabase(): void {
  * Get database path (for IPC responses).
  */
 export function getDatabasePath(): string {
-  const dataDir = process.env.APP_DATA_DIR || path.join(process.cwd(), 'data');
+  const dataDir = getDataDirPath();
   return path.join(dataDir, 'gmpilot.db');
 }
 

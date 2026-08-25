@@ -11,41 +11,55 @@
       "type": "object",
       "title": "起草人",
       "properties": {
+        "department": { "type": "string", "title": "部门", "description": "起草人所在部门", "default": "" },
         "name": { "type": "string", "title": "姓名", "default": "" },
         "signatureDate": { "type": "string", "title": "签字日期", "default": "" }
       },
-      "required": ["name", "signatureDate"]
+      "required": ["department", "name", "signatureDate"]
     },
     "reviewedBy": {
       "type": "object",
       "title": "审核人",
       "properties": {
+        "department": { "type": "string", "title": "部门", "description": "审核人所在部门", "default": "" },
         "name": { "type": "string", "title": "姓名", "default": "" },
         "signatureDate": { "type": "string", "title": "签字日期", "default": "" }
       },
-      "required": ["name", "signatureDate"]
+      "required": ["department", "name", "signatureDate"]
     },
     "repeatDeviationRecord": {
       "type": "object",
       "title": "重复偏差记录",
       "properties": {
+        "no": { "type": "string", "title": "序号" },
         "time": { "type": "string", "title": "发生时间" },
         "deviationNo": { "type": "string", "title": "偏差编号" },
         "description": { "type": "string", "title": "偏差描述" },
         "rootCause": { "type": "string", "title": "根本原因" },
         "capa": { "type": "string", "title": "CAPA措施" }
       },
-      "required": ["time", "deviationNo", "description", "rootCause", "capa"]
+      "required": ["no", "time", "deviationNo", "description", "rootCause", "capa"]
     },
     "otherProductRecord": {
       "type": "object",
       "title": "其他产品/批次记录",
       "properties": {
+        "no": { "type": "string", "title": "序号" },
         "productName": { "type": "string", "title": "产品名称" },
         "batchNo": { "type": "string", "title": "批次号" },
         "currentStatus": { "type": "string", "title": "当前状态" }
       },
-      "required": ["productName", "batchNo", "currentStatus"]
+      "required": ["no", "productName", "batchNo", "currentStatus"]
+    },
+    "investigationScopeRecord": {
+      "type": "object",
+      "title": "调查范围记录",
+      "properties": {
+        "category": { "type": "string", "title": "调查范围" },
+        "details": { "type": "string", "title": "调查内容" },
+        "ruledInOut": { "type": "string", "title": "识别的风险点" }
+      },
+      "required": ["category", "details", "ruledInOut"]
     },
     "capaRecord": {
       "type": "object",
@@ -65,7 +79,7 @@
       "properties": {
         "no": { "type": "string", "title": "编号" },
         "name": { "type": "string", "title": "附件名称" },
-        "pages": { "type": "number", "title": "页数" }
+        "pages": { "type": "string", "title": "总页数", "description": "附件总页数，如「15页」" }
       },
       "required": ["no", "name", "pages"]
     },
@@ -92,14 +106,14 @@
         "title": {
           "type": "string",
           "title": "报告标题",
-          "default": "偏差调查和风险评估报告",
-          "fixed": true
+          "description": "动态标题，格式：<偏差对象>偏差调查和风险评估报告，如「RT探头（编号：NBQ6）偏差调查和风险评估报告」",
+          "default": "偏差调查和风险评估报告"
         },
         "titleEn": {
           "type": "string",
           "title": "报告标题(英文)",
-          "default": "Deviation Investigation and Risk Assessment Report",
-          "fixed": true
+          "description": "动态英文标题，格式：Deviation Investigation and Risk Assessment Report for <Object>",
+          "default": "Deviation Investigation and Risk Assessment Report"
         },
         "department": {
           "type": "string",
@@ -158,58 +172,43 @@
       "title": "偏差调查",
       "section": "2. 偏差调查 Deviation Investigation",
       "properties": {
+        "investigationIntro": {
+          "type": "string",
+          "title": "偏差调查引导句",
+          "description": "偏差调查过程引言（如「发生偏差后，验证部验证人员XX立即上报验证主管并通知分管QA，QA组织和协调偏差涉及相关部门对偏差进行根源调查，调查过程如下：」）",
+          "ui": { "multiline": true }
+        },
         "rootCause": {
           "type": "object",
           "title": "根本原因调查",
           "section": "2.1 根本原因调查 Root Cause Investigation",
           "properties": {
-            "interviews": {
+            "preliminaryAnalysis": {
               "type": "string",
-              "title": "人员面谈记录",
-              "description": "培训、SOP执行、责任心等",
+              "title": "初步分析",
+              "description": "调查前的初步分析与风险点识别（如适用）",
               "ui": { "multiline": true }
             },
-            "sopReview": {
-              "type": "string",
-              "title": "SOP核查结果",
-              "description": "工艺规程、岗位操作法清晰度",
-              "ui": { "multiline": true }
+            "investigationScope": {
+              "type": "array",
+              "title": "调查范围",
+              "description": "识别的风险点排查表（如适用）",
+              "items": { "$ref": "#/definitions/investigationScopeRecord" },
+              "default": []
             },
-            "historicalData": {
-              "type": "string",
-              "title": "历史数据回顾",
-              "description": "分析方法、验证报告、年度回顾等",
-              "ui": { "multiline": true }
-            },
-            "relatedBatches": {
-              "type": "string",
-              "title": "关联批次调查",
-              "description": "其他可能相关的批次",
-              "ui": { "multiline": true }
-            },
-            "batchRecords": {
-              "type": "string",
-              "title": "批记录复核",
-              "description": "批记录、辅助记录、设备日志",
-              "ui": { "multiline": true }
-            },
-            "samplesReview": {
-              "type": "string",
-              "title": "留样审查",
-              "description": "产品/物料/留样复核",
-              "ui": { "multiline": true }
-            },
-            "stabilityStudy": {
-              "type": "string",
-              "title": "稳定性考察",
-              "description": "稳定性考察结果趋势",
-              "ui": { "multiline": true }
-            },
-            "supplierReview": {
-              "type": "string",
-              "title": "供应商核查",
-              "description": "物料供应商、设备生产厂家",
-              "ui": { "multiline": true }
+            "factors": {
+              "type": "object",
+              "title": "人机料法环测调查",
+              "description": "从人、机、料、法、环、测六个方面进行全面调查的结果",
+              "properties": {
+                "man": { "type": "string", "title": "人员", "description": "人员因素调查结果", "ui": { "multiline": true } },
+                "machine": { "type": "string", "title": "设备", "description": "设备因素调查结果", "ui": { "multiline": true } },
+                "material": { "type": "string", "title": "物料", "description": "物料因素调查结果", "ui": { "multiline": true } },
+                "method": { "type": "string", "title": "方法", "description": "工艺方法因素调查结果", "ui": { "multiline": true } },
+                "environment": { "type": "string", "title": "环境", "description": "环境因素调查结果", "ui": { "multiline": true } },
+                "measurement": { "type": "string", "title": "测量", "description": "测量因素调查结果", "ui": { "multiline": true } }
+              },
+              "required": ["man", "machine", "material", "method", "environment", "measurement"]
             },
             "methods": {
               "type": "object",
@@ -222,25 +221,14 @@
               },
               "required": ["flowchart", "fishbone", "brainstorm", "photos"]
             },
-            "humanError": {
-              "type": "object",
-              "title": "人员差错专项调查",
-              "description": "如适用，填写M-M-M-E分析",
-              "properties": {
-                "machine": { "type": "string", "title": "Machine（机）", "description": "设备因素排查" },
-                "material": { "type": "string", "title": "Material（料）", "description": "物料因素排查" },
-                "method": { "type": "string", "title": "Method（法）", "description": "方法因素排查" },
-                "environment": { "type": "string", "title": "Environment（环）", "description": "环境因素排查" }
-              },
-              "required": ["machine", "material", "method", "environment"]
-            },
             "conclusion": {
               "type": "string",
               "title": "调查结论",
+              "description": "全面调查得出的结论",
               "ui": { "multiline": true }
             }
           },
-          "required": ["interviews", "sopReview", "historicalData", "relatedBatches", "batchRecords", "samplesReview", "stabilityStudy", "supplierReview", "methods", "conclusion"]
+          "required": ["factors", "methods", "conclusion"]
         },
         "repeatDeviations": {
           "type": "object",
@@ -321,38 +309,20 @@
       "title": "风险分析",
       "section": "4. 风险分析及影响评估 Risks Analysis and Impact Assessment",
       "properties": {
-        "qualityImpact": {
+        "description": {
           "type": "string",
-          "title": "产品质量影响",
-          "description": "对产品质量的影响",
+          "title": "风险分析叙述",
+          "description": "对产品质量、稳定性、注册、客户、验证有效性的整体影响进行叙述性分析（可多段，用换行分隔）",
           "ui": { "multiline": true }
         },
-        "stabilityImpact": {
+        "summary": {
           "type": "string",
-          "title": "稳定性影响",
-          "description": "对稳定性的影响",
-          "ui": { "multiline": true }
-        },
-        "registrationImpact": {
-          "type": "string",
-          "title": "注册影响",
-          "description": "对注册的影响",
-          "ui": { "multiline": true }
-        },
-        "customerImpact": {
-          "type": "string",
-          "title": "客户影响",
-          "description": "对客户的影响",
-          "ui": { "multiline": true }
-        },
-        "validationImpact": {
-          "type": "string",
-          "title": "验证影响",
-          "description": "对验证的影响",
+          "title": "小结",
+          "description": "风险分析小结（如「小结：1）...；2）...」）",
           "ui": { "multiline": true }
         }
       },
-      "required": ["qualityImpact", "stabilityImpact", "registrationImpact", "customerImpact", "validationImpact"]
+      "required": ["description"]
     },
 
     "capa": {

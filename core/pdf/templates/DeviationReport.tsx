@@ -5,18 +5,17 @@
 
 import React from 'react';
 import { Document, Page, Text, View, StyleSheet, Font } from '@react-pdf/renderer';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import type { DeviationReport } from '../../workflow/types';
+
+// 使用 resolveResourcePath 解析字体路径：
+// dev = cwd/resources/fonts；packaged = process.resourcesPath/resources/fonts（extraResources）
+import { resolveResourcePath } from '../../utils/paths';
 
 // ============================================================================
 // Font Registration
 // ============================================================================
 
-// Use import.meta.url for reliable path resolution in packaged Electron
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const fontPath = path.join(__dirname, '..', '..', '..', '..', 'resources', 'fonts', 'NotoSerifCJKsc-Regular.otf');
+const fontPath = resolveResourcePath('resources', 'fonts', 'NotoSerifCJKsc-Regular.otf');
 
 try {
   Font.register({
@@ -134,9 +133,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 
-  // Signature table
+  // Signature table (factory template: 3 rows x 6 columns)
   signatureTable: {
-    width: '80%',
+    width: '90%',
     border: '1 solid #333',
     marginTop: 20,
     alignSelf: 'center',
@@ -146,18 +145,26 @@ const styles = StyleSheet.create({
     borderBottom: '1 solid #333',
     height: 40,
   },
-  signatureLabel: {
-    width: 100,
-    padding: 8,
+  signatureCell: {
+    padding: 6,
     borderRight: '1 solid #333',
-    fontWeight: 'bold',
-    fontSize: 10,
-    backgroundColor: '#f0f0f0',
+    fontSize: 9,
+    justifyContent: 'center',
   },
-  signatureValue: {
-    flex: 1,
-    padding: 8,
-    fontSize: 10,
+  signatureCellLast: {
+    borderRight: 'none',
+  },
+  signatureCellHeader: {
+    backgroundColor: '#f0f0f0',
+    fontWeight: 'bold',
+    fontSize: 9,
+    textAlign: 'center',
+  },
+  signatureCellRole: {
+    width: 120,
+    backgroundColor: '#f8f8f8',
+    fontWeight: 'bold',
+    fontSize: 9,
   },
 
   // Risk badges
@@ -245,38 +252,54 @@ const CoverPage = ({ report }: { report: DeviationReport }) => (
     </View>
 
     <View style={{ marginBottom: 40 }}>
-      <Field label="偏差编号" value={report.deviationId} />
-      <Field label="部门" value={report.cover.department} />
+      <Field label="偏差编号 Deviation No." value={report.deviationId} />
     </View>
 
-    {/* Signature Table */}
+    {/* Signature Table — Factory template: 3 rows x 6 columns */}
     <View style={styles.signatureTable}>
+      {/* Row 1: Header */}
       <View style={styles.signatureRow}>
-        <View style={styles.signatureLabel}>
-          <Text>起草人</Text>
+        <View style={[styles.signatureCell, styles.signatureCellHeader, { width: 120 }]}>
+          <Text></Text>
         </View>
-        <View style={styles.signatureValue}>
-          <Text>{report.cover.preparedBy.name || '_______________'}</Text>
+        <View style={[styles.signatureCell, styles.signatureCellHeader, { flex: 2 }]}>
+          <Text>部门 Department</Text>
         </View>
-        <View style={[styles.signatureLabel, { borderLeft: '1 solid #333' }]}>
-          <Text>日期</Text>
+        <View style={[styles.signatureCell, styles.signatureCellHeader, { flex: 1 }]}>
+          <Text>姓名 Name</Text>
         </View>
-        <View style={styles.signatureValue}>
-          <Text>{report.cover.preparedBy.signatureDate || '____年____月____日'}</Text>
+        <View style={[styles.signatureCell, styles.signatureCellHeader, styles.signatureCellLast, { flex: 2 }]}>
+          <Text>签字/日期 Signature/Date</Text>
         </View>
       </View>
+      {/* Row 2: Prepared by */}
       <View style={styles.signatureRow}>
-        <View style={styles.signatureLabel}>
-          <Text>审核人</Text>
+        <View style={[styles.signatureCell, styles.signatureCellRole]}>
+          <Text>起草人{'\n'}Prepared by</Text>
         </View>
-        <View style={styles.signatureValue}>
-          <Text>{report.cover.reviewedBy.name || '_______________'}</Text>
+        <View style={[styles.signatureCell, { flex: 2 }]}>
+          <Text>偏差发生部门主管</Text>
         </View>
-        <View style={[styles.signatureLabel, { borderLeft: '1 solid #333' }]}>
-          <Text>日期</Text>
+        <View style={[styles.signatureCell, { flex: 1 }]}>
+          <Text>{report.cover.preparedBy.name || '________'}</Text>
         </View>
-        <View style={styles.signatureValue}>
-          <Text>{report.cover.reviewedBy.signatureDate || '____年____月____日'}</Text>
+        <View style={[styles.signatureCell, styles.signatureCellLast, { flex: 2 }]}>
+          <Text>{report.cover.preparedBy.signatureDate || '____年__月__日'}</Text>
+        </View>
+      </View>
+      {/* Row 3: Reviewed by */}
+      <View style={styles.signatureRow}>
+        <View style={[styles.signatureCell, styles.signatureCellRole]}>
+          <Text>审核人{'\n'}Reviewed by</Text>
+        </View>
+        <View style={[styles.signatureCell, { flex: 2 }]}>
+          <Text>偏差发生部门负责人</Text>
+        </View>
+        <View style={[styles.signatureCell, { flex: 1 }]}>
+          <Text>{report.cover.reviewedBy.name || '________'}</Text>
+        </View>
+        <View style={[styles.signatureCell, styles.signatureCellLast, { flex: 2 }]}>
+          <Text>{report.cover.reviewedBy.signatureDate || '____年__月__日'}</Text>
         </View>
       </View>
     </View>
@@ -302,7 +325,7 @@ const ContentPages = ({ report }: { report: DeviationReport }) => {
   return (
     <Page size="A4" style={styles.page}>
       {/* Header */}
-      <Text style={styles.subtitle}>偏差调查和风险评估报告</Text>
+      <Text style={styles.subtitle}>偏差调查和风险评估报告 Deviation Investigation and Risk Assessment Report</Text>
       <View style={styles.row}>
         <Text style={styles.text}>
           <Text style={styles.bold}>偏差编号：</Text>{report.deviationId}
@@ -320,34 +343,68 @@ const ContentPages = ({ report }: { report: DeviationReport }) => {
       </View>
 
       {/* Section 1: Background */}
-      <Section title="1. 背景">
-        <Field label="产品" value={report.background.product} />
-        <Field label="批次" value={report.background.batch} />
-        <Field label="发生时间" value={report.background.occurrenceTime} />
-        <Field label="发生地点" value={report.background.location} />
+      <Section title="1. 背景 Background">
+        <Field label="涉及产品 Product" value={report.background.product} />
+        <Field label="批次号 Batch No." value={report.background.batch} />
+        <Field label="发生时间 Occurrence Time" value={report.background.occurrenceTime} />
+        <Field label="发生地点 Location" value={report.background.location} />
         <Text style={[styles.text, { marginTop: 8 }]}>{report.background.description}</Text>
       </Section>
 
       {/* Section 2: Investigation */}
-      <Section title="2. 偏差调查">
+      <Section title="2. 偏差调查 Deviation Investigation">
+        {report.investigation.investigationIntro && (
+          <Text style={styles.text}>{report.investigation.investigationIntro}</Text>
+        )}
         {/* 2.1 Root Cause */}
-        <Text style={[styles.bold, { marginBottom: 4 }]}>2.1 根本原因调查</Text>
-        <Field label="人员面谈" value={report.investigation.rootCause.interviews} />
-        <Field label="SOP核查" value={report.investigation.rootCause.sopReview} />
-        <Field label="历史数据" value={report.investigation.rootCause.historicalData} />
-        <Field label="相关批次" value={report.investigation.rootCause.relatedBatches} />
-        <Field label="批生产记录" value={report.investigation.rootCause.batchRecords} />
-        <Field label="留样审查" value={report.investigation.rootCause.samplesReview} />
-        <Field label="稳定性考察" value={report.investigation.rootCause.stabilityStudy} />
-        <Field label="供应商审计" value={report.investigation.rootCause.supplierReview} />
-        <Field label="调查结论" value={report.investigation.rootCause.conclusion} />
+        <Text style={[styles.bold, { marginBottom: 4 }]}>2.1 根本原因调查 Root Cause Investigation</Text>
+        {report.investigation.rootCause.preliminaryAnalysis && (
+          <Field label="初步分析 Preliminary Analysis" value={report.investigation.rootCause.preliminaryAnalysis} />
+        )}
+
+        {/* Investigation scope table (optional) */}
+        {report.investigation.rootCause.investigationScope &&
+          report.investigation.rootCause.investigationScope.length > 0 && (
+            <Table
+              headers={['调查范围 Category', '调查内容 Details', '识别的风险点 Ruled In/Out']}
+              rows={report.investigation.rootCause.investigationScope.map((s) => [
+                s.category,
+                s.details,
+                s.ruledInOut,
+              ])}
+            />
+          )}
+
+        {/* 5M1E + Measurement factors */}
+        <Text style={[styles.bold, { marginTop: 8, marginBottom: 4 }]}>人、机、料、法、环、测全面调查:</Text>
+        <Field label="人员 Man" value={report.investigation.rootCause.factors.man} />
+        <Field label="设备 Machine" value={report.investigation.rootCause.factors.machine} />
+        <Field label="物料 Material" value={report.investigation.rootCause.factors.material} />
+        <Field label="方法 Method" value={report.investigation.rootCause.factors.method} />
+        <Field label="环境 Environment" value={report.investigation.rootCause.factors.environment} />
+        <Field label="测量 Measurement" value={report.investigation.rootCause.factors.measurement} />
+
+        {/* Investigation Methods */}
+        {report.investigation.rootCause.methods && (
+          <View style={{ marginTop: 8, marginBottom: 4 }}>
+            <Text style={styles.bold}>调查分析方法 Methods:</Text>
+            <Text style={styles.text}>
+              事件流程图 Flowchart: {report.investigation.rootCause.methods.flowchart ? '☑' : '☐'}  {' '}
+              鱼骨图 Fishbone: {report.investigation.rootCause.methods.fishbone ? '☑' : '☐'}  {' '}
+              头脑风暴 Brainstorm: {report.investigation.rootCause.methods.brainstorm ? '☑' : '☐'}
+            </Text>
+          </View>
+        )}
+
+        <Field label="调查结论 Conclusion" value={report.investigation.rootCause.conclusion} />
 
         {/* 2.2 Repeat Deviations */}
-        <Text style={[styles.bold, { marginTop: 12, marginBottom: 4 }]}>2.2 重复偏差调查</Text>
+        <Text style={[styles.bold, { marginTop: 12, marginBottom: 4 }]}>2.2 重复偏差调查 Repeat Deviation Investigation</Text>
         {report.investigation.repeatDeviations.records.length > 0 ? (
           <Table
-            headers={['时间', '偏差编号', '描述', '根本原因', 'CAPA']}
+            headers={['序号 No.', '时间 Time', '偏差编号 Dev. No.', '描述 Description', '根本原因 Root Cause', 'CAPA']}
             rows={report.investigation.repeatDeviations.records.map((r) => [
+              r.no,
               r.time,
               r.deviationNo,
               r.description,
@@ -356,57 +413,54 @@ const ContentPages = ({ report }: { report: DeviationReport }) => {
             ])}
           />
         ) : (
-          <Text style={styles.text}>无历史偏差记录</Text>
+          <Text style={styles.text}>无历史偏差记录 No repeat deviations found</Text>
         )}
-        <Field label="分析" value={report.investigation.repeatDeviations.analysis} />
-        <Field label="结论" value={report.investigation.repeatDeviations.conclusion} />
+        <Field label="分析 Analysis" value={report.investigation.repeatDeviations.analysis} />
+        <Field label="结论 Conclusion" value={report.investigation.repeatDeviations.conclusion} />
 
         {/* 2.3 Other Products */}
-        <Text style={[styles.bold, { marginTop: 12, marginBottom: 4 }]}>2.3 其他产品/批次调查</Text>
+        <Text style={[styles.bold, { marginTop: 12, marginBottom: 4 }]}>2.3 其他产品或批次调查 Investigation of Other Product or Batch</Text>
         {report.investigation.otherProducts.records.length > 0 ? (
           <Table
-            headers={['产品名称', '批次号', '当前状态']}
+            headers={['序号 No.', '产品名称 Product', '批次号 Batch No.', '当前状态 Status']}
             rows={report.investigation.otherProducts.records.map((r) => [
+              r.no,
               r.productName,
               r.batchNo,
               r.currentStatus,
             ])}
           />
         ) : (
-          <Text style={styles.text}>无其他受影响产品/批次</Text>
+          <Text style={styles.text}>无其他受影响产品/批次 No other products affected</Text>
         )}
-        <Field label="分析" value={report.investigation.otherProducts.analysis} />
-        <Field label="结论" value={report.investigation.otherProducts.conclusion} />
+        <Field label="影响分析 Analysis" value={report.investigation.otherProducts.analysis} />
+        <Field label="影响结论 Conclusion" value={report.investigation.otherProducts.conclusion} />
       </Section>
 
       {/* Section 3: Conclusion */}
-      <Section title="3. 调查结论">
-        <Field label="根本原因" value={report.conclusion.rootCause} />
+      <Section title="3. 调查结论 Investigation Conclusion">
+        <Field label="根本原因 Root Cause" value={report.conclusion.rootCause} />
         {report.conclusion.mostLikelyCause && (
-          <Field label="最有可能原因" value={report.conclusion.mostLikelyCause} />
+          <Field label="最有可能原因 Most Likely Cause" value={report.conclusion.mostLikelyCause} />
         )}
       </Section>
 
       {/* Section 4: Risk Assessment */}
-      <Section title="4. 风险分析">
-        <Table
-          headers={['评估维度', '影响分析']}
-          rows={[
-            ['产品质量', report.riskAssessment.qualityImpact],
-            ['稳定性', report.riskAssessment.stabilityImpact],
-            ['注册', report.riskAssessment.registrationImpact],
-            ['客户', report.riskAssessment.customerImpact],
-            ['验证', report.riskAssessment.validationImpact],
-          ]}
-        />
+      <Section title="4. 风险分析及影响评估 Risks Analysis and Impact Assessment">
+        {(report.riskAssessment.description || '').split('\n').filter(Boolean).map((paragraph, i) => (
+          <Text key={i} style={styles.text}>{paragraph}</Text>
+        ))}
+        {report.riskAssessment.summary && (
+          <Text style={[styles.text, styles.bold, { marginTop: 4 }]}>{report.riskAssessment.summary}</Text>
+        )}
       </Section>
 
       {/* Section 5: CAPA */}
-      <Section title="5. CAPA">
-        <Text style={[styles.bold, { marginBottom: 4 }]}>5.1 纠正措施</Text>
+      <Section title="5. 纠正预防措施 CAPA">
+        <Text style={[styles.bold, { marginBottom: 4 }]}>5.1 纠正措施 Corrective Actions</Text>
         {report.capa.corrections.length > 0 ? (
           <Table
-            headers={['CAPA编号', '措施内容', '执行人', '预期完成日期', '签名日期']}
+            headers={['CAPA编号 No.', '措施内容 Content', '执行人 Executor', '预期完成 Expected', '签名日期 Signed']}
             rows={report.capa.corrections.map((c) => [
               c.capaNo,
               c.content,
@@ -416,13 +470,13 @@ const ContentPages = ({ report }: { report: DeviationReport }) => {
             ])}
           />
         ) : (
-          <Text style={styles.text}>无纠正措施</Text>
+          <Text style={styles.text}>无纠正措施 No corrective actions</Text>
         )}
 
-        <Text style={[styles.bold, { marginTop: 12, marginBottom: 4 }]}>5.2 预防措施</Text>
+        <Text style={[styles.bold, { marginTop: 12, marginBottom: 4 }]}>5.2 预防措施 Preventive Actions</Text>
         {report.capa.preventions.length > 0 ? (
           <Table
-            headers={['CAPA编号', '措施内容', '执行人', '预期完成日期', '签名日期']}
+            headers={['CAPA编号 No.', '措施内容 Content', '执行人 Executor', '预期完成 Expected', '签名日期 Signed']}
             rows={report.capa.preventions.map((p) => [
               p.capaNo,
               p.content,
@@ -432,27 +486,27 @@ const ContentPages = ({ report }: { report: DeviationReport }) => {
             ])}
           />
         ) : (
-          <Text style={styles.text}>无预防措施</Text>
+          <Text style={styles.text}>无预防措施 No preventive actions</Text>
         )}
       </Section>
 
       {/* Section 6: Attachments */}
-      <Section title="6. 附件清单">
+      <Section title="6. 附件清单 Attachment List">
         {report.attachments.length > 0 ? (
           <Table
-            headers={['编号', '附件名称', '页数']}
+            headers={['编号 No.', '附件名称 Name', '页数 Pages']}
             rows={report.attachments.map((a) => [a.no, a.name, String(a.pages)])}
           />
         ) : (
-          <Text style={styles.text}>无附件</Text>
+          <Text style={styles.text}>无附件 No attachments</Text>
         )}
       </Section>
 
       {/* Section 7: Version History */}
-      <Section title="7. 版本历史">
+      <Section title="7. 版本修订历史 Version Revision History">
         {report.versionHistory.length > 0 ? (
           <Table
-            headers={['版本号', '执行日期', '修订原因', '主要变更']}
+            headers={['版本号 Version', '执行日期 Date', '修订原因 Reason', '主要变更 Changes']}
             rows={report.versionHistory.map((v) => [
               v.version,
               v.executionDate,
@@ -461,7 +515,7 @@ const ContentPages = ({ report }: { report: DeviationReport }) => {
             ])}
           />
         ) : (
-          <Text style={styles.text}>初始版本</Text>
+          <Text style={styles.text}>初始版本 Initial version</Text>
         )}
       </Section>
 

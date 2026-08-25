@@ -8,7 +8,7 @@ import { mockGmpilotAPI } from '../fixtures/mock-gmpilot';
 test.describe('SettingsPage', () => {
   test.beforeEach(async ({ page }) => {
     await mockGmpilotAPI(page);
-    await page.goto('/settings');
+    await page.goto('/#/settings');
   });
 
   test('should display LLM config form', async ({ page }) => {
@@ -26,8 +26,8 @@ test.describe('SettingsPage', () => {
   });
 
   test('should have correct input types', async ({ page }) => {
-    // API Key should be password type
-    const apiKeyInput = page.locator('input[type="password"]');
+    // API Key should be password type (first password input is LLM API Key)
+    const apiKeyInput = page.locator('input[type="password"]').first();
     await expect(apiKeyInput).toBeVisible();
   });
 

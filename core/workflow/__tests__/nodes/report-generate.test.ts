@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+﻿import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { calculateRiskScore, generateReportNode } from '../../nodes/report-generate';
 import type { Finding, ClueAnalysis, Factor5M1E, RegulationMatch } from '../../types';
 
@@ -12,7 +12,7 @@ const mockGenerateReport = vi.fn().mockResolvedValue({
     otherProducts: { records: [], analysis: '', conclusion: '' },
   },
   conclusion: { rootCause: '' },
-  riskAssessment: { qualityImpact: '', stabilityImpact: '', registrationImpact: '', customerImpact: '', validationImpact: '' },
+  riskAssessment: { description: '', summary: '' },
   capa: { corrections: [], preventions: [] },
   attachments: [],
   versionHistory: [],
@@ -39,8 +39,8 @@ describe('calculateRiskScore', () => {
       { finding_type: 'compliance_risk', severity: 'high', title: 'test', description: 'test' },
     ];
     const result = calculateRiskScore(findings);
-    expect(result.score).toBe(40);
-    expect(result.level).toBe('medium');
+    expect(result.score).toBe(60);
+    expect(result.level).toBe('high');
   });
 
   it('should calculate score for single medium finding', () => {
@@ -48,8 +48,8 @@ describe('calculateRiskScore', () => {
       { finding_type: 'compliance_risk', severity: 'medium', title: 'test', description: 'test' },
     ];
     const result = calculateRiskScore(findings);
-    expect(result.score).toBe(20);
-    expect(result.level).toBe('low');
+    expect(result.score).toBe(30);
+    expect(result.level).toBe('medium');
   });
 
   it('should calculate score for single low finding', () => {
@@ -78,7 +78,7 @@ describe('calculateRiskScore', () => {
       description: 'test',
     });
     const result = calculateRiskScore(findings);
-    expect(result.score).toBe(100);
+    expect(result.score).toBe(80);
     expect(result.level).toBe('high');
   });
 
@@ -89,7 +89,7 @@ describe('calculateRiskScore', () => {
       { finding_type: 'compliance_risk', severity: 'low', title: 'l', description: '' },
     ];
     const result = calculateRiskScore(findings);
-    // 40 + 20 + 10 = 70
+    // 60 + (3-1)*5 = 70
     expect(result.score).toBe(70);
     expect(result.level).toBe('high');
   });
@@ -100,7 +100,7 @@ describe('calculateRiskScore', () => {
       { finding_type: 'compliance_risk', severity: 'high', title: '', description: '' },
     ];
     const result = calculateRiskScore(findings);
-    expect(result.score).toBe(80);
+    expect(result.score).toBe(65);
     expect(result.level).toBe('high');
   });
 
@@ -109,8 +109,8 @@ describe('calculateRiskScore', () => {
       { finding_type: 'compliance_risk', severity: 'high', title: '', description: '' },
     ];
     const result = calculateRiskScore(findings);
-    expect(result.score).toBe(40);
-    expect(result.level).toBe('medium');
+    expect(result.score).toBe(60);
+    expect(result.level).toBe('high');
   });
 
   it('should classify score < 30 as low', () => {
@@ -118,8 +118,23 @@ describe('calculateRiskScore', () => {
       { finding_type: 'compliance_risk', severity: 'medium', title: '', description: '' },
     ];
     const result = calculateRiskScore(findings);
-    expect(result.score).toBe(20);
-    expect(result.level).toBe('low');
+    expect(result.score).toBe(30);
+    expect(result.level).toBe('medium');
+  });
+
+  it('should not inflate score from many medium findings (5M1E candidate factors)', () => {
+    // factor-identify 将每个 5M1E 候选因素转为 medium finding（通常 15 条）
+    // 回归测试：候选因素堆叠不应把分数推满到 100/high
+    const findings: Finding[] = Array(15).fill({
+      finding_type: 'compliance_risk',
+      severity: 'medium',
+      title: '',
+      description: '',
+    });
+    const result = calculateRiskScore(findings);
+    // 30 + 数量修正封顶 20 = 50
+    expect(result.score).toBe(50);
+    expect(result.level).toBe('medium');
   });
 
   it('should default to weight 10 for unknown severity', () => {
@@ -149,6 +164,7 @@ const mockFactors: Factor5M1E = {
   machine: [],
   material: [],
   method: ['SOP未更新'],
+  measurement: [],
   environment: [],
 };
 
@@ -170,7 +186,7 @@ const llmReportResponse = {
     otherProducts: { records: [], analysis: '无影响', conclusion: '无' },
   },
   conclusion: { rootCause: '根本原因是培训不足' },
-  riskAssessment: { qualityImpact: '中等', stabilityImpact: '无', registrationImpact: '无', customerImpact: '低', validationImpact: '无' },
+  riskAssessment: { description: '中等', summary: '小结' },
   capa: { corrections: [], preventions: [] },
   attachments: [],
   versionHistory: [],
@@ -207,8 +223,8 @@ describe('generateReportNode', () => {
       mockFindings,
     );
 
-    // medium(20) + low(10) = 30
-    expect(result.riskScore).toBe(30);
+    // medium(30) + 数量修正5 = 35
+    expect(result.riskScore).toBe(35);
     expect(result.riskLevel).toBe('medium');
   });
 
@@ -226,7 +242,7 @@ describe('generateReportNode', () => {
     expect(result.report_metadata.task_type).toBe('deviation_analysis');
     expect(result.report_metadata.report_source).toBe('gmpilot_generate');
     expect(result.report_metadata.deviation_id).toBe('DEV-TEST-003');
-    expect(result.report_metadata.risk_score).toBe(30);
+    expect(result.report_metadata.risk_score).toBe(35);
     expect(result.report_metadata.risk_level).toBe('medium');
   });
 
@@ -295,8 +311,8 @@ describe('generateReportNode', () => {
       highRiskFindings,
     );
 
-    // high(40) + high(40) = 80
-    expect(result.riskScore).toBe(80);
+    // high(60) + 数量修正5 = 65
+    expect(result.riskScore).toBe(65);
     expect(result.riskLevel).toBe('high');
   });
 
@@ -320,5 +336,34 @@ describe('generateReportNode', () => {
     await expect(
       generateReportNode('DEV-ERR-001', mockAnalysis, mockFactors, mockRegulations, mockFindings),
     ).rejects.toThrow('LLM API error');
+  });
+
+  it('should throw when LLM returns null/non-object', async () => {
+    mockGenerateReport.mockResolvedValueOnce(null);
+
+    await expect(
+      generateReportNode('DEV-NULL-001', mockAnalysis, mockFactors, mockRegulations, mockFindings),
+    ).rejects.toThrow('Invalid report output');
+  });
+
+  it('should warn but proceed when report is missing major sections', async () => {
+    mockGenerateReport.mockResolvedValueOnce({
+      conclusion: { rootCause: 'test' },
+      riskAssessment: {},
+      capa: { corrections: [], preventions: [] },
+      attachments: [],
+      versionHistory: [],
+    });
+
+    const result = await generateReportNode(
+      'DEV-MISSING-001',
+      mockAnalysis,
+      mockFactors,
+      mockRegulations,
+      mockFindings,
+    );
+
+    expect(result.deviationId).toBe('DEV-MISSING-001');
+    expect(result.report_type).toBe('full_report');
   });
 });

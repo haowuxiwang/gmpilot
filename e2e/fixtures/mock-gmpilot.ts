@@ -174,15 +174,7 @@ export async function mockGmpilotAPI(page: Page) {
         exportPdf: async () => ({ success: true, filePath: '/tmp/report.pdf' }),
       },
       auditbee: {
-        checkHealth: async () => ({ available: false }),
-        auditReport: async () => ({
-          success: false,
-          error: 'AuditBee 未启动',
-        }),
-        getFindings: async () => ({ success: true, findings: [] }),
-        getTaskStatus: async () => ({ success: true, task: null }),
-        onProgress: () => {},
-        offProgress: () => {},
+        getAuditHistory: async () => [],
       },
     };
   });

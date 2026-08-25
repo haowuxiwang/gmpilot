@@ -6,6 +6,9 @@
 import { Component, type ErrorInfo, type ReactNode } from 'react';
 import { AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { createLogger } from '@core/utils/logger';
+
+const log = createLogger('ErrorBoundary');
 
 interface ErrorBoundaryProps {
   children: ReactNode;
@@ -28,7 +31,11 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('ErrorBoundary caught:', error, errorInfo);
+    log.error('React rendering error caught', {
+      message: error.message,
+      stack: error.stack,
+      componentStack: errorInfo.componentStack,
+    });
   }
 
   handleReset = () => {
@@ -43,7 +50,7 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
 
       return (
         <div className="flex flex-col items-center justify-center h-full min-h-[400px] text-center px-8">
-          <div className="w-14 h-14 rounded-2xl bg-red-50 border border-red-100 flex items-center justify-center mb-4">
+          <div className="w-14 h-14 rounded-lg bg-red-50 border border-red-100 flex items-center justify-center mb-4">
             <AlertTriangle className="w-6 h-6 text-red-500" strokeWidth={1.5} />
           </div>
           <h2 className="text-lg font-semibold text-stone-900 font-display mb-2">

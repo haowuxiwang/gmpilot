@@ -3,7 +3,7 @@
  * DO NOT EDIT MANUALLY — run `npm run codegen` to regenerate.
  *
  * Source: core/schema/deviation-report-schema.json
- * Generated: 2026-06-16T02:08:27.557Z
+ * Generated: 2026-08-07T02:15:42.142Z
  */
 
 // Import types that are not generated from schema
@@ -20,6 +20,8 @@ export type { ReportType, TaskType, SeverityLevel, Factor5M1E, RegulationMatch, 
  * 起草人
  */
 export interface PreparedBy {
+  /** 部门 — 起草人所在部门 */
+  department: string;
   /** 姓名 */
   name: string;
   /** 签字日期 */
@@ -29,6 +31,8 @@ export interface PreparedBy {
  * 审核人
  */
 export interface ReviewedBy {
+  /** 部门 — 审核人所在部门 */
+  department: string;
   /** 姓名 */
   name: string;
   /** 签字日期 */
@@ -38,6 +42,8 @@ export interface ReviewedBy {
  * 重复偏差记录
  */
 export interface RepeatDeviationRecord {
+  /** 序号 */
+  no: string;
   /** 发生时间 */
   time: string;
   /** 偏差编号 */
@@ -53,12 +59,25 @@ export interface RepeatDeviationRecord {
  * 其他产品/批次记录
  */
 export interface OtherProductRecord {
+  /** 序号 */
+  no: string;
   /** 产品名称 */
   productName: string;
   /** 批次号 */
   batchNo: string;
   /** 当前状态 */
   currentStatus: string;
+}
+/**
+ * 调查范围记录
+ */
+export interface InvestigationScopeRecord {
+  /** 调查范围 */
+  category: string;
+  /** 调查内容 */
+  details: string;
+  /** 识别的风险点 */
+  ruledInOut: string;
 }
 /**
  * CAPA记录
@@ -83,8 +102,8 @@ export interface Attachment {
   no: string;
   /** 附件名称 */
   name: string;
-  /** 页数 */
-  pages: number;
+  /** 总页数 — 附件总页数，如「15页」 */
+  pages: string;
 }
 /**
  * 版本历史
@@ -103,9 +122,9 @@ export interface VersionHistory {
  * 封面
  */
 export interface Cover {
-  /** 报告标题 — [fixed] */
+  /** 报告标题 — 动态标题，格式：<偏差对象>偏差调查和风险评估报告，如「RT探头（编号：NBQ6）偏差调查和风险评估报告」 */
   title: string;
-  /** 报告标题(英文) — [fixed] */
+  /** 报告标题(英文) — 动态英文标题，格式：Deviation Investigation and Risk Assessment Report for <Object> */
   titleEn: string;
   /** 部门 — 偏差发生部门 */
   department: string;
@@ -133,27 +152,25 @@ export interface Background {
  * 偏差调查
  */
 export interface Investigation {
+  /** 偏差调查引导句 — 偏差调查过程引言（如「发生偏差后，验证部验证人员XX立即上报验证主管并通知分管QA，QA组织和协调偏差涉及相关部门对偏差进行根源调查，调查过程如下：」） */
+  investigationIntro?: string;
   /** 根本原因调查 */
   rootCause: {
-    interviews: string;
-    sopReview: string;
-    historicalData: string;
-    relatedBatches: string;
-    batchRecords: string;
-    samplesReview: string;
-    stabilityStudy: string;
-    supplierReview: string;
+    preliminaryAnalysis?: string;
+    investigationScope?: InvestigationScopeRecord[];
+    factors: {
+      man: string;
+      machine: string;
+      material: string;
+      method: string;
+      environment: string;
+      measurement: string;
+    };
     methods: {
       flowchart: boolean;
       fishbone: boolean;
       brainstorm: boolean;
       photos: string[];
-    };
-    humanError?: {
-      machine: string;
-      material: string;
-      method: string;
-      environment: string;
     };
     conclusion: string;
   };
@@ -183,16 +200,10 @@ export interface Conclusion {
  * 风险分析
  */
 export interface RiskAssessment {
-  /** 产品质量影响 — 对产品质量的影响 */
-  qualityImpact: string;
-  /** 稳定性影响 — 对稳定性的影响 */
-  stabilityImpact: string;
-  /** 注册影响 — 对注册的影响 */
-  registrationImpact: string;
-  /** 客户影响 — 对客户的影响 */
-  customerImpact: string;
-  /** 验证影响 — 对验证的影响 */
-  validationImpact: string;
+  /** 风险分析叙述 — 对产品质量、稳定性、注册、客户、验证有效性的整体影响进行叙述性分析（可多段，用换行分隔） */
+  description: string;
+  /** 小结 — 风险分析小结（如「小结：1）...；2）...」） */
+  summary?: string;
 }
 /**
  * 纠正预防措施

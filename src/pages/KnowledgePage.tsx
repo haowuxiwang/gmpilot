@@ -10,8 +10,13 @@ import { knowledgeApi, type KnowledgeDoc } from '@/services/api';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Skeleton } from '@/components/ui/skeleton';
+import { ErrorState } from '@/components/ui/error-state';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/providers/ToastProvider';
+import { useDebounce } from '@/hooks/useDebounce';
+import { createLogger } from '@core/utils/logger';
+
+const log = createLogger('KnowledgePage');
 
 interface SearchResult {
   content: string;
@@ -26,51 +31,75 @@ export function KnowledgePage() {
   const [docs, setDocs] = useState<KnowledgeDoc[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
+  const debouncedSearch = useDebounce(search, 300);
   const [searchMode, setSearchMode] = useState<'filename' | 'semantic'>('filename');
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [searching, setSearching] = useState(false);
   const [stats, setStats] = useState<{ docCount: number; chunkCount: number } | null>(null);
+  const [categoryFilter, setCategoryFilter] = useState<string>('all');
+  const [uploading, setUploading] = useState(false);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
-  useEffect(() => {
-    knowledgeApi.listDocuments().then(setDocs).catch(console.error).finally(() => setLoading(false));
-    // 加载统计信息
-    if (window.gmpilot) {
-      window.gmpilot.knowledge.stats().then(setStats).catch(console.error);
-    }
+  const loadDocuments = useCallback(() => {
+    setLoading(true);
+    setLoadError(null);
+    knowledgeApi.listDocuments()
+      .then(setDocs)
+      .catch((err) => {
+        log.error('Failed to load documents', { error: String(err) });
+        setLoadError(err instanceof Error ? err.message : '文档列表加载失败');
+      })
+      .finally(() => setLoading(false));
   }, []);
 
-  const handleUpload = async () => {
+  useEffect(() => {
+    loadDocuments();
+    // 加载统计信息
+    if (window.gmpilot) {
+      window.gmpilot.knowledge.stats().then(setStats).catch((err) => log.error('Failed to load stats', { error: String(err) }));
+    }
+  }, [loadDocuments]);
+
+  const handleUpload = async (category?: string) => {
     if (!window.gmpilot) {
       warning('请在 Electron 环境中运行');
       return;
     }
+    setUploading(true);
     try {
-      const result = await window.gmpilot.knowledge.pickAndAdd();
+      const uploadCategory = category || (categoryFilter !== 'all' ? categoryFilter : 'regulation');
+      const result = await window.gmpilot.knowledge.pickAndAdd(uploadCategory);
       if (result.success) {
         success(`已上传：${result.filename}`);
-        knowledgeApi.listDocuments().then(setDocs).catch(console.error);
+        knowledgeApi.listDocuments().then(setDocs).catch((err) => log.error('Failed to reload documents', { error: String(err) }));
         // 刷新统计信息
-        window.gmpilot.knowledge.stats().then(setStats).catch(console.error);
+        window.gmpilot.knowledge.stats().then(setStats).catch((err) => log.error('Failed to reload stats', { error: String(err) }));
       } else if (result.error) {
         showError(result.error);
       }
     } catch (err) {
       showError(`上传失败：${err instanceof Error ? err.message : String(err)}`);
+    } finally {
+      setUploading(false);
     }
   };
 
   const handleDelete = async (docId: number) => {
     if (!window.confirm('确认删除此文档？')) return;
+    setDeletingId(docId);
     try {
       await knowledgeApi.deleteDocument(docId);
       setDocs((prev) => prev.filter((d) => d.id !== docId));
       success('已删除');
       // 刷新统计信息
       if (window.gmpilot) {
-        window.gmpilot.knowledge.stats().then(setStats).catch(console.error);
+        window.gmpilot.knowledge.stats().then(setStats).catch((err) => log.error('Failed to refresh stats', { error: String(err) }));
       }
     } catch (err) {
       showError(`删除失败：${err instanceof Error ? err.message : String(err)}`);
+    } finally {
+      setDeletingId(null);
     }
   };
 
@@ -97,9 +126,29 @@ export function KnowledgePage() {
   };
 
   const filteredDocs = useMemo(() =>
-    docs.filter((doc) =>
-      doc.filename.toLowerCase().includes(search.toLowerCase())
-    ), [docs, search]);
+    docs.filter((doc) => {
+      const matchesSearch = doc.filename.toLowerCase().includes(debouncedSearch.toLowerCase());
+      const matchesCategory = categoryFilter === 'all' || doc.category === categoryFilter;
+      return matchesSearch && matchesCategory;
+    }), [docs, debouncedSearch, categoryFilter]);
+
+  const CATEGORY_LABELS: Record<string, string> = {
+    all: '全部',
+    sop: 'SOP',
+    deviation: '历史偏差',
+    regulation: '法规',
+    'GMP第一部分': 'GMP第一部分',
+    'GMP第二部分': 'GMP第二部分',
+    'GMP第三部分': 'GMP第三部分',
+    'GMP附件': 'GMP附件',
+    'EU法规': 'EU法规',
+  };
+
+  const SOURCE_LABELS: Record<string, { label: string; variant: 'teal' | 'stone' | 'amber' }> = {
+    builtin: { label: '内置', variant: 'teal' },
+    user: { label: '用户', variant: 'stone' },
+    gmp_regulation: { label: 'GMP法规', variant: 'amber' },
+  };
 
   return (
     <div className="flex flex-col h-full bg-surface">
@@ -121,16 +170,54 @@ export function KnowledgePage() {
               <span>{stats.chunkCount} 分块</span>
             </div>
           )}
-          <Button onClick={handleUpload}>
-            <Upload className="w-4 h-4" strokeWidth={2} />
-            上传文档
-          </Button>
+          <div className="flex items-center gap-1">
+            <Button variant="secondary" size="sm" onClick={() => handleUpload('sop')} disabled={uploading}>
+              {uploading ? (
+                <div className="w-3 h-3 border-2 border-current border-t-transparent rounded-full animate-spin" />
+              ) : null}
+              上传SOP
+            </Button>
+            <Button variant="secondary" size="sm" onClick={() => handleUpload('deviation')} disabled={uploading}>
+              {uploading ? (
+                <div className="w-3 h-3 border-2 border-current border-t-transparent rounded-full animate-spin" />
+              ) : null}
+              上传偏差
+            </Button>
+            <Button onClick={() => handleUpload('regulation')} disabled={uploading}>
+              {uploading ? (
+                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              ) : (
+                <Upload className="w-4 h-4" strokeWidth={2} />
+              )}
+              上传法规
+            </Button>
+          </div>
         </div>
       </div>
 
-      {/* Search */}
+      {/* Search + Category Filter */}
       <div className="bg-white px-6 py-4 border-b border-stone-100">
         <div className="flex items-center gap-3">
+          {/* 分类过滤 */}
+          <div className="flex items-center bg-stone-100 rounded-lg p-0.5 flex-wrap gap-0.5">
+            {Object.entries(CATEGORY_LABELS).map(([key, label]) => {
+              // 动态分类：只显示实际存在的分类
+              if (key !== 'all' && !docs.some(d => d.category === key)) return null;
+              return (
+                <button
+                  key={key}
+                  onClick={() => setCategoryFilter(key)}
+                  className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+                    categoryFilter === key
+                      ? 'bg-white text-stone-800 shadow-sm'
+                      : 'text-stone-500 hover:text-stone-700'
+                  }`}
+                >
+                  {label}
+                </button>
+              );
+            })}
+          </div>
           {/* 搜索模式切换 */}
           <div className="flex items-center bg-stone-100 rounded-lg p-0.5">
             <button
@@ -192,7 +279,7 @@ export function KnowledgePage() {
       <div className="flex-1 overflow-y-auto p-6">
         {/* 语义搜索结果 */}
         {searchMode === 'semantic' && searchResults.length > 0 && (
-          <div className="bg-white rounded-2xl border border-stone-100 overflow-hidden mb-6">
+          <div className="bg-white rounded-lg border border-stone-100 overflow-hidden mb-6">
             <div className="px-5 py-3 bg-teal-50 border-b border-teal-100">
               <h3 className="text-sm font-semibold text-teal-800">搜索结果</h3>
               <p className="text-xs text-teal-600 mt-0.5">找到 {searchResults.length} 个相关片段</p>
@@ -217,7 +304,7 @@ export function KnowledgePage() {
 
         {/* 语义搜索无结果 */}
         {searchMode === 'semantic' && search && !searching && searchResults.length === 0 && (
-          <div className="bg-white rounded-2xl border border-stone-100 overflow-hidden mb-6">
+          <div className="bg-white rounded-lg border border-stone-100 overflow-hidden mb-6">
             <div className="flex flex-col items-center justify-center h-32 text-stone-400">
               <Sparkles className="w-8 h-8 mb-2 stroke-1" />
               <p className="text-sm font-medium">未找到相关内容</p>
@@ -227,7 +314,7 @@ export function KnowledgePage() {
         )}
 
         {/* 文档列表 */}
-        <div className="bg-white rounded-2xl border border-stone-100 overflow-hidden">
+        <div className="bg-white rounded-lg border border-stone-100 overflow-hidden">
           {loading ? (
             <div className="p-6 space-y-4">
               {Array.from({ length: 4 }).map((_, i) => (
@@ -238,6 +325,8 @@ export function KnowledgePage() {
                 </div>
               ))}
             </div>
+          ) : loadError ? (
+            <ErrorState title="文档列表加载失败" description={loadError} onRetry={loadDocuments} />
           ) : filteredDocs.length === 0 ? (
             <div className="flex flex-col items-center justify-center h-48 text-stone-400">
               <BookOpen className="w-10 h-10 mb-3 stroke-1" />
@@ -247,6 +336,15 @@ export function KnowledgePage() {
               <p className="text-xs mt-1">
                 {search ? '尝试其他搜索词' : '上传法规文档以构建知识库'}
               </p>
+              {!search && (
+                <button
+                  onClick={() => handleUpload('regulation')}
+                  disabled={uploading}
+                  className="mt-3 px-4 py-1.5 text-[12px] font-medium text-teal-600 bg-teal-50 hover:bg-teal-100 rounded-lg transition-colors border border-teal-100"
+                >
+                  上传法规文档
+                </button>
+              )}
             </div>
           ) : (
             <table className="w-full">
@@ -254,6 +352,7 @@ export function KnowledgePage() {
                 <tr className="border-b border-stone-100">
                   <th className="text-left px-5 py-3 text-xs font-semibold text-stone-500 uppercase tracking-wider bg-stone-50/80">文件名</th>
                   <th className="text-left px-5 py-3 text-xs font-semibold text-stone-500 uppercase tracking-wider bg-stone-50/80">来源</th>
+                  <th className="text-left px-5 py-3 text-xs font-semibold text-stone-500 uppercase tracking-wider bg-stone-50/80">分类</th>
                   <th className="text-left px-5 py-3 text-xs font-semibold text-stone-500 uppercase tracking-wider bg-stone-50/80">分块数</th>
                   <th className="text-right px-5 py-3 text-xs font-semibold text-stone-500 uppercase tracking-wider bg-stone-50/80">操作</th>
                 </tr>
@@ -270,8 +369,13 @@ export function KnowledgePage() {
                       </div>
                     </td>
                     <td className="px-5 py-4">
-                      <Badge variant={doc.source === 'builtin' ? 'teal' : 'stone'}>
-                        {doc.source === 'builtin' ? '内置' : '用户'}
+                      <Badge variant={(SOURCE_LABELS[doc.source] || SOURCE_LABELS.user).variant}>
+                        {(SOURCE_LABELS[doc.source] || SOURCE_LABELS.user).label}
+                      </Badge>
+                    </td>
+                    <td className="px-5 py-4">
+                      <Badge variant={doc.category === 'sop' ? 'teal' : doc.category === 'deviation' ? 'amber' : 'stone'}>
+                        {CATEGORY_LABELS[doc.category] || doc.category}
                       </Badge>
                     </td>
                     <td className="px-5 py-4 text-sm text-stone-600 font-mono">{doc.chunk_count}</td>
@@ -282,9 +386,14 @@ export function KnowledgePage() {
                             variant="ghost"
                             size="icon"
                             onClick={() => handleDelete(doc.id)}
+                            disabled={deletingId === doc.id}
                             title="删除"
                           >
-                            <Trash2 className="w-4 h-4" strokeWidth={1.5} />
+                            {deletingId === doc.id ? (
+                              <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                            ) : (
+                              <Trash2 className="w-4 h-4" strokeWidth={1.5} />
+                            )}
                           </Button>
                         )}
                       </div>

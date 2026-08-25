@@ -20,7 +20,6 @@ interface ChatStreamProps {
   streamingText?: string;
   currentStep?: WorkflowStepId;
   progress?: WorkflowProgressType | null;
-  onQuickAction?: (text: string) => void;
 }
 
 export function ChatStream({
@@ -29,7 +28,6 @@ export function ChatStream({
   streamingText,
   currentStep,
   progress,
-  onQuickAction,
 }: ChatStreamProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -53,10 +51,10 @@ export function ChatStream({
 
   return (
     <div ref={scrollRef} className="flex-1 overflow-y-auto">
-      {/* Empty state */}
-      {showEmpty && (
-        <EmptyState onQuickAction={onQuickAction || (() => {})} />
-      )}
+      {/* Empty state — fade out when messages appear */}
+      <div className={`transition-opacity duration-300 ${showEmpty ? 'opacity-100' : 'opacity-0 pointer-events-none h-0 overflow-hidden'}`}>
+        <EmptyState />
+      </div>
 
       {/* Workflow progress bar */}
       {showProgress && (
@@ -104,21 +102,26 @@ export function ChatStream({
 
       {/* Streaming indicator */}
       {isStreaming && messages.length > 0 && !showStreamingReport && (
-        <div className="px-6 pb-6 max-w-3xl mx-auto">
+        <div className="px-6 pb-6 max-w-3xl mx-auto animate-fade-in">
           <div className="flex gap-3 justify-start">
-            <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center flex-shrink-0 mt-0.5 animate-glow">
               <div className="w-4 h-4 border-2 border-teal-200 border-t-teal-600 rounded-full animate-spin" />
             </div>
             <div className="flex flex-col items-start">
-              <div className="bg-white border border-stone-200 rounded-2xl rounded-tl-md px-4 py-3 max-w-[85%]">
+              <div className="bg-white border border-stone-200 rounded-lg rounded-tl-sm px-4 py-3 max-w-[85%] shadow-xs">
                 {streamingText ? (
                   <span className="text-sm text-stone-700 whitespace-pre-wrap">
                     {streamingText}
-                    <span className="inline-block w-0.5 h-4 bg-teal-500 ml-0.5 animate-pulse align-middle" />
+                    <span className="inline-block w-0.5 h-4 bg-teal-500 ml-0.5 animate-pulse align-middle rounded-full" />
                   </span>
                 ) : (
-                  <span className="text-sm text-stone-400">
-                    正在分析...
+                  <span className="flex items-center gap-1.5 text-sm text-stone-400">
+                    <span>正在分析</span>
+                    <span className="flex gap-0.5">
+                      <span className="w-1 h-1 rounded-full bg-teal-500" style={{ animation: 'typingDot 1.2s ease-in-out infinite', animationDelay: '0ms' }} />
+                      <span className="w-1 h-1 rounded-full bg-teal-500" style={{ animation: 'typingDot 1.2s ease-in-out infinite', animationDelay: '150ms' }} />
+                      <span className="w-1 h-1 rounded-full bg-teal-500" style={{ animation: 'typingDot 1.2s ease-in-out infinite', animationDelay: '300ms' }} />
+                    </span>
                   </span>
                 )}
               </div>

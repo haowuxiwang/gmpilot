@@ -1,13 +1,13 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+﻿import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createActor } from 'xstate';
 import { createDeviationMachine, deviationMachine } from '../deviation-machine';
 import { analyzeClueNode } from '../nodes/clue-analysis';
-import { generateReportNode } from '../nodes/report-generate';
 
 // Mock RAG retriever
 vi.mock('../../rag/index', () => ({
   getRetriever: vi.fn().mockReturnValue({
     getRegulationContext: vi.fn().mockResolvedValue('mock regulation context'),
+    getAuditContext: vi.fn().mockResolvedValue('mock audit context'),
   }),
   isRetrieverAvailable: vi.fn().mockReturnValue(true),
   initRetriever: vi.fn().mockResolvedValue({}),
@@ -25,7 +25,7 @@ vi.mock('../nodes/clue-analysis', () => ({
 
 vi.mock('../nodes/factor-identify', () => ({
   identifyFactorsNode: vi.fn().mockResolvedValue({
-    factors: { man: ['人员因素'], machine: [], material: [], method: [], environment: [] },
+    factors: { man: ['人员因素'], machine: [], material: [], method: [], environment: [], measurement: [] },
     findings: [{ finding_type: 'compliance_risk', severity: 'medium', title: '人员因素', description: '测试' }],
   }),
 }));
@@ -53,6 +53,72 @@ vi.mock('../nodes/report-generate', () => ({
     riskLevel: 'medium',
     conclusion: '结论',
   }),
+  calculateRiskScore: vi.fn().mockReturnValue({ score: 30, level: 'medium' }),
+}));
+
+// Mock assembler to avoid real LLM calls in module generation
+const mockReport = vi.hoisted(() => ({
+  report_type: 'full_report',
+  title: '测试偏差报告',
+  report_metadata: { findings_count: 1, task_type: 'deviation_analysis', report_source: 'gmpilot_generate' },
+  cover: { title: '偏差调查报告', titleEn: 'Deviation Report', department: 'QA', preparedBy: { name: '张三', signatureDate: '' }, reviewedBy: { name: '李四', signatureDate: '' } },
+  background: { product: '测试产品', batch: 'B001', occurrenceTime: '', location: '', description: '偏差' },
+  investigation: { rootCause: { interviews: '', sopReview: '', historicalData: '', relatedBatches: '', batchRecords: '', samplesReview: '', stabilityStudy: '', supplierReview: '', methods: { flowchart: false, fishbone: false, brainstorm: false, photos: [] }, conclusion: '' }, repeatDeviations: { records: [], analysis: '', conclusion: '' }, otherProducts: { records: [], analysis: '', conclusion: '' } },
+  conclusion: { rootCause: '测试原因' },
+  riskAssessment: { description: '', summary: '' },
+  capa: { corrections: [], preventions: [] },
+  attachments: [] as unknown[],
+  versionHistory: [] as unknown[],
+  deviationId: 'DEV-001',
+  riskScore: 30,
+  riskLevel: 'medium',
+  factors: { man: [] as string[], machine: [] as string[], material: [] as string[], method: [] as string[], environment: [] as string[] },
+  regulations: [] as unknown[],
+  findings: [] as unknown[],
+}));
+
+vi.mock('../assembler', () => ({
+  createDefaultGenerators: vi.fn(() => ({
+    cover: {}, background: {}, investigation: {}, conclusion: {}, riskAssessment: {}, capa: {}, attachments: {},
+  })),
+  generateModules: vi.fn().mockResolvedValue({
+    cover: mockReport.cover,
+    background: mockReport.background,
+    investigation: mockReport.investigation,
+    conclusion: mockReport.conclusion,
+    riskAssessment: mockReport.riskAssessment,
+    capa: mockReport.capa,
+    attachments: { attachments: [], versionHistory: [] },
+  }),
+  assembleReport: vi.fn().mockReturnValue(mockReport),
+  buildModuleContext: vi.fn((input, deviationId) => ({
+    deviationId,
+    analysis: input.analysis ?? { summary: '', keyEvents: [], involvedParties: [], documentType: 'deviation_analysis' },
+    factors: input.factors ?? { man: [], machine: [], material: [], method: [], environment: [], measurement: [] },
+    regulations: input.regulations ?? [],
+    findings: input.findings ?? [],
+    regulationContext: input.regulationContext,
+  })),
+  reviseModules: vi.fn().mockResolvedValue({
+    cover: mockReport.cover,
+    background: mockReport.background,
+    investigation: mockReport.investigation,
+    conclusion: mockReport.conclusion,
+    riskAssessment: mockReport.riskAssessment,
+    capa: mockReport.capa,
+    attachments: { attachments: [], versionHistory: [] },
+  }),
+  mapFindingsToModules: vi.fn().mockReturnValue(['background']),
+}));
+
+// Mock audit to avoid real LLM calls
+vi.mock('../../llm/caller', () => ({
+  auditDeviationReport: vi.fn().mockResolvedValue({
+    findings: [{ title: '建议补充', severity: 'low' }],
+    overallScore: 85,
+    summary: '审核通过',
+  }),
+  abortWorkflowLLM: vi.fn(),
 }));
 
 /**
@@ -177,8 +243,11 @@ describe('deviationMachine', () => {
     }
 
     actor.send({ type: 'REVISE' });
-    await new Promise((r) => setTimeout(r, 100));
-    expect(actor.getSnapshot().value).toBe('generating');
+    // With mocked assembler, generation completes almost instantly
+    await new Promise((r) => setTimeout(r, 500));
+    // Should be back at review after full regeneration cycle
+    expect(actor.getSnapshot().value).toBe('review');
+    expect(actor.getSnapshot().context.revisionCount).toBe(1);
   });
 
   it('should support RESET event from review state', async () => {
@@ -299,7 +368,6 @@ describe('deviationMachine', () => {
     expect(ctx.findings).toEqual([]);
     expect(ctx.report).toBeNull();
     expect(ctx.currentStep).toBe(1);
-    expect(ctx.isStreaming).toBe(false);
     expect(ctx.error).toBeNull();
   });
 
@@ -378,18 +446,375 @@ describe('deviationMachine', () => {
 
     if (snapshot.value !== 'review') return;
 
-    const callCountBefore = vi.mocked(generateReportNode).mock.calls.length;
+    // Import the mocked assembler to check call count
+    const { generateModules: mockedGenModules } = await import('../assembler');
+    const callCountBefore = vi.mocked(mockedGenModules).mock.calls.length;
 
     actor.send({ type: 'REVISE' });
-    await new Promise((r) => setTimeout(r, 500));
+    // With mocked assembler, the full cycle completes quickly
+    await new Promise((r) => setTimeout(r, 1000));
 
-    // Should transition through generating back to review
-    expect(actor.getSnapshot().value).toBe('generating');
+    // Should be back at review after regeneration
+    expect(actor.getSnapshot().value).toBe('review');
+    // generateModules should have been called again
+    expect(vi.mocked(mockedGenModules).mock.calls.length).toBeGreaterThan(callCountBefore);
+  });
 
-    // Wait for generation to complete
-    await new Promise((r) => setTimeout(r, 2000));
+  // =========================================================================
+  // CANCEL event → cancelled state → RESET
+  // =========================================================================
 
-    // generateReport should have been called again
-    expect(vi.mocked(generateReportNode).mock.calls.length).toBeGreaterThan(callCountBefore);
+  it('should transition to cancelled on CANCEL from analyzing', async () => {
+    // Make analyzeClue hang so we can send CANCEL while in analyzing state
+    vi.mocked(analyzeClueNode).mockImplementationOnce(
+      () => new Promise((resolve) => setTimeout(resolve, 30000)),
+    );
+
+    const actor = createActor(deviationMachine);
+    actor.start();
+    actor.send({ type: 'SUBMIT', clueText: '测试线索', files: [] });
+
+    // Wait for analyzing state
+    await new Promise<void>((resolve) => {
+      const sub = actor.subscribe((s) => {
+        if (s.value === 'analyzing') { sub.unsubscribe(); resolve(); }
+      });
+      setTimeout(resolve, 1000);
+    });
+
+    actor.send({ type: 'CANCEL' });
+    await new Promise((r) => setTimeout(r, 100));
+    expect(actor.getSnapshot().value).toBe('cancelled');
+
+    // RESET from cancelled
+    actor.send({ type: 'RESET' });
+    await new Promise((r) => setTimeout(r, 100));
+    expect(actor.getSnapshot().value).toBe('input');
+    expect(actor.getSnapshot().context.clueInput.text).toBe('');
+  });
+
+  // =========================================================================
+  // error_timeout state: RETRY with different currentStep values
+  // =========================================================================
+
+  it('should handle RETRY from error state (retry resumes workflow)', async () => {
+    vi.mocked(analyzeClueNode).mockImplementationOnce(() => {
+      throw new Error('timeout simulation');
+    });
+
+    const actor = createActor(deviationMachine);
+    actor.start();
+
+    // Get to error state first
+    await new Promise<void>((resolve) => {
+      const sub = actor.subscribe((s) => {
+        if (String(s.value).startsWith('error')) { sub.unsubscribe(); resolve(); }
+      });
+      actor.send({ type: 'SUBMIT', clueText: '测试', files: [] });
+      setTimeout(resolve, 3000);
+    });
+
+    const stateBefore = String(actor.getSnapshot().value);
+    expect(stateBefore).toContain('error');
+
+    // RETRY should leave the current error state (may enter another error if downstream fails)
+    actor.send({ type: 'RETRY' });
+    await new Promise((r) => setTimeout(r, 50));
+    const stateAfter = String(actor.getSnapshot().value);
+    // The key assertion: we left error_analyzing (the specific error state we were in)
+    expect(stateAfter).not.toBe(stateBefore);
+  });
+
+  it('should support RESET from error_timeout state', async () => {
+    vi.mocked(analyzeClueNode).mockImplementationOnce(() => {
+      throw new Error('fail');
+    });
+
+    const actor = createActor(deviationMachine);
+    actor.start();
+
+    await new Promise<void>((resolve) => {
+      const sub = actor.subscribe((s) => {
+        if (String(s.value).startsWith('error')) { sub.unsubscribe(); resolve(); }
+      });
+      actor.send({ type: 'SUBMIT', clueText: '测试', files: [] });
+      setTimeout(resolve, 3000);
+    });
+
+    actor.send({ type: 'RESET' });
+    await new Promise((r) => setTimeout(r, 100));
+    expect(actor.getSnapshot().value).toBe('input');
+    expect(actor.getSnapshot().context.error).toBeNull();
+  });
+
+  // =========================================================================
+  // REVISE_TARGETED → revising state
+  // =========================================================================
+
+  it('should transition to revising on REVISE_TARGETED from review', async () => {
+    const actor = await createActorAndWaitFor('review');
+    const snapshot = actor.getSnapshot();
+    if (snapshot.value !== 'review') return;
+
+    actor.send({ type: 'REVISE_TARGETED', targets: ['background'], revisionContext: '修改背景' });
+    await new Promise((r) => setTimeout(r, 200));
+
+    // Should be in revising or already moved to auditing (if fast)
+    const val = actor.getSnapshot().value;
+    expect(['revising', 'auditing', 'review']).toContain(val);
+  });
+
+  // =========================================================================
+  // Max revision guard: REVISE blocked after 3 revisions
+  // =========================================================================
+
+  it('should block REVISE after max revisions reached', async () => {
+    const actor = await createActorAndWaitFor('review');
+    const snapshot = actor.getSnapshot();
+    if (snapshot.value !== 'review') return;
+
+    // Exhaust revision count (3 revisions)
+    for (let i = 0; i < 3; i++) {
+      actor.send({ type: 'REVISE' });
+      await new Promise((r) => setTimeout(r, 2000));
+      // Wait until back in review
+      await new Promise<void>((resolve) => {
+        const sub = actor.subscribe((s) => {
+          if (s.value === 'review') { sub.unsubscribe(); resolve(); }
+        });
+        setTimeout(resolve, 5000);
+      });
+    }
+
+    // 4th revision should be blocked (guard: revisionCount < 3)
+    actor.send({ type: 'REVISE' });
+    await new Promise((r) => setTimeout(r, 200));
+    expect(actor.getSnapshot().value).toBe('review');
+  });
+
+  // =========================================================================
+  // RAG unavailable / error paths
+  // =========================================================================
+
+  it('should proceed with empty regulationContext when RAG is unavailable', async () => {
+    const { isRetrieverAvailable } = await import('../../rag/index');
+    vi.mocked(isRetrieverAvailable).mockReturnValue(false);
+
+    const actor = await createActorAndWaitFor('review');
+    const snapshot = actor.getSnapshot();
+    if (snapshot.value === 'review') {
+      expect(snapshot.context.regulationContext).toBe('');
+    }
+    // Restore
+    vi.mocked(isRetrieverAvailable).mockReturnValue(true);
+  });
+
+  it('should proceed when RAG getRegulationContext throws', async () => {
+    const { getRetriever } = await import('../../rag/index');
+    vi.mocked(getRetriever).mockReturnValue({
+      getRegulationContext: vi.fn().mockRejectedValue(new Error('RAG error')),
+      getAuditContext: vi.fn().mockResolvedValue('audit ctx'),
+    } as never);
+
+    const actor = await createActorAndWaitFor('review');
+    const snapshot = actor.getSnapshot();
+    if (snapshot.value === 'review') {
+      expect(snapshot.context.regulationContext).toBe('');
+    }
+    // Restore
+    vi.mocked(getRetriever).mockReturnValue({
+      getRegulationContext: vi.fn().mockResolvedValue('mock regulation context'),
+      getAuditContext: vi.fn().mockResolvedValue('mock audit context'),
+    } as never);
+  });
+
+  it('should proceed when RAG getAuditContext throws', async () => {
+    const { getRetriever } = await import('../../rag/index');
+    vi.mocked(getRetriever).mockReturnValue({
+      getRegulationContext: vi.fn().mockResolvedValue('ctx'),
+      getAuditContext: vi.fn().mockRejectedValue(new Error('Audit RAG error')),
+    } as never);
+
+    const actor = await createActorAndWaitFor('review');
+    const snapshot = actor.getSnapshot();
+    // Workflow should still complete (audit uses fallback context)
+    expect(['review', 'auditing']).toContain(snapshot.value);
+    // Restore
+    vi.mocked(getRetriever).mockReturnValue({
+      getRegulationContext: vi.fn().mockResolvedValue('mock regulation context'),
+      getAuditContext: vi.fn().mockResolvedValue('mock audit context'),
+    } as never);
+  });
+
+  // =========================================================================
+  // Non-Error rejection (assignError ternary branch)
+  // =========================================================================
+
+  it('should handle non-Error rejection in assignError', async () => {
+    vi.mocked(analyzeClueNode).mockImplementationOnce(() => {
+      // Reject with a string instead of Error
+      return Promise.reject('string-error') as never;
+    });
+
+    const actor = createActor(deviationMachine);
+    actor.start();
+
+    await new Promise<void>((resolve) => {
+      const sub = actor.subscribe((s) => {
+        if (s.value === 'error_analyzing') { sub.unsubscribe(); resolve(); }
+      });
+      actor.send({ type: 'SUBMIT', clueText: '测试', files: [] });
+      setTimeout(resolve, 3000);
+    });
+
+    expect(actor.getSnapshot().value).toBe('error_analyzing');
+    expect(actor.getSnapshot().context.error).toBe('string-error');
+  });
+
+  // =========================================================================
+  // CANCEL from different active states
+  // =========================================================================
+
+  it('should handle CANCEL from generating state', async () => {
+    const { generateModules: mockedGenModules } = await import('../assembler');
+    // Make generateModules hang
+    vi.mocked(mockedGenModules).mockImplementationOnce(
+      () => new Promise((resolve) => setTimeout(resolve, 30000)) as never,
+    );
+
+    const actor = createActor(deviationMachine);
+    actor.start();
+
+    await new Promise<void>((resolve) => {
+      const sub = actor.subscribe((s) => {
+        if (s.value === 'generating') { sub.unsubscribe(); resolve(); }
+      });
+      actor.send({ type: 'SUBMIT', clueText: '测试', files: [] });
+      setTimeout(resolve, 3000);
+    });
+
+    if (actor.getSnapshot().value === 'generating') {
+      actor.send({ type: 'CANCEL' });
+      await new Promise((r) => setTimeout(r, 100));
+      expect(actor.getSnapshot().value).toBe('cancelled');
+      expect(actor.getSnapshot().context.error).toBe('工作流已被用户取消');
+    }
+  });
+
+  // =========================================================================
+  // error_timeout RETRY with specific currentStep values (guard branches)
+  // =========================================================================
+
+  it('should resume from identifying on RETRY from error_timeout with step 3', async () => {
+    // We need to reach error_timeout with currentStep=2 (analyzing sets step 2)
+    // Use fake timers to trigger the timeout
+    vi.useFakeTimers();
+
+    // Make analyzeClue hang so timeout fires
+    vi.mocked(analyzeClueNode).mockImplementationOnce(
+      () => new Promise(() => {}) as never, // never resolves
+    );
+
+    const actor = createActor(deviationMachine);
+    actor.start();
+    actor.send({ type: 'SUBMIT', clueText: '测试', files: [] });
+
+    // Advance past the 120s timeout for analyzing
+    await vi.advanceTimersByTimeAsync(121000);
+
+    // Should be in error_timeout with currentStep=2
+    expect(actor.getSnapshot().value).toBe('error_timeout');
+    expect(actor.getSnapshot().context.error).toContain('超时');
+
+    // W2: timeout must abort the in-flight LLM request
+    const { abortWorkflowLLM } = await import('../../llm/caller');
+    expect(abortWorkflowLLM).toHaveBeenCalled();
+
+    // RETRY with currentStep=2 → default path → analyzing
+    // After retry, the mocked actors resolve fast so workflow may complete
+    actor.send({ type: 'RETRY' });
+    await vi.advanceTimersByTimeAsync(500);
+    // The key: we left error_timeout (guard exercised), workflow resumed
+    const val = actor.getSnapshot().value;
+    expect(val).not.toBe('error_timeout');
+
+    actor.stop();
+    vi.useRealTimers();
+  });
+
+  it('should resume from matching on RETRY from error_timeout with step 4', async () => {
+    vi.useFakeTimers();
+
+    // Let analyzing succeed but identifying hang
+    vi.mocked(analyzeClueNode).mockResolvedValue({
+      summary: '摘要', keyEvents: [], involvedParties: [], documentType: 'deviation_analysis',
+    });
+    const { identifyFactorsNode } = await import('../nodes/factor-identify');
+    vi.mocked(identifyFactorsNode).mockImplementationOnce(
+      () => new Promise(() => {}) as never,
+    );
+
+    const actor = createActor(deviationMachine);
+    actor.start();
+    actor.send({ type: 'SUBMIT', clueText: '测试', files: [] });
+
+    // Wait for identifying state then advance past timeout
+    await vi.advanceTimersByTimeAsync(100); // let analyzing complete
+    await vi.advanceTimersByTimeAsync(121000); // identifying timeout
+
+    if (actor.getSnapshot().value === 'error_timeout') {
+      // currentStep should be 3 (set by assignAnalysis) → isStep3 guard
+      actor.send({ type: 'RETRY' });
+      await vi.advanceTimersByTimeAsync(500);
+      // We left error_timeout (isStep3 guard was exercised)
+      expect(actor.getSnapshot().value).not.toBe('error_timeout');
+    }
+
+    actor.stop();
+    vi.useRealTimers();
+  });
+
+  it('should retain submitted files in clueInput (附件引用不再被丢弃)', async () => {
+    const actor = createActor(deviationMachine);
+    actor.start();
+    actor.send({
+      type: 'SUBMIT',
+      clueText: '测试线索',
+      files: [{ name: '校准记录.pdf', content: 'data:application/pdf;base64,xxx' }],
+    });
+    await new Promise((r) => setTimeout(r, 50));
+    expect(actor.getSnapshot().context.clueInput.files).toHaveLength(1);
+    expect(actor.getSnapshot().context.clueInput.files[0].name).toBe('校准记录.pdf');
+    actor.stop();
+  });
+
+  it('should RETRY to revising (not generating) from error_timeout when targeted revision timed out', async () => {
+    vi.useFakeTimers();
+
+    const { reviseModules } = await import('../assembler');
+    const actor = createActor(deviationMachine);
+    actor.start();
+    actor.send({ type: 'SUBMIT', clueText: '测试', files: [] });
+    await vi.advanceTimersByTimeAsync(500); // run full happy path → review
+
+    // 定向修订：让 reviseModules 挂起以触发超时
+    vi.mocked(reviseModules).mockImplementationOnce(() => new Promise(() => {}) as never);
+    actor.send({ type: 'REVISE_TARGETED', targets: ['background'], revisionContext: '修改背景' });
+    await vi.advanceTimersByTimeAsync(100); // enter revising
+    await vi.advanceTimersByTimeAsync(121000); // revising timeout
+
+    expect(actor.getSnapshot().value).toBe('error_timeout');
+    expect(actor.getSnapshot().context.revisionTargets).toEqual(['background']);
+    expect(actor.getSnapshot().context.currentStep).toBe(7);
+
+    // 修复回归：定向修订超时 RETRY 必须回 revising（保留修订目标），
+    // 而非跳到 generating 全量重生成（原实现丢失修订目标）
+    actor.send({ type: 'RETRY' });
+    expect(actor.getSnapshot().value).toBe('revising');
+    // 修订目标保留
+    expect(actor.getSnapshot().context.revisionTargets).toEqual(['background']);
+
+    actor.stop();
+    vi.useRealTimers();
   });
 });

@@ -3,7 +3,7 @@
  */
 
 import { ipcMain, BrowserWindow } from 'electron';
-import { getProviderConfig, getConfiguredProviders, createLLMModel, PROVIDER_LIST } from '../../core/llm/provider';
+import { getProviderConfig, createLLMModel, PROVIDER_LIST } from '../../core/llm/provider';
 import { callLLMWithRetry, LLMAuthError } from '../../core/llm/caller';
 import { generateText, streamText } from 'ai';
 import { createLogger } from '../../core/utils/logger';
@@ -37,11 +37,6 @@ export function registerLLMIPC(): void {
   // Get all providers (for UI selection)
   ipcMain.handle('llm:providers', () => {
     return PROVIDER_LIST;
-  });
-
-  // Check if any provider is configured
-  ipcMain.handle('llm:isConfigured', () => {
-    return getConfiguredProviders().length > 0;
   });
 
   // Max prompt length: 100,000 characters
@@ -91,12 +86,18 @@ export function registerLLMIPC(): void {
       const timeoutMs = 5 * 60 * 1000; // 5 minutes
       const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
-      const stream = await streamText({
-        model,
-        prompt: params.prompt,
-        system: params.systemPrompt,
-        abortSignal: controller.signal,
-      });
+      let stream;
+      try {
+        stream = await streamText({
+          model,
+          prompt: params.prompt,
+          system: params.systemPrompt,
+          abortSignal: controller.signal,
+        });
+      } catch (error) {
+        clearTimeout(timeoutId);
+        throw error;
+      }
 
       // Send stream chunks to renderer
       const window = BrowserWindow.fromWebContents(event.sender);
@@ -109,7 +110,10 @@ export function registerLLMIPC(): void {
       (async () => {
         try {
           for await (const chunk of stream.textStream) {
-            if (window.isDestroyed()) return;
+            if (window.isDestroyed()) {
+              clearTimeout(timeoutId);
+              return;
+            }
             window.webContents.send('llm:stream:chunk', { chunk });
           }
           clearTimeout(timeoutId);

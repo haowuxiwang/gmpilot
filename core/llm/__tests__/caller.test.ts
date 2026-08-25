@@ -1,5 +1,5 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { callLLMWithRetry, LLMAuthError, analyzeClue, identifyFactors, matchRegulations, generateReport, streamReport } from '../caller';
+﻿import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { callLLMWithRetry, LLMAuthError, analyzeClue, identifyFactors, matchRegulations, generateReport, streamReport, auditDeviationReport } from '../caller';
 
 // Mock the AI SDK
 vi.mock('ai', () => ({
@@ -185,6 +185,24 @@ describe('callLLMWithRetry', () => {
     expect(result).toBe('ok');
   });
 
+  it('should retry on LLM JSON parse failure (避免核心章节直接 fallback)', async () => {
+    const fn = vi.fn()
+      .mockRejectedValueOnce(new Error('LLM 返回的内容不是有效 JSON: Unexpected token'))
+      .mockResolvedValue('ok');
+    const result = await callLLMWithRetry(fn, { maxRetries: 1 });
+    expect(result).toBe('ok');
+    expect(fn).toHaveBeenCalledTimes(2);
+  });
+
+  it('should retry on LLM schema mismatch (不匹配预期格式)', async () => {
+    const fn = vi.fn()
+      .mockRejectedValueOnce(new Error('LLM 返回的内容不匹配预期格式: Expected number'))
+      .mockResolvedValue('ok');
+    const result = await callLLMWithRetry(fn, { maxRetries: 1 });
+    expect(result).toBe('ok');
+    expect(fn).toHaveBeenCalledTimes(2);
+  });
+
   // ---- non-Error throwables ----
 
   it('should handle non-Error throwables (string)', async () => {
@@ -204,23 +222,21 @@ describe('callLLMWithRetry', () => {
     expect(fn).toHaveBeenCalledTimes(1);
   });
 
-  it('should retry AbortError and succeed', async () => {
-    const abortError = new Error('aborted');
-    abortError.name = 'AbortError';
-    const fn = vi.fn()
-      .mockRejectedValueOnce(abortError)
-      .mockResolvedValue('ok');
-    const result = await callLLMWithRetry(fn, { maxRetries: 1 });
-    expect(result).toBe('ok');
-    expect(fn).toHaveBeenCalledTimes(2);
-  });
-
-  it('should throw timeout error after all retries exhausted on AbortError', async () => {
+  it('should throw timeout immediately on AbortError (no retry)', async () => {
     const abortError = new Error('aborted');
     abortError.name = 'AbortError';
     const fn = vi.fn().mockRejectedValue(abortError);
     await expect(callLLMWithRetry(fn, { maxRetries: 1, timeoutMs: 5000 })).rejects.toThrow('LLM 调用超时');
-    expect(fn).toHaveBeenCalledTimes(2);
+    // 超时不重试：外层 XState 状态级超时已兜底
+    expect(fn).toHaveBeenCalledTimes(1);
+  });
+
+  it('should always throw timeout error on AbortError even with retries', async () => {
+    const abortError = new Error('aborted');
+    abortError.name = 'AbortError';
+    const fn = vi.fn().mockRejectedValue(abortError);
+    await expect(callLLMWithRetry(fn, { maxRetries: 3, timeoutMs: 1000 })).rejects.toThrow('LLM 调用超时');
+    expect(fn).toHaveBeenCalledTimes(1);
   });
 
   // ---- options passthrough ----
@@ -272,27 +288,27 @@ describe('analyzeClue', () => {
     vi.clearAllMocks();
   });
 
-  it('should call generateObject with correct parameters and return object', async () => {
-    const { generateObject } = await import('ai');
-    const mockResult = {
-      object: { summary: 'test', keyEvents: [], involvedParties: [], documentType: 'deviation_analysis' },
+  it('should call generateText with correct parameters and return object', async () => {
+    const { generateText } = await import('ai');
+    const mockObject = { summary: 'test', keyEvents: ['event1'], involvedParties: ['QA'], documentType: 'deviation_analysis' };
+    vi.mocked(generateText).mockResolvedValue({
+      text: JSON.stringify(mockObject),
       usage: { promptTokens: 10, completionTokens: 20 },
-    };
-    vi.mocked(generateObject).mockResolvedValue(mockResult as never);
+    } as never);
 
     const result = await analyzeClue('some clue text');
 
-    expect(result).toEqual(mockResult.object);
-    expect(generateObject).toHaveBeenCalledTimes(1);
-    const callArg = vi.mocked(generateObject).mock.calls[0][0] as Record<string, unknown>;
-    expect(callArg.prompt).toBe('prompt:clue-analysis');
+    expect(result).toEqual(mockObject);
+    expect(generateText).toHaveBeenCalledTimes(1);
+    const callArg = vi.mocked(generateText).mock.calls[0][0] as Record<string, unknown>;
+    expect(callArg.prompt).toContain('prompt:clue-analysis');
   });
 
   it('should pass config to createLLMModel', async () => {
     const { createLLMModel } = await import('../provider');
-    const { generateObject } = await import('ai');
-    vi.mocked(generateObject).mockResolvedValue({
-      object: { summary: '', keyEvents: [], involvedParties: [], documentType: 'deviation_analysis' },
+    const { generateText } = await import('ai');
+    vi.mocked(generateText).mockResolvedValue({
+      text: JSON.stringify({ summary: 'test', keyEvents: ['e'], involvedParties: [], documentType: 'deviation_analysis' }),
       usage: undefined,
     } as never);
 
@@ -303,9 +319,9 @@ describe('analyzeClue', () => {
   });
 
   it('should work without usage in response', async () => {
-    const { generateObject } = await import('ai');
-    vi.mocked(generateObject).mockResolvedValue({
-      object: { summary: 'ok', keyEvents: [], involvedParties: [], documentType: 'deviation_analysis' },
+    const { generateText } = await import('ai');
+    vi.mocked(generateText).mockResolvedValue({
+      text: JSON.stringify({ summary: 'ok', keyEvents: ['e'], involvedParties: [], documentType: 'deviation_analysis' }),
       usage: undefined,
     } as never);
 
@@ -319,21 +335,21 @@ describe('identifyFactors', () => {
     vi.clearAllMocks();
   });
 
-  it('should call generateObject and return Factor5M1E', async () => {
-    const { generateObject } = await import('ai');
-    const factors = { man: [], machine: [], material: [], method: [], environment: [] };
-    vi.mocked(generateObject).mockResolvedValue({
-      object: factors,
+  it('should call generateText and return Factor5M1E', async () => {
+    const { generateText } = await import('ai');
+    const factors = { man: ['operator'], machine: [], material: [], method: [], environment: [], measurement: [] };
+    vi.mocked(generateText).mockResolvedValue({
+      text: JSON.stringify(factors),
       usage: { promptTokens: 5, completionTokens: 10 },
     } as never);
 
-    const analysis = { summary: 'test', keyEvents: [], involvedParties: [], documentType: 'deviation_analysis' as const };
+    const analysis = { summary: 'test', keyEvents: ['e'], involvedParties: [], documentType: 'deviation_analysis' as const };
     const result = await identifyFactors('clue', analysis);
 
     expect(result).toEqual(factors);
-    expect(generateObject).toHaveBeenCalledTimes(1);
-    const callArg = vi.mocked(generateObject).mock.calls[0][0] as Record<string, unknown>;
-    expect(callArg.prompt).toBe('prompt:factor-identify');
+    expect(generateText).toHaveBeenCalledTimes(1);
+    const callArg = vi.mocked(generateText).mock.calls[0][0] as Record<string, unknown>;
+    expect(callArg.prompt).toContain('prompt:factor-identify');
   });
 });
 
@@ -342,21 +358,21 @@ describe('matchRegulations', () => {
     vi.clearAllMocks();
   });
 
-  it('should call generateObject and return RegulationMatch[]', async () => {
-    const { generateObject } = await import('ai');
+  it('should call generateText and return RegulationMatch[]', async () => {
+    const { generateText } = await import('ai');
     const regulations = [
       { regulation: 'GMP', chapter: '1', article: '1', title: 'test', content: 'test', relevance: 'high' },
     ];
-    vi.mocked(generateObject).mockResolvedValue({
-      object: regulations,
+    vi.mocked(generateText).mockResolvedValue({
+      text: JSON.stringify(regulations),
       usage: { promptTokens: 5, completionTokens: 10 },
     } as never);
 
-    const factors = { man: [], machine: [], material: [], method: [], environment: [] };
+    const factors = { man: [], machine: [], material: [], method: [], environment: [], measurement: [] };
     const result = await matchRegulations('clue', factors, 'context');
 
     expect(result).toEqual(regulations);
-    expect(generateObject).toHaveBeenCalledTimes(1);
+    expect(generateText).toHaveBeenCalledTimes(1);
   });
 });
 
@@ -365,35 +381,48 @@ describe('generateReport', () => {
     vi.clearAllMocks();
   });
 
-  it('should call generateObject with report-generate prompt and return DeviationReport', async () => {
-    const { generateObject } = await import('ai');
+  it('should call generateText with report-generate prompt and return DeviationReport', async () => {
+    const { generateText } = await import('ai');
     const report = { deviationId: 'DEV-001', summary: 'test report' };
-    vi.mocked(generateObject).mockResolvedValue({
-      object: report,
+    vi.mocked(generateText).mockResolvedValue({
+      text: JSON.stringify(report),
       usage: { promptTokens: 50, completionTokens: 100 },
     } as never);
 
-    const factors = { man: [], machine: [], material: [], method: [], environment: [] };
+    const factors = { man: [], machine: [], material: [], method: [], environment: [], measurement: [] };
     const result = await generateReport('DEV-001', 'summary', factors, [], []);
 
     expect(result).toEqual(report);
-    expect(generateObject).toHaveBeenCalledTimes(1);
-    const callArg = vi.mocked(generateObject).mock.calls[0][0] as Record<string, unknown>;
-    expect(callArg.prompt).toBe('prompt:report-generate');
+    expect(generateText).toHaveBeenCalledTimes(1);
+    const callArg = vi.mocked(generateText).mock.calls[0][0] as Record<string, unknown>;
+    expect(callArg.prompt).toContain('prompt:report-generate');
   });
 
   it('should pass config provider to createLLMModel', async () => {
     const { createLLMModel } = await import('../provider');
-    const { generateObject } = await import('ai');
-    vi.mocked(generateObject).mockResolvedValue({
-      object: {},
+    const { generateText } = await import('ai');
+    vi.mocked(generateText).mockResolvedValue({
+      text: JSON.stringify({}),
       usage: undefined,
     } as never);
 
     const config = { provider: 'openai', apiKey: 'sk-test' };
-    await generateReport('DEV-001', 'summary', { man: [], machine: [], material: [], method: [], environment: [] }, [], [], config);
+    await generateReport('DEV-001', 'summary', { man: [], machine: [], material: [], method: [], environment: [], measurement: [] }, [], [], config);
 
     expect(createLLMModel).toHaveBeenCalledWith(config);
+  });
+
+  it('should throw when LLM returns invalid JSON', async () => {
+    const { generateText } = await import('ai');
+    vi.mocked(generateText).mockResolvedValue({
+      text: 'not valid json {{{',
+      usage: { promptTokens: 10, completionTokens: 10 },
+    } as never);
+
+    const factors = { man: [], machine: [], material: [], method: [], environment: [], measurement: [] };
+    await expect(
+      generateReport('DEV-BAD-JSON', 'summary', factors, [], []),
+    ).rejects.toThrow('不是有效 JSON');
   });
 });
 
@@ -417,7 +446,7 @@ describe('streamReport', () => {
     vi.mocked(streamObject).mockReturnValue(mockStream as never);
 
     const onPartial = vi.fn();
-    const factors = { man: [], machine: [], material: [], method: [], environment: [] };
+    const factors = { man: [], machine: [], material: [], method: [], environment: [], measurement: [] };
     const result = await streamReport('DEV-001', 'summary', factors, [], [], onPartial);
 
     expect(result).toEqual(finalObject);
@@ -438,7 +467,7 @@ describe('streamReport', () => {
 
     const result = await streamReport(
       'DEV-002', 'summary',
-      { man: [], machine: [], material: [], method: [], environment: [] },
+      { man: [], machine: [], material: [], method: [], environment: [], measurement: [] },
       [], [],
       vi.fn(),
       undefined,
@@ -465,7 +494,7 @@ describe('streamReport', () => {
       } as never;
     });
 
-    const factors = { man: [], machine: [], material: [], method: [], environment: [] };
+    const factors = { man: [], machine: [], material: [], method: [], environment: [], measurement: [] };
     const result = await streamReport('DEV-003', 'summary', factors, [], [], vi.fn(), undefined, { maxRetries: 1 });
 
     expect(result).toEqual(finalObject);
@@ -478,7 +507,7 @@ describe('streamReport', () => {
       throw new Error('401 unauthorized');
     });
 
-    const factors = { man: [], machine: [], material: [], method: [], environment: [] };
+    const factors = { man: [], machine: [], material: [], method: [], environment: [], measurement: [] };
     await expect(
       streamReport('DEV-004', 'summary', factors, [], [], vi.fn(), { provider: 'deepseek', apiKey: 'key' }),
     ).rejects.toThrow(LLMAuthError);
@@ -491,7 +520,7 @@ describe('streamReport', () => {
       throw new Error('500 server error');
     });
 
-    const factors = { man: [], machine: [], material: [], method: [], environment: [] };
+    const factors = { man: [], machine: [], material: [], method: [], environment: [], measurement: [] };
     await expect(
       streamReport('DEV-005', 'summary', factors, [], [], vi.fn(), undefined, { maxRetries: 1 }),
     ).rejects.toThrow('500 server error');
@@ -506,7 +535,7 @@ describe('streamReport', () => {
       throw abortError;
     });
 
-    const factors = { man: [], machine: [], material: [], method: [], environment: [] };
+    const factors = { man: [], machine: [], material: [], method: [], environment: [], measurement: [] };
     await expect(
       streamReport('DEV-006', 'summary', factors, [], [], vi.fn(), undefined, { maxRetries: 0 }),
     ).rejects.toThrow('报告生成超时');
@@ -529,7 +558,7 @@ describe('streamReport', () => {
       } as never;
     });
 
-    const factors = { man: [], machine: [], material: [], method: [], environment: [] };
+    const factors = { man: [], machine: [], material: [], method: [], environment: [], measurement: [] };
     const result = await streamReport('DEV-007', 'summary', factors, [], [], vi.fn(), undefined, { maxRetries: 1 });
     expect(result).toEqual(finalObject);
     expect(streamObject).toHaveBeenCalledTimes(2);
@@ -545,7 +574,7 @@ describe('streamReport', () => {
     } as never);
 
     const config = { provider: 'anthropic', apiKey: 'sk-ant-test' };
-    await streamReport('DEV-008', 'summary', { man: [], machine: [], material: [], method: [], environment: [] }, [], [], vi.fn(), config);
+    await streamReport('DEV-008', 'summary', { man: [], machine: [], material: [], method: [], environment: [], measurement: [] }, [], [], vi.fn(), config);
 
     expect(createLLMModel).toHaveBeenCalledWith(config);
   });
@@ -560,8 +589,126 @@ describe('streamReport', () => {
     } as never);
 
     const onPartial = vi.fn();
-    const result = await streamReport('DEV-009', 's', { man: [], machine: [], material: [], method: [], environment: [] }, [], [], onPartial);
+    const result = await streamReport('DEV-009', 's', { man: [], machine: [], material: [], method: [], environment: [], measurement: [] }, [], [], onPartial);
     expect(result).toEqual(finalObject);
     expect(onPartial).not.toHaveBeenCalled();
+  });
+
+  it('should handle usage promise rejection gracefully', async () => {
+    const { streamObject } = await import('ai');
+    const finalObject = { deviationId: 'DEV-010', summary: 'usage-reject' };
+    vi.mocked(streamObject).mockReturnValue({
+      partialObjectStream: (async function* () {})(),
+      object: Promise.resolve(finalObject),
+      usage: Promise.reject(new Error('usage unavailable')),
+    } as never);
+
+    const result = await streamReport('DEV-010', 's', { man: [], machine: [], material: [], method: [], environment: [], measurement: [] }, [], [], vi.fn());
+    expect(result).toEqual(finalObject);
+  });
+});
+
+describe('auditDeviationReport', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+  });
+
+  it('should return audit result with findings', async () => {
+    const { generateText } = await import('ai');
+    const mockAuditResult = {
+      findings: [
+        {
+          finding_type: 'compliance_risk',
+          severity: 'medium',
+          title: '缺少根本原因分析',
+          description: '报告未包含详细的根本原因分析',
+          suggestion: '建议添加鱼骨图分析',
+          regulation_ref: 'GMP 第252条',
+        },
+      ],
+      overallScore: 75,
+      summary: '报告基本完整，但需改进根本原因分析部分',
+    };
+    vi.mocked(generateText).mockResolvedValue({
+      text: JSON.stringify(mockAuditResult),
+      usage: { promptTokens: 10, completionTokens: 20 },
+    } as never);
+
+    const result = await auditDeviationReport('# 测试报告', '法规上下文');
+
+    expect(result.findings).toHaveLength(1);
+    expect(result.findings[0].finding_type).toBe('compliance_risk');
+    expect(result.overallScore).toBe(75);
+    expect(result.summary).toContain('报告基本完整');
+  });
+
+  it('should handle empty findings', async () => {
+    const { generateText } = await import('ai');
+    const mockAuditResult = {
+      findings: [],
+      overallScore: 95,
+      summary: '报告质量优秀，无明显问题',
+    };
+    vi.mocked(generateText).mockResolvedValue({
+      text: JSON.stringify(mockAuditResult),
+      usage: undefined,
+    } as never);
+
+    const result = await auditDeviationReport('# 完整报告', '');
+
+    expect(result.findings).toHaveLength(0);
+    expect(result.overallScore).toBe(95);
+  });
+
+  it('should pass config to createLLMModel', async () => {
+    const { generateText } = await import('ai');
+    const { createLLMModel } = await import('../provider');
+    vi.mocked(generateText).mockResolvedValue({
+      text: JSON.stringify({ findings: [], overallScore: 80, summary: 'ok' }),
+      usage: undefined,
+    } as never);
+
+    const config = { provider: 'deepseek', apiKey: 'sk-test' };
+    await auditDeviationReport('# 报告', '', config);
+
+    expect(createLLMModel).toHaveBeenCalledWith(config);
+  });
+
+  it('should handle multiple findings with different severities', async () => {
+    const { generateText } = await import('ai');
+    const mockAuditResult = {
+      findings: [
+        { finding_type: 'logic_flaw', severity: 'high', title: '逻辑错误', description: '结论与调查不符' },
+        { finding_type: 'missing_info', severity: 'medium', title: '信息缺失', description: '缺少批次记录' },
+        { finding_type: 'best_practice', severity: 'info', title: '建议', description: '可添加趋势分析' },
+      ],
+      overallScore: 60,
+      summary: '存在多个问题需要修正',
+    };
+    vi.mocked(generateText).mockResolvedValue({
+      text: JSON.stringify(mockAuditResult),
+      usage: undefined,
+    } as never);
+
+    const result = await auditDeviationReport('# 报告', '上下文');
+
+    expect(result.findings).toHaveLength(3);
+    expect(result.findings.map(f => f.severity)).toEqual(['high', 'medium', 'info']);
+  });
+
+  it('should retry on transient errors', async () => {
+    const { generateText } = await import('ai');
+    const mockAuditResult = { findings: [], overallScore: 85, summary: 'ok' };
+    vi.mocked(generateText)
+      .mockRejectedValueOnce(new Error('500 server error'))
+      .mockResolvedValue({
+        text: JSON.stringify(mockAuditResult),
+        usage: undefined,
+      } as never);
+
+    const result = await auditDeviationReport('# 报告', '');
+
+    expect(result.overallScore).toBe(85);
+    expect(generateText).toHaveBeenCalledTimes(2);
   });
 });

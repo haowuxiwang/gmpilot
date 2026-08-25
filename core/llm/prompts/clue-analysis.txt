@@ -14,9 +14,12 @@
 4. 判断偏差类型（deviation_analysis / sop_compliance / consistency_check / risk_assessment）
 
 以JSON格式输出，包含以下字段：
-- summary: 偏差核心问题总结
-- keyEvents: 关键事件列表
-- involvedParties: 涉及的人员/部门
-- documentType: 偏差类型
+- summary: string, 偏差核心问题总结
+- keyEvents: string[], 关键事件列表（每个事件是一个简短的字符串描述，不是对象）
+- involvedParties: string[], 涉及的人员/部门
+- documentType: "deviation_analysis" | "sop_compliance" | "consistency_check" | "risk_assessment"
+
+示例格式：
+{"summary": "...", "keyEvents": ["事件1描述", "事件2描述"], "involvedParties": ["QA部门"], "documentType": "deviation_analysis"}
 
 只输出JSON，不要有其他文字。

@@ -355,6 +355,114 @@ describe('VectorStore (vec0 → fallback degradation)', () => {
 });
 
 // ============================================================================
+// searchByDocIds tests
+// ============================================================================
+
+describe('VectorStore searchByDocIds (sqlite-vec path)', () => {
+  let multiDb: Database.Database;
+  let multiStore: VectorStore;
+
+  beforeAll(async () => {
+    multiDb = new Database(':memory:');
+    multiStore = new VectorStore(multiDb, { dimensions: 4 });
+    await multiStore.initialize();
+    await multiStore.insertBatch([
+      { docId: 1, chunkIndex: 0, content: 'Doc1-A', sectionPath: 'S1', embedding: [1, 0, 0, 0] },
+      { docId: 1, chunkIndex: 1, content: 'Doc1-B', sectionPath: 'S2', embedding: [0.9, 0.1, 0, 0] },
+      { docId: 2, chunkIndex: 0, content: 'Doc2-A', sectionPath: 'S3', embedding: [0, 1, 0, 0] },
+      { docId: 3, chunkIndex: 0, content: 'Doc3-A', sectionPath: 'S4', embedding: [0, 0, 1, 0] },
+    ]);
+  });
+
+  afterAll(() => {
+    multiDb.close();
+  });
+
+  it('should return empty for empty docIds array', async () => {
+    const results = await multiStore.searchByDocIds([1, 0, 0, 0], 5, []);
+    expect(results).toEqual([]);
+  });
+
+  it('should delegate to search() for single docId', async () => {
+    const results = await multiStore.searchByDocIds([1, 0, 0, 0], 5, [1]);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results.every((r) => r.docId === 1)).toBe(true);
+  });
+
+  it('should search across multiple docIds', async () => {
+    const results = await multiStore.searchByDocIds([1, 0, 0, 0], 10, [1, 2]);
+    expect(results.length).toBeGreaterThan(0);
+    const docIds = new Set(results.map((r) => r.docId));
+    expect(docIds.has(3)).toBe(false); // doc 3 excluded
+  });
+
+  it('should respect topK limit', async () => {
+    const results = await multiStore.searchByDocIds([1, 0, 0, 0], 1, [1, 2, 3]);
+    expect(results.length).toBe(1);
+  });
+});
+
+describe('VectorStore searchByDocIds (fallback path)', () => {
+  let fallbackDb2: Database.Database;
+  let fallbackStore2: VectorStore;
+
+  beforeAll(async () => {
+    const result = await createFallbackStore(4);
+    fallbackDb2 = result.db;
+    fallbackStore2 = result.store;
+    await fallbackStore2.insertBatch([
+      { docId: 10, chunkIndex: 0, content: 'FB-Doc10', sectionPath: 'S1', embedding: [1, 0, 0, 0] },
+      { docId: 20, chunkIndex: 0, content: 'FB-Doc20', sectionPath: 'S2', embedding: [0, 1, 0, 0] },
+      { docId: 30, chunkIndex: 0, content: 'FB-Doc30', sectionPath: 'S3', embedding: [0, 0, 1, 0] },
+    ]);
+  });
+
+  afterAll(() => {
+    fallbackDb2.close();
+  });
+
+  it('should search across multiple docIds in fallback mode', async () => {
+    const results = await fallbackStore2.searchByDocIds([1, 0, 0, 0], 10, [10, 20]);
+    expect(results.length).toBe(2);
+    const docIds = new Set(results.map((r) => r.docId));
+    expect(docIds.has(10)).toBe(true);
+    expect(docIds.has(20)).toBe(true);
+    expect(docIds.has(30)).toBe(false);
+  });
+
+  it('should sort by similarity in fallback multi-doc search', async () => {
+    const results = await fallbackStore2.searchByDocIds([1, 0, 0, 0], 10, [10, 20, 30]);
+    expect(results[0].docId).toBe(10); // Exact match
+    expect(results[0].similarity).toBeCloseTo(1.0, 5);
+  });
+
+  it('should respect topK in fallback multi-doc search', async () => {
+    const results = await fallbackStore2.searchByDocIds([1, 0, 0, 0], 2, [10, 20, 30]);
+    expect(results.length).toBe(2);
+  });
+});
+
+// ============================================================================
+// Invalid table name validation
+// ============================================================================
+
+describe('VectorStore table name validation', () => {
+  it('should reject invalid table names', () => {
+    const db = new Database(':memory:');
+    expect(() => new VectorStore(db, { tableName: 'invalid; DROP TABLE' })).toThrow('Invalid table name');
+    expect(() => new VectorStore(db, { tableName: '123start' })).toThrow('Invalid table name');
+    db.close();
+  });
+
+  it('should accept valid table names', () => {
+    const db = new Database(':memory:');
+    expect(() => new VectorStore(db, { tableName: 'valid_table_1' })).not.toThrow();
+    expect(() => new VectorStore(db, { tableName: '_private' })).not.toThrow();
+    db.close();
+  });
+});
+
+// ============================================================================
 // cosine similarity edge cases (tested indirectly through fallback search)
 // ============================================================================
 

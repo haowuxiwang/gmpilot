@@ -71,7 +71,7 @@ export function parseTemplate(filePath: string, content: string): ParsedTemplate
       }
 
       // Parse field row
-      if (currentSection.includes('可变字段') || currentSection.includes('字段')) {
+      if (isFieldSection(currentSection)) {
         const field = parseFieldRow(tableHeaders, cells);
         if (field) {
           fields.push(field);
@@ -114,6 +114,26 @@ export function parseTemplate(filePath: string, content: string): ParsedTemplate
     rawContent: content,
     lastModified: new Date(),
   };
+}
+
+/**
+ * Check if a section title indicates a field definition section.
+ * Supports various naming conventions used in different templates.
+ */
+function isFieldSection(section: string): boolean {
+  const keywords = [
+    '可变字段',
+    '字段',
+    '影响维度',
+    '调查过程记录字段',
+    '调查分析方法',
+    '人员差错专项调查',
+    '结论字段',
+    'CAPA 表格字段',
+    'Field',
+    'Variable',
+  ];
+  return keywords.some((kw) => section.includes(kw));
 }
 
 /**

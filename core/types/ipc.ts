@@ -14,14 +14,7 @@ export interface WorkflowProgress {
   findings: Finding[];
   report: DeviationReport | null;
   error: string | null;
-}
-
-export interface AuditBeeProgress {
-  stage: 'uploading' | 'creating' | 'running' | 'completed' | 'failed';
-  task?: {
-    id: number;
-    status: string;
-    progress: number;
-  };
-  error?: string;
+  auditFindings?: unknown[];
+  auditScore?: number;
+  auditSummary?: string;
 }

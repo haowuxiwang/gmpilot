@@ -1,6 +1,7 @@
 /**
  * Toast notification provider.
- * Global toast state via React Context — any component can use useToast().
+ * Split into two contexts (actions vs state) to prevent unnecessary re-renders.
+ * Components using only actions (success/error/warning) won't re-render on toast state changes.
  */
 
 import { createContext, useContext, useState, useCallback, useRef, useEffect, type ReactNode } from 'react';
@@ -15,8 +16,7 @@ export interface Toast {
   duration?: number;
 }
 
-interface ToastContextValue {
-  toasts: Toast[];
+interface ToastActions {
   addToast: (type: ToastType, message: string, duration?: number) => string;
   removeToast: (id: string) => void;
   success: (message: string) => string;
@@ -25,7 +25,12 @@ interface ToastContextValue {
   info: (message: string) => string;
 }
 
-const ToastContext = createContext<ToastContextValue | null>(null);
+interface ToastState {
+  toasts: Toast[];
+}
+
+const ToastActionsContext = createContext<ToastActions | null>(null);
+const ToastStateContext = createContext<ToastState | null>(null);
 
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<Toast[]>([]);
@@ -57,7 +62,6 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const removeToast = useCallback((id: string) => {
-    // Clear pending timeout if exists
     const timeoutId = timeoutsRef.current.get(id);
     if (timeoutId) {
       clearTimeout(timeoutId);
@@ -72,17 +76,36 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   const info = useCallback((message: string) => addToast('info', message), [addToast]);
 
   return (
-    <ToastContext.Provider value={{ toasts, addToast, removeToast, success, error, warning, info }}>
-      <ToastContainer toasts={toasts} onRemove={removeToast} />
-      {children}
-    </ToastContext.Provider>
+    <ToastActionsContext.Provider value={{ addToast, removeToast, success, error, warning, info }}>
+      <ToastStateContext.Provider value={{ toasts }}>
+        <ToastContainer toasts={toasts} onRemove={removeToast} />
+        {children}
+      </ToastStateContext.Provider>
+    </ToastActionsContext.Provider>
   );
 }
 
-export function useToast() {
-  const context = useContext(ToastContext);
-  if (!context) {
+/**
+ * useToast - Returns toast actions + state.
+ * For components that only trigger toasts (buttons, forms), use useToastActions() instead.
+ */
+export function useToast(): ToastActions & ToastState {
+  const actions = useContext(ToastActionsContext);
+  const state = useContext(ToastStateContext);
+  if (!actions || !state) {
     throw new Error('useToast must be used within ToastProvider');
   }
-  return context;
+  return { ...actions, ...state };
+}
+
+/**
+ * useToastActions - Returns only toast actions (stable reference).
+ * Won't cause re-render when toast list changes.
+ */
+export function useToastActions(): ToastActions {
+  const actions = useContext(ToastActionsContext);
+  if (!actions) {
+    throw new Error('useToastActions must be used within ToastProvider');
+  }
+  return actions;
 }

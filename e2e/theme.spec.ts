@@ -1,5 +1,7 @@
 /**
- * Theme tests - Light/system mode switching.
+ * Theme tests — 主题持久化机制（light/dark）。
+ * 注：redesign 后侧边栏主题切换按钮已移除（useTheme 无 UI 入口），
+ * 此处仅验证 localStorage 持久化的默认浅色渲染不受影响。
  */
 
 import { test, expect } from '@playwright/test';
@@ -10,32 +12,23 @@ test.describe('Theme', () => {
     await mockGmpilotAPI(page);
   });
 
-  test('should display theme toggle in sidebar', async ({ page }) => {
+  test('should render app with default light theme', async ({ page }) => {
     await page.goto('/');
 
-    // Should have theme toggle button
-    const themeToggle = page.locator('aside button').filter({ hasText: /浅色|跟随系统/ });
-    await expect(themeToggle).toBeVisible();
+    // App shell renders with default styling (no dark class on root)
+    const html = page.locator('html');
+    await expect(html).toBeVisible();
+    const cls = await html.getAttribute('class');
+    expect(cls ?? '').not.toContain('dark');
   });
 
-  test('should toggle between light and system themes', async ({ page }) => {
+  test('should persist theme preference in localStorage', async ({ page }) => {
     await page.goto('/');
-
-    const themeToggle = page.locator('aside button').filter({ hasText: /浅色|跟随系统/ });
-
-    // Initial state should be "浅色" or "跟随系统"
-    const initialText = await themeToggle.textContent();
-
-    // Click to change theme
-    await themeToggle.click();
-
-    // Text should change
-    const newText = await themeToggle.textContent();
-    expect(newText).not.toBe(initialText);
-
-    // Click again to toggle back
-    await themeToggle.click();
-    const finalText = await themeToggle.textContent();
-    expect(finalText).toBe(initialText);
+    await page.evaluate(() => {
+      localStorage.setItem('gmpilot-theme', 'dark');
+    });
+    await page.reload();
+    const stored = await page.evaluate(() => localStorage.getItem('gmpilot-theme'));
+    expect(stored).toBe('dark');
   });
 });

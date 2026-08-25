@@ -7,13 +7,14 @@
 import fs from 'fs';
 import path from 'path';
 import { createLogger } from '../utils/logger';
+import { resolveResourcePath } from '../utils/paths';
 import type { ParsedTemplate, TemplateChangeCallback } from './types';
 import { parseTemplate } from './parser';
 
 const log = createLogger('Template');
 
 /** Template file pattern */
-const TEMPLATE_DIR = path.join(process.cwd(), 'docs', 'templates');
+const TEMPLATE_DIR = resolveResourcePath('docs', 'templates');
 const TEMPLATE_PATTERN = /\.md$/;
 
 /** Template cache */
@@ -85,6 +86,12 @@ export function loadAllTemplates(): Map<string, ParsedTemplate> {
  * Get a template by ID. Loads from cache or file.
  */
 export function getTemplate(templateId: string): ParsedTemplate | null {
+  // Validate templateId to prevent path traversal
+  if (!templateId || !/^[a-zA-Z0-9_-]+$/.test(templateId)) {
+    log.warn('Invalid templateId rejected', { templateId });
+    return null;
+  }
+
   // Check cache first
   const cached = templateCache.get(templateId);
   if (cached) return cached;

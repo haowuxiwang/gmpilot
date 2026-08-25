@@ -12,12 +12,9 @@ test.describe('AgentPage', () => {
   });
 
   test('should display empty state with quick actions', async ({ page }) => {
-    // Should show welcome message or quick actions
-    const hasWelcome = await page.locator('text=偏差分析助手').isVisible().catch(() => false);
-    const hasQuickActions = await page.locator('text=片剂').isVisible().catch(() => false);
-
-    // At least one of them should be visible
-    expect(hasWelcome || hasQuickActions).toBeTruthy();
+    // Redesigned empty state — editorial welcome message
+    const welcome = page.locator('text=每一次偏差');
+    await expect(welcome).toBeVisible();
   });
 
   test('should display chat input', async ({ page }) => {

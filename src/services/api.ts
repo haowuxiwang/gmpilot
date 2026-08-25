@@ -5,10 +5,10 @@
  * Gracefully degrades when running in browser (no Electron).
  */
 
-import type { Report, ReportInsert, KnowledgeDoc } from '@core/db/schema';
+import type { Report, ReportSummary, ReportInsert, KnowledgeDoc } from '@core/db/schema';
 
 // Re-export types for renderer consumers
-export type { Report, ReportInsert, KnowledgeDoc };
+export type { Report, ReportSummary, ReportInsert, KnowledgeDoc };
 
 export interface RetrievalResult {
   content: string;
@@ -44,7 +44,8 @@ export const settingsApi = {
     if (!isElectron()) return {};
     try {
       return await getAPI().db.getSettings();
-    } catch {
+    } catch (error) {
+      console.error('settingsApi.get failed:', error);
       return {};
     }
   },
@@ -60,7 +61,7 @@ export const settingsApi = {
 // --- Reports ---
 
 export const reportApi = {
-  list: async (options?: { limit?: number; offset?: number }): Promise<Report[]> => {
+  list: async (options?: { limit?: number; offset?: number }): Promise<ReportSummary[]> => {
     if (!isElectron()) return [];
     return getAPI().db.getReports(options);
   },
@@ -97,7 +98,7 @@ export const knowledgeApi = {
     if (!isElectron()) return [];
     return getAPI().knowledge.listDocuments();
   },
-  pickAndAdd: async (): Promise<{
+  pickAndAdd: async (category?: string): Promise<{
     success: boolean;
     docId?: number;
     chunkCount?: number;
@@ -105,7 +106,7 @@ export const knowledgeApi = {
     error?: string;
   }> => {
     if (!isElectron()) return { success: false, error: 'Not in Electron' };
-    return getAPI().knowledge.pickAndAdd();
+    return getAPI().knowledge.pickAndAdd(category);
   },
   deleteDocument: async (docId: number): Promise<void> => {
     if (!isElectron()) return;
@@ -113,21 +114,6 @@ export const knowledgeApi = {
     if (result && !result.success) {
       throw new Error(result.error || '删除文档失败');
     }
-  },
-};
-
-// --- LLM ---
-
-export const llmApi = {
-  test: async () => {
-    if (!isElectron()) return { success: false, error: 'Not in Electron' };
-    return getAPI().llm.generate({ prompt: 'Say "ok"' });
-  },
-  isConfigured: async (): Promise<boolean> => {
-    if (!isElectron()) return false;
-    const settings = await getAPI().db.getSettings();
-    // API key is masked as '••••••••' when configured, or empty when not
-    return !!(settings['LLM_API_KEY'] || settings['AGENT_LLM_PROVIDER']);
   },
 };
 

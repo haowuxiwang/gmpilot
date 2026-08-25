@@ -1,4 +1,4 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+﻿import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { matchRegulationsNode } from '../../nodes/regulation-match';
 
 vi.mock('../../../llm/caller', () => ({
@@ -22,7 +22,7 @@ describe('matchRegulationsNode', () => {
   it('should return matched regulations', async () => {
     const result = await matchRegulationsNode(
       '测试线索',
-      { man: [], machine: [], material: [], method: [], environment: [] },
+      { man: [], machine: [], material: [], method: [], environment: [], measurement: [] },
       '法规参考内容',
     );
     expect(result).toHaveLength(1);

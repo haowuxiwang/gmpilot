@@ -33,10 +33,10 @@ describe('schema-to-prompt', () => {
     expect(desc).toContain('// 根本原因调查');
   });
 
-  it('should mark fixed values', () => {
+  it('should describe dynamic cover title', () => {
     const desc = getSchemaDescription();
-    expect(desc).toContain('// 固定值，不要修改');
-    expect(desc).toContain('"偏差调查和风险评估报告"');
+    expect(desc).toContain('动态标题');
+    expect(desc).toContain('偏差调查和风险评估报告');
   });
 
   it('should include nested structures', () => {

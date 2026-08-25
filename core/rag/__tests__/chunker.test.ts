@@ -115,4 +115,30 @@ ${paragraph}`;
     expect(chunks).toHaveLength(1);
     expect(chunks[0].content).toBe(text);
   });
+
+  it('should split English text using English sentence delimiters', () => {
+    // Regression: 英文文档（EU GMP）依赖 . ! ? 切句；缺失会导致超长块
+    // 超过 bge-large-zh-v1.5 的 512 token 上限 → SiliconFlow embedding 400 (code 20015)
+    const text = 'The quality system should be documented. '
+      .repeat(60)
+      .slice(0, 3000); // ~3000 chars 英文，含英文句号
+    const chunks = chunkText(text, 400);
+    expect(chunks.length).toBeGreaterThan(1);
+    for (const chunk of chunks) {
+      expect(chunk.content.length).toBeLessThanOrEqual(512);
+    }
+  });
+
+  it('should split oversized single paragraphs via sentence splitting (flush path)', () => {
+    // Regression: Phase 2 循环中单个超长段落被直接 push 成块，
+    // 只有尾部 buffer 才走句子切分 —— 中间超大块逃过 512 token 上限
+    const longEnglishPara =
+      'Premises must be designed to prevent contamination. '.repeat(50); // ~2600 chars 单段
+    const text = `第一章 测试\n\n${longEnglishPara}`;
+    const chunks = chunkText(text, 400);
+    expect(chunks.length).toBeGreaterThan(1);
+    for (const chunk of chunks) {
+      expect(chunk.content.length).toBeLessThanOrEqual(512);
+    }
+  });
 });

@@ -59,18 +59,25 @@ export async function readFileContent(filePath: string, ext: string): Promise<st
 
   // Excel files
   if (ext === '.xlsx' || ext === '.xls') {
-    const XLSXModule = await import('xlsx');
-    const XLSX = XLSXModule.default || XLSXModule;
-    const workbook = XLSX.readFile(filePath);
+    const ExcelJS = await import('exceljs');
+    const workbook = new ExcelJS.Workbook();
+    await workbook.xlsx.readFile(filePath);
     const texts: string[] = [];
 
-    for (const sheetName of workbook.SheetNames) {
-      const sheet = workbook.Sheets[sheetName];
-      const text = XLSX.utils.sheet_to_csv(sheet);
-      if (text.trim()) {
-        texts.push(`[工作表: ${sheetName}]\n${text}`);
+    workbook.eachSheet((sheet, _sheetId) => {
+      const rows: string[] = [];
+      sheet.eachRow((row) => {
+        const cells: string[] = [];
+        row.eachCell((cell) => {
+          const val = cell.value;
+          cells.push(String(val ?? ''));
+        });
+        if (cells.length > 0) rows.push(cells.join(','));
+      });
+      if (rows.length > 0) {
+        texts.push(`[工作表: ${sheet.name}]\n${rows.join('\n')}`);
       }
-    }
+    });
 
     if (texts.length === 0) {
       throw new Error('Excel 文件内容为空或无法解析');

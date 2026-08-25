@@ -9,6 +9,7 @@
 import { embedMany } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
 import { createLogger } from '../utils/logger';
+import { getModelDirPath, isPackaged } from '../utils/paths';
 import fs from 'fs';
 import path from 'path';
 
@@ -50,6 +51,10 @@ class OpenAIEmbeddingProvider implements EmbeddingProvider {
     const start = Date.now();
     const maxRetries = 2;
 
+    // 空输入直接返回（避免无意义 API 调用）；空白文本归一化为单个空格（部分 provider 拒绝空串）
+    if (texts.length === 0) return [];
+    const normalized = texts.map((t) => (t && t.trim() ? t : ' '));
+
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
       try {
         if (!this.model) {
@@ -62,7 +67,7 @@ class OpenAIEmbeddingProvider implements EmbeddingProvider {
 
         const result = await embedMany({
           model: this.model,
-          values: texts,
+          values: normalized,
         });
 
         log.debug('Embeddings generated', { provider: this.name, texts: texts.length, duration: `${Date.now() - start}ms` });
@@ -107,6 +112,9 @@ class SiliconFlowEmbeddingProvider implements EmbeddingProvider {
     const start = Date.now();
     const maxRetries = 2;
     const timeoutMs = 30_000; // 30 seconds
+
+    // 空输入直接返回（避免无意义 API 调用）
+    if (texts.length === 0) return [];
 
     for (let attempt = 0; attempt <= maxRetries; attempt++) {
       try {
@@ -192,6 +200,10 @@ class LocalEmbeddingProvider implements EmbeddingProvider {
         // Dynamic import for @huggingface/transformers
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const transformers = await (Function('return import("@huggingface/transformers")')() as Promise<any>);
+        // 本地模型目录显式指定（打包版为 resources/model，dev 为 ./model），
+        // 并禁止远程下载（GMP 离线环境依赖本地模型，避免 fetch failed）
+        transformers.env.localModelPath = this.modelPath;
+        transformers.env.allowRemoteModels = false;
         this.pipeline = await transformers.pipeline('feature-extraction', this.modelName, {
           device: 'cpu',
         });
@@ -212,25 +224,119 @@ class LocalEmbeddingProvider implements EmbeddingProvider {
     const start = Date.now();
     await this.loadModel();
 
-    // Batch processing: pass all texts at once
-    const pipeline = this.pipeline as { call: (texts: string | string[]) => Promise<{ data: Float32Array | Float32Array[] }> };
-    const output = await pipeline.call(texts);
+    // transformers.js v4: pipeline 返回可调用函数（直接调用，与 embed-worker.cjs 一致）
+    const pipeline = this.pipeline as { (texts: string[], options: Record<string, unknown>): Promise<{ dims: number[]; data: Float32Array }> };
+    const output = await pipeline(texts, { pooling: 'mean', normalize: true });
 
-    // Handle batch output
+    const dims = output.dims;
+    const data = output.data;
     const results: number[][] = [];
-    if (Array.isArray(output.data)) {
-      // Batch result: array of Float32Array
-      for (const embedding of output.data) {
-        results.push(Array.from(embedding.slice(0, this.dimensions)));
-      }
-    } else {
-      // Single result: Float32Array (shouldn't happen with batch, but handle gracefully)
-      results.push(Array.from(output.data.slice(0, this.dimensions)));
+    for (let i = 0; i < dims[0]; i++) {
+      results.push(Array.prototype.slice.call(data, i * dims[1], (i + 1) * dims[1]) as number[]);
     }
 
     log.debug('Embeddings generated', { provider: this.name, texts: texts.length, duration: `${Date.now() - start}ms` });
     return results;
   }
+}
+
+// ============================================================================
+// Worker-backed Local Provider
+// onnxruntime-node 的 run() 在调用线程上同步执行，主进程直接跑会阻塞 event loop
+// （启动/CDP/IPC 全部卡死）。embed-worker.cjs 将模型加载与推理移到 worker 线程。
+// ============================================================================
+
+import { Worker } from 'worker_threads';
+
+interface PendingEmbed {
+  resolve: (vectors: number[][]) => void;
+  reject: (err: Error) => void;
+}
+
+class WorkerEmbeddingProvider implements EmbeddingProvider {
+  name = 'local';
+  dimensions = 1024;
+
+  private worker: Worker | null = null;
+  private pending = new Map<number, PendingEmbed>();
+  private idSeq = 0;
+  private workerError: Error | null = null;
+
+  constructor(
+    private modelPath: string,
+    private modelName: string,
+    private workerPath: string,
+  ) {}
+
+  isAvailable(): boolean {
+    try {
+      const modelDir = path.join(this.modelPath, this.modelName);
+      return fs.existsSync(modelDir) && fs.existsSync(this.workerPath);
+    } catch {
+      return false;
+    }
+  }
+
+  private ensureWorker(): Worker {
+    if (this.worker) return this.worker;
+
+    const worker = new Worker(this.workerPath, {
+      workerData: { modelPath: this.modelPath, modelName: this.modelName },
+    });
+
+    worker.on('message', (msg: { type: string; id: number; vectors?: number[][]; error?: string }) => {
+      const pending = this.pending.get(msg.id);
+      if (!pending) return;
+      this.pending.delete(msg.id);
+      if (msg.type === 'result') {
+        pending.resolve(msg.vectors || []);
+      } else {
+        pending.reject(new Error(msg.error || 'embedding worker error'));
+      }
+    });
+
+    worker.on('error', (err) => {
+      this.workerError = err;
+      for (const [, pending] of this.pending) {
+        pending.reject(err);
+      }
+      this.pending.clear();
+      this.worker?.terminate().catch(() => {});
+      this.worker = null;
+    });
+
+    worker.on('exit', () => {
+      this.worker = null;
+    });
+
+    this.worker = worker;
+    return worker;
+  }
+
+  async embed(texts: string[]): Promise<number[][]> {
+    if (texts.length === 0) return [];
+    if (this.workerError) throw this.workerError;
+
+    const worker = this.ensureWorker();
+    const id = ++this.idSeq;
+
+    return new Promise<number[][]>((resolve, reject) => {
+      this.pending.set(id, { resolve, reject });
+      worker.postMessage({ type: 'embed', id, texts });
+    });
+  }
+}
+
+/**
+ * Resolve the embedding worker script path.
+ * 打包版（asar:false）：resources/app/dist-electron/main/embed-worker.cjs（copy-worker 复制）
+ * dev：项目根 electron/embed-worker.cjs
+ */
+function getWorkerPath(): string {
+  if (isPackaged()) {
+    return path.join(process.resourcesPath, 'app', 'dist-electron', 'main', 'embed-worker.cjs');
+  }
+  return path.join(process.cwd(), 'electron', 'embed-worker.cjs');
 }
 
 // ============================================================================
@@ -279,8 +385,18 @@ export function createEmbeddingProvider(): EmbeddingProvider {
   }
 
   // Default: local provider with fallback to cloud
-  const modelPath = dbSettings['EMBEDDING_MODEL_PATH'] || process.env.EMBEDDING_MODEL_PATH || './model';
+  // 打包感知的模型目录（打包版 → resources/model 或 exe 旁 model/；dev → ./model）
+  const defaultModelPath = getModelDirPath();
+  const modelPath = dbSettings['EMBEDDING_MODEL_PATH'] || process.env.EMBEDDING_MODEL_PATH || defaultModelPath;
   const modelName = dbSettings['EMBEDDING_MODEL'] || process.env.EMBEDDING_MODEL || 'BAAI/bge-large-zh-v1.5';
+  // 优先 worker 线程（不阻塞主进程 event loop）；worker 文件缺失时回退主线程直跑
+  const workerProvider = new WorkerEmbeddingProvider(modelPath, modelName, getWorkerPath());
+
+  if (workerProvider.isAvailable()) {
+    log.info('Embedding provider: local (worker)', { model: modelName, path: modelPath });
+    return workerProvider;
+  }
+
   const localProvider = new LocalEmbeddingProvider(modelPath, modelName);
 
   if (localProvider.isAvailable()) {

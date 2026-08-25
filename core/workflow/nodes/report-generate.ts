@@ -17,25 +17,29 @@ import type {
 const log = createLogger('Workflow');
 
 // Risk score weights per severity level (aligned with AuditBee)
-const RISK_WEIGHTS: Record<string, number> = { high: 40, medium: 20, low: 10, info: 5 };
+const RISK_WEIGHTS: Record<string, number> = { high: 60, medium: 30, low: 10, info: 5 };
 const RISK_THRESHOLD_HIGH = 60;
 const RISK_THRESHOLD_MEDIUM = 30;
 
 /**
  * Calculate risk score from findings.
  * Aligned with AuditBee's calculate_risk_score() pattern.
- * Score = sum of per-finding weights, capped at 100.
+ * Score = 主导严重级别权重 + 数量递减修正，封顶 100。
+ * 数量修正每多 1 条 +5、封顶 +20，避免候选因素堆叠导致分数虚高。
  * Level: >=60 high, >=30 medium, else low.
  */
 export function calculateRiskScore(findings: Finding[]): { score: number; level: 'high' | 'medium' | 'low' | 'info' } {
   if (findings.length === 0) return { score: 0, level: 'low' };
 
-  let score = 0;
+  // 主导严重级别决定基础分
+  let base = 0;
   for (const f of findings) {
-    score += RISK_WEIGHTS[f.severity] || 10;
+    base = Math.max(base, RISK_WEIGHTS[f.severity] || 10);
   }
 
-  score = Math.min(score, 100);
+  // 数量修正：多条同级别发现小幅累加，封顶 +20
+  const extra = Math.min((findings.length - 1) * 5, 20);
+  const score = Math.min(base + extra, 100);
 
   if (score >= RISK_THRESHOLD_HIGH) return { score, level: 'high' };
   if (score >= RISK_THRESHOLD_MEDIUM) return { score, level: 'medium' };

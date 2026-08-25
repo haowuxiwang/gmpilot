@@ -11,7 +11,7 @@ export function NotFoundPage() {
 
   return (
     <div className="flex flex-col items-center justify-center h-full min-h-[400px] text-center px-8">
-      <div className="w-16 h-16 rounded-2xl bg-stone-50 border border-stone-100 flex items-center justify-center mb-5">
+      <div className="w-16 h-16 rounded-lg bg-stone-50 border border-stone-100 flex items-center justify-center mb-5">
         <FileQuestion className="w-7 h-7 text-stone-300" strokeWidth={1.5} />
       </div>
       <h1 className="text-4xl font-bold text-stone-900 font-display mb-2">

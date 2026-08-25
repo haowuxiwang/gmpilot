@@ -54,6 +54,7 @@ export interface KnowledgeDoc {
   id: number;
   filename: string;
   source: string;
+  category: string;
   content: string;
   chunk_count: number;
   indexed_at: string | null;
@@ -75,6 +76,19 @@ export interface AuditTaskInsert {
   auditbee_task_id: number;
   status?: string;
   findings_json?: string;
+}
+
+export interface Conversation {
+  id: number;
+  title: string;
+  messages_json: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ConversationInsert {
+  title: string;
+  messages_json: string;
 }
 
 // ============================================================================
@@ -121,6 +135,29 @@ export function getReports(db: Database.Database, limit = 50, offset = 0): Repor
   return db.prepare('SELECT * FROM reports ORDER BY created_at DESC LIMIT ? OFFSET ?').all(limit, offset) as Report[];
 }
 
+/**
+ * Report list item — excludes large text columns (content/clue_input/JSON columns).
+ * 列表页只需要元数据；content 可达数百 KB，SELECT * 会在报告增多后拖慢列表加载。
+ * 需要全文时用 getReport(id) 按需获取。
+ */
+export interface ReportSummary {
+  id: number;
+  title: string;
+  deviation_id: string | null;
+  deviation_type: string;
+  risk_score: number;
+  risk_level: 'high' | 'medium' | 'low';
+  created_at: string;
+}
+
+const REPORT_SUMMARY_COLUMNS = 'id, title, deviation_id, deviation_type, risk_score, risk_level, created_at';
+
+export function getReportSummaries(db: Database.Database, limit = 50, offset = 0): ReportSummary[] {
+  return db
+    .prepare(`SELECT ${REPORT_SUMMARY_COLUMNS} FROM reports ORDER BY created_at DESC LIMIT ? OFFSET ?`)
+    .all(limit, offset) as ReportSummary[];
+}
+
 export function getReport(db: Database.Database, id: number): Report | null {
   return (db.prepare('SELECT * FROM reports WHERE id = ?').get(id) as Report) ?? null;
 }
@@ -161,23 +198,35 @@ export function deleteReport(db: Database.Database, id: number): void {
 // Knowledge Docs CRUD
 // ============================================================================
 
-export function getKnowledgeDocs(db: Database.Database, source?: string): KnowledgeDoc[] {
+export function getKnowledgeDocs(db: Database.Database, source?: string, category?: string): KnowledgeDoc[] {
+  let sql = 'SELECT id, filename, source, category, chunk_count, indexed_at, created_at FROM knowledge_docs';
+  const conditions: string[] = [];
+  const params: string[] = [];
   if (source) {
-    return db.prepare('SELECT id, filename, source, chunk_count, indexed_at, created_at FROM knowledge_docs WHERE source = ? ORDER BY filename').all(source) as KnowledgeDoc[];
+    conditions.push('source = ?');
+    params.push(source);
   }
-  return db.prepare('SELECT id, filename, source, chunk_count, indexed_at, created_at FROM knowledge_docs ORDER BY source, filename').all() as KnowledgeDoc[];
+  if (category) {
+    conditions.push('category = ?');
+    params.push(category);
+  }
+  if (conditions.length > 0) {
+    sql += ` WHERE ${conditions.join(' AND ')}`;
+  }
+  sql += ' ORDER BY source, filename';
+  return db.prepare(sql).all(...params) as KnowledgeDoc[];
 }
 
 export function getKnowledgeDoc(db: Database.Database, id: number): KnowledgeDoc | null {
   return (db.prepare('SELECT * FROM knowledge_docs WHERE id = ?').get(id) as KnowledgeDoc) ?? null;
 }
 
-export function createKnowledgeDoc(db: Database.Database, doc: { filename: string; source: string; content: string }): number {
+export function createKnowledgeDoc(db: Database.Database, doc: { filename: string; source: string; content: string; category?: string }): number {
   const result = db.prepare(
-    'INSERT INTO knowledge_docs (filename, source, content) VALUES (?, ?, ?)'
-  ).run(doc.filename, doc.source, doc.content);
+    'INSERT INTO knowledge_docs (filename, source, content, category) VALUES (?, ?, ?, ?)'
+  ).run(doc.filename, doc.source, doc.content, doc.category || 'regulation');
   const id = Number(result.lastInsertRowid);
-  log.info('Knowledge doc created', { id, filename: doc.filename, source: doc.source, contentLength: doc.content.length });
+  log.info('Knowledge doc created', { id, filename: doc.filename, source: doc.source, category: doc.category || 'regulation', contentLength: doc.content.length });
   return id;
 }
 
@@ -188,6 +237,15 @@ export function updateKnowledgeDocIndex(db: Database.Database, id: number, chunk
 export function deleteKnowledgeDoc(db: Database.Database, id: number): void {
   db.prepare('DELETE FROM knowledge_docs WHERE id = ?').run(id);
   log.info('Knowledge doc deleted', { id });
+}
+
+export function getKnowledgeDocIdsByCategories(db: Database.Database, categories: string[]): number[] {
+  if (categories.length === 0) return [];
+  const placeholders = categories.map(() => '?').join(', ');
+  const rows = db.prepare(
+    `SELECT id FROM knowledge_docs WHERE category IN (${placeholders})`
+  ).all(...categories) as { id: number }[];
+  return rows.map(r => r.id);
 }
 
 // ============================================================================
@@ -226,4 +284,92 @@ export function updateAuditTaskResult(db: Database.Database, id: number, status:
 
 export function deleteAuditTask(db: Database.Database, id: number): void {
   db.prepare('DELETE FROM audit_tasks WHERE id = ?').run(id);
+}
+
+// ============================================================================
+// Conversations CRUD
+// ============================================================================
+
+export function getConversations(db: Database.Database, limit = 50, offset = 0): Conversation[] {
+  return db.prepare('SELECT * FROM conversations ORDER BY updated_at DESC LIMIT ? OFFSET ?').all(limit, offset) as Conversation[];
+}
+
+export function getConversation(db: Database.Database, id: number): Conversation | null {
+  return (db.prepare('SELECT * FROM conversations WHERE id = ?').get(id) as Conversation) ?? null;
+}
+
+export function createConversation(db: Database.Database, conversation: ConversationInsert): number {
+  const result = db.prepare(`
+    INSERT INTO conversations (title, messages_json)
+    VALUES (@title, @messages_json)
+  `).run({
+    title: conversation.title,
+    messages_json: conversation.messages_json,
+  });
+  const id = Number(result.lastInsertRowid);
+  log.info('Conversation created', { id, title: conversation.title });
+  return id;
+}
+
+export function updateConversation(db: Database.Database, id: number, title: string, messagesJson: string): void {
+  db.prepare(`
+    UPDATE conversations 
+    SET title = ?, messages_json = ?, updated_at = CURRENT_TIMESTAMP 
+    WHERE id = ?
+  `).run(title, messagesJson, id);
+}
+
+export function deleteConversation(db: Database.Database, id: number): void {
+  db.prepare('DELETE FROM conversations WHERE id = ?').run(id);
+  log.info('Conversation deleted', { id });
+}
+
+// ============================================================================
+// Workflow Checkpoints (crash recovery)
+// ============================================================================
+
+export interface WorkflowCheckpoint {
+  correlation_id: string;
+  step: string;
+  context_json: string;
+  created_at: string;
+  updated_at: string;
+}
+
+/**
+ * Save or update a workflow checkpoint for crash recovery.
+ * Non-fatal: errors are logged but do not interrupt the workflow.
+ */
+export function saveCheckpoint(db: Database.Database, correlationId: string, step: string, context: Record<string, unknown>): void {
+  try {
+    db.prepare(`
+      INSERT INTO workflow_checkpoints (correlation_id, step, context_json, updated_at)
+      VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+      ON CONFLICT(correlation_id) DO UPDATE SET
+        step = excluded.step,
+        context_json = excluded.context_json,
+        updated_at = CURRENT_TIMESTAMP
+    `).run(correlationId, step, JSON.stringify(context));
+  } catch (error) {
+    log.warn('Failed to save workflow checkpoint (non-fatal)', { correlationId, step, error: String(error) });
+  }
+}
+
+/**
+ * Load a workflow checkpoint for recovery.
+ */
+export function loadCheckpoint(db: Database.Database, correlationId: string): WorkflowCheckpoint | null {
+  const row = db.prepare('SELECT * FROM workflow_checkpoints WHERE correlation_id = ?').get(correlationId) as WorkflowCheckpoint | undefined;
+  return row ?? null;
+}
+
+/**
+ * Delete a workflow checkpoint after successful completion.
+ */
+export function deleteCheckpoint(db: Database.Database, correlationId: string): void {
+  try {
+    db.prepare('DELETE FROM workflow_checkpoints WHERE correlation_id = ?').run(correlationId);
+  } catch (error) {
+    log.warn('Failed to delete checkpoint (non-fatal)', { correlationId, error: String(error) });
+  }
 }

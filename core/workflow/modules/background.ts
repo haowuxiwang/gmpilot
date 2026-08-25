@@ -14,7 +14,7 @@ const log = createLogger('Module');
 const backgroundSchema = z.object({
   product: z.string().describe('涉及产品名称'),
   batch: z.string().describe('批次号'),
-  occurrenceTime: z.string().describe('偏差发生时间 (YYYY-MM-DD HH:mm)'),
+  occurrenceTime: z.string().describe('偏差发生时间，保持线索原始格式（如 2026.03.23 10:48）'),
   location: z.string().describe('偏差发生地点'),
   description: z.string().describe('偏差事件详细描述'),
   photos: z.array(z.string()).default([]).describe('照片路径数组'),
@@ -45,6 +45,22 @@ export class BackgroundGenerator extends BaseModuleGenerator {
     const prompt = this.buildPrompt(context);
     const result = await this.callLLM(prompt, backgroundSchema);
     return result as BackgroundOutput;
+  }
+
+  /**
+   * Template fallback: reuse deterministic extraction, else placeholder values.
+   */
+  async generateFallback(context: ModuleContext): Promise<BackgroundOutput> {
+    const { analysis, factors } = context;
+    const product = this.extractProduct(analysis, factors);
+    return {
+      product: product || '待补充',
+      batch: this.extractBatch(analysis) || '待补充',
+      occurrenceTime: this.extractTime(analysis) || new Date().toISOString().slice(0, 16),
+      location: this.extractLocation(analysis) || '待补充',
+      description: analysis.summary || '偏差背景信息暂缺，请补充。',
+      photos: [],
+    };
   }
 
   /**
@@ -92,8 +108,9 @@ export class BackgroundGenerator extends BaseModuleGenerator {
 
   private extractTime(analysis: ClueAnalysis): string | null {
     for (const event of analysis.keyEvents) {
-      const match = event.match(/(\d{4}[-/]\d{1,2}[-/]\d{1,2}[\sT]\d{1,2}:\d{2})/);
-      if (match) return match[1].replace(/\//g, '-');
+      // 支持工厂点分日期（2026.03.23 10:48）与常规 -/ 分隔日期；/ 归一化为 -，点分原样保留
+      const match = event.match(/(\d{4}[./-]\d{1,2}[./-]\d{1,2}[\sT]\d{1,2}:\d{2})/);
+      if (match) return match[1].replace(/\/(?=\d)/g, '-');
     }
     return null;
   }

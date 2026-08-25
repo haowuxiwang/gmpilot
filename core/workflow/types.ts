@@ -53,11 +53,12 @@ export interface ClueInput {
   files: FileRef[];
 }
 
-/** 文件引用 */
+/** 文件引用（渲染端直传 content/base64；IPC 层读取后并入 clueText，核心层保留引用供审计） */
 export interface FileRef {
   name: string;
-  path: string;
-  type: 'pdf' | 'docx' | 'txt' | 'image';
+  path?: string;
+  type?: 'pdf' | 'docx' | 'txt' | 'image';
+  content?: string;
 }
 
 /** 步骤2: 线索分析结果 */
@@ -75,6 +76,7 @@ export interface Factor5M1E {
   material: string[];    // 料 — 原辅料因素
   method: string[];      // 法 — 工艺方法因素
   environment: string[]; // 环 — 生产环境因素
+  measurement: string[]; // 测 — 测量校验因素
 }
 
 /** 审计发现 — 对齐 AuditBee Finding 表 */
@@ -141,9 +143,19 @@ export interface WorkflowContext {
   regulations: RegulationMatch[];
   findings: Finding[];     // 5M1E → Finding 转换结果
   report: DeviationReport | null;
+  // 审核Agent产出
+  auditFindings: Finding[] | null;
+  auditScore: number | null;
+  auditSummary: string | null;
   // 状态
   currentStep: number;
   error: string | null;
+  revisionCount: number;  // REVISE 循环计数，限制最大修订次数
+  // P3: 定向修订
+  revisionTargets: string[];   // 需要修订的模块列表
+  revisionContext: string;     // 修订上下文（审核发现摘要）
+  // 模块级容错：LLM 失败后使用模板兜底的模块
+  fallbackModules: string[];
 }
 
 // Re-export DeviationReport for consumers

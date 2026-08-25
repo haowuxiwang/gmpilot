@@ -9,6 +9,7 @@ import {
   PROVIDER_REGISTRY,
   PROVIDER_LIST,
   clearSettingsCache,
+  updateResolvedApiKey,
 } from '../provider';
 
 // Mock DB modules
@@ -37,6 +38,11 @@ vi.mock('@ai-sdk/openai', () => ({
 
 vi.mock('@ai-sdk/anthropic', () => ({
   createAnthropic: vi.fn(() => mockAnthropicFactory),
+}));
+
+const mockOllamaFactory = vi.fn((model: string) => ({ modelId: model, provider: 'ollama' }));
+vi.mock('ollama-ai-provider', () => ({
+  createOllama: vi.fn(() => mockOllamaFactory),
 }));
 
 // Mock logger
@@ -69,9 +75,9 @@ describe('PROVIDER_REGISTRY', () => {
     expect(PROVIDER_REGISTRY).toHaveProperty('ollama');
     expect(PROVIDER_REGISTRY).toHaveProperty('qwen');
     expect(PROVIDER_REGISTRY).toHaveProperty('glm');
+    expect(PROVIDER_REGISTRY).toHaveProperty('mimo');
     expect(PROVIDER_REGISTRY).toHaveProperty('siliconflow');
     expect(PROVIDER_REGISTRY).toHaveProperty('openrouter');
-    expect(PROVIDER_REGISTRY).toHaveProperty('mimo');
   });
 
   it('all baseUrls should be valid URLs', () => {
@@ -169,11 +175,11 @@ describe('getProviderConfig', () => {
     expect(config.baseUrl).toBe(PROVIDER_REGISTRY.deepseek.baseUrl);
   });
 
-  it('should default to mimo provider when no AGENT_LLM_PROVIDER set', () => {
+  it('should default to deepseek provider when no AGENT_LLM_PROVIDER set', () => {
     delete process.env.AGENT_LLM_PROVIDER;
-    process.env.MIMO_API_KEY = 'mimo-key';
+    process.env.DEEPSEEK_API_KEY = 'deepseek-key';
     const config = getProviderConfig();
-    expect(config.provider).toBe('mimo');
+    expect(config.provider).toBe('deepseek');
   });
 
   // ---- Unified config (LLM_API_KEY) ----
@@ -220,11 +226,11 @@ describe('getProviderConfig', () => {
     expect(config.provider).toBe('siliconflow');
   });
 
-  it('should detect mimo provider from unified URL', () => {
+  it('should fallback to openai for unknown provider URL', () => {
     process.env.LLM_API_KEY = 'key';
-    process.env.LLM_BASE_URL = 'https://api.xiaomimimo.com/v1';
+    process.env.LLM_BASE_URL = 'https://api.unknown-provider.com/v1';
     const config = getProviderConfig();
-    expect(config.provider).toBe('mimo');
+    expect(config.provider).toBe('openai');
   });
 
   it('should detect glm provider from unified URL', () => {
@@ -447,6 +453,23 @@ describe('createLLMModel', () => {
     delete process.env.LLM_API_KEY;
     delete process.env.LLM_MODEL;
   });
+
+  it('should create Ollama model for ollama provider', () => {
+    const model = createLLMModel({ provider: 'ollama', apiKey: '', model: 'qwen2.5:14b' });
+    expect(mockOllamaFactory).toHaveBeenCalledWith('qwen2.5:14b');
+    expect(model).toEqual({ modelId: 'qwen2.5:14b', provider: 'ollama' });
+  });
+
+  it('should use default ollama model when not specified', () => {
+    createLLMModel({ provider: 'ollama', apiKey: '' });
+    expect(mockOllamaFactory).toHaveBeenCalledWith('llama3.1');
+  });
+
+  it('should use default ollama baseUrl when not specified', async () => {
+    const { createOllama } = await import('ollama-ai-provider');
+    createLLMModel({ provider: 'ollama', apiKey: '' });
+    expect(createOllama).toHaveBeenCalledWith({ baseURL: 'http://localhost:11434' });
+  });
 });
 
 describe('healthCheckProvider', () => {
@@ -569,5 +592,74 @@ describe('healthCheckAllProviders', () => {
     const results = await healthCheckAllProviders();
     expect(results.length).toBe(1);
     expect(results[0].provider).toBe('deepseek');
+  });
+});
+
+// =========================================================================
+// DB settings masked API key resolution
+// =========================================================================
+
+describe('DB settings masked key resolution', () => {
+  const originalEnv = process.env;
+
+  beforeEach(() => {
+    process.env = { ...originalEnv };
+    vi.clearAllMocks();
+    clearSettingsCache();
+  });
+
+  afterEach(() => {
+    process.env = originalEnv;
+    clearSettingsCache();
+  });
+
+  it('should resolve masked API key from cache when available', async () => {
+    const { getAllSettings } = await import('../../db/schema');
+    vi.mocked(getAllSettings).mockReturnValue({
+      DEEPSEEK_API_KEY: '••••••••',
+      LLM_MODEL: 'deepseek-chat',
+    });
+
+    // Set the resolved key in cache
+    updateResolvedApiKey('DEEPSEEK_API_KEY', 'real-secret-key');
+
+    const config = getProviderConfig();
+    expect(config.apiKey).toBe('real-secret-key');
+  });
+
+  it('should keep masked value when no cached resolution exists', async () => {
+    const { getAllSettings } = await import('../../db/schema');
+    vi.mocked(getAllSettings).mockReturnValue({
+      AGENT_LLM_PROVIDER: 'openai',
+      OPENAI_API_KEY: '••••••••',
+      OPENAI_MODEL: 'gpt-4o',
+    });
+
+    const config = getProviderConfig();
+    // The masked value should be kept as-is (not resolved)
+    expect(config.apiKey).toBe('••••••••');
+    expect(config.provider).toBe('openai');
+  });
+
+  it('should pass through non-masked settings normally', async () => {
+    const { getAllSettings } = await import('../../db/schema');
+    vi.mocked(getAllSettings).mockReturnValue({
+      DEEPSEEK_API_KEY: 'actual-key-value',
+      LLM_MODEL: 'deepseek-chat',
+    });
+
+    const config = getProviderConfig();
+    expect(config.apiKey).toBe('actual-key-value');
+  });
+
+  it('should fallback to env when DB read fails', async () => {
+    const { getDatabase } = await import('../../db/connection');
+    vi.mocked(getDatabase).mockImplementation(() => {
+      throw new Error('DB not initialized');
+    });
+
+    process.env.DEEPSEEK_API_KEY = 'env-fallback-key';
+    const config = getProviderConfig();
+    expect(config.apiKey).toBe('env-fallback-key');
   });
 });

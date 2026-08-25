@@ -1,6 +1,7 @@
 /**
  * Document viewer component.
  * Modern, clean design for viewing generated deviation reports.
+ * 报告正文使用 Noto Serif CJK SC 衬线字体（与 PDF 导出保持一致）。
  */
 
 import { useState, useEffect, useRef } from 'react';
@@ -10,26 +11,32 @@ import {
   FileText,
   Copy,
   Download,
-  FlaskConical,
   AlertTriangle,
   CheckCircle2,
   Shield,
-  Loader2,
 } from 'lucide-react';
 import type { DeviationReport } from '@core/workflow/types';
-import type { AuditBeeFinding } from '@core/integration/types';
+import type { AuditFinding } from '@core/llm/caller';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { AuditFindingsSummary } from '@/components/audit/AuditFindingsSummary';
+import { loadSerifFont } from '@/lib/fonts';
+
+// 注册 Noto Serif CJK SC（与 PDF 模板共用同一字体文件）。
+// 开发环境 http:// 页面加载 file:// 字体可能被 CORS 拦截 → 优雅降级为系统衬线。
 
 interface DocumentViewerProps {
   report: DeviationReport | null;
   onExportPdf?: () => void;
-  onSendToAudit?: () => void;
-  /** Audit state from useAuditBee hook */
-  auditLoading?: boolean;
-  auditFindings?: AuditBeeFinding[] | null;
-  auditAvailable?: boolean | null;
+  /** 导出 Word（模板填充） */
+  onExportDocx?: () => void;
+  /** True while a PDF export is in flight (shows loading on the export button) */
+  exporting?: boolean;
+  /** 当前正在导出的类型（pdf | docx），用于导出按钮 loading */
+  exportingType?: 'pdf' | 'docx' | null;
+  /** Audit results from built-in audit agent */
+  auditFindings?: AuditFinding[] | null;
+  auditScore?: number | null;
   onViewAuditDetails?: () => void;
 }
 
@@ -47,37 +54,6 @@ function ReportSection({
   accentColor?: 'teal' | 'amber' | 'stone';
 }) {
   const [isOpen, setIsOpen] = useState(defaultOpen);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const iconRef = useRef<SVGSVGElement>(null);
-  const contentAnimRef = useRef<gsap.core.Tween | null>(null);
-  const iconAnimRef = useRef<gsap.core.Tween | null>(null);
-
-  useEffect(() => {
-    if (contentRef.current && isOpen) {
-      contentAnimRef.current = gsap.from(contentRef.current, {
-        height: 0,
-        opacity: 0,
-        duration: 0.3,
-        ease: 'power2.inOut',
-      });
-    }
-    return () => {
-      contentAnimRef.current?.kill();
-    };
-  }, [isOpen]);
-
-  useEffect(() => {
-    if (iconRef.current) {
-      iconAnimRef.current = gsap.to(iconRef.current, {
-        rotation: isOpen ? 90 : 0,
-        duration: 0.2,
-        ease: 'power2.out',
-      });
-    }
-    return () => {
-      iconAnimRef.current?.kill();
-    };
-  }, [isOpen]);
 
   const accentClasses = {
     teal: 'bg-teal-50 text-teal-600 border-teal-100',
@@ -100,18 +76,18 @@ function ReportSection({
           {title}
         </span>
         <ChevronRight
-          ref={iconRef}
-          className="w-3.5 h-3.5 text-stone-400 flex-shrink-0"
+          data-open={isOpen}
+          className="chevron-rotate w-3.5 h-3.5 text-stone-400 flex-shrink-0"
           strokeWidth={2}
         />
       </button>
-      {isOpen && (
-        <div ref={contentRef} className="px-5 pb-4 overflow-hidden">
-          <p className="text-sm text-stone-600 leading-relaxed whitespace-pre-wrap pl-10">
+      <div data-open={isOpen} className="collapse-grid">
+        <div>
+          <p className="text-sm text-stone-600 leading-relaxed whitespace-pre-wrap pl-10 pr-5 pb-4 font-serif">
             {content || '暂无内容'}
           </p>
         </div>
-      )}
+      </div>
     </div>
   );
 }
@@ -119,14 +95,19 @@ function ReportSection({
 export function DocumentViewer({
   report,
   onExportPdf,
-  onSendToAudit,
-  auditLoading,
+  onExportDocx,
+  exporting,
+  exportingType,
   auditFindings,
-  auditAvailable,
+  auditScore,
   onViewAuditDetails,
 }: DocumentViewerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const containerAnimRef = useRef<gsap.core.Tween | null>(null);
+
+  useEffect(() => {
+    loadSerifFont();
+  }, []);
 
   useEffect(() => {
     if (report && containerRef.current) {
@@ -144,8 +125,8 @@ export function DocumentViewer({
 
   if (!report) {
     return (
-      <div className="flex flex-col items-center justify-center h-full text-center px-8">
-        <div className="w-14 h-14 rounded-2xl bg-stone-50 border border-stone-100 flex items-center justify-center mb-4">
+      <div className="flex flex-col items-center justify-center h-full text-center px-8 animate-fade-in">
+        <div className="w-14 h-14 rounded-lg bg-stone-50 border border-stone-100 flex items-center justify-center mb-4 animate-glow">
           <FileText
             className="w-6 h-6 text-stone-300"
             strokeWidth={1.5}
@@ -155,7 +136,7 @@ export function DocumentViewer({
           暂无报告
         </p>
         <p className="text-xs text-stone-400">
-          生成报告后将在此处显示
+          在对话中描述偏差情况，AI 将自动生成报告
         </p>
       </div>
     );
@@ -178,7 +159,7 @@ export function DocumentViewer({
     },
     {
       title: '调查分析',
-      icon: FlaskConical,
+      icon: FileText,
       content: report.investigation?.rootCause?.conclusion || '',
       accent: 'teal' as const,
     },
@@ -188,9 +169,10 @@ export function DocumentViewer({
       content: [
         `风险等级：${risk.label}`,
         `风险评分：${report.riskScore ?? '-'}`,
-        `质量影响：${report.riskAssessment?.qualityImpact || '-'}`,
-        `稳定性影响：${report.riskAssessment?.stabilityImpact || '-'}`,
-        `注册影响：${report.riskAssessment?.registrationImpact || '-'}`,
+        ...(report.riskAssessment?.description || '')
+          .split('\n')
+          .filter(Boolean)
+          .map((p) => `• ${p}`),
       ]
         .filter(Boolean)
         .join('\n'),
@@ -215,25 +197,12 @@ export function DocumentViewer({
 
   return (
     <div ref={containerRef} className="flex flex-col h-full">
-      {/* Header */}
+      {/* Header — 精简：无图标，纯文字层次 */}
       <div className="px-5 py-4 border-b border-stone-100">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center">
-              <FlaskConical
-                className="w-4 h-4 text-teal-600"
-                strokeWidth={1.5}
-              />
-            </div>
-            <div>
-              <span className="text-sm font-semibold text-stone-900">
-                {report.deviationId || '偏差报告'}
-              </span>
-              <p className="text-[11px] text-stone-400 tracking-wide">
-                偏差调查报告
-              </p>
-            </div>
-          </div>
+        <div className="flex items-center justify-between mb-2">
+          <span className="text-sm font-semibold text-stone-900">
+            {report.deviationId || '偏差报告'}
+          </span>
 
           <div className="flex items-center gap-1">
             <Button
@@ -241,7 +210,9 @@ export function DocumentViewer({
               size="icon"
               onClick={() => {
                 const text = JSON.stringify(report, null, 2);
-                navigator.clipboard.writeText(text);
+                navigator.clipboard.writeText(text).catch(() => {
+                  console.error('Failed to copy report to clipboard');
+                });
               }}
               title="复制"
             >
@@ -251,9 +222,27 @@ export function DocumentViewer({
               variant="ghost"
               size="icon"
               onClick={onExportPdf}
+              disabled={exporting || exportingType === 'pdf' || exportingType === 'docx'}
               title="导出 PDF"
             >
-              <Download className="w-4 h-4" strokeWidth={1.5} />
+              {exporting || exportingType === 'pdf' ? (
+                <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+              ) : (
+                <Download className="w-4 h-4" strokeWidth={1.5} />
+              )}
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={onExportDocx}
+              disabled={exporting || exportingType === 'pdf' || exportingType === 'docx'}
+              title="导出 Word（模板填充）"
+            >
+              {exportingType === 'docx' ? (
+                <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+              ) : (
+                <FileText className="w-4 h-4" strokeWidth={1.5} />
+              )}
             </Button>
           </div>
         </div>
@@ -265,37 +254,20 @@ export function DocumentViewer({
             )}
             {risk.label}
           </Badge>
-
-          {onSendToAudit && (
-            <Button
-              variant="secondary"
-              size="sm"
-              onClick={onSendToAudit}
-              disabled={auditLoading}
-              className="ml-auto"
-            >
-              {auditLoading ? (
-                <>
-                  <Loader2 className="w-3.5 h-3.5 mr-1.5 animate-spin" />
-                  审计中
-                </>
-              ) : (
-                '发送审计'
-              )}
-            </Button>
-          )}
+          <span className="text-[11px] text-stone-400">
+            风险评分 {report.riskScore ?? '-'}
+          </span>
         </div>
       </div>
 
       {/* Audit summary */}
-      {(auditFindings !== undefined || auditLoading) && (
+      {auditFindings !== undefined && (
         <div className="px-5 py-3 border-b border-stone-100">
           <AuditFindingsSummary
             findings={auditFindings ?? null}
-            loading={auditLoading ?? false}
-            isAvailable={auditAvailable ?? null}
+            loading={false}
+            overallScore={auditScore}
             onViewDetails={onViewAuditDetails}
-            onSendToAudit={onSendToAudit}
           />
         </div>
       )}

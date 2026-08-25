@@ -134,6 +134,26 @@ A: 步骤：
 
 ---
 
+## 嵌入模型部署
+
+本地嵌入模型（BAAI/bge-large-zh-v1.5，约 1.3GB）**不打包进安装包**（保持安装包轻量）。
+
+**模型查找优先级**（运行时）：
+1. 设置页/环境变量 `EMBEDDING_MODEL_PATH`（显式指定，最灵活）
+2. `GMPilot.exe` 同级的 `model/` 目录（推荐部署位置，更新模型无需重装）
+3. `resources/model/`（兼容旧版打包产物）
+
+**获取模型**：
+```bash
+npm run download:model              # 从 HuggingFace 下载
+npm run download:model -- --mirror hf-mirror   # 国内镜像
+npm run download:model -- --dir "D:\gmpilot-model"  # 自定义位置
+```
+
+**模型缺失时**：自动降级到云端 embedding（SiliconFlow/OpenAI），功能不中断，知识库检索质量可能下降。
+
+---
+
 ## 技术支持
 
 如有问题，请查看：

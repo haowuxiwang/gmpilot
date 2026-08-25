@@ -13,8 +13,8 @@ test.describe('Navigation', () => {
   test('should display sidebar with 4 navigation items', async ({ page }) => {
     await page.goto('/');
 
-    // Check sidebar exists - use the aside with w-[260px]
-    const sidebar = page.locator('aside.w-\\[260px\\]');
+    // Check sidebar exists - use the aside with w-[240px]
+    const sidebar = page.locator('aside.w-\\[240px\\]');
     await expect(sidebar).toBeVisible();
 
     // Check 4 nav items
@@ -34,8 +34,8 @@ test.describe('Navigation', () => {
     // Click "偏差报告"
     await page.locator('nav button').filter({ hasText: '偏差报告' }).click();
 
-    // Should be on /reports
-    await expect(page).toHaveURL('/reports');
+    // Should be on /#/reports
+    await expect(page).toHaveURL('/#/reports');
   });
 
   test('should navigate to knowledge page', async ({ page }) => {
@@ -44,8 +44,8 @@ test.describe('Navigation', () => {
     // Click "知识库"
     await page.locator('nav button').filter({ hasText: '知识库' }).click();
 
-    // Should be on /knowledge
-    await expect(page).toHaveURL('/knowledge');
+    // Should be on /#/knowledge
+    await expect(page).toHaveURL('/#/knowledge');
   });
 
   test('should navigate to settings page', async ({ page }) => {
@@ -54,12 +54,12 @@ test.describe('Navigation', () => {
     // Click "设置"
     await page.locator('nav button').filter({ hasText: '设置' }).click();
 
-    // Should be on /settings
-    await expect(page).toHaveURL('/settings');
+    // Should be on /#/settings
+    await expect(page).toHaveURL('/#/settings');
   });
 
   test('should show 404 for unknown routes', async ({ page }) => {
-    await page.goto('/unknown-route');
+    await page.goto('/#/unknown-route');
 
     // Should show 404 page
     await expect(page.locator('text=404')).toBeVisible();
@@ -67,10 +67,10 @@ test.describe('Navigation', () => {
   });
 
   test('should highlight active nav item', async ({ page }) => {
-    await page.goto('/reports');
+    await page.goto('/#/reports');
 
-    // The "偏差报告" button should have active style (teal background)
+    // The "偏差报告" button should have active style (white bg with shadow)
     const activeButton = page.locator('nav button').filter({ hasText: '偏差报告' });
-    await expect(activeButton).toHaveClass(/bg-teal-600/);
+    await expect(activeButton).toHaveClass(/bg-white/);
   });
 });

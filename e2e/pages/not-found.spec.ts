@@ -11,7 +11,7 @@ test.describe('NotFoundPage', () => {
   });
 
   test('should display 404 page for unknown routes', async ({ page }) => {
-    await page.goto('/this-page-does-not-exist');
+    await page.goto('/#/this-page-does-not-exist');
 
     // Should show 404
     await expect(page.locator('text=404')).toBeVisible();
@@ -24,7 +24,7 @@ test.describe('NotFoundPage', () => {
   });
 
   test('should have return home button', async ({ page }) => {
-    await page.goto('/unknown');
+    await page.goto('/#/unknown');
 
     // Should have a button to return home
     const homeButton = page.locator('button').filter({ hasText: '返回首页' });
@@ -32,12 +32,12 @@ test.describe('NotFoundPage', () => {
   });
 
   test('should navigate home when clicking return button', async ({ page }) => {
-    await page.goto('/unknown');
+    await page.goto('/#/unknown');
 
     // Click return home
     await page.locator('button').filter({ hasText: '返回首页' }).click();
 
     // Should be on home page
-    await expect(page).toHaveURL('/');
+    await expect(page).toHaveURL('/#/');
   });
 });

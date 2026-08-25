@@ -7,10 +7,11 @@ import fs from 'fs';
 import path from 'path';
 import { createLogger } from '../../core/utils/logger';
 import { getAllTemplates, getTemplate, reloadTemplate, clearCache } from '../../core/template';
+import { resolveResourcePath } from '../../core/utils/paths';
 
 const log = createLogger('Template');
 
-const TEMPLATE_DIR = path.join(process.cwd(), 'docs', 'templates');
+const TEMPLATE_DIR = resolveResourcePath('docs', 'templates');
 
 /**
  * Validate template ID to prevent path traversal.

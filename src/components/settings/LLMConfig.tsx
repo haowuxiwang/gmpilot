@@ -12,6 +12,9 @@ import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/providers/ToastProvider';
 import { ChevronDown, CheckCircle2, XCircle, Loader2 } from 'lucide-react';
+import { createLogger } from '@core/utils/logger';
+
+const log = createLogger('LLMConfig');
 
 interface Provider {
   id: string;
@@ -32,6 +35,11 @@ export function LLMConfig() {
   const { success, error: showError } = useToast();
 
   useEffect(() => {
+    // 加载 Provider 列表
+    if (window.gmpilot) {
+      window.gmpilot.llm.getProviders().then(setProviders).catch((err) => log.error('Failed to load providers', { error: String(err) }));
+    }
+
     // 加载设置
     settingsApi.get().then((s) => {
       // Masked API key → show empty field with "configured" placeholder
@@ -43,23 +51,8 @@ export function LLMConfig() {
         }
       }
       setSettings(cleaned);
-
-      // 检测当前 Provider
-      if (cleaned.LLM_BASE_URL) {
-        const matchedProvider = providers.find(p =>
-          cleaned.LLM_BASE_URL?.includes(new URL(p.defaultBaseUrl).hostname)
-        );
-        if (matchedProvider) {
-          setSelectedProvider(matchedProvider.id);
-        }
-      }
-    }).catch(console.error).finally(() => setLoading(false));
-
-    // 加载 Provider 列表
-    if (window.gmpilot) {
-      window.gmpilot.llm.getProviders().then(setProviders).catch(console.error);
-    }
-  }, [providers]);
+    }).catch((err) => log.error('Failed to load settings', { error: String(err) })).finally(() => setLoading(false));
+  }, []);
 
   const handleChange = (key: string, value: string) => {
     setSettings((prev) => ({ ...prev, [key]: value }));

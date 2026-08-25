@@ -8,7 +8,7 @@ import { mockGmpilotAPI } from '../fixtures/mock-gmpilot';
 test.describe('KnowledgePage', () => {
   test.beforeEach(async ({ page }) => {
     await mockGmpilotAPI(page);
-    await page.goto('/knowledge');
+    await page.goto('/#/knowledge');
   });
 
   test('should display page header', async ({ page }) => {
@@ -18,7 +18,7 @@ test.describe('KnowledgePage', () => {
   });
 
   test('should display upload button', async ({ page }) => {
-    const uploadButton = page.locator('button').filter({ hasText: '上传文档' });
+    const uploadButton = page.locator('button').filter({ hasText: '上传法规' });
     await expect(uploadButton).toBeVisible();
   });
 

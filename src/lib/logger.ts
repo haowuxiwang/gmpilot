@@ -15,6 +15,20 @@ const LOG_LEVELS: Record<LogLevel, number> = {
 
 let minLevel: LogLevel = 'info';
 
+// 防止转发失败（如测试环境无 window.gmpilot）时抛出异常
+function forwardToMain(level: LogLevel, module: string, message: string, data?: Record<string, unknown>): void {
+  try {
+    const api = typeof window !== 'undefined' ? window.gmpilot : undefined;
+    if (!api?.log?.forward) return;
+    // Fire-and-forget，不阻塞渲染线程
+    api.log.forward({ level, module, message, data }).catch(() => {
+      /* 转发失败不影响渲染端运行 */
+    });
+  } catch {
+    /* 同口径，静默忽略 */
+  }
+}
+
 /**
  * Create a logger for a specific module.
  */
@@ -39,6 +53,8 @@ export function createLogger(module: string) {
         console.error(prefix, message, data || '');
         break;
     }
+
+    forwardToMain(level, module, message, data);
   };
 
   return {

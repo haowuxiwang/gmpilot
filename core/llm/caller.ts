@@ -3,7 +3,7 @@
  * Mirrors AuditBee's call_llm_with_retry() pattern.
  */
 
-import { generateObject, streamObject, jsonSchema } from 'ai';
+import { generateText, streamObject, jsonSchema } from 'ai';
 import { z } from 'zod';
 import { createLLMModel, type ProviderConfig } from './provider';
 import { fillPrompt } from './prompts/loader';
@@ -14,6 +14,23 @@ import type { ClueAnalysis, Factor5M1E, RegulationMatch, Finding, DeviationRepor
 import deviationReportSchemaRaw from '../schema/deviation-report-schema.json';
 
 const log = createLogger('LLM');
+
+// ============================================================================
+// Workflow-level cancellation (module singleton)
+// ============================================================================
+
+let workflowAbortController: AbortController | null = null;
+
+/** Reset the workflow abort controller (call when starting a new workflow) */
+export function resetWorkflowAbort(): void {
+  workflowAbortController = new AbortController();
+}
+
+/** Abort all in-flight LLM calls (call on workflow cancel) */
+export function abortWorkflowLLM(): void {
+  workflowAbortController?.abort();
+  workflowAbortController = null;
+}
 
 // ============================================================================
 // Error types
@@ -70,6 +87,8 @@ function classifyError(error: unknown): ErrorClass {
   if (/(unauthorized|invalid.?api.?key|authentication|\b401\b|\b403\b)/.test(lowerMsg)) return 'auth';
   if (/(bad.?request|invalid.?request|\b400\b)/.test(lowerMsg)) return 'non-retryable';
   if (/(rate.?limit|timeout|overloaded|server.?error|service.?unavailable|connection.?refused|econnreset|etimedout|ehostunreach|socket.?hang.?up|enotfound|eai_again|network.?error)/.test(lowerMsg)) return 'retryable';
+  // JSON 解析/格式失败：模型偶发输出不合规，重试一次通常可成功（避免核心章节直接 fallback）
+  if (/(not valid json|不是有效 json|json parse|json 解析|不匹配预期格式)/.test(lowerMsg)) return 'retryable';
 
   return 'non-retryable';
 }
@@ -83,34 +102,53 @@ export async function callLLMWithRetry<T>(
   fn: (signal?: AbortSignal) => Promise<T>,
   options: { maxRetries?: number; node?: string; provider?: string; timeoutMs?: number } = {},
 ): Promise<T> {
-  const { maxRetries = 2, node = 'unknown', provider = 'unknown', timeoutMs = 120_000 } = options;
+  const { maxRetries = 2, node = 'unknown', provider = 'unknown', timeoutMs = 180_000 } = options;
   let lastError: unknown;
 
   const start = Date.now();
 
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    // Check if workflow was cancelled before starting attempt
+    if (workflowAbortController?.signal.aborted) {
+      throw new Error('工作流已取消');
+    }
+
     // Create a fresh AbortController for each attempt
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
+    // Link external workflow cancellation to this attempt's controller
+    const externalSignal = workflowAbortController?.signal;
+    const onExternalAbort = () => controller.abort();
+    externalSignal?.addEventListener('abort', onExternalAbort, { once: true });
+
     try {
       const result = await fn(controller.signal);
       clearTimeout(timeoutId);
+      externalSignal?.removeEventListener('abort', onExternalAbort);
       const duration = Date.now() - start;
       log.info(`${node} completed`, { provider, duration: `${duration}ms`, attempts: attempt + 1 });
       recordMetric(`llm.${node}`, duration, true, { provider, attempts: attempt + 1 });
       return result;
     } catch (error) {
       clearTimeout(timeoutId);
+      externalSignal?.removeEventListener('abort', onExternalAbort);
       lastError = error;
+
+      // If workflow was cancelled, throw immediately without retry
+      if (externalSignal?.aborted) {
+        log.info(`${node} aborted by workflow cancellation`, { provider });
+        throw new Error('工作流已取消');
+      }
 
       // Handle abort/timeout
       if (error instanceof Error && error.name === 'AbortError') {
+        // 超时不重试：外层 XState 状态级超时（120s/180s）已兜底，
+        // 内层单次超时已达 timeoutMs，继续重试只会被外层 abort，属于无效等待。
         const timeoutError = new Error(`LLM 调用超时（${timeoutMs / 1000}秒），请检查网络或稍后重试`);
         log.error(`${node} timeout`, { provider, timeoutMs, attempts: attempt + 1 });
         recordMetric(`llm.${node}`, Date.now() - start, false, { provider, error: 'timeout' });
-        if (attempt === maxRetries) throw timeoutError;
-        // Timeout is retryable — continue to next attempt
+        throw timeoutError;
       } else {
         const errorClass = classifyError(error);
         if (errorClass === 'auth') {
@@ -151,6 +189,7 @@ const factor5M1ESchema = z.object({
   material: z.array(z.string().min(1)),
   method: z.array(z.string().min(1)),
   environment: z.array(z.string().min(1)),
+  measurement: z.array(z.string().min(1)),
 });
 
 const regulationMatchSchema = z.array(z.object({
@@ -199,6 +238,87 @@ function resolveJsonSchema(schema: any, root: any): any {
 const deviationReportSchema = resolveJsonSchema(deviationReportSchemaRaw, deviationReportSchemaRaw);
 
 // ============================================================================
+// Robust JSON extraction (handles markdown code block wrapping from DeepSeek etc.)
+// ============================================================================
+
+/**
+ * Extract JSON from LLM response text.
+ * Handles: raw JSON, ```json ... ``` blocks, ``` ... ``` blocks,
+ * and JSON embedded in surrounding text.
+ */
+export function extractJsonFromText(text: string): string {
+  const trimmed = text.trim();
+
+  // 1. Try markdown code block: ```json ... ``` or ``` ... ```
+  const codeBlockMatch = trimmed.match(/```(?:json)?\s*\n?([\s\S]*?)\n?\s*```/);
+  if (codeBlockMatch) {
+    return codeBlockMatch[1].trim();
+  }
+
+  // 2. Try to find JSON object/array boundaries directly
+  const firstBrace = trimmed.indexOf('{');
+  const firstBracket = trimmed.indexOf('[');
+  let start = -1;
+  let end = -1;
+
+  if (firstBrace >= 0 && (firstBracket < 0 || firstBrace < firstBracket)) {
+    start = firstBrace;
+    end = trimmed.lastIndexOf('}');
+  } else if (firstBracket >= 0) {
+    start = firstBracket;
+    end = trimmed.lastIndexOf(']');
+  }
+
+  if (start >= 0 && end > start) {
+    return trimmed.slice(start, end + 1);
+  }
+
+  // 3. Return as-is (will likely fail JSON.parse)
+  return trimmed;
+}
+
+/**
+ * Generate structured output using generateText + manual JSON extraction + zod validation.
+ * More robust than generateObject for providers that wrap JSON in markdown code blocks
+ * (e.g., DeepSeek-V3.2 via SiliconFlow).
+ */
+async function safeGenerateObject<T>(
+  model: ReturnType<typeof createLLMModel>,
+  prompt: string,
+  schema: z.ZodType<T>,
+  signal?: AbortSignal,
+): Promise<{ object: T; usage?: { promptTokens: number; completionTokens: number } }> {
+  const result = await generateText({
+    model,
+    prompt: `${prompt}\n\nIMPORTANT: Respond ONLY with valid JSON. Do NOT wrap in markdown code blocks. Do NOT add any explanation.`,
+    abortSignal: signal,
+  });
+
+  const jsonStr = extractJsonFromText(result.text);
+
+  let parsed: unknown;
+  try {
+    parsed = JSON.parse(jsonStr);
+  } catch (parseError) {
+    log.warn('JSON parse failed, raw text', { textPreview: result.text.slice(0, 200) });
+    throw new Error(`LLM 返回的内容不是有效 JSON: ${String(parseError).slice(0, 100)}`);
+  }
+
+  let validated: T;
+  try {
+    validated = schema.parse(parsed);
+  } catch (zodError) {
+    log.warn('Schema validation failed', {
+      parsedKeys: typeof parsed === 'object' && parsed !== null ? Object.keys(parsed as object) : typeof parsed,
+      parsedPreview: JSON.stringify(parsed).slice(0, 500),
+      zodError: String(zodError).slice(0, 300),
+    });
+    throw zodError;
+  }
+  return { object: validated, usage: result.usage };
+}
+
+// ============================================================================
 // High-level LLM operations
 // ============================================================================
 
@@ -213,13 +333,12 @@ export async function analyzeClue(
   const prompt = fillPrompt('clue-analysis', { clue_text: clueText });
 
   const result = await callLLMWithRetry(
-    (signal) => generateObject({ model, prompt, schema: clueAnalysisSchema, abortSignal: signal }),
+    (signal) => safeGenerateObject(model, prompt, clueAnalysisSchema, signal),
     { node: 'clue-analysis', provider: config?.provider },
   );
 
-  // Type assertion required: generateObject with JSON Schema returns unknown
   logTokenUsage('clue-analysis', result.usage, config?.provider);
-  return result.object as ClueAnalysis;
+  return result.object;
 }
 
 /**
@@ -237,13 +356,12 @@ export async function identifyFactors(
   });
 
   const result = await callLLMWithRetry(
-    (signal) => generateObject({ model, prompt, schema: factor5M1ESchema, abortSignal: signal }),
+    (signal) => safeGenerateObject(model, prompt, factor5M1ESchema, signal),
     { node: 'factor-identify', provider: config?.provider },
   );
 
-  // Type assertion required: generateObject with JSON Schema returns unknown
   logTokenUsage('factor-identify', result.usage, config?.provider);
-  return result.object as Factor5M1E;
+  return result.object;
 }
 
 /**
@@ -264,12 +382,12 @@ export async function matchRegulations(
   });
 
   const result = await callLLMWithRetry(
-    (signal) => generateObject({ model, prompt, schema: regulationMatchSchema, abortSignal: signal }),
+    (signal) => safeGenerateObject(model, prompt, regulationMatchSchema, signal),
     { node: 'regulation-match', provider: config?.provider },
   );
 
   logTokenUsage('regulation-match', result.usage, config?.provider);
-  return result.object as RegulationMatch[];
+  return result.object;
 }
 
 /**
@@ -294,13 +412,39 @@ export async function generateReport(
   });
 
   const result = await callLLMWithRetry(
-    (signal) => generateObject({ model, prompt, schema: jsonSchema(deviationReportSchema), abortSignal: signal }),
+    async (signal) => {
+      const genResult = await generateText({
+        model,
+        prompt: `${prompt}\n\nIMPORTANT: Respond ONLY with valid JSON. Do NOT wrap in markdown code blocks. Do NOT add any explanation.`,
+        abortSignal: signal,
+      });
+      const jsonStr = extractJsonFromText(genResult.text);
+      let parsed: unknown;
+      try {
+        parsed = JSON.parse(jsonStr);
+      } catch (parseError) {
+        log.warn('report-generate JSON parse failed', { textPreview: genResult.text.slice(0, 200) });
+        throw new Error(`报告生成返回的内容不是有效 JSON: ${String(parseError).slice(0, 100)}`);
+      }
+      // Basic structure validation
+      if (typeof parsed !== 'object' || parsed === null) {
+        throw new Error('报告生成返回的内容不是有效的 JSON 对象');
+      }
+      const obj = parsed as Record<string, unknown>;
+      if (!obj.cover || !obj.background || !obj.investigation) {
+        log.warn('report-generate missing required sections', {
+          hasCover: !!obj.cover,
+          hasBackground: !!obj.background,
+          hasInvestigation: !!obj.investigation,
+        });
+      }
+      return { object: parsed as DeviationReport, usage: genResult.usage };
+    },
     { node: 'report-generate', provider: config?.provider },
   );
 
-  // Type assertion required: generateObject with JSON Schema returns unknown
   logTokenUsage('report-generate', result.usage, config?.provider);
-  return result.object as DeviationReport;
+  return result.object;
 }
 
 /**
@@ -394,4 +538,73 @@ export async function streamReport(
   }
 
   throw lastError;
+}
+
+// ============================================================================
+// Audit Agent — 内置审核
+// ============================================================================
+
+export interface AuditFinding {
+  finding_type: 'logic_flaw' | 'compliance_risk' | 'inconsistency' | 'missing_info' | 'best_practice';
+  severity: 'high' | 'medium' | 'low' | 'info';
+  title: string;
+  description: string;
+  suggestion?: string;
+  regulation_ref?: string;
+}
+
+export interface AuditResult {
+  findings: AuditFinding[];
+  overallScore: number;
+  summary: string;
+}
+
+const auditFindingsSchema = z.object({
+  findings: z.array(z.object({
+    finding_type: z.enum(['logic_flaw', 'compliance_risk', 'inconsistency', 'missing_info', 'best_practice']),
+    severity: z.enum(['high', 'medium', 'low', 'info']),
+    title: z.string().describe('发现标题'),
+    description: z.string().describe('发现详细描述'),
+    suggestion: z.string().optional().describe('改进建议'),
+    regulation_ref: z.string().optional().describe('相关法规/SOP条款引用'),
+  })).max(10).describe('审核发现列表'),
+  overallScore: z.number().min(0).max(100).describe('综合评分'),
+  summary: z.string().describe('审核总结'),
+});
+
+/**
+ * Audit a deviation report using built-in LLM.
+ * Replaces external AuditBee service.
+ */
+export async function auditDeviationReport(
+  reportMarkdown: string,
+  auditContext: string,
+  config?: ProviderConfig,
+): Promise<AuditResult> {
+  log.info('Starting built-in audit', { reportLength: reportMarkdown.length, contextLength: auditContext.length });
+  const start = Date.now();
+
+  const prompt = fillPrompt('audit-report', {
+    reportMarkdown,
+    auditContext,
+  });
+
+  const result = await callLLMWithRetry(
+    async (signal?: AbortSignal) => {
+      const model = createLLMModel(config);
+      return safeGenerateObject(model, prompt, auditFindingsSchema, signal);
+    },
+    { node: 'audit-report', provider: config?.provider, timeoutMs: 120_000 },
+  );
+
+  const auditResult = result.object;
+  const duration = Date.now() - start;
+  log.info('Audit completed', {
+    duration: `${duration}ms`,
+    findings: auditResult.findings.length,
+    score: auditResult.overallScore,
+  });
+  recordMetric('llm.audit', duration, true, { findings: auditResult.findings.length });
+
+  return auditResult;
 }

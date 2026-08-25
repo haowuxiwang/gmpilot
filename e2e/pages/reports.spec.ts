@@ -8,7 +8,7 @@ import { mockGmpilotAPI } from '../fixtures/mock-gmpilot';
 test.describe('ReportsPage', () => {
   test.beforeEach(async ({ page }) => {
     await mockGmpilotAPI(page);
-    await page.goto('/reports');
+    await page.goto('/#/reports');
   });
 
   test('should display page header', async ({ page }) => {
@@ -26,11 +26,11 @@ test.describe('ReportsPage', () => {
     const rows = table.locator('tbody tr');
     await expect(rows).toHaveCount(2);
 
-    // First report
-    await expect(rows.nth(0).locator('td').nth(1)).toContainText('片剂重量偏差调查');
+    // First report (columns: checkbox, 编号, 标题, 风险等级, 创建时间, 操作)
+    await expect(rows.nth(0).locator('td').nth(2)).toContainText('片剂重量偏差调查');
 
     // Second report
-    await expect(rows.nth(1).locator('td').nth(1)).toContainText('原料纯度异常分析');
+    await expect(rows.nth(1).locator('td').nth(2)).toContainText('原料纯度异常分析');
   });
 
   test('should display risk badges', async ({ page }) => {
@@ -53,7 +53,7 @@ test.describe('ReportsPage', () => {
     // Should show only 1 report
     const rows = page.locator('table tbody tr');
     await expect(rows).toHaveCount(1);
-    await expect(rows.first().locator('td').nth(1)).toContainText('片剂重量偏差调查');
+    await expect(rows.first().locator('td').nth(2)).toContainText('片剂重量偏差调查');
   });
 
   test('should show empty state when no search results', async ({ page }) => {
@@ -65,10 +65,14 @@ test.describe('ReportsPage', () => {
   });
 
   test('should have action buttons for each report', async ({ page }) => {
+    // Wait for table to render with data
     const firstRow = page.locator('table tbody tr').first();
+    await expect(firstRow).toBeVisible();
 
-    // Should have view, download, delete buttons
-    const actionButtons = firstRow.locator('button');
+    // Action buttons are in the last <td> cell (flex container)
+    const actionCell = firstRow.locator('td').last();
+    const actionButtons = actionCell.locator('button');
+    await expect(actionButtons.first()).toBeVisible();
     const count = await actionButtons.count();
     expect(count).toBeGreaterThanOrEqual(2); // At least view and delete
   });

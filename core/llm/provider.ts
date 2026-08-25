@@ -13,19 +13,58 @@ import { getAllSettings } from '../db/schema';
 
 const log = createLogger('LLM');
 
-// Provider registry — supports local and cloud providers
+/**
+ * SSRF 防护：校验用户可配置的 baseUrl。
+ * 仅允许 https（云端）与 http://localhost/127.0.0.1（本地推理），
+ * 拒绝指向内网 IP / 元数据端点 / 其他协议的 URL。
+ */
+export function validateBaseUrl(baseUrl: string | undefined, isLocalProvider = false): void {
+  if (!baseUrl) return;
+
+  let parsed: URL;
+  try {
+    parsed = new URL(baseUrl);
+  } catch {
+    throw new Error(`LLM Base URL 格式无效: ${baseUrl}`);
+  }
+
+  // 协议白名单
+  if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') {
+    throw new Error(`LLM Base URL 仅支持 http/https 协议: ${baseUrl}`);
+  }
+
+  const hostname = parsed.hostname.toLowerCase();
+  const isLocalhost = hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '[::1]' || hostname === '0.0.0.0';
+
+  // 本地 provider（如 Ollama）允许 localhost
+  if (isLocalhost && isLocalProvider) return;
+  if (isLocalhost && !isLocalProvider) {
+    log.warn('Non-local provider using localhost URL — allowed but unusual', { baseUrl });
+    return;
+  }
+
+  // 云端必须 https
+  if (parsed.protocol !== 'https:') {
+    throw new Error(`云端 LLM Base URL 必须使用 https: ${baseUrl}`);
+  }
+
+  // 拒绝内网/链路本地/元数据地址（防 SSRF 探测内网）
+  if (/^(10\.|172\.(1[6-9]|2\d|3[01])\.|192\.168\.|169\.254\.)/.test(hostname) || hostname === 'metadata.google.internal' || hostname.endsWith('.internal') || hostname.endsWith('.local')) {
+    throw new Error(`LLM Base URL 不允许指向内网地址: ${baseUrl}`);
+  }
+}
+
+// Provider registry — no ordering preference, user chooses
 export const PROVIDER_REGISTRY: Record<string, { name: string; baseUrl: string; defaultModel: string; isLocal?: boolean }> = {
-  // Cloud providers
   deepseek: { name: 'DeepSeek', baseUrl: 'https://api.deepseek.com/v1', defaultModel: 'deepseek-chat' },
-  qwen: { name: '通义千问', baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1', defaultModel: 'qwen-plus' },
-  glm: { name: '智谱', baseUrl: 'https://open.bigmodel.cn/api/paas/v4', defaultModel: 'glm-4-flash' },
+  glm: { name: '智谱清言 (GLM)', baseUrl: 'https://open.bigmodel.cn/api/paas/v4', defaultModel: 'glm-4-plus' },
+  mimo: { name: 'Mimo', baseUrl: 'https://api.mimo.ai/v1', defaultModel: 'mimo-7b' },
+  siliconflow: { name: 'SiliconFlow (硅基流动)', baseUrl: 'https://api.siliconflow.cn/v1', defaultModel: 'deepseek-ai/DeepSeek-V3.2' },
   openai: { name: 'OpenAI', baseUrl: 'https://api.openai.com/v1', defaultModel: 'gpt-4o' },
+  qwen: { name: '通义千问', baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1', defaultModel: 'qwen-plus' },
   anthropic: { name: 'Anthropic', baseUrl: 'https://api.anthropic.com', defaultModel: 'claude-sonnet-4-20250514' },
-  siliconflow: { name: 'SiliconFlow', baseUrl: 'https://api.siliconflow.cn/v1', defaultModel: 'deepseek-ai/DeepSeek-V3.2' },
   openrouter: { name: 'OpenRouter', baseUrl: 'https://openrouter.ai/api/v1', defaultModel: 'deepseek/deepseek-chat' },
-  mimo: { name: 'Mimo', baseUrl: 'https://api.xiaomimimo.com/v1', defaultModel: 'mimo-v2.5-pro' },
-  // Local providers
-  ollama: { name: 'Ollama (本地)', baseUrl: 'http://localhost:11434', defaultModel: 'llama3.1', isLocal: true },
+  ollama: { name: 'Ollama (本地)', baseUrl: 'http://localhost:11434', defaultModel: 'qwen2.5:14b', isLocal: true },
 };
 
 // Provider list for frontend UI (single source of truth)
@@ -150,6 +189,9 @@ export function getProviderConfig(provider?: string): ProviderConfig {
       providerName = 'anthropic';
     }
 
+    // SSRF 防护：校验用户可配置的 baseUrl
+    validateBaseUrl(unifiedBaseUrl, providerName === 'ollama');
+
     const config: ProviderConfig = {
       provider: providerName,
       apiKey: unifiedApiKey,
@@ -157,14 +199,14 @@ export function getProviderConfig(provider?: string): ProviderConfig {
       model: unifiedModel,
     };
 
-    // Mask API key in logs (only show first 10 chars)
-    const maskedKey = unifiedApiKey ? `${unifiedApiKey.substring(0, 10)}...` : 'not set';
+    // Mask API key in logs (only show first 5 chars for security)
+    const maskedKey = unifiedApiKey ? `${unifiedApiKey.substring(0, 5)}***` : 'not set';
     log.info('Provider configured (unified)', { provider: providerName, model: config.model, baseUrl: config.baseUrl, apiKey: maskedKey });
     return config;
   }
 
   // Fallback to legacy per-provider config
-  const name = provider || dbSettings['AGENT_LLM_PROVIDER'] || process.env.AGENT_LLM_PROVIDER || 'mimo';
+  const name = provider || dbSettings['AGENT_LLM_PROVIDER'] || process.env.AGENT_LLM_PROVIDER || 'deepseek';
   const upper = name.toUpperCase();
 
   const apiKey = dbSettings[`${upper}_API_KEY`] || process.env[`${upper}_API_KEY`] || '';
@@ -182,6 +224,9 @@ export function getProviderConfig(provider?: string): ProviderConfig {
     baseUrl: baseUrl || PROVIDER_REGISTRY[name]?.baseUrl,
     model: model || PROVIDER_REGISTRY[name]?.defaultModel,
   };
+
+  // SSRF 防护：校验用户可配置的 baseUrl
+  validateBaseUrl(config.baseUrl, !!PROVIDER_REGISTRY[name]?.isLocal);
 
   log.info('Provider configured (legacy)', { provider: name, model: config.model, baseUrl: config.baseUrl });
   return config;

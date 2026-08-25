@@ -10,6 +10,25 @@ import type { ClueAnalysis, Factor5M1E, Finding, FindingType, SeverityLevel } fr
 const log = createLogger('Workflow');
 
 /**
+ * 启发式判定因素严重度（对齐 audit-report prompt 的 severity 标准）：
+ * - high = 影响产品质量/患者安全/合规性直接违反（校准过期、超限、污染、失效等）
+ * - medium = 合规性缺陷（培训不足、SOP 不明确、记录缺失等）
+ * - low = 文档质量不足（笔误、格式等）
+ * 修复原实现所有因素恒为 medium，导致 calculateRiskScore 永远达不到 high 的问题。
+ */
+const HIGH_SEVERITY_KEYWORDS = [
+  '校准', '过期', '超限', '超标', '污染', '失效', '报废', '停产', '泄漏', '混批',
+  '放行', '投诉', '不良反应', '产品安全', '灭菌失败', '无菌',
+];
+const LOW_SEVERITY_KEYWORDS = ['笔误', '表述不清', '排版', '格式', '错别字'];
+
+function estimateSeverity(factor: string): SeverityLevel {
+  if (HIGH_SEVERITY_KEYWORDS.some((k) => factor.includes(k))) return 'high';
+  if (LOW_SEVERITY_KEYWORDS.some((k) => factor.includes(k))) return 'low';
+  return 'medium';
+}
+
+/**
  * Map 5M1E factors to AuditBee Finding format.
  */
 function factorsToFindings(factors: Factor5M1E): Finding[] {
@@ -21,6 +40,7 @@ function factorsToFindings(factors: Factor5M1E): Finding[] {
     ['material', '料', 'compliance_risk'],
     ['method', '法', 'logic_flaw'],
     ['environment', '环', 'compliance_risk'],
+    ['measurement', '测', 'compliance_risk'],
   ];
 
   for (const [key, label, findingType] of factorMap) {
@@ -28,7 +48,7 @@ function factorsToFindings(factors: Factor5M1E): Finding[] {
       if (factor.trim()) {
         findings.push({
           finding_type: findingType,
-          severity: 'medium' as SeverityLevel,
+          severity: estimateSeverity(factor),
           title: `${label} — ${factor}`,
           description: factor,
         });

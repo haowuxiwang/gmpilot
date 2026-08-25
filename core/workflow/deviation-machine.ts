@@ -5,15 +5,14 @@
  * Flow: input → analyzing → identifying → matching → generating → review → done
  *
  * New modular generation:
- * - Phase 1 (parallel): background, investigation
- * - Phase 2 (sequential): conclusion
- * - Phase 3 (parallel): riskAssessment, capa
- * - Phase 4 (auto): cover, attachments
+ * - Phase 1 (parallel): background, investigation, cover
+ * - Phase 2 (depends on investigation): conclusion, attachments
+ * - Phase 3 (depends on conclusion): riskAssessment, capa
  * - Final: assemble into complete report
  */
 
 import { setup, assign, fromPromise } from 'xstate';
-import type { WorkflowContext } from './types';
+import type { WorkflowContext, FileRef } from './types';
 import { analyzeClueNode } from './nodes/clue-analysis';
 import { identifyFactorsNode } from './nodes/factor-identify';
 import { matchRegulationsNode } from './nodes/regulation-match';
@@ -21,17 +20,11 @@ import { createLogger } from '../utils/logger';
 
 const log = createLogger('Workflow');
 import { getRetriever, isRetrieverAvailable } from '../rag/index';
+import { auditDeviationReport, abortWorkflowLLM } from '../llm/caller';
+import { extractFactoryDeviationId, generateFallbackDeviationId } from '../utils/deviation-id';
+import { reportToMarkdown } from './report-to-markdown';
 
-// Module generators
-import { BackgroundGenerator } from './modules/background';
-import { InvestigationGenerator } from './modules/investigation';
-import { ConclusionGenerator } from './modules/conclusion';
-import { RiskAssessmentGenerator } from './modules/risk-assessment';
-import { CAPAGenerator } from './modules/capa';
-import { CoverGenerator } from './modules/cover';
-import { AttachmentsGenerator } from './modules/attachments';
-import { generateModules, assembleReport } from './assembler';
-import type { ModuleContext } from './modules/base';
+import { createDefaultGenerators, generateModules, assembleReport, reviseModules, buildModuleContext, type RevisableModule } from './assembler';
 
 /**
  * Type-safe helper to extract output from XState actor done events.
@@ -49,13 +42,13 @@ function getActorOutput<T>(event: unknown): T {
  */
 async function retrieveRegulationContext(
   summary: string,
-  factors: { man: string[]; machine: string[]; material: string[]; method: string[]; environment: string[] } | null,
+  factors: { man: string[]; machine: string[]; material: string[]; method: string[]; environment: string[]; measurement: string[] } | null,
 ): Promise<string> {
   if (!isRetrieverAvailable()) return '';
   try {
     const retriever = getRetriever();
     const factorText = factors
-      ? [factors.man, factors.machine, factors.material, factors.method, factors.environment]
+      ? [factors.man, factors.machine, factors.material, factors.method, factors.environment, factors.measurement]
           .flat().filter(Boolean).join(' ')
       : '';
     const query = `${summary} ${factorText}`;
@@ -70,24 +63,25 @@ async function retrieveRegulationContext(
  * Create the deviation workflow machine with modular generation.
  */
 export function createDeviationMachine() {
-  // Module generators
-  const backgroundGen = new BackgroundGenerator();
-  const investigationGen = new InvestigationGenerator();
-  const conclusionGen = new ConclusionGenerator();
-  const riskAssessmentGen = new RiskAssessmentGenerator();
-  const capaGen = new CAPAGenerator();
-  const coverGen = new CoverGenerator();
-  const attachmentsGen = new AttachmentsGenerator();
+  // Module generators（单一生源：与 workflow IPC 共用 assembler 工厂）
+  const gens = createDefaultGenerators();
+  const backgroundGen = gens.background;
+  const investigationGen = gens.investigation;
+  const conclusionGen = gens.conclusion;
+  const riskAssessmentGen = gens.riskAssessment;
+  const capaGen = gens.capa;
 
   return setup({
     types: {} as {
       context: WorkflowContext;
       events:
-        | { type: 'SUBMIT'; clueText: string; files: unknown[] }
-        | { type: 'REVISE' }
+        | { type: 'SUBMIT'; clueText: string; files: FileRef[] }
+        | { type: 'REVISE'; revisionContext?: string }
+        | { type: 'REVISE_TARGETED'; targets: string[]; revisionContext: string }
         | { type: 'EXPORT' }
         | { type: 'RESET' }
-        | { type: 'RETRY' };
+        | { type: 'RETRY' }
+        | { type: 'CANCEL' };
     },
     actors: {
       analyzeClue: fromPromise(async ({ input }: { input: WorkflowContext }) =>
@@ -97,12 +91,16 @@ export function createDeviationMachine() {
         if (!input.analysis) {
           throw new Error('Cannot identify factors: analysis is null');
         }
-        const summary = input.analysis.summary;
+        // 传线索全文（而非摘要）给因素识别——设备编号/时间/地点等原始细节决定因素判断质量
+        const clueText = input.clueInput?.text?.trim() || input.analysis.summary;
 
-        const [factorsResult, regulationContext] = await Promise.all([
-          identifyFactorsNode(summary, input.analysis),
-          retrieveRegulationContext(summary, input.factors),
-        ]);
+        // 串行执行：先识别因素，再以「摘要 + 已识别因素」检索法规上下文。
+        // 修复原并行实现中 input.factors 恒为 null、RAG 检索退化为纯摘要查询的问题
+        const factorsResult = await identifyFactorsNode(clueText, input.analysis);
+        const regulationContext = await retrieveRegulationContext(
+          input.analysis.summary,
+          factorsResult.factors,
+        );
 
         return {
           factors: factorsResult.factors,
@@ -134,38 +132,18 @@ export function createDeviationMachine() {
           throw new Error('Cannot generate modules: analysis or factors missing');
         }
 
-        const deviationId = `DEV-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).slice(2, 6).toUpperCase()}`;
+        // 优先使用线索中的工厂内部偏差编号（如 D-TZ-API-EG-26003），否则生成默认编号
+        const deviationId =
+          extractFactoryDeviationId(input.clueInput?.text) ?? generateFallbackDeviationId();
 
         log.info('Starting modular generation', { deviationId });
 
-        // Build module context
-        const moduleContext: ModuleContext = {
-          deviationId,
-          analysis: input.analysis,
-          factors: input.factors,
-          regulations: input.regulations,
-          findings: input.findings,
-          regulationContext: input.regulationContext,
-        };
+        // Build module context (单一生源，避免多实现漂移)
+        const moduleContext = buildModuleContext({ ...input, clueText: input.clueInput.text }, deviationId);
 
         // Generate modules with dependency ordering
         const modules = await generateModules(
-          {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            cover: coverGen as any,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            background: backgroundGen as any,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            investigation: investigationGen as any,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            conclusion: conclusionGen as any,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            riskAssessment: riskAssessmentGen as any,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            capa: capaGen as any,
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            attachments: attachmentsGen as any,
-          },
+          gens,
           moduleContext,
           (phase, module) => {
             log.info(`Module generation: ${phase}`, { module });
@@ -179,16 +157,120 @@ export function createDeviationMachine() {
           input.factors,
           input.regulations,
           input.findings,
+          input.analysis?.documentType ?? 'deviation_analysis',
         );
 
-        return report;
+        return { report, fallbackModules: modules.fallbackModules || [] };
+      }),
+
+      /**
+       * Built-in Audit Agent.
+       * Audits the generated report against SOP/regulation context.
+       */
+      auditReport: fromPromise(async ({ input }: { input: WorkflowContext }) => {
+        if (!input.report) {
+          throw new Error('Cannot audit: report is null');
+        }
+
+        log.info('Starting built-in audit', { deviationId: input.report.deviationId });
+
+        // Convert report to markdown
+        const markdown = reportToMarkdown(input.report);
+
+        // Get audit context from RAG (SOP + regulations)
+        let auditContext = '（无可用SOP/法规参考）';
+        if (isRetrieverAvailable() && input.analysis) {
+          try {
+            const retriever = getRetriever();
+            auditContext = await retriever.getAuditContext(input.analysis.summary);
+          } catch (error) {
+            log.warn('Failed to get audit context from RAG', { error: String(error) });
+          }
+        }
+
+        // Run LLM audit
+        const result = await auditDeviationReport(markdown, auditContext);
+        return result;
+      }),
+
+      /**
+       * P3: Targeted module revision.
+       * Only regenerates specific modules based on audit findings.
+       */
+      reviseTargetModules: fromPromise(async ({ input }: { input: WorkflowContext }) => {
+        if (!input.report) {
+          throw new Error('Cannot revise: report is null');
+        }
+
+        const targets = (input.revisionTargets || []) as RevisableModule[];
+        if (targets.length === 0) {
+          throw new Error('No revision targets specified');
+        }
+        if (!input.analysis || !input.factors) {
+          throw new Error('Cannot revise: analysis or factors is null');
+        }
+
+        log.info('Targeted revision starting', {
+          deviationId: input.report.deviationId,
+          targets,
+          revision: input.revisionCount,
+        });
+
+        // Extract existing module data from report
+        const existingModules = {
+          cover: input.report.cover,
+          background: { ...input.report.background, photos: input.report.background.photos || [] },
+          investigation: input.report.investigation,
+          conclusion: input.report.conclusion,
+          riskAssessment: input.report.riskAssessment,
+          capa: input.report.capa,
+          attachments: { attachments: input.report.attachments, versionHistory: input.report.versionHistory },
+        };
+
+        const context = {
+          deviationId: input.report.deviationId,
+          analysis: input.analysis,
+          factors: input.factors,
+          regulations: input.regulations,
+          findings: input.findings,
+          regulationContext: input.regulationContext,
+          revisionContext: input.revisionContext,
+        };
+
+        // Run targeted revision
+        const revisedModules = await reviseModules(
+          {
+            background: backgroundGen,
+            investigation: investigationGen,
+            conclusion: conclusionGen,
+            riskAssessment: riskAssessmentGen,
+            capa: capaGen,
+          },
+          existingModules,
+          targets,
+          context,
+        );
+
+        // Re-assemble report with revised modules
+        const revisedReport = assembleReport(
+          input.report.deviationId,
+          revisedModules,
+          input.factors,
+          input.regulations,
+          input.findings,
+          input.analysis?.documentType ?? 'deviation_analysis',
+        );
+
+        return { report: revisedReport, fallbackModules: revisedModules.fallbackModules || [] };
       }),
     },
     actions: {
       assignClueInput: assign({
         clueInput: ({ event }) => ({
           text: event.type === 'SUBMIT' ? event.clueText : '',
-          files: event.type === 'SUBMIT' ? [] : [],
+          // 附件内容由 IPC 层（electron/ipc/workflow.ts processAttachedFiles）读取后并入 clueText，
+          // 此处保留文件引用供审计/调试（渲染端传 content，非 path）
+          files: event.type === 'SUBMIT' ? (event.files ?? []) : [],
         }),
         currentStep: 2,
         error: null,
@@ -217,8 +299,34 @@ export function createDeviationMachine() {
         currentStep: 5,
       }),
       assignReport: assign({
-        report: ({ event }) => getActorOutput<WorkflowContext['report']>(event),
+        report: ({ event }) => {
+          const output = getActorOutput<{ report: WorkflowContext['report']; fallbackModules?: string[] }>(event);
+          return output.report;
+        },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        fallbackModules: ({ event }: any) => {
+          const output = getActorOutput<{ report: unknown; fallbackModules?: string[] }>(event);
+          return output.fallbackModules || [];
+        },
         currentStep: 6,
+      }),
+      assignAuditFindings: assign({
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        auditFindings: ({ event }: any) => {
+          const output = getActorOutput<{ findings: WorkflowContext['auditFindings']; overallScore: number; summary: string }>(event);
+          return output.findings;
+        },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        auditScore: ({ event }: any) => {
+          const output = getActorOutput<{ findings: unknown; overallScore: number; summary: string }>(event);
+          return output.overallScore;
+        },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        auditSummary: ({ event }: any) => {
+          const output = getActorOutput<{ findings: unknown; overallScore: number; summary: string }>(event);
+          return output.summary;
+        },
+        currentStep: 7,
       }),
        
       assignError: assign({
@@ -236,20 +344,62 @@ export function createDeviationMachine() {
         regulations: [],
         findings: [],
         report: null,
-        currentStep: 1,
-        error: null,
+        auditFindings: null,
+        auditScore: null,
+        auditSummary: null,
+      currentStep: 1,
+      error: null,
+      revisionCount: 0,
+      revisionTargets: [],
+      revisionContext: '',
+      fallbackModules: [],
+    }),
+      incrementRevision: assign({
+        revisionCount: ({ context }) => context.revisionCount + 1,
       }),
+      assignRevisionTargets: assign({
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        revisionTargets: ({ event }: any) => event.targets || [],
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        revisionContext: ({ event }: any) => event.revisionContext || '',
+      }),
+      assignCancelled: assign({
+        error: '工作流已被用户取消',
+      }),
+      assignTimeout: assign({
+        error: '工作流步骤执行超时，请重试',
+      }),
+      logEnterCancelled: () => { log.info('Workflow cancelled by user'); },
+      logEnterTimeout: () => {
+        log.error('Workflow step timed out');
+        // W2: abort in-flight LLM request so it doesn't keep consuming resources
+        // after the machine has already transitioned to error_timeout.
+        // callLLMWithRetry's AbortError path throws '工作流已取消' (no retry).
+        abortWorkflowLLM();
+      },
+      logEnterRevising: () => { log.info('Workflow state: revising (targeted module revision)'); },
       logEnterAnalyzing: () => { log.info('Workflow state: analyzing (step 2/6)'); },
       logEnterIdentifying: () => { log.info('Workflow state: identifying (step 3/6)'); },
       logEnterMatching: () => { log.info('Workflow state: matching (step 4/6)'); },
-      logEnterGenerating: () => { log.info('Workflow state: generating (step 5/6)'); },
-      logEnterReview: () => { log.info('Workflow state: review (step 6/6)'); },
+      logEnterGenerating: () => { log.info('Workflow state: generating (step 5/7)'); },
+      logEnterAuditing: () => { log.info('Workflow state: auditing (step 6/7)'); },
+      logEnterReview: () => { log.info('Workflow state: review (step 7/7)'); },
       logEnterDone: () => { log.info('Workflow state: done'); },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       logError: ({ event }: any) => {
         const err = event.error instanceof Error ? event.error : new Error(String(event.error));
         log.error('Workflow step failed', { error: err.message }, err);
       },
+    },
+    guards: {
+      isStep3: ({ context }) => context.currentStep === 3,
+      isStep4: ({ context }) => context.currentStep === 4,
+      isStep5: ({ context }) => context.currentStep === 5,
+      isStep6: ({ context }) => context.currentStep === 6,
+      isStep7: ({ context }) => context.currentStep === 7,
+      // 定向修订是否进行中（revisionTargets 非空）——用于区分「revising 超时」与「全量生成超时」
+      hasRevisionTargets: ({ context }) => (context.revisionTargets?.length ?? 0) > 0,
+      canRevise: ({ context }) => context.revisionCount < 3,
     },
   }).createMachine({
     id: 'deviation',
@@ -262,8 +412,15 @@ export function createDeviationMachine() {
       regulations: [],
       findings: [],
       report: null,
+      auditFindings: null,
+      auditScore: null,
+      auditSummary: null,
       currentStep: 1,
       error: null,
+      revisionCount: 0,
+      revisionTargets: [],
+      revisionContext: '',
+      fallbackModules: [],
     },
     states: {
       input: {
@@ -288,6 +445,12 @@ export function createDeviationMachine() {
             actions: 'assignError',
           },
         },
+        after: {
+          120000: { target: 'error_timeout', actions: 'assignTimeout' },
+        },
+        on: {
+          CANCEL: { target: 'cancelled', actions: 'assignCancelled' },
+        },
       },
       identifying: {
         entry: 'logEnterIdentifying',
@@ -302,6 +465,12 @@ export function createDeviationMachine() {
             target: 'error_identifying',
             actions: 'assignError',
           },
+        },
+        after: {
+          120000: { target: 'error_timeout', actions: 'assignTimeout' },
+        },
+        on: {
+          CANCEL: { target: 'cancelled', actions: 'assignCancelled' },
         },
       },
       matching: {
@@ -318,6 +487,12 @@ export function createDeviationMachine() {
             actions: 'assignError',
           },
         },
+        after: {
+          120000: { target: 'error_timeout', actions: 'assignTimeout' },
+        },
+        on: {
+          CANCEL: { target: 'cancelled', actions: 'assignCancelled' },
+        },
       },
       generating: {
         entry: 'logEnterGenerating',
@@ -325,13 +500,40 @@ export function createDeviationMachine() {
           src: 'generateModules',
           input: ({ context }) => context,
           onDone: {
-            target: 'review',
+            target: 'auditing',
             actions: 'assignReport',
           },
           onError: {
             target: 'error_generating',
             actions: 'assignError',
           },
+        },
+        after: {
+          180000: { target: 'error_timeout', actions: 'assignTimeout' },
+        },
+        on: {
+          CANCEL: { target: 'cancelled', actions: 'assignCancelled' },
+        },
+      },
+      auditing: {
+        entry: 'logEnterAuditing',
+        invoke: {
+          src: 'auditReport',
+          input: ({ context }) => context,
+          onDone: {
+            target: 'review',
+            actions: 'assignAuditFindings',
+          },
+          onError: {
+            target: 'error_auditing',
+            actions: 'assignError',
+          },
+        },
+        after: {
+          180000: { target: 'error_timeout', actions: 'assignTimeout' },
+        },
+        on: {
+          CANCEL: { target: 'cancelled', actions: 'assignCancelled' },
         },
       },
       error_analyzing: {
@@ -374,11 +576,102 @@ export function createDeviationMachine() {
           },
         },
       },
+      error_auditing: {
+        entry: 'logError',
+        on: {
+          RETRY: 'auditing',
+          RESET: {
+            target: 'input',
+            actions: 'resetWorkflow',
+          },
+        },
+      },
       review: {
         entry: 'logEnterReview',
         on: {
-          REVISE: 'generating',
+          REVISE: [
+            {
+              target: 'generating',
+              guard: 'canRevise',
+              actions: ['incrementRevision', 'assignRevisionTargets'],
+            },
+            // If max revisions reached, stay in review
+          ],
+          REVISE_TARGETED: [
+            {
+              target: 'revising',
+              guard: 'canRevise',
+              actions: ['incrementRevision', 'assignRevisionTargets'],
+            },
+          ],
           EXPORT: 'done',
+          RESET: {
+            target: 'input',
+            actions: 'resetWorkflow',
+          },
+        },
+      },
+      revising: {
+        entry: 'logEnterRevising',
+        invoke: {
+          src: 'reviseTargetModules',
+          input: ({ context }) => context,
+          onDone: {
+            target: 'auditing',
+            actions: 'assignReport',
+          },
+          onError: {
+            target: 'error_revising',
+            actions: 'assignError',
+          },
+        },
+        after: {
+          120000: { target: 'error_timeout', actions: 'assignTimeout' },
+        },
+        on: {
+          CANCEL: {
+            target: 'cancelled',
+            actions: 'assignCancelled',
+          },
+        },
+      },
+      error_revising: {
+        entry: 'logError',
+        on: {
+          RETRY: 'revising',
+          RESET: {
+            target: 'input',
+            actions: 'resetWorkflow',
+          },
+        },
+      },
+      cancelled: {
+        entry: 'logEnterCancelled',
+        on: {
+          RESET: {
+            target: 'input',
+            actions: 'resetWorkflow',
+          },
+        },
+      },
+      error_timeout: {
+        entry: 'logEnterTimeout',
+        on: {
+          RETRY: [
+            // Resume from the step that actually timed out (based on currentStep)
+            { target: 'identifying', guard: 'isStep3' },
+            { target: 'matching', guard: 'isStep4' },
+            { target: 'generating', guard: 'isStep5' },
+            { target: 'auditing', guard: 'isStep6' },
+            // currentStep=7: 区分两种超时——
+            // 1) 定向修订（revising）超时：revisionTargets 非空 → 回到 revising 继续定向修订（保留修订目标），
+            //    而不是跳到 generating 全量重生成（原实现会丢失修订目标）
+            { target: 'revising', guard: 'hasRevisionTargets' },
+            // 2) 全量 REVISE 重生成或 initial 生成超时（无修订目标）→ 回到 generating 重新生成
+            { target: 'generating', guard: 'isStep7' },
+            // Default: restart from analyzing
+            { target: 'analyzing' },
+          ],
           RESET: {
             target: 'input',
             actions: 'resetWorkflow',

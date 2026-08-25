@@ -1,123 +1,50 @@
 /**
- * AuditFindingsSummary - Compact summary of audit results.
- * Embedded in DocumentViewer to show audit status at a glance.
+ * AuditFindingsSummary - Compact audit result summary shown in the document viewer.
+ * Displays the overall score and a short summary of audit findings.
  */
 
-import { useRef, useEffect } from 'react';
-import gsap from 'gsap';
-import { CheckCircle2, AlertTriangle, ChevronRight, Loader2 } from 'lucide-react';
-import { Badge } from '../ui';
-import type { AuditBeeFinding } from '../../../core/integration/types';
-import { cn } from '../../lib/utils';
+import { Shield, ChevronRight } from 'lucide-react';
+import type { AuditFinding } from '../../../core/llm/caller';
 
 interface AuditFindingsSummaryProps {
-  findings: AuditBeeFinding[] | null;
-  loading: boolean;
+  findings: AuditFinding[] | null;
+  loading?: boolean;
+  overallScore?: number | null;
   onViewDetails?: () => void;
-  onSendToAudit?: () => void;
-  isAvailable: boolean | null;
 }
 
-export function AuditFindingsSummary({
-  findings,
-  loading,
-  onViewDetails,
-  onSendToAudit: _onSendToAudit,
-  isAvailable,
-}: AuditFindingsSummaryProps) {
-  const ref = useRef<HTMLDivElement>(null);
+function AuditFindingsSummary({ findings, loading = false, overallScore, onViewDetails }: AuditFindingsSummaryProps) {
+  const count = findings?.length ?? 0;
 
-  useEffect(() => {
-    if (!ref.current || !findings) return;
-    gsap.from(ref.current, {
-      y: -8,
-      opacity: 0,
-      duration: 0.3,
-      ease: 'power3.out',
-    });
-  }, [findings]);
-
-  // Loading state
-  if (loading) {
-    return (
-      <div className="flex items-center gap-2 px-4 py-3 bg-stone-50 rounded-xl border border-stone-200">
-        <Loader2 className="w-4 h-4 text-teal-600 animate-spin" />
-        <span className="text-sm text-stone-600">正在审计...</span>
-      </div>
-    );
-  }
-
-  // No findings yet
-  if (!findings) {
-    // Show audit button if AuditBee is available
-    if (isAvailable === false) {
-      return (
-        <div className="flex items-center gap-2 px-4 py-3 bg-stone-50 rounded-xl border border-stone-200">
-          <span className="text-xs text-stone-400">AuditBee 服务未启动，无法审计</span>
-        </div>
-      );
-    }
-
-    return null;
-  }
-
-  // Compute severity counts
-  const highCount = findings.filter((f) => f.severity === 'high').length;
-  const totalCount = findings.length;
-
-  // All clear
-  if (totalCount === 0 || highCount === 0) {
-    return (
-      <div
-        ref={ref}
-        className="flex items-center justify-between px-4 py-3 bg-teal-50 rounded-xl border border-teal-200"
-      >
-        <div className="flex items-center gap-2">
-          <CheckCircle2 className="w-4 h-4 text-teal-600" />
-          <span className="text-sm text-teal-700 font-medium">审计通过</span>
-          <span className="text-xs text-teal-600">未发现高风险问题</span>
-        </div>
-        {onViewDetails && totalCount > 0 && (
-          <button
-            onClick={onViewDetails}
-            className="flex items-center gap-1 text-xs text-teal-600 hover:text-teal-700"
-          >
-            查看详情
-            <ChevronRight className="w-3 h-3" />
-          </button>
-        )}
-      </div>
-    );
-  }
-
-  // Has issues
   return (
-    <div
-      ref={ref}
-      className="flex items-center justify-between px-4 py-3 bg-red-50 rounded-xl border border-red-200"
-    >
-      <div className="flex items-center gap-2">
-        <AlertTriangle className="w-4 h-4 text-red-500" />
-        <span className="text-sm text-red-700 font-medium">审计发现</span>
-        <Badge variant="red" className="text-[10px]">{highCount} 高风险</Badge>
-        {totalCount > highCount && (
-          <span className="text-xs text-red-600">
-            共 {totalCount} 个问题
-          </span>
+    <div className="flex items-center gap-3">
+      <div className="flex h-8 w-8 items-center justify-center rounded-full bg-teal-50 border border-teal-100">
+        <Shield className="h-4 w-4 text-teal-600" strokeWidth={1.5} />
+      </div>
+      <div className="flex-1 min-w-0">
+        <p className="text-xs font-medium text-stone-700">
+          {loading
+            ? '正在审核报告...'
+            : count > 0
+              ? `审核完成：${count} 条建议`
+              : '审核完成：未发现问题'}
+        </p>
+        {!loading && overallScore !== undefined && overallScore !== null && (
+          <p className="text-[11px] text-stone-400">综合评分 {overallScore}</p>
         )}
       </div>
-      {onViewDetails && (
+      {count > 0 && onViewDetails && (
         <button
+          type="button"
           onClick={onViewDetails}
-          className={cn(
-            'flex items-center gap-1 text-xs font-medium',
-            'text-red-600 hover:text-red-700',
-          )}
+          className="inline-flex items-center gap-1 text-xs font-medium text-teal-600 hover:text-teal-700 transition-colors"
         >
           查看详情
-          <ChevronRight className="w-3 h-3" />
+          <ChevronRight className="h-3.5 w-3.5" />
         </button>
       )}
     </div>
   );
 }
+
+export { AuditFindingsSummary };

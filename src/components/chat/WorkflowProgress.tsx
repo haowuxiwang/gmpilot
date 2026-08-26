@@ -178,7 +178,7 @@ export function WorkflowProgress({
       <div className="relative h-1 bg-stone-100 rounded-full overflow-hidden">
         <div
           ref={progressBarRef}
-          className="absolute inset-y-0 left-0 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full transition-all duration-300"
+          className="absolute inset-y-0 left-0 bg-gradient-to-r from-teal-500 to-teal-600 rounded-full"
           style={{ width: `${completionPercentage}%` }}
         />
       </div>
@@ -197,7 +197,8 @@ export function WorkflowProgress({
                 <div
                   className={`
                     relative w-8 h-8 rounded-full flex items-center justify-center
-                    transition-all duration-300 ease-out
+                    ${/* 只过渡颜色，不过渡 transform——避免与 animate-glow 的 scale 动画叠加产生绿色描边闪烁 */ ''}
+                    transition-colors duration-300 ease-out
                     ${
                       status === 'done'
                         ? 'bg-teal-600 text-white shadow-sm'

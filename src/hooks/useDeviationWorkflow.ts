@@ -5,7 +5,7 @@
  * Optimized with useMemo/useCallback to minimize re-renders.
  */
 
-import { useCallback, useEffect, useRef, useMemo, useSyncExternalStore } from 'react';
+import { useCallback, useRef, useMemo, useSyncExternalStore } from 'react';
 import type { DeviationReport } from '@core/workflow/types';
 import type { WorkflowProgress as PreloadWorkflowProgress } from '@core/types/ipc';
 
@@ -115,6 +115,11 @@ export function resetWorkflowStoreForTests(): void {
   version += 1;
 }
 
+/** Test-only: allow re-subscription (clears the app-lifetime singleton flag). */
+export function resetWorkflowSubscriptionForTests(): void {
+  (globalThis as { __wfSubscribed?: boolean }).__wfSubscribed = false;
+}
+
 export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
   // 状态存模块级单例（跨路由持久）；useSyncExternalStore 订阅变更触发重渲染
   const snapshot = useSyncExternalStore(
@@ -143,43 +148,45 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
   const setError = useCallback((e: string | null) => setStore({ error: e }), []);
 
   // Use ref for callbacks to avoid stale closures
-  const callbacksRef = useLatest(callbacks);
+    const callbacksRef = useLatest(callbacks);
 
-  // Subscribe to workflow progress (stable - runs once)
-  useEffect(() => {
-    const handleProgress = (data: PreloadWorkflowProgress) => {
-      setStore({
-        progress: { ...data, streamingReport: store.progress?.streamingReport },
-      });
-      if (data.currentStep) {
-        const stepNames: WorkflowStep[] = ['input', 'analyzing', 'identifying', 'matching', 'generating', 'auditing', 'review'];
-        setStore({ step: stepNames[data.currentStep - 1] || 'input' });
-      }
-      if (data.report) {
-        setStore({ report: data.report });
-      }
-      if (data.error) {
-        setStore({ error: data.error });
-      }
-    };
+    // Subscribe to workflow progress — app-lifetime singleton.
+    // 注意：不能用 useEffect+cleanup。AgentPage 切路由会卸载，cleanup 调
+    // offProgress() 会把 IPC 监听全拆掉，工作流进行中切页再回来就收不到进度了
+    // （正是"流程不持久"的第二个根因）。改为模块级一次性订阅。
+    let subscribed = (globalThis as { __wfSubscribed?: boolean }).__wfSubscribed;
+    if (!subscribed && typeof window !== 'undefined' && window.gmpilot) {
+      subscribed = true;
+      (globalThis as { __wfSubscribed?: boolean }).__wfSubscribed = true;
 
-    const handleStreaming = (data: { partial: Partial<DeviationReport> }) => {
-      if (data.partial) {
+      const handleProgress = (data: PreloadWorkflowProgress) => {
         setStore({
-          progress: store.progress ? { ...store.progress, streamingReport: data.partial } : null,
+          progress: { ...data, streamingReport: store.progress?.streamingReport },
         });
-      }
-    };
+        if (data.currentStep) {
+          const stepNames: WorkflowStep[] = ['input', 'analyzing', 'identifying', 'matching', 'generating', 'auditing', 'review'];
+          setStore({ step: stepNames[data.currentStep - 1] || 'input' });
+        }
+        if (data.report) {
+          setStore({ report: data.report });
+        }
+        if (data.error) {
+          setStore({ error: data.error });
+        }
+      };
 
-    if (typeof window !== 'undefined' && window.gmpilot) {
+      const handleStreaming = (data: { partial: Partial<DeviationReport> }) => {
+        if (data.partial) {
+          setStore({
+            progress: store.progress ? { ...store.progress, streamingReport: data.partial } : null,
+          });
+        }
+      };
+
       window.gmpilot.workflow.onProgress(handleProgress);
       window.gmpilot.workflow.onStreaming(handleStreaming);
-      return () => {
-        window.gmpilot.workflow.offProgress();
-        window.gmpilot.workflow.offStreaming();
-      };
+      // 不调用 offProgress/offStreaming —— 监听器与应用同生命周期
     }
-  }, []);
 
   // Run workflow
   const runWorkflow = useCallback(async (text?: string, files?: { name: string; content?: string }[]): Promise<WorkflowResult | undefined> => {

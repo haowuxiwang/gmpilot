@@ -4,7 +4,7 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
-import { useDeviationWorkflow, STEP_MAP, resetWorkflowStoreForTests } from '../useDeviationWorkflow';
+import { useDeviationWorkflow, STEP_MAP, resetWorkflowStoreForTests, resetWorkflowSubscriptionForTests } from '../useDeviationWorkflow';
 import type { DeviationReport } from '@core/workflow/types';
 
 // Mock window.gmpilot
@@ -82,6 +82,7 @@ describe('useDeviationWorkflow', () => {
   beforeEach(() => {
     vi.clearAllMocks();
     resetWorkflowStoreForTests();
+    resetWorkflowSubscriptionForTests();
     // Setup window.gmpilot mock
     Object.defineProperty(window, 'gmpilot', {
       value: mockGmpilot,
@@ -422,20 +423,20 @@ describe('useDeviationWorkflow', () => {
   });
 
   describe('progress subscription', () => {
-    it('should subscribe to progress on mount', () => {
+    it('should subscribe to progress (app-lifetime singleton, survives route unmount)', () => {
+      // 订阅是模块级一次性的：首个挂载触发，后续挂载不重复订阅。
+      // 这是"切页不丢流程"的核心——卸载组件绝不能拆监听器。
       renderHook(() => useDeviationWorkflow());
 
       expect(mockGmpilot.workflow.onProgress).toHaveBeenCalled();
       expect(mockGmpilot.workflow.onStreaming).toHaveBeenCalled();
-    });
 
-    it('should unsubscribe on unmount', () => {
+      const callsBefore = vi.mocked(mockGmpilot.workflow.onProgress).mock.calls.length;
       const { unmount } = renderHook(() => useDeviationWorkflow());
-
       unmount();
-
-      expect(mockGmpilot.workflow.offProgress).toHaveBeenCalled();
-      expect(mockGmpilot.workflow.offStreaming).toHaveBeenCalled();
+      // 卸载后不应新增订阅（也不应解绑）
+      expect(vi.mocked(mockGmpilot.workflow.onProgress).mock.calls.length).toBe(callsBefore);
+      expect(mockGmpilot.workflow.offProgress).not.toHaveBeenCalled();
     });
 
     it('should update state on progress callback', () => {

@@ -298,6 +298,8 @@
 
 .animate-glow {
   animation: glowPulse 2s ease-in-out infinite;
+  /* 关键：动画期间禁用 transition 对 transform 的干扰（绿色描边闪烁根因） */
+  will-change: transform, opacity;
 }
 
 .animate-breathe {

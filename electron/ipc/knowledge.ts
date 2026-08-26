@@ -2,7 +2,7 @@
  * Knowledge base IPC handlers for Electron main process.
  */
 
-import { ipcMain, dialog } from 'electron';
+import { ipcMain, dialog, BrowserWindow } from 'electron';
 import fs from 'fs';
 import path from 'path';
 import { getDatabase, initSchema } from '../../core/db/connection';
@@ -33,6 +33,30 @@ async function ensureInitialized(): Promise<Retriever> {
  */
 let builtinIndexing: Promise<void> | null = null;
 
+// 索引进度（跨路由可查询 + webContents 实时推送）
+export interface IndexProgress {
+  indexing: boolean;
+  total: number;
+  done: number;
+  currentFile: string | null;
+}
+const indexProgress: IndexProgress = { indexing: false, total: 0, done: 0, currentFile: null };
+
+function updateIndexProgress(patch: Partial<IndexProgress>): void {
+  Object.assign(indexProgress, patch);
+  // 推送给所有渲染进程（知识库页实时显示进度条）
+  for (const win of BrowserWindow.getAllWindows()) {
+    if (!win.isDestroyed()) {
+      win.webContents.send('knowledge:indexing-progress', { ...indexProgress });
+    }
+  }
+  log.info('Index progress', { ...indexProgress });
+}
+
+export function getIndexProgress(): IndexProgress {
+  return { ...indexProgress };
+}
+
 export async function loadBuiltinKnowledge(): Promise<void> {
   if (builtinIndexing) return builtinIndexing;
 
@@ -44,12 +68,24 @@ export async function loadBuiltinKnowledge(): Promise<void> {
 
     const files = fs.readdirSync(builtinDir).filter((f) => f.endsWith('.txt'));
 
+    // 统计待索引数（已索引的跳过）
+    let pending = 0;
+    const docs = getKnowledgeDocs(db, 'builtin');
+    for (const filename of files) {
+      const existing = docs.find((d) => d.filename === filename);
+      if (!(existing && existing.chunk_count > 0)) pending++;
+    }
+    updateIndexProgress({ indexing: true, total: pending, done: 0, currentFile: null });
+
+    let done = 0;
     for (const filename of files) {
       try {
-        const existing = getKnowledgeDocs(db, 'builtin').find((d) => d.filename === filename);
+        const existing = docs.find((d) => d.filename === filename);
 
         // Skip if already loaded AND indexed (chunk_count > 0)
         if (existing && existing.chunk_count > 0) continue;
+
+        updateIndexProgress({ currentFile: filename });
 
         const content = fs.readFileSync(path.join(builtinDir, filename), 'utf-8');
 
@@ -65,11 +101,17 @@ export async function loadBuiltinKnowledge(): Promise<void> {
         const ret = await ensureInitialized();
         const chunkCount = await ret.indexDocument(docId, content);
         updateKnowledgeDocIndex(db, docId, chunkCount);
+        done++;
+        updateIndexProgress({ done });
       } catch (err) {
         log.warn(`Failed to index builtin file: ${filename}`, { error: String(err) });
+        done++;
+        updateIndexProgress({ done });
         // Continue with next file — one failure should not block all
       }
     }
+    updateIndexProgress({ indexing: false, currentFile: null });
+    log.info('Builtin knowledge indexing finished', { total: files.length, processed: done });
   })().finally(() => {
     builtinIndexing = null;
   });
@@ -145,12 +187,16 @@ export function registerKnowledgeIPC(): void {
         chunkCount: stats.totalChunks,
         isAvailable: stats.isAvailable,
         indexing: isBuiltinIndexing(),
+        progress: getIndexProgress(),
       };
     } catch (error) {
       log.error('stats failed', { error: String(error) });
       return { docCount: 0, chunkCount: 0, isAvailable: false, indexing: false };
     }
   });
+
+  // Index progress poll (renderer also receives knowledge:indexing-progress push)
+  ipcMain.handle('knowledge:indexProgress', () => getIndexProgress());
 
   // Delete document
   ipcMain.handle('knowledge:deleteDocument', async (_event, docId: number) => {

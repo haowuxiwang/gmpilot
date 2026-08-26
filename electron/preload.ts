@@ -38,6 +38,12 @@ contextBridge.exposeInMainWorld('gmpilot', {
     deleteDocument: (docId: number) => ipcRenderer.invoke('knowledge:deleteDocument', docId),
     getContext: (query: string) => ipcRenderer.invoke('knowledge:getContext', query),
     stats: () => ipcRenderer.invoke('knowledge:stats'),
+    indexProgress: () => ipcRenderer.invoke('knowledge:indexProgress'),
+    onIndexingProgress: (callback: (data: unknown) => void) => {
+      const handler = (_event: unknown, data: unknown) => callback(data);
+      ipcRenderer.on('knowledge:indexing-progress', handler as never);
+      return () => ipcRenderer.removeListener('knowledge:indexing-progress', handler as never);
+    },
   },
 
   // LLM operations
@@ -152,7 +158,9 @@ export interface GmpilotAPI {
     pickAndAdd: (category?: string) => Promise<{ success: boolean; docId?: number; chunkCount?: number; filename?: string; category?: string; error?: string }>;
     deleteDocument: (docId: number) => Promise<{ success: boolean; error?: string }>;
     getContext: (query: string) => Promise<string>;
-    stats: () => Promise<{ docCount: number; chunkCount: number; isAvailable: boolean }>;
+    stats: () => Promise<{ docCount: number; chunkCount: number; isAvailable: boolean; indexing?: boolean; progress?: unknown }>;
+    indexProgress: () => Promise<unknown>;
+    onIndexingProgress: (callback: (data: unknown) => void) => () => void;
   };
   llm: {
     generate: (params: { prompt: string; systemPrompt?: string }) => Promise<{ success: boolean; text?: string; error?: string }>;

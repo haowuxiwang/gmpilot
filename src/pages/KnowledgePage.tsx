@@ -40,6 +40,7 @@ export function KnowledgePage() {
   const [uploading, setUploading] = useState(false);
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const [indexProgress, setIndexProgress] = useState<{ indexing: boolean; total: number; done: number; currentFile: string | null } | null>(null);
 
   const loadDocuments = useCallback(() => {
     setLoading(true);
@@ -59,6 +60,20 @@ export function KnowledgePage() {
     if (window.gmpilot) {
       window.gmpilot.knowledge.stats().then(setStats).catch((err) => log.error('Failed to load stats', { error: String(err) }));
     }
+    // 订阅索引进度推送（内置库首启索引约需 1 小时，必须让用户看到进度）
+    let unsubscribe: (() => void) | undefined;
+    if (window.gmpilot) {
+      unsubscribe = window.gmpilot.knowledge.onIndexingProgress((data: unknown) => {
+        const p = data as { indexing: boolean; total: number; done: number; currentFile: string | null };
+        setIndexProgress(p);
+        if (!p.indexing) {
+          // 索引完成：刷新列表和统计
+          loadDocuments();
+          window.gmpilot?.knowledge.stats().then(setStats).catch(() => {});
+        }
+      });
+    }
+    return () => unsubscribe?.();
   }, [loadDocuments]);
 
   const handleUpload = async (category?: string) => {
@@ -197,6 +212,30 @@ export function KnowledgePage() {
 
       {/* Search + Category Filter */}
       <div className="bg-white px-6 py-4 border-b border-stone-100">
+        {/* 内置库索引进度条（首启索引 55 个文件约需 1 小时，必须可视化） */}
+        {indexProgress?.indexing && (
+          <div className="mb-4 p-3 bg-teal-50 border border-teal-100 rounded-lg">
+            <div className="flex items-center justify-between text-xs text-teal-800 mb-1.5">
+              <span className="font-medium">
+                正在构建知识库索引：{indexProgress.done}/{indexProgress.total}
+              </span>
+              <span className="text-teal-600">
+                {indexProgress.total > 0 ? Math.round((indexProgress.done / indexProgress.total) * 100) : 0}%
+              </span>
+            </div>
+            <div className="h-1.5 bg-teal-100 rounded-full overflow-hidden">
+              <div
+                className="h-full bg-teal-500 rounded-full transition-all duration-500"
+                style={{ width: `${indexProgress.total > 0 ? (indexProgress.done / indexProgress.total) * 100 : 0}%` }}
+              />
+            </div>
+            {indexProgress.currentFile && (
+              <p className="text-[11px] text-teal-700/70 mt-1.5 truncate font-mono">
+                {indexProgress.currentFile}
+              </p>
+            )}
+          </div>
+        )}
         <div className="flex items-center gap-3">
           {/* 分类过滤 */}
           <div className="flex items-center bg-stone-100 rounded-lg p-0.5 flex-wrap gap-0.5">

@@ -192,7 +192,8 @@ test('4. 核心工作流：完整偏差报告生成（真实 LLM 全链路）', 
   await textarea.fill(CLUE);
   await textarea.press('Enter');
 
-  await expect(page.getByText('偏差报告已生成完成', { exact: true })).toBeVisible({ timeout: 300_000 });
+  // SiliconFlow 高峰期单模块 LLM 可达 180s+（实测全流程最长 ~5 分钟），e2e 等待窗给足 8 分钟
+  await expect(page.getByText('偏差报告已生成完成', { exact: true })).toBeVisible({ timeout: 480_000 });
 });
 
   test('5. 报告查看：文档面板 + 风险评分 + 导出入口', async () => {
@@ -207,9 +208,12 @@ test('4. 核心工作流：完整偏差报告生成（真实 LLM 全链路）', 
     }
 
     // 风险评估分节生成后默认已展开；仅在折叠状态才点击展开
+    // 注：分节标题按钮含图标文本，用 title 定位比 role+name 更稳（图标可能改变可访问名）
     const riskSection = page.getByText(/风险评分/).first();
     if (!(await riskSection.isVisible({ timeout: 2_000 }).catch(() => false))) {
-      await page.getByRole('button', { name: '风险评估', exact: true }).click();
+      const sectionBtn = page.locator('button', { hasText: '风险评估' }).first();
+      await sectionBtn.click({ timeout: 10_000 });
+      await expect(riskSection).toBeVisible({ timeout: 10_000 });
     }
     await expect(riskSection).toBeVisible({ timeout: 30_000 });
     await expect(page.getByTitle('导出 PDF')).toBeVisible();

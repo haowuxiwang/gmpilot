@@ -801,7 +801,7 @@ describe('deviationMachine', () => {
     vi.mocked(reviseModules).mockImplementationOnce(() => new Promise(() => {}) as never);
     actor.send({ type: 'REVISE_TARGETED', targets: ['background'], revisionContext: '修改背景' });
     await vi.advanceTimersByTimeAsync(100); // enter revising
-    await vi.advanceTimersByTimeAsync(121000); // revising timeout
+    await vi.advanceTimersByTimeAsync(301000); // revising timeout（超时阈值已提至 300s）
 
     expect(actor.getSnapshot().value).toBe('error_timeout');
     expect(actor.getSnapshot().context.revisionTargets).toEqual(['background']);

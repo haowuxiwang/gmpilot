@@ -174,16 +174,10 @@ export function LLMConfig() {
             value={settings.LLM_BASE_URL || ''}
             onChange={(e) => handleChange('LLM_BASE_URL', e.target.value)}
             placeholder="https://api.openai.com/v1"
-            helperText="例如：https://api.deepseek.com/v1、https://api.openai.com/v1"
+            helperText="例如：https://api.deepseek.com/v1、https://api.openai.com/v1（选择 Provider 后自动填充）"
           />
 
-          <Input
-            label="模型名称"
-            value={settings.LLM_MODEL || ''}
-            onChange={(e) => handleChange('LLM_MODEL', e.target.value)}
-            placeholder="gpt-4o"
-            helperText="例如：deepseek-chat、qwen-plus、gpt-4o、claude-sonnet-4-20250514"
-          />
+          {/* 模型由 Provider 注册表决定，避免用户手填已被迭代的模型名导致 404 */}
 
           <Input
             label="API 密钥"

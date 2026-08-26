@@ -161,7 +161,12 @@ export function AgentPage() {
       const conversation = await window.gmpilot.db.getConversation(id);
       if (conversation) {
         setCurrentConversationId(id);
-        setMessages(JSON.parse(conversation.messages_json));
+        // timestamp 经 JSON 序列化为 ISO 字符串，回读需恢复为 Date（ChatMessage 调 toLocaleTimeString）
+        const messages = (JSON.parse(conversation.messages_json) as Message[]).map((m) => ({
+          ...m,
+          timestamp: new Date(m.timestamp),
+        }));
+        setMessages(messages);
         setShowHistory(false);
       }
     } catch (error) {

@@ -14,7 +14,7 @@ const EXE_PATH = path.join(__dirname, '..', 'release', 'win-unpacked', 'GMPilot.
 const APP_DATA_DIR = path.join(os.tmpdir(), 'gmpilot-packaged-e2e');
 
 // 测试专用 API Key（硅基流动），仅用于本次 E2E 验证
-const LLM_API_KEY = 'sk-fkmixpwmmelmteznqxxfspyjmlusjthkmntfmzacifuocgke';
+const LLM_API_KEY = 'sk-vprnpmjfzbcinduybbsboawtjxtrnrhfldbargfwzkieuczu';
 const LLM_BASE_URL = 'https://api.siliconflow.cn/v1';
 const LLM_MODEL = 'Qwen/Qwen2.5-72B-Instruct-128K';
 

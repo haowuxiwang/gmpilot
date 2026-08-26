@@ -509,7 +509,9 @@ export function createDeviationMachine() {
           },
         },
         after: {
-          180000: { target: 'error_timeout', actions: 'assignTimeout' },
+          // generating 含 3 个 phase、7 个 LLM 调用（串行依赖），实测单次调用可达
+          // 173s×3 次重试；180s 会误杀正常生成。与 IPC 层 WORKFLOW_TIMEOUT(10min) 对齐。
+          600000: { target: 'error_timeout', actions: 'assignTimeout' },
         },
         on: {
           CANCEL: { target: 'cancelled', actions: 'assignCancelled' },
@@ -626,7 +628,8 @@ export function createDeviationMachine() {
           },
         },
         after: {
-          120000: { target: 'error_timeout', actions: 'assignTimeout' },
+          // 定向修订同样含多模块 LLM 调用，120s 不够
+          300000: { target: 'error_timeout', actions: 'assignTimeout' },
         },
         on: {
           CANCEL: {

@@ -200,9 +200,9 @@ export function WorkflowProgress({
                     transition-all duration-300 ease-out
                     ${
                       status === 'done'
-                        ? 'bg-teal-600 text-white shadow-sm shadow-teal-200'
+                        ? 'bg-teal-600 text-white shadow-sm'
                         : status === 'active'
-                          ? 'bg-white border-2 border-teal-500 text-teal-600 shadow-md shadow-teal-100 animate-glow'
+                          ? 'bg-white border-2 border-teal-500 text-teal-600 animate-glow'
                           : status === 'error'
                             ? 'bg-error-50 border-2 border-error-500 text-error-600'
                             : 'bg-stone-100 text-stone-400'

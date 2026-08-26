@@ -65,6 +65,12 @@ export function FeishuConfig() {
     setTesting(true);
     setTestResult(null);
     try {
+      // 测试前先保存，否则测的是旧配置（主进程从 DB 读配置）
+      const saveResult = await window.gmpilot.notification.saveFeishuConfig(config);
+      if (!saveResult.success) {
+        setTestResult({ success: false, message: saveResult.error || '保存配置失败' });
+        return;
+      }
       const result = await window.gmpilot.notification.testFeishu();
       if (result.success) {
         setTestResult({ success: true, message: `连接成功 (${result.latency}ms)` });
@@ -191,10 +197,11 @@ export function FeishuConfig() {
           </button>
           <button
             onClick={handleTest}
-            disabled={testing}
+            disabled={testing || saving}
+            title="先保存配置，再发送测试消息"
             className="px-4 py-2 text-sm font-medium text-stone-700 bg-stone-100 rounded-lg hover:bg-stone-200 disabled:opacity-50 transition-colors"
           >
-            {testing ? '测试中...' : '测试连接'}
+            {testing ? '测试中...' : '测试连接（会发送测试消息）'}
           </button>
         </div>
 

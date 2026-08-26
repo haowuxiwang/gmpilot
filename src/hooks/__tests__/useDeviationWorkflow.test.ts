@@ -4,7 +4,7 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
-import { useDeviationWorkflow, STEP_MAP } from '../useDeviationWorkflow';
+import { useDeviationWorkflow, STEP_MAP, resetWorkflowStoreForTests } from '../useDeviationWorkflow';
 import type { DeviationReport } from '@core/workflow/types';
 
 // Mock window.gmpilot
@@ -81,6 +81,7 @@ const mockReport: DeviationReport = {
 describe('useDeviationWorkflow', () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    resetWorkflowStoreForTests();
     // Setup window.gmpilot mock
     Object.defineProperty(window, 'gmpilot', {
       value: mockGmpilot,

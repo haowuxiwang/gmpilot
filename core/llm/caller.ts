@@ -13,6 +13,8 @@ import { recordMetric } from '../utils/metrics';
 import type { ClueAnalysis, Factor5M1E, RegulationMatch, Finding, DeviationReport } from '../workflow/types';
 import deviationReportSchemaRaw from '../schema/deviation-report-schema.json';
 
+import { parseJsonWithRepair } from './json-repair';
+
 const log = createLogger('LLM');
 
 // ============================================================================
@@ -296,9 +298,10 @@ async function safeGenerateObject<T>(
 
   const jsonStr = extractJsonFromText(result.text);
 
+  // JSON.parse 失败时先尝试截断修复（LLM maxTokens 截断常见），救不回再抛错走重试
   let parsed: unknown;
   try {
-    parsed = JSON.parse(jsonStr);
+    parsed = parseJsonWithRepair(jsonStr, 'clue/factor/match');
   } catch (parseError) {
     log.warn('JSON parse failed, raw text', { textPreview: result.text.slice(0, 200) });
     throw new Error(`LLM 返回的内容不是有效 JSON: ${String(parseError).slice(0, 100)}`);
@@ -421,7 +424,7 @@ export async function generateReport(
       const jsonStr = extractJsonFromText(genResult.text);
       let parsed: unknown;
       try {
-        parsed = JSON.parse(jsonStr);
+        parsed = parseJsonWithRepair(jsonStr, 'report-generate');
       } catch (parseError) {
         log.warn('report-generate JSON parse failed', { textPreview: genResult.text.slice(0, 200) });
         throw new Error(`报告生成返回的内容不是有效 JSON: ${String(parseError).slice(0, 100)}`);

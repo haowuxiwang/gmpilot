@@ -5,7 +5,7 @@
  * Optimized with useMemo/useCallback to minimize re-renders.
  */
 
-import { useState, useCallback, useEffect, useRef, useMemo } from 'react';
+import { useCallback, useEffect, useRef, useMemo, useSyncExternalStore } from 'react';
 import type { DeviationReport } from '@core/workflow/types';
 import type { WorkflowProgress as PreloadWorkflowProgress } from '@core/types/ipc';
 
@@ -13,6 +13,53 @@ export type WorkflowStep = 'input' | 'analyzing' | 'identifying' | 'matching' | 
 
 export interface WorkflowProgress extends PreloadWorkflowProgress {
   streamingReport?: Partial<DeviationReport> | null;
+}
+
+// ============================================================================
+// Module-level persistent store.
+// 工作流状态存于模块单例而非 useState：AgentPage 是路由组件，切换导航会卸载
+// 组件并重置 useState —— 用户切到"偏差报告"再回来时进行中的流程就"消失"了。
+// 状态放模块级后跨路由存活；组件挂载时 useSyncExternalStore 重新订阅。
+// ============================================================================
+
+interface WorkflowStore {
+  step: WorkflowStep;
+  clueText: string;
+  report: DeviationReport | null;
+  error: string | null;
+  loading: boolean;
+  exporting: 'pdf' | 'docx' | null;
+  progress: WorkflowProgress | null;
+  auditFindings: unknown[] | null;
+  auditScore: number | null;
+  auditSummary: string | null;
+}
+
+const store: WorkflowStore = {
+  step: 'input',
+  clueText: '',
+  report: null,
+  error: null,
+  loading: false,
+  exporting: null,
+  progress: null,
+  auditFindings: null,
+  auditScore: null,
+  auditSummary: null,
+};
+
+const listeners = new Set<() => void>();
+
+function notifyListeners(): void {
+  for (const fn of listeners) fn();
+}
+
+/** Update one or more store fields and notify subscribers. */
+let version = 0;
+function setStore(patch: Partial<WorkflowStore>): void {
+  Object.assign(store, patch);
+  version += 1;
+  notifyListeners();
 }
 
 export const STEP_MAP: Record<WorkflowStep, number> = {
@@ -51,17 +98,49 @@ function useLatest<T>(callback: T): React.MutableRefObject<T> {
   return ref;
 }
 
+/** Test-only: reset the module store between tests (state is persistent by design). */
+export function resetWorkflowStoreForTests(): void {
+  Object.assign(store, {
+    step: 'input' as WorkflowStep,
+    clueText: '',
+    report: null,
+    error: null,
+    loading: false,
+    exporting: null,
+    progress: null,
+    auditFindings: null,
+    auditScore: null,
+    auditSummary: null,
+  });
+  version += 1;
+}
+
 export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
-  const [step, setStep] = useState<WorkflowStep>('input');
-  const [clueText, setClueText] = useState('');
-  const [report, setReport] = useState<DeviationReport | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [progress, setProgress] = useState<WorkflowProgress | null>(null);
-  const [auditFindings, setAuditFindings] = useState<unknown[] | null>(null);
-  const [auditScore, setAuditScore] = useState<number | null>(null);
-  const [auditSummary, setAuditSummary] = useState<string | null>(null);
-  const [exporting, setExporting] = useState<'pdf' | 'docx' | null>(null);
+  // 状态存模块级单例（跨路由持久）；useSyncExternalStore 订阅变更触发重渲染
+  const snapshot = useSyncExternalStore(
+    (onStoreChange) => {
+      listeners.add(onStoreChange);
+      return () => listeners.delete(onStoreChange);
+    },
+    () => version, // version 变化即触发重渲染
+    () => version,
+  );
+  void snapshot; // 仅作为重渲染信号，字段直接从 store 读
+
+  const step = store.step;
+  const clueText = store.clueText;
+  const report = store.report;
+  const error = store.error;
+  const loading = store.loading;
+  const progress = store.progress;
+  const auditFindings = store.auditFindings;
+  const auditScore = store.auditScore;
+  const auditSummary = store.auditSummary;
+  const exporting = store.exporting;
+
+  const setStep = useCallback((s: WorkflowStep) => setStore({ step: s }), []);
+  const setClueText = useCallback((t: string) => setStore({ clueText: t }), []);
+  const setError = useCallback((e: string | null) => setStore({ error: e }), []);
 
   // Use ref for callbacks to avoid stale closures
   const callbacksRef = useLatest(callbacks);
@@ -69,25 +148,26 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
   // Subscribe to workflow progress (stable - runs once)
   useEffect(() => {
     const handleProgress = (data: PreloadWorkflowProgress) => {
-      setProgress((prev) => ({
-        ...data,
-        streamingReport: prev?.streamingReport,
-      }));
+      setStore({
+        progress: { ...data, streamingReport: store.progress?.streamingReport },
+      });
       if (data.currentStep) {
         const stepNames: WorkflowStep[] = ['input', 'analyzing', 'identifying', 'matching', 'generating', 'auditing', 'review'];
-        setStep(stepNames[data.currentStep - 1] || 'input');
+        setStore({ step: stepNames[data.currentStep - 1] || 'input' });
       }
       if (data.report) {
-        setReport(data.report);
+        setStore({ report: data.report });
       }
       if (data.error) {
-        setError(data.error);
+        setStore({ error: data.error });
       }
     };
 
     const handleStreaming = (data: { partial: Partial<DeviationReport> }) => {
       if (data.partial) {
-        setProgress((prev) => prev ? { ...prev, streamingReport: data.partial } : prev);
+        setStore({
+          progress: store.progress ? { ...store.progress, streamingReport: data.partial } : null,
+        });
       }
     };
 
@@ -109,14 +189,14 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
       return { success: false, error: '请输入偏差线索' };
     }
 
-    setLoading(true);
+    setStore({ loading: true });
     setError(null);
-    setStep('analyzing');
+    setStore({ step: 'analyzing' });
 
     try {
       if (typeof window === 'undefined' || !window.gmpilot) {
         callbacksRef.current?.onWarning?.('请在 Electron 环境中运行');
-        setStep('input');
+        setStore({ step: 'input' });
         return { success: false, error: '请在 Electron 环境中运行' };
       }
 
@@ -130,30 +210,30 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
       clearTimeout(timeoutId!);
 
       if (result.success && result.report) {
-        setReport(result.report as DeviationReport);
-        setAuditFindings(result.auditFindings ?? null);
-        setAuditScore(result.auditScore ?? null);
-        setAuditSummary(result.auditSummary ?? null);
-        setStep('review');
+        setStore({ report: result.report as DeviationReport });
+        setStore({ auditFindings: (result.auditFindings ?? null) as unknown[] | null });
+        setStore({ auditScore: result.auditScore ?? null });
+        setStore({ auditSummary: result.auditSummary ?? null });
+        setStore({ step: 'review' });
         callbacksRef.current?.onSuccess?.(result.report as DeviationReport);
         return { success: true, report: result.report as DeviationReport, auditFindings: result.auditFindings, auditScore: result.auditScore, auditSummary: result.auditSummary, fallbackModules: result.fallbackModules };
       } else {
         const errorMsg = result.error || '工作流执行失败';
-        setProgress(null);
+        setStore({ progress: null });
         setError(errorMsg);
-        setStep('input');
+        setStore({ step: 'input' });
         callbacksRef.current?.onError?.(errorMsg);
         return { success: false, error: errorMsg };
       }
     } catch (err) {
       const errorMsg = String(err);
-      setProgress(null);
+      setStore({ progress: null });
       setError(errorMsg);
-      setStep('input');
+      setStore({ step: 'input' });
       callbacksRef.current?.onError?.(errorMsg);
       return { success: false, error: errorMsg };
     } finally {
-      setLoading(false);
+      setStore({ loading: false });
     }
   }, [clueText, callbacksRef]);
 
@@ -165,7 +245,7 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
       return;
     }
 
-    setExporting('pdf');
+    setStore({ exporting: 'pdf' });
     try {
       const result = await window.gmpilot.file.exportPdf(report);
       if (result.success) {
@@ -176,7 +256,7 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
     } catch (err) {
       callbacksRef.current?.onError?.(`导出失败：${err}`);
     } finally {
-      setExporting(null);
+      setStore({ exporting: null });
     }
   }, [report, callbacksRef]);
 
@@ -188,7 +268,7 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
       return;
     }
 
-    setExporting('docx');
+    setStore({ exporting: 'docx' });
     try {
       const result = await window.gmpilot.file.exportDocx(report);
       if (result.success) {
@@ -199,7 +279,7 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
     } catch (err) {
       callbacksRef.current?.onError?.(`导出失败：${err}`);
     } finally {
-      setExporting(null);
+      setStore({ exporting: null });
     }
   }, [report, callbacksRef]);
 
@@ -209,10 +289,10 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
     try {
       const result = await window.gmpilot.workflow.cancel();
       if (result.success) {
-        setLoading(false);
-        setStep('input');
+        setStore({ loading: false });
+        setStore({ step: 'input' });
         setError('工作流已被用户取消');
-        setProgress(null);
+        setStore({ progress: null });
       }
     } catch {
       // Ignore cancel errors
@@ -221,14 +301,16 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
 
   // Reset
   const reset = useCallback(() => {
-    setStep('input');
-    setClueText('');
-    setReport(null);
-    setError(null);
-    setProgress(null);
-    setAuditFindings(null);
-    setAuditScore(null);
-    setAuditSummary(null);
+    setStore({
+      step: 'input',
+      clueText: '',
+      report: null,
+      error: null,
+      progress: null,
+      auditFindings: null,
+      auditScore: null,
+      auditSummary: null,
+    });
   }, []);
 
   // Targeted module revision
@@ -243,7 +325,7 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
       return { success: false, error: '请在 Electron 环境中运行' };
     }
 
-    setLoading(true);
+    setStore({ loading: true });
     setError(null);
 
     try {
@@ -254,12 +336,12 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
       });
 
       if (result.success && result.report) {
-        setReport(result.report as DeviationReport);
+        setStore({ report: result.report as DeviationReport });
         // 修订后更新重新审计结果（IPC 层已完成审计）
-        if (result.auditFindings !== undefined) setAuditFindings(result.auditFindings as never);
-        if (result.auditScore !== undefined) setAuditScore(result.auditScore as never);
-        if (result.auditSummary !== undefined) setAuditSummary(result.auditSummary);
-        setStep('review');
+        if (result.auditFindings !== undefined) setStore({ auditFindings: result.auditFindings });
+        if (result.auditScore !== undefined) setStore({ auditScore: result.auditScore });
+        if (result.auditSummary !== undefined) setStore({ auditSummary: result.auditSummary });
+        setStore({ step: 'review' });
         callbacksRef.current?.onSuccess?.(result.report as DeviationReport);
         return {
           success: true,
@@ -281,7 +363,7 @@ export function useDeviationWorkflow(callbacks?: WorkflowCallbacks) {
       callbacksRef.current?.onError?.(errorMsg);
       return { success: false, error: errorMsg };
     } finally {
-      setLoading(false);
+      setStore({ loading: false });
     }
   }, [report, callbacksRef]);
 

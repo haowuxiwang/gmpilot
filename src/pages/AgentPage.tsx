@@ -17,7 +17,7 @@ import type { WorkflowStepId } from '@/components/chat/WorkflowProgress';
 import type { Message } from '@/components/chat/ChatMessage';
 import type { AuditFinding } from '@core/llm/caller';
 import { mapFindingsToModules } from '@core/workflow/module-utils';
-import { PanelRightClose, PanelRightOpen, Square, History } from 'lucide-react';
+import { PanelRightClose, PanelRightOpen, Square, History, AlertTriangle } from 'lucide-react';
 
 const log = createLogger('AgentPage');
 
@@ -34,6 +34,8 @@ export function AgentPage() {
   const [showPanel, setShowPanel] = useState(false);
   const [showAuditDetails, setShowAuditDetails] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
+  // fallback 章节（模板兜底）——持久显示在文档面板顶部横幅，直到用户下次生成
+  const [fallbackModules, setFallbackModules] = useState<string[]>([]);
   const [currentConversationId, setCurrentConversationId] = useState<number | null>(null);
   const { success, error: showError, warning } = useToast();
 
@@ -102,7 +104,10 @@ export function AgentPage() {
 
       if (result) {
         if (result.success && result.fallbackModules && result.fallbackModules.length > 0) {
+          setFallbackModules(result.fallbackModules);
           warning(`部分章节（${result.fallbackModules.join('、')}）生成失败，已使用模板内容兜底，请人工补充`);
+        } else if (result.success) {
+          setFallbackModules([]);
         }
         const aiMessage: Message = {
           id: `msg-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
@@ -282,6 +287,20 @@ export function AgentPage() {
       {/* 文档面板 — 有报告时自动滑出 */}
       {showPanel && report && (
         <div className="w-[380px] flex-shrink-0 border-l border-stone-100 bg-white flex flex-col max-h-full">
+          {/* fallback 横幅：模板兜底的章节需要人工复核，常驻显示直至下次成功生成 */}
+          {fallbackModules.length > 0 && report && (
+            <div className="px-4 py-2.5 bg-amber-50 border-b-2 border-amber-300 flex items-start gap-2">
+              <AlertTriangle className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div className="min-w-0">
+                <p className="text-xs font-medium text-amber-800">
+                  {fallbackModules.length} 个章节使用模板兜底
+                </p>
+                <p className="text-[11px] text-amber-700 mt-0.5">
+                  {fallbackModules.join('、')} 生成失败，内容为模板默认值，请人工核实补充
+                </p>
+              </div>
+            </div>
+          )}
           {showAuditDetails && auditFindings ? (
             <div className="flex flex-col h-full">
               <div className="px-4 py-3 border-b border-stone-100">

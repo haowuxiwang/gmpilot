@@ -17,6 +17,7 @@ import type { WorkflowStepId } from '@/components/chat/WorkflowProgress';
 import type { Message } from '@/components/chat/ChatMessage';
 import type { AuditFinding } from '@core/llm/caller';
 import { mapFindingsToModules } from '@core/workflow/module-utils';
+import { AnimatePresence, motion } from 'motion/react';
 import { PanelRightClose, PanelRightOpen, Square, History, AlertTriangle } from 'lucide-react';
 
 const log = createLogger('AgentPage');
@@ -284,9 +285,19 @@ export function AgentPage() {
         </>
       )}
 
-      {/* 文档面板 — 有报告时自动滑出 */}
-      {showPanel && report && (
-        <div className="w-[380px] flex-shrink-0 border-l border-stone-100 bg-white flex flex-col max-h-full">
+      {/* 文档面板 — 有报告时弹簧滑出（motion layout：宽度过渡由 spring 驱动而非线性 width） */}
+      <AnimatePresence initial={false}>
+        {showPanel && report && (
+          <motion.aside
+            initial={{ width: 0, opacity: 0 }}
+            animate={{
+              width: 380,
+              opacity: 1,
+              transition: { type: 'spring', stiffness: 170, damping: 22 },
+            }}
+            exit={{ width: 0, opacity: 0, transition: { duration: 0.18, ease: 'easeIn' } }}
+            className="flex-shrink-0 border-l border-stone-100 bg-white flex flex-col max-h-full overflow-hidden"
+          >
           {/* fallback 横幅：模板兜底的章节需要人工复核，常驻显示直至下次成功生成 */}
           {fallbackModules.length > 0 && report && (
             <div className="px-4 py-2.5 bg-amber-50 border-b-2 border-amber-300 flex items-start gap-2">
@@ -331,8 +342,9 @@ export function AgentPage() {
               onViewAuditDetails={() => setShowAuditDetails(true)}
             />
           )}
-        </div>
-      )}
+          </motion.aside>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

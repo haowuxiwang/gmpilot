@@ -6,6 +6,7 @@
 
 import { useEffect, useRef, useMemo } from 'react';
 import { gsap } from 'gsap';
+import { motion } from 'motion/react';
 import {
   Search,
   Layers,
@@ -211,7 +212,15 @@ export function WorkflowProgress({
                   `}
                 >
                   {status === 'done' ? (
-                    <Check className="w-4 h-4" strokeWidth={2.5} />
+                    /* spring pop：步骤完成时图标弹性放大，给完成动作物理反馈 */
+                    <motion.span
+                      initial={{ scale: 0.4, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ type: 'spring', stiffness: 500, damping: 18 }}
+                      className="inline-flex"
+                    >
+                      <Check className="w-4 h-4" strokeWidth={2.5} />
+                    </motion.span>
                   ) : status === 'active' ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
                   ) : status === 'error' ? (

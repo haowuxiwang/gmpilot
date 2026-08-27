@@ -95,6 +95,14 @@ test.beforeAll(async () => {
   });
 
   page = await resolveMainWindow(app);
+
+  // 跳过首次启动引导（设置已完成标记）
+  await page.evaluate(() => {
+    localStorage.setItem('gmpilot:onboarding_completed', 'true');
+  });
+  await page.reload();
+  await page.waitForTimeout(1_000);
+
   page.on('pageerror', (err) => rendererErrors.push(`pageerror: ${err.message}`));
   page.on('console', (msg) => {
     if (msg.type() === 'error') rendererErrors.push(`console: ${msg.text()}`);

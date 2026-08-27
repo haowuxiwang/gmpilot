@@ -2,13 +2,15 @@
  * 应用根组件
  */
 
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState, useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'motion/react';
 import { Sidebar } from '@/components/layout/Sidebar';
 import { ToastProvider } from '@/providers/ToastProvider';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { AgentPage } from '@/pages/AgentPage';
+import { OnboardingWizard } from '@/onboarding/OnboardingWizard';
+import { isOnboardingCompleted } from '@/onboarding/types';
 
 // Route-level code splitting (AgentPage stays synchronous as primary route)
 const ReportsPage = lazy(() => import('@/pages/ReportsPage').then(m => ({ default: m.ReportsPage })));
@@ -18,6 +20,22 @@ const NotFoundPage = lazy(() => import('@/pages/NotFoundPage').then(m => ({ defa
 
 export default function App() {
   const location = useLocation();
+  const [showOnboarding, setShowOnboarding] = useState(false);
+
+  useEffect(() => {
+    // Check if onboarding is needed
+    if (!isOnboardingCompleted()) {
+      setShowOnboarding(true);
+    }
+  }, []);
+
+  const handleOnboardingComplete = () => {
+    setShowOnboarding(false);
+  };
+
+  if (showOnboarding) {
+    return <OnboardingWizard onComplete={handleOnboardingComplete} />;
+  }
 
   return (
     <ToastProvider>

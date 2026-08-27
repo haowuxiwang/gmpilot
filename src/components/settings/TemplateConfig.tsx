@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useToast } from '@/providers/ToastProvider';
-import { Check } from 'lucide-react';
+import { Check, Upload, Loader2, Trash2 } from 'lucide-react';
 import { createLogger } from '@core/utils/logger';
 
 const log = createLogger('TemplateConfig');
@@ -24,12 +24,20 @@ interface TemplateOption {
 export function TemplateConfig() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [templates, setTemplates] = useState<TemplateOption[]>([]);
   const [selected, setSelected] = useState<string>('default');
-  const { success, error: showError } = useToast();
+  const { success, error: showError, info } = useToast();
 
   useEffect(() => {
-    // Load available templates
+    loadTemplates();
+    // Load current selection
+    settingsApi.get().then((s) => {
+      setSelected(s.SELECTED_TEMPLATE || 'default');
+    }).catch((err) => log.error('Failed to load settings', { error: String(err) })).finally(() => setLoading(false));
+  }, []);
+
+  const loadTemplates = () => {
     if (window.gmpilot) {
       window.gmpilot.template.getAll().then((tpls) => {
         setTemplates(tpls.map((t) => ({
@@ -40,12 +48,42 @@ export function TemplateConfig() {
         })));
       }).catch((err) => log.error('Failed to load templates', { error: String(err) }));
     }
+  };
 
-    // Load current selection
-    settingsApi.get().then((s) => {
-      setSelected(s.SELECTED_TEMPLATE || 'default');
-    }).catch((err) => log.error('Failed to load settings', { error: String(err) })).finally(() => setLoading(false));
-  }, []);
+  const handleUpload = async () => {
+    if (!window.gmpilot) return;
+    setUploading(true);
+    try {
+      const result = await window.gmpilot.template.upload();
+      if (result.success && result.template) {
+        success(`模板上传成功：${result.template.description}`);
+        loadTemplates();
+        setSelected(result.template.id);
+      } else {
+        showError(result.error || '上传失败');
+      }
+    } catch (err) {
+      showError(`上传失败：${err instanceof Error ? err.message : '未知错误'}`);
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const handleDelete = async (templateId: string) => {
+    if (!window.gmpilot) return;
+    try {
+      const result = await window.gmpilot.template.delete(templateId);
+      if (result.success) {
+        info('模板已删除');
+        loadTemplates();
+        if (selected === templateId) setSelected('default');
+      } else {
+        showError(result.error || '删除失败');
+      }
+    } catch (err) {
+      showError(`删除失败：${err instanceof Error ? err.message : '未知错误'}`);
+    }
+  };
 
   const handleSave = async () => {
     setSaving(true);
@@ -97,7 +135,7 @@ export function TemplateConfig() {
             </label>
             <div className="space-y-2">
               {templates.map((template) => (
-                <label
+                <div
                   key={template.id}
                   className={`
                     flex items-start gap-3 p-3 rounded-xl border cursor-pointer transition-all duration-150
@@ -106,31 +144,70 @@ export function TemplateConfig() {
                       : 'border-stone-200 hover:border-stone-300 bg-white'}
                   `}
                 >
-                  <input
-                    type="radio"
-                    name="template"
-                    value={template.id}
-                    checked={selected === template.id}
-                    onChange={(e) => setSelected(e.target.value)}
-                    className="mt-0.5 accent-teal-600"
-                  />
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-medium text-stone-900">{template.name}</span>
-                      {template.builtIn && (
-                        <span className="text-[10px] px-1.5 py-0.5 bg-stone-100 text-stone-500 rounded-full">
-                          内置
-                        </span>
-                      )}
+                  <label className="flex items-start gap-3 flex-1 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="template"
+                      value={template.id}
+                      checked={selected === template.id}
+                      onChange={(e) => setSelected(e.target.value)}
+                      className="mt-0.5 accent-teal-600"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm font-medium text-stone-900">{template.name}</span>
+                        {template.builtIn && (
+                          <span className="text-[10px] px-1.5 py-0.5 bg-stone-100 text-stone-500 rounded-full">
+                            内置
+                          </span>
+                        )}
+                      </div>
+                      <p className="text-xs text-stone-500 mt-0.5">{template.description}</p>
                     </div>
-                    <p className="text-xs text-stone-500 mt-0.5">{template.description}</p>
-                  </div>
+                  </label>
+                  {!template.builtIn && selected === template.id && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleDelete(template.id);
+                      }}
+                      className="p-1 rounded-lg text-stone-400 hover:text-red-500 hover:bg-red-50 transition-colors"
+                      title="删除模板"
+                    >
+                      <Trash2 className="w-3.5 h-3.5" />
+                    </button>
+                  )}
                   {selected === template.id && (
                     <Check className="w-4 h-4 text-teal-600 flex-shrink-0 mt-0.5" />
                   )}
-                </label>
+                </div>
               ))}
             </div>
+          </div>
+
+          {/* Upload button */}
+          <div className="pt-2 border-t border-stone-100">
+            <Button
+              variant="secondary"
+              onClick={handleUpload}
+              disabled={uploading}
+              className="w-full"
+            >
+              {uploading ? (
+                <>
+                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  上传中...
+                </>
+              ) : (
+                <>
+                  <Upload className="w-4 h-4 mr-2" />
+                  上传自定义模板
+                </>
+              )}
+            </Button>
+            <p className="text-xs text-stone-500 mt-2">
+              支持 .docx 格式，应用会自动识别模板结构（背景/调查/结论/风险/CAPA/附件）
+            </p>
           </div>
         </CardContent>
       </Card>

@@ -8,6 +8,7 @@ import { registerKnowledgeIPC, loadBuiltinKnowledge } from './ipc/knowledge';
 import { registerFileIPC } from './ipc/file';
 import { registerWorkflowIPC, getWorkflowRunning } from './ipc/workflow';
 import { registerTemplateIPC } from './ipc/template';
+import { registerTemplateUploadIPC } from './ipc/template-upload';
 import { registerNotificationIPC } from './ipc/notification';
 import { registerLoggerIPC } from './ipc/logger';
 import { initAutoUpdater } from './updater';
@@ -206,6 +207,7 @@ registerKnowledgeIPC();
 registerFileIPC();
 registerWorkflowIPC();
 registerTemplateIPC();
+registerTemplateUploadIPC();
 registerNotificationIPC();
 registerLoggerIPC();
 

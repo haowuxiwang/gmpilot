@@ -115,6 +115,8 @@ contextBridge.exposeInMainWorld('gmpilot', {
     clearCache: () => ipcRenderer.invoke('template:clearCache'),
     // 多工厂 Word 模板注册表
     getAll: () => ipcRenderer.invoke('template:getAllWordTemplates'),
+    upload: () => ipcRenderer.invoke('template:upload'),
+    delete: (templateId: string) => ipcRenderer.invoke('template:delete', templateId),
   },
 
   // Notification operations (Feishu)
@@ -197,6 +199,8 @@ export interface GmpilotAPI {
     reset: (templateId: string) => Promise<{ success: boolean; error?: string }>;
     clearCache: () => Promise<{ success: boolean; error?: string }>;
     getAll: () => Promise<Array<{ id: string; name: string; description: string; builtIn: boolean }>>;
+    upload: () => Promise<{ success: boolean; template?: { id: string; name: string; description: string; builtIn: boolean }; error?: string }>;
+    delete: (templateId: string) => Promise<{ success: boolean; error?: string }>;
   };
   notification: {
     getFeishuConfig: () => Promise<{ success: boolean; config?: { appId: string; appSecret: string; receiveIdType: string; receiveId: string; enabled: boolean }; error?: string }>;

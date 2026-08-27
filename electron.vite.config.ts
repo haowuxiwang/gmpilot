@@ -40,7 +40,7 @@ export default defineConfig({
         output: {
           manualChunks: {
             'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-            'vendor-gsap': ['gsap'],
+            'vendor-motion': ['motion/react', 'motion'],
             'vendor-icons': ['lucide-react'],
           },
         },

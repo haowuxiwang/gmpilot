@@ -1,0 +1,41 @@
+{
+  "name": "工厂 A（Times New Roman + 小四）",
+  "version": "1.0.0",
+  "description": "Times New Roman + 宋体，小四（12pt），部分外企工厂使用",
+  "fonts": {
+    "ascii": "Times New Roman",
+    "eastAsia": "宋体",
+    "headings": "Times New Roman"
+  },
+  "sizes": {
+    "body": 24,
+    "heading1": 36,
+    "heading2": 28,
+    "heading3": 24
+  },
+  "indent": {
+    "firstLine": 480,
+    "left": 0
+  },
+  "spacing": {
+    "line": 360,
+    "before": 0,
+    "after": 120
+  },
+  "sections": [
+    "cover",
+    "background",
+    "investigation",
+    "conclusion",
+    "riskAssessment",
+    "capa",
+    "attachments"
+  ],
+  "header": {
+    "fileNoFormat": "{deviationId}-R",
+    "showLogo": false
+  },
+  "footer": {
+    "signers": ["preparedBy", "reviewedBy"]
+  }
+}

@@ -139,7 +139,7 @@ export function LLMConfig() {
             LLM 配置
           </h2>
           <p className="text-sm text-stone-500 mt-1">
-            支持 OpenAI 兼容 API（DeepSeek、通义千问、智谱、OpenAI 等）
+            支持 OpenAI 兼容 API（DeepSeek、通义千问、智谱、OpenAI、Anthropic 等）
           </p>
         </CardHeader>
 
@@ -158,14 +158,14 @@ export function LLMConfig() {
                 <option value="">自定义配置</option>
                 {providers.map((provider) => (
                   <option key={provider.id} value={provider.id}>
-                    {provider.name} ({provider.defaultModel})
+                    {provider.name}
                   </option>
                 ))}
               </select>
               <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 pointer-events-none" />
             </div>
             <p className="text-xs text-stone-500 mt-1.5">
-              选择 Provider 自动填充 API 地址和模型名称
+              选择 Provider 自动填充 API 地址（模型由提供商注册表决定）
             </p>
           </div>
 

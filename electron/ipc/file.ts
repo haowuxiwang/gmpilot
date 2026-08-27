@@ -8,6 +8,7 @@ import path from 'path';
 import { createLogger } from '../../core/utils/logger';
 import { readFileContent, getFileFilters } from '../../core/utils/file-reader';
 import type { DeviationReport } from '../../core/workflow/types';
+import { getSetting } from '../../core/db/schema';
 
 const log = createLogger('File');
 
@@ -107,7 +108,9 @@ export function registerFileIPC(): void {
       }
 
       const { exportDocxToFile } = await import('../../core/word/filler');
-      const filePath = exportDocxToFile(report, result.filePath);
+      const db = getDatabase();
+      const selectedTemplate = getSetting(db, 'SELECTED_TEMPLATE');
+      const filePath = exportDocxToFile(report, result.filePath, selectedTemplate ?? undefined);
 
       log.info('Word exported successfully', { filePath });
       return { success: true, filePath };

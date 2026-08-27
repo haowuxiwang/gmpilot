@@ -187,4 +187,22 @@ export function registerTemplateIPC(): void {
   });
 
   log.info('Template IPC handlers registered');
+
+  /**
+   * Get all Word templates (for multi-factory template selection).
+   */
+  ipcMain.handle('template:getAllWordTemplates', async () => {
+    try {
+      const templates = getAllWordTemplates();
+      return templates.map((t) => ({
+        id: t.id,
+        name: t.name,
+        description: t.description,
+        builtIn: t.builtIn,
+      }));
+    } catch (error) {
+      log.error('Failed to get word templates', { error: String(error) });
+      return [];
+    }
+  });
 }

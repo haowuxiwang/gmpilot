@@ -5,17 +5,19 @@
  */
 
 import { useState } from 'react';
-import { Cpu, FileText, Bell, ShieldCheck } from 'lucide-react';
+import { Cpu, FileText, Bell, ShieldCheck, Layout } from 'lucide-react';
 import { LLMConfig } from '@/components/settings/LLMConfig';
 import { TemplateManager } from '@/components/settings/TemplateManager';
+import { TemplateConfig } from '@/components/settings/TemplateConfig';
 import { FeishuConfig } from '@/components/settings/FeishuConfig';
 import { AuditBeeStatus } from '@/components/audit/AuditBeeStatus';
 
-type SettingsTab = 'llm' | 'templates' | 'notifications' | 'audit';
+type SettingsTab = 'llm' | 'templates' | 'reportTemplate' | 'notifications' | 'audit';
 
 const TABS: { id: SettingsTab; label: string; desc: string; icon: React.ComponentType<{ className?: string; strokeWidth?: number | string }> }[] = [
   { id: 'llm', label: '模型配置', desc: 'LLM 提供商与 API', icon: Cpu },
   { id: 'templates', label: '模版管理', desc: '偏差报告模版', icon: FileText },
+  { id: 'reportTemplate', label: '报告模板', desc: '多工厂 Word 模板', icon: Layout },
   { id: 'notifications', label: '通知推送', desc: '飞书机器人通知', icon: Bell },
   { id: 'audit', label: '合规审核', desc: '内置审核引擎', icon: ShieldCheck },
 ];
@@ -83,6 +85,7 @@ export function SettingsPage() {
         <div className="max-w-3xl p-6">
           {activeTab === 'llm' && <LLMConfig />}
           {activeTab === 'templates' && <TemplateManager />}
+          {activeTab === 'reportTemplate' && <TemplateConfig />}
           {activeTab === 'notifications' && (
             <div className="space-y-6">
               <FeishuConfig />

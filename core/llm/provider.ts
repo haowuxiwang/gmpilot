@@ -246,7 +246,7 @@ export function createLLMModel(config?: ProviderConfig) {
     return ollama(cfg.model || 'llama3.1');
   }
 
-  // Anthropic (uses separate SDK)
+  // Anthropic 使用独立 SDK（@ai-sdk/anthropic），baseUrl 不需要 /v1 后缀
   if (cfg.provider === 'anthropic') {
     const anthropic = createAnthropic({ apiKey: cfg.apiKey });
     return anthropic(cfg.model || 'claude-sonnet-4-20250514');

@@ -1,0 +1,41 @@
+{
+  "name": "默认模板",
+  "version": "1.0.0",
+  "description": "Arial + 宋体，五号字（10.5pt），适用大多数工厂",
+  "fonts": {
+    "ascii": "Arial",
+    "eastAsia": "宋体",
+    "headings": "Arial"
+  },
+  "sizes": {
+    "body": 21,
+    "heading1": 32,
+    "heading2": 26,
+    "heading3": 24
+  },
+  "indent": {
+    "firstLine": 420,
+    "left": 0
+  },
+  "spacing": {
+    "line": 360,
+    "before": 0,
+    "after": 120
+  },
+  "sections": [
+    "cover",
+    "background",
+    "investigation",
+    "conclusion",
+    "riskAssessment",
+    "capa",
+    "attachments"
+  ],
+  "header": {
+    "fileNoFormat": "{deviationId}-R",
+    "showLogo": false
+  },
+  "footer": {
+    "signers": ["preparedBy", "reviewedBy"]
+  }
+}

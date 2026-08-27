@@ -5,11 +5,15 @@
 
 import type { DocumentAst, DetectedSection, ParagraphNode } from './types';
 import { STANDARD_MODULES } from './types';
+import { createLogger } from '../utils/logger';
+
+const log = createLogger('SectionDetector');
 
 /**
  * Detect sections in a parsed document AST.
  */
 export function detectSections(ast: DocumentAst): DetectedSection[] {
+  log.debug('detectSections called', { paragraphCount: ast.paragraphs.length });
   const sections: DetectedSection[] = [];
   const paragraphs = ast.paragraphs;
 
@@ -31,11 +35,12 @@ export function detectSections(ast: DocumentAst): DetectedSection[] {
     const bestMatch = getBestMatch(scores);
 
     if (bestMatch.score > 0.3) {
+      log.debug('Section detected', { moduleId: bestMatch.moduleId, text, score: bestMatch.score });
       sections.push({
         moduleId: bestMatch.moduleId,
         title: text,
         startIndex: i,
-        endIndex: paragraphs.length, // will be updated later
+        endIndex: paragraphs.length,
         titleParagraphIndex: i,
         confidence: bestMatch.score,
       });
@@ -48,7 +53,9 @@ export function detectSections(ast: DocumentAst): DetectedSection[] {
   }
 
   // Merge duplicate module detections (keep highest confidence)
-  return mergeDuplicates(sections);
+  const result = mergeDuplicates(sections);
+  log.info('Section detection complete', { detected: result.length, modules: result.map((s) => s.moduleId) });
+  return result;
 }
 
 /**

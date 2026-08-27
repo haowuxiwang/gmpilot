@@ -7,6 +7,7 @@ import fs from 'fs';
 import path from 'path';
 import { createLogger } from '../../core/utils/logger';
 import { getAllTemplates, getTemplate, reloadTemplate, clearCache } from '../../core/template';
+import { getAllWordTemplates } from '../../core/template-engine';
 import { resolveResourcePath } from '../../core/utils/paths';
 
 const log = createLogger('Template');
@@ -193,7 +194,9 @@ export function registerTemplateIPC(): void {
    */
   ipcMain.handle('template:getAllWordTemplates', async () => {
     try {
+      log.debug('template:getAllWordTemplates handler invoked');
       const templates = getAllWordTemplates();
+      log.info('Word templates loaded', { count: templates.length, ids: templates.map((t) => t.id) });
       return templates.map((t) => ({
         id: t.id,
         name: t.name,

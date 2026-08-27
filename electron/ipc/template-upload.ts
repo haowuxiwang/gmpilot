@@ -27,45 +27,71 @@ const USER_TEMPLATE_DIR = resolveResourcePath('resources', 'templates', 'user');
  * Ensure user template directory exists.
  */
 function ensureUserDir(): void {
+  log.debug('Ensuring user template directory exists', { USER_TEMPLATE_DIR });
   if (!fs.existsSync(USER_TEMPLATE_DIR)) {
     fs.mkdirSync(USER_TEMPLATE_DIR, { recursive: true });
+    log.info('Created user template directory', { USER_TEMPLATE_DIR });
   }
 }
 
 /**
  * Validate an uploaded template file.
  */
-function validateTemplate(buffer: Buffer): { valid: boolean; errors: string[] } {
+function validateTemplate(buffer: Buffer): { valid: boolean; errors: string[]; ast?: any; sections?: any[] } {
   const errors: string[] = [];
+  log.debug('Starting template validation', { size: buffer.length });
 
   // Check file size
   if (buffer.length > MAX_FILE_SIZE) {
     errors.push(`文件过大 (${(buffer.length / 1024 / 1024).toFixed(1)}MB)，最大允许 ${(MAX_FILE_SIZE / 1024 / 1024).toFixed(0)}MB`);
+    log.warn('Template file too large', { size: buffer.length, max: MAX_FILE_SIZE });
   }
 
   // Check file signature (PK zip magic)
   if (buffer[0] !== 0x50 || buffer[1] !== 0x4b) {
     errors.push('文件格式无效：不是有效的 docx 文件');
+    log.warn('Invalid file signature', { byte0: buffer[0], byte1: buffer[1] });
   }
 
   // Try to parse
+  let ast: any;
+  let sections: any[] = [];
   try {
-    const ast = parseDocx(buffer);
-    const sections = detectSections(ast);
+    log.debug('Parsing docx buffer...');
+    ast = parseDocx(buffer);
+    log.info('Docx parsed successfully', {
+      paragraphCount: ast.paragraphs.length,
+      tableCount: ast.tables.length,
+      styleCount: ast.styles.size,
+      fontCount: ast.fonts.length,
+    });
+
+    log.debug('Detecting sections...');
+    sections = detectSections(ast);
     const missing = getMissingModules(ast);
+
+    log.info('Section detection complete', {
+      detectedCount: sections.length,
+      detectedModules: sections.map((s: any) => s.moduleId),
+      missingModules: missing,
+    });
 
     if (sections.length === 0) {
       errors.push('未能识别到任何标准章节（背景/调查/结论/风险/CAPA/附件）');
+      log.warn('No sections detected in template');
     }
 
     if (missing.length > 4) {
       errors.push(`缺少过多模块：${missing.join('、')}（至少需要识别 3 个模块）`);
+      log.warn('Too many missing modules', { missing });
     }
   } catch (error) {
-    errors.push(`解析失败：${error instanceof Error ? error.message : '未知错误'}`);
+    const msg = error instanceof Error ? error.message : '未知错误';
+    errors.push(`解析失败：${msg}`);
+    log.error('Template parsing failed', { error: msg, stack: error instanceof Error ? error.stack : undefined });
   }
 
-  return { valid: errors.length === 0, errors };
+  return { valid: errors.length === 0, errors, ast, sections };
 }
 
 export function registerTemplateUploadIPC(): void {
@@ -73,9 +99,11 @@ export function registerTemplateUploadIPC(): void {
    * Open file dialog and upload a template.
    */
   ipcMain.handle('template:upload', async () => {
+    log.info('Template upload IPC handler invoked');
     try {
       ensureUserDir();
 
+      log.debug('Opening file dialog...');
       const { canceled, filePaths } = await dialog.showOpenDialog({
         title: '上传偏差报告模板',
         filters: [
@@ -85,20 +113,28 @@ export function registerTemplateUploadIPC(): void {
       });
 
       if (canceled || filePaths.length === 0) {
+        log.info('User cancelled file dialog');
         return { success: false, error: '用户取消' };
       }
 
       const filePath = filePaths[0];
-      const ext = path.extname(filePath).toLowerCase();
+      log.info('File selected', { filePath });
 
+      const ext = path.extname(filePath).toLowerCase();
       if (!ALLOWED_EXTENSIONS.includes(ext)) {
+        log.warn('Unsupported file extension', { ext });
         return { success: false, error: `不支持的文件格式: ${ext}，请上传 .docx 文件` };
       }
 
+      log.debug('Reading file...');
       const buffer = fs.readFileSync(filePath);
+      log.info('File read complete', { size: buffer.length });
+
+      log.debug('Validating template...');
       const validation = validateTemplate(buffer);
 
       if (!validation.valid) {
+        log.warn('Template validation failed', { errors: validation.errors });
         return { success: false, error: validation.errors.join('; ') };
       }
 
@@ -108,19 +144,19 @@ export function registerTemplateUploadIPC(): void {
       const templateId = `${baseName}_${timestamp}`;
       const templateDir = path.join(USER_TEMPLATE_DIR, templateId);
 
-      // Create template directory
+      log.debug('Creating template directory...', { templateDir });
       fs.mkdirSync(templateDir, { recursive: true });
 
       // Save fillable template
       const fillablePath = path.join(templateDir, 'deviation-report-fillable.docx');
       fs.writeFileSync(fillablePath, buffer);
+      log.debug('Template file saved', { fillablePath });
 
       // Parse and detect sections for metadata
-      const ast = parseDocx(buffer);
-      const sections = detectSections(ast);
-      const detectedModules = sections.map((s) => s.moduleId);
+      const sections = validation.sections || [];
+      const detectedModules = sections.map((s: any) => s.moduleId);
 
-      // Create style.json (default style, user can customize later)
+      // Create style.json
       const styleConfig = {
         name: baseName,
         version: '1.0.0',
@@ -167,7 +203,12 @@ export function registerTemplateUploadIPC(): void {
       };
       registerTemplate(templateId, templateMeta);
 
-      log.info('Template uploaded', { templateId, modules: detectedModules });
+      log.info('Template uploaded successfully', {
+        templateId,
+        name: baseName,
+        modules: detectedModules,
+        sectionCount: sections.length,
+      });
 
       return {
         success: true,
@@ -180,7 +221,10 @@ export function registerTemplateUploadIPC(): void {
       };
     } catch (error) {
       const msg = error instanceof Error ? error.message : '上传失败';
-      log.error('Template upload failed', { error: msg });
+      log.error('Template upload failed', {
+        error: msg,
+        stack: error instanceof Error ? error.stack : undefined,
+      });
       return { success: false, error: msg };
     }
   });
@@ -189,21 +233,21 @@ export function registerTemplateUploadIPC(): void {
    * Delete a user-uploaded template.
    */
   ipcMain.handle('template:delete', async (_event, templateId: string) => {
+    log.info('Template delete IPC handler invoked', { templateId });
     try {
       const templateDir = path.join(USER_TEMPLATE_DIR, templateId);
 
       if (!fs.existsSync(templateDir)) {
+        log.warn('Template directory not found', { templateId, templateDir });
         return { success: false, error: '模板不存在' };
       }
 
-      // Remove directory recursively
       fs.rmSync(templateDir, { recursive: true, force: true });
-
-      log.info('Template deleted', { templateId });
+      log.info('Template deleted successfully', { templateId });
       return { success: true };
     } catch (error) {
       const msg = error instanceof Error ? error.message : '删除失败';
-      log.error('Template delete failed', { error: msg });
+      log.error('Template delete failed', { error: msg, stack: error instanceof Error ? error.stack : undefined });
       return { success: false, error: msg };
     }
   });

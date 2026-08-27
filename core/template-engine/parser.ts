@@ -4,6 +4,7 @@
  */
 
 import PizZip from 'pizzip';
+import { createLogger } from '../utils/logger';
 import type {
   DocumentAst,
   ParagraphNode,
@@ -17,6 +18,8 @@ import type {
   ParseOptions,
 } from './types';
 
+const log = createLogger('TemplateParser');
+
 let nodeCounter = 0;
 function nextId(prefix: string): string {
   return `${prefix}_${++nodeCounter}`;
@@ -26,22 +29,31 @@ function nextId(prefix: string): string {
  * Parse a .docx file into a Document AST.
  */
 export function parseDocx(buffer: Buffer, _options: ParseOptions = {}): DocumentAst {
+  log.debug('parseDocx called', { bufferSize: buffer.length });
   const zip = new PizZip(buffer);
   nodeCounter = 0;
 
   // Parse styles.xml for style definitions
+  log.debug('Parsing styles.xml...');
   const styles = parseStyles(zip);
+  log.debug('Styles parsed', { count: Object.keys(styles).length });
 
   // Parse font table
+  log.debug('Parsing fonts...');
   const fonts = parseFonts(zip);
+  log.debug('Fonts parsed', { count: fonts.length });
 
   // Parse document.xml
   const documentXml = zip.file('word/document.xml')?.asText();
   if (!documentXml) {
+    log.error('Missing word/document.xml in docx');
     throw new Error('Invalid docx: missing word/document.xml');
   }
+  log.debug('document.xml loaded', { length: documentXml.length });
 
+  log.debug('Parsing document content...');
   const { paragraphs, tables } = parseDocument(documentXml, styles);
+  log.info('Document parsed', { paragraphs: paragraphs.length, tables: tables.length });
 
   // Parse settings for page dimensions
   const metadata = parsePageSettings(zip);
@@ -49,7 +61,7 @@ export function parseDocx(buffer: Buffer, _options: ParseOptions = {}): Document
   return {
     paragraphs,
     tables,
-    sections: [], // populated by SectionDetector
+    sections: [],
     styles: new Map(Object.entries(styles)),
     fonts,
     metadata,

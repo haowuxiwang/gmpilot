@@ -38,23 +38,38 @@ export function TemplateConfig() {
   }, []);
 
   const loadTemplates = () => {
+    console.log('[TemplateConfig] loadTemplates called');
     if (window.gmpilot) {
+      console.log('[TemplateConfig] Calling window.gmpilot.template.getAll()...');
       window.gmpilot.template.getAll().then((tpls) => {
+        console.log('[TemplateConfig] Templates loaded:', JSON.stringify(tpls));
         setTemplates(tpls.map((t) => ({
           id: t.id,
           name: t.name,
           description: t.description,
           builtIn: t.builtIn,
         })));
-      }).catch((err) => log.error('Failed to load templates', { error: String(err) }));
+      }).catch((err) => {
+        console.error('[TemplateConfig] Failed to load templates:', err);
+        log.error('Failed to load templates', { error: String(err) });
+      });
+    } else {
+      console.error('[TemplateConfig] window.gmpilot is undefined');
     }
   };
 
   const handleUpload = async () => {
-    if (!window.gmpilot) return;
+    console.log('[TemplateConfig] handleUpload clicked');
+    if (!window.gmpilot) {
+      console.error('[TemplateConfig] window.gmpilot is undefined');
+      showError('gmpilot API 未初始化');
+      return;
+    }
+    console.log('[TemplateConfig] Calling window.gmpilot.template.upload()...');
     setUploading(true);
     try {
       const result = await window.gmpilot.template.upload();
+      console.log('[TemplateConfig] Upload result:', JSON.stringify(result));
       if (result.success && result.template) {
         success(`模板上传成功：${result.template.description}`);
         loadTemplates();
@@ -63,6 +78,7 @@ export function TemplateConfig() {
         showError(result.error || '上传失败');
       }
     } catch (err) {
+      console.error('[TemplateConfig] Upload error:', err);
       showError(`上传失败：${err instanceof Error ? err.message : '未知错误'}`);
     } finally {
       setUploading(false);

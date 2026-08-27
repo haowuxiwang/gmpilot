@@ -10,6 +10,7 @@ import { MessageSquare, FileText, BookOpen, Settings, PanelLeftClose, PanelLeftO
 import { NAV_ITEMS } from '@/config/constants';
 import { settingsApi } from '@/services/api';
 import { createLogger } from '@core/utils/logger';
+import { useDeviationWorkflow } from '@/hooks/useDeviationWorkflow';
 
 const log = createLogger('Sidebar');
 
@@ -26,6 +27,8 @@ export function Sidebar() {
   const [collapsed, setCollapsed] = useState(false);
   const [modelName, setModelName] = useState<string>('');
   const [llmReady, setLlmReady] = useState(false);
+  const { step } = useDeviationWorkflow();
+  const isWorkflowRunning = step !== 'input' && step !== 'done' && step !== 'review';
 
   // 获取 LLM 设置
   const fetchSettings = () => {
@@ -95,12 +98,18 @@ export function Sidebar() {
                   }
                 `}
               />
-              <Icon
-                className={`w-4 h-4 flex-shrink-0 transition-colors duration-150 ${
-                  isActive ? 'text-teal-600' : 'text-stone-400 group-hover:text-teal-600'
-                }`}
-                strokeWidth={isActive ? 2 : 1.5}
-              />
+              <div className="relative">
+                <Icon
+                  className={`w-4 h-4 flex-shrink-0 transition-colors duration-150 ${
+                    isActive ? 'text-teal-600' : 'text-stone-400 group-hover:text-teal-600'
+                  }`}
+                  strokeWidth={isActive ? 2 : 1.5}
+                />
+                {/* 后台工作流进行中脉冲点（仅智能助手图标） */}
+                {isWorkflowRunning && item.icon === 'MessageSquare' && (
+                  <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-teal-500 animate-pulse" />
+                )}
+              </div>
               {!collapsed && <span className="truncate">{item.label}</span>}
             </button>
           );

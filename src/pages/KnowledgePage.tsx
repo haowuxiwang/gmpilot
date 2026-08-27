@@ -398,10 +398,10 @@ export function KnowledgePage() {
               </thead>
               <tbody>
                 {filteredDocs.map((doc, index) => (
-                  <tr key={doc.id} className={`border-b border-stone-50 hover:bg-stone-50 transition-colors ${index % 2 === 1 ? 'bg-stone-50/30' : ''}`}>
+                  <tr key={doc.id} className={`border-b border-stone-50 hover:bg-stone-50 transition-colors group ${index % 2 === 1 ? 'bg-stone-50/30' : ''}`}>
                     <td className="px-5 py-4">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center">
+                        <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center group-hover:scale-105 transition-transform duration-150">
                           <FileText className="w-4 h-4 text-teal-600" strokeWidth={1.5} />
                         </div>
                         <span className="text-sm text-stone-800">{doc.filename}</span>

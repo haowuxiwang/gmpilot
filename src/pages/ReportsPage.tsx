@@ -416,16 +416,16 @@ export function ReportsPage() {
               </thead>
               <tbody>
                 {filteredReports.map((report, index) => (
-                  <tr key={report.id} className={`border-b border-stone-50 hover:bg-stone-50 transition-colors ${index % 2 === 1 ? 'bg-stone-50/30' : ''}`}>
+                  <tr key={report.id} className={`border-b border-stone-50 hover:bg-stone-50 transition-colors group ${index % 2 === 1 ? 'bg-stone-50/30' : ''}`}>
                     <td className="px-5 py-4">
                       <button
                         onClick={() => handleSelectOne(report.id)}
                         className="flex items-center"
                       >
                         {selectedIds.has(report.id) ? (
-                          <CheckSquare className="w-4 h-4 text-teal-600" />
+                          <CheckSquare className="w-4 h-4 text-teal-600 group-hover:scale-110 transition-transform duration-150" />
                         ) : (
-                          <Square className="w-4 h-4 text-stone-400" />
+                          <Square className="w-4 h-4 text-stone-400 group-hover:scale-110 transition-transform duration-150" />
                         )}
                       </button>
                     </td>

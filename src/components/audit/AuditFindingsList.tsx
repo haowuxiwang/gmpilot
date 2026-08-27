@@ -3,8 +3,7 @@
  * Shows findings sorted by severity with expandable details.
  */
 
-import { useState, useRef, useEffect } from 'react';
-import gsap from 'gsap';
+import { useState } from 'react';
 import { ChevronDown, AlertTriangle, AlertCircle, Info, FileText, Pencil } from 'lucide-react';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -59,21 +58,8 @@ const SEVERITY_CONFIG = {
 
 function FindingCard({ finding }: { finding: AuditFinding }) {
   const [expanded, setExpanded] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
   const config = SEVERITY_CONFIG[finding.severity] || SEVERITY_CONFIG.info;
   const Icon = config.icon;
-
-  useEffect(() => {
-    if (!contentRef.current) return;
-    if (expanded) {
-      gsap.from(contentRef.current, {
-        height: 0,
-        opacity: 0,
-        duration: 0.25,
-        ease: 'power2.out',
-      });
-    }
-  }, [expanded]);
 
   return (
     <div className={cn('rounded-xl border p-4', config.bgClass)}>
@@ -104,9 +90,9 @@ function FindingCard({ finding }: { finding: AuditFinding }) {
         />
       </button>
 
-      {/* Expanded details */}
-      {expanded && (
-        <div ref={contentRef} className="mt-3 pl-8 space-y-2">
+      {/* Expanded details — CSS grid 双向折叠（与 DocumentViewer 同模式） */}
+      <div data-open={expanded} className="collapse-grid">
+        <div className="mt-3 pl-8 space-y-2">
           {finding.description && (
             <div>
               <p className="text-xs font-medium text-stone-500 mb-1">描述</p>
@@ -128,23 +114,13 @@ function FindingCard({ finding }: { finding: AuditFinding }) {
             </div>
           )}
         </div>
-      )}
+      </div>
     </div>
   );
 }
 
 export function AuditFindingsList({ findings, overallScore, summary, onRevise, onExport }: AuditFindingsListProps) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (!ref.current) return;
-    gsap.from(ref.current, {
-      y: 12,
-      opacity: 0,
-      duration: 0.4,
-      ease: 'power3.out',
-    });
-  }, []);
+  // 列表入场：motion 替代 GSAP（y+12 fade, power3 等效 easeOut）
 
   // Sort by severity (high first)
   const sorted = [...findings].sort(
@@ -163,7 +139,7 @@ export function AuditFindingsList({ findings, overallScore, summary, onRevise, o
   const hasHighRisk = (counts.high || 0) > 0;
 
   return (
-    <div ref={ref} className="space-y-3">
+    <div className="space-y-3">
       {/* Score and summary */}
       {overallScore != null && (
         <div className="flex items-center gap-3 mb-2">

@@ -4,8 +4,7 @@
  * Modern, clean aesthetic with enhanced visual feedback.
  */
 
-import { useEffect, useRef, useMemo } from 'react';
-import { gsap } from 'gsap';
+import { useRef, useMemo } from 'react';
 import { motion } from 'motion/react';
 import {
   Search,
@@ -142,26 +141,8 @@ export function WorkflowProgress({
     return remaining;
   }, [currentStep]);
 
-  useEffect(() => {
-    if (containerRef.current) {
-      gsap.from(containerRef.current, {
-        y: -6,
-        opacity: 0,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
-    }
-  }, []);
-
-  useEffect(() => {
-    if (progressBarRef.current) {
-      gsap.to(progressBarRef.current, {
-        width: `${completionPercentage}%`,
-        duration: 0.5,
-        ease: 'power2.out',
-      });
-    }
-  }, [completionPercentage]);
+  // 进度条宽度由 CSS transition 驱动（已移除 transition-all 伪影）；
+  // 容器入场改用 motion 替代 GSAP
 
   const formatTime = (seconds: number): string => {
     if (seconds < 60) return `${seconds}秒`;
@@ -171,8 +152,11 @@ export function WorkflowProgress({
   };
 
   return (
-    <div
+    <motion.div
       ref={containerRef}
+      initial={{ opacity: 0, y: -6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       className={`flex flex-col gap-3 px-5 py-3 ${className}`}
     >
       {/* Progress bar */}
@@ -293,6 +277,6 @@ export function WorkflowProgress({
           <span className="text-teal-600 font-medium">完成</span>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }

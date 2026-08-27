@@ -4,8 +4,7 @@
  * Clean, compact card with step indicator.
  */
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { motion } from 'motion/react';
 import { CheckCircle2, Loader2 } from 'lucide-react';
 
 interface IntermediateResultProps {
@@ -21,28 +20,13 @@ export function IntermediateResult({
   content,
   isStreaming,
 }: IntermediateResultProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const animRef = useRef<gsap.core.Tween | null>(null);
-
-  useEffect(() => {
-    if (ref.current) {
-      animRef.current = gsap.from(ref.current, {
-        y: 8,
-        opacity: 0,
-        duration: 0.3,
-        ease: 'power3.out',
-      });
-    }
-    return () => {
-      animRef.current?.kill();
-    };
-  }, []);
-
   if (!content) return null;
 
   return (
-    <div
-      ref={ref}
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       className="bg-white border border-stone-100 rounded-xl overflow-hidden"
     >
       {/* Header */}
@@ -69,6 +53,6 @@ export function IntermediateResult({
           )}
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 }

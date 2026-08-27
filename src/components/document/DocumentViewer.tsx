@@ -5,7 +5,7 @@
  */
 
 import { useState, useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import { motion } from 'motion/react';
 import {
   ChevronRight,
   FileText,
@@ -103,25 +103,12 @@ export function DocumentViewer({
   onViewAuditDetails,
 }: DocumentViewerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const containerAnimRef = useRef<gsap.core.Tween | null>(null);
 
   useEffect(() => {
     loadSerifFont();
   }, []);
 
-  useEffect(() => {
-    if (report && containerRef.current) {
-      containerAnimRef.current = gsap.from(containerRef.current, {
-        x: 20,
-        opacity: 0,
-        duration: 0.4,
-        ease: 'power3.out',
-      });
-    }
-    return () => {
-      containerAnimRef.current?.kill();
-    };
-  }, [report]);
+  // 报告入场：motion 替代 GSAP（x+20 fade, power3 等效 easeOut）
 
   if (!report) {
     return (
@@ -196,7 +183,13 @@ export function DocumentViewer({
   ];
 
   return (
-    <div ref={containerRef} className="flex flex-col h-full">
+    <motion.div
+      ref={containerRef}
+      initial={{ opacity: 0, x: 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      className="flex flex-col h-full"
+    >
       {/* Header — 精简：无图标，纯文字层次 */}
       <div className="px-5 py-4 border-b border-stone-100">
         <div className="flex items-center justify-between mb-2">
@@ -285,6 +278,6 @@ export function DocumentViewer({
           />
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
